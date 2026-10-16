@@ -1,0 +1,108 @@
+# Java / Maven build output and local cache
+**/target/
+*.class
+*.jar
+*.war
+*.ear
+/.m2/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Node dependencies, output and caches
+**/node_modules/
+**/dist/
+**/build/
+**/.vite/
+**/.nuxt/
+**/.next/
+**/.npm/
+**/coverage/
+*.tsbuildinfo
+
+# Python virtual environments and caches
+**/.venv/
+**/venv/
+**/__pycache__/
+*.py[cod]
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.ipynb_checkpoints/
+.coverage
+htmlcov/
+
+# Private IDE / operating system files
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*~
+
+# Real local environment / secret material; safe templates remain trackable
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.local.env
+*.key
+*.pem
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa
+id_ed25519
+**/secrets/
+
+# Runtime output
+*.log
+*.tmp
+*.temp
+**/logs/
+**/tmp/
+**/runtime/
+/outputs/
+
+# Raw / unauthorized datasets: use explicit locations, not all CSV/JSON
+/data/raw/
+/data/private/
+/data/unauthorized/
+/data-pipeline/data/raw/
+/data-pipeline/data/private/
+/bigdata/data/
+/infra/volumes/
+
+# Full database exports / backups; migrations and SQL source remain trackable
+/database/dumps/
+/database/backups/
+*.dump
+*.bak
+*.sql.gz
+
+# Model weights / large experiment artifacts
+/ml/artifacts/
+/ml/checkpoints/
+/ml/runs/
+/ml/models/
+*.pt
+*.pth
+*.ckpt
+*.h5
+*.hdf5
+*.onnx
+*.safetensors
+*.joblib
+*.pkl
+
+# Third-party archives: keep originals outside the project
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+*.tgz
+
+# Do not add blanket rules for *.sql, *.py, *.json or *.csv.
+# Keep migrations, source, config templates and authorized small test fixtures trackable.

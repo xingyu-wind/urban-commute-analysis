@@ -1,0 +1,21 @@
+# Normalize text in the repository and default working tree to LF.
+* text=auto eol=lf
+*.md text eol=lf
+*.sh text eol=lf
+*.bash text eol=lf
+*.py text eol=lf
+*.java text eol=lf
+*.sql text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+# Windows command scripts use CRLF; PowerShell 7 scripts can use LF.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
