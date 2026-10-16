@@ -32,7 +32,7 @@
 
 角色 A 初步负责数据链路、数据库与后端，角色 B 初步负责前端、图表与预测评估；角色是工作分工建议，具体任务双方确认。每项工作由一人实现、另一人真实审查，双方共同维护 contracts、database 和 infra。
 
-GitHub 分支协作入口见 [协作规范](docs/guides/collaboration.md) 和 [PR 模板](.github/PULL_REQUEST_TEMPLATE.md)。规划使用稳定 main、短期功能分支、PR 审核及 Squash Merge。WP3-A 已初始化本地 Git，并通过21项代表性忽略规则测试；WP3-B 开展首次提交及私有仓库准备。远程、推送与分支保护的实际结果以 [S1 报告](docs/stage-reports/S1.md) 为准，不假设远程保护已经生效。
+GitHub 分支协作入口见 [协作规范](docs/guides/collaboration.md) 和 [PR 模板](.github/PULL_REQUEST_TEMPLATE.md)。WP3-A 已初始化本地 Git，并通过21项代表性忽略规则测试；WP3-B 已完成首次提交并推送至本人名下的 [GitHub 私有仓库](https://github.com/xingyu-wind/urban-commute-analysis)。远程仅启用 Squash Merge，合并后自动删除分支。私有仓库分支保护受当前 GitHub 计划限制，尚未生效；稳定 main、功能分支和真实 PR 审核仍须双方遵守。详细验证见 [S1 报告](docs/stage-reports/S1.md)。
 
 ## 后续阶段与数据边界
 
