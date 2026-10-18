@@ -1,6 +1,6 @@
 # 共享契约模块
 
-负责跨模块 API、字段、时间、空值和来源约定。S2-WP2 已建立 [OpenAPI 契约](openapi.yaml)，只定义 `GET /health` 与 `GET /api/v1/cities`。这是待实现的静态契约，服务尚未创建，不代表真实 HTTP 联调已通过。其他模块及真实数据接口仍属后续规划。
+负责跨模块 API、字段、时间、空值和来源约定。S2-WP2 已建立 [OpenAPI 契约](openapi.yaml)，只定义 `GET /health` 与 `GET /api/v1/cities`。WP2 只交付静态契约；WP3 后端实现和真实 HTTP 验收见 [后端说明](../backend/README.md)及 [S2 报告](../docs/stage-reports/S2.md)。静态验证不能代替真实 HTTP 验证，其他模块及真实数据接口仍属后续规划。
 
 ## 响应语义
 

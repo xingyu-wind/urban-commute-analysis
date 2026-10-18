@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: urban-commute-backend
+  jackson:
+    default-property-inclusion: always
+server:
+  address: 127.0.0.1
+  port: 8080
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-binding-errors: never
+commute:
+  cities:
+    seed-enabled: true
