@@ -1,0 +1,40 @@
+{
+  "exitCode": 0,
+  "checks": [
+    {
+      "name": "reject-real-time-source",
+      "childExitCode": 1,
+      "expectedNonzero": true
+    },
+    {
+      "name": "reject-missing-required-null",
+      "childExitCode": 1,
+      "expectedNonzero": true
+    },
+    {
+      "name": "reject-historical-timestamp",
+      "childExitCode": 1,
+      "expectedNonzero": true
+    },
+    {
+      "name": "reject-null-cities",
+      "childExitCode": 1,
+      "expectedNonzero": true
+    },
+    {
+      "name": "reject-missing-java-log",
+      "childExitCode": 1,
+      "expectedNonzero": true
+    },
+    {
+      "name": "actual-java-startup-failure",
+      "childExitCode": 1,
+      "expectedNonzero": true,
+      "cleanup": {
+        "javaPortAvailable": true,
+        "vitePortAvailable": true,
+        "remainingOwnedChildren": 0
+      }
+    }
+  ]
+}

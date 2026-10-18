@@ -1,15 +1,17 @@
 // Real Java -> Vite proxy -> isolated real Chromium browser. No request mocking.
-import { chromium, expect } from '@playwright/test'
+import { chromium, expect as baseExpect } from '@playwright/test'
+import { browserChannels, contractPython, javaExecutable } from '../config/runtime.ts'
 import { spawn, spawnSync } from 'node:child_process'
 import { createServer } from 'node:net'
 import { once } from 'node:events'
-import { createWriteStream, readFileSync, readdirSync, mkdirSync, writeFileSync } from 'node:fs'
+import { createWriteStream, readFileSync, readdirSync, existsSync, mkdirSync, writeFileSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 
 const frontend = path.resolve(fileURLToPath(new URL('..', import.meta.url)))
 const root = path.dirname(frontend)
+const expect = baseExpect.configure({ timeout: 15000 })
 const output = path.resolve(process.argv[2] ?? path.join(frontend, 'outputs', 'integration'))
 mkdirSync(path.dirname(output), { recursive: true })
 mkdirSync(output, { recursive: false }) // Refuse to replace previous evidence.
@@ -41,9 +43,11 @@ async function available(port) {
 async function choosePort(preferred) {
   for (let port = preferred; port < preferred + 20; port++) {
     if (await available(port)) return port
-    const diagnostics = spawnSync('powershell.exe', ['-NoProfile', '-NonInteractive', '-Command',
-      `Get-NetTCPConnection -State Listen -LocalPort ${port} -ErrorAction SilentlyContinue | Select-Object LocalAddress,LocalPort,OwningProcess | ConvertTo-Json -Compress`], { encoding: 'utf8', windowsHide: true })
-    manifest.portDiagnostics.push({ port, occupied: true, readOnlyDiagnostic: diagnostics.stdout.trim() })
+    const diagnostics = process.platform === 'win32'
+      ? spawnSync('powershell.exe', ['-NoProfile', '-NonInteractive', '-Command',
+        `Get-NetTCPConnection -State Listen -LocalPort ${port} -ErrorAction SilentlyContinue | Select-Object LocalAddress,LocalPort,OwningProcess | ConvertTo-Json -Compress`], { encoding: 'utf8', windowsHide: true })
+      : spawnSync('ss', ['-ltnp', `sport = :${port}`], { encoding: 'utf8' })
+    manifest.portDiagnostics.push({ port, occupied: true, readOnlyDiagnostic: diagnostics.stdout?.trim() || diagnostics.error?.message || 'Owner unavailable; port not touched' })
     console.log(`Port ${port} unavailable; recorded owner diagnostic; not terminating its owner`)
   }
   throw new Error('No local port available in the configured range')
@@ -57,6 +61,7 @@ function launch(name, command, args, env = process.env) {
   child.on('error', error => { child.launchError = error })
   const record = { name, pid: child.pid, command: [command, ...args], startedAt: new Date().toISOString() }
   child.record = record
+  child.logFile = path.join(output, `${name}.log`)
   manifest.processes.push(record); owned.add(child)
   return child
 }
@@ -68,6 +73,11 @@ async function stop(child) {
     child.kill('SIGTERM')
     let timer
     try { await Promise.race([closed, new Promise((_, reject) => { timer = setTimeout(() => reject(new Error(`Owned process ${child.pid} failed to stop`)), 15000) })]) }
+    catch {
+      // Escalate only for the exact child owned by this driver, never by port or process name.
+      child.kill('SIGKILL')
+      await Promise.race([closed, new Promise((_, reject) => { timer = setTimeout(() => reject(new Error(`Owned process ${child.pid} failed to terminate`)), 5000) })])
+    }
     finally { clearTimeout(timer) }
   }
   child.record.exitCode = child.exitCode
@@ -81,7 +91,10 @@ async function waitForHttp(url, child) {
   const end = Date.now() + 60000
   while (Date.now() < end) {
     if (child.launchError) throw child.launchError
-    if (child.exitCode !== null) throw new Error(`Owned service ${child.record.name} exited ${child.exitCode}`)
+    if (child.exitCode !== null || child.signalCode !== null) throw new Error(`Owned service ${child.record.name} exited before readiness`)
+    if (child.record.name.startsWith('java') && (!existsSync(child.logFile) || !readFileSync(child.logFile, 'utf8').includes('Started UrbanCommuteApplication'))) {
+      await new Promise(resolve => setTimeout(resolve, 200)); continue
+    }
     try { const response = await fetch(url, { signal: AbortSignal.timeout(1000) }); if (response.ok) return }
     catch { /* Startup is polled without changing network configuration. */ }
     await new Promise(resolve => setTimeout(resolve, 200))
@@ -94,7 +107,7 @@ async function startJava(name, empty = false) {
   const javaHome = process.env.JAVA_HOME
   if (!javaHome) throw new Error('JAVA_HOME is required for this process')
   const jar = path.join(root, 'backend', 'target', 'urban-commute-backend-0.1.0-SNAPSHOT.jar')
-  const child = launch(name, path.join(javaHome, 'bin', 'java.exe'), ['-jar', jar, '--server.address=127.0.0.1', `--server.port=${javaPort}`, ...(empty ? ['--commute.cities.seed-enabled=false'] : [])])
+  const child = launch(name, javaExecutable(javaHome), ['-jar', jar, '--server.address=127.0.0.1', `--server.port=${javaPort}`, ...(empty ? ['--commute.cities.seed-enabled=false'] : [])])
   await waitForHttp(`http://127.0.0.1:${javaPort}/health`, child)
   return child
 }
@@ -108,11 +121,11 @@ try {
   vite = launch('vite', process.execPath, [path.join(frontend, 'node_modules', 'vite', 'bin', 'vite.js'), '--host', '127.0.0.1', '--port', String(vitePort), '--strictPort'], { ...process.env, DEV_BACKEND_URL: manifest.backendTarget })
   const base = `http://127.0.0.1:${vitePort}`
   await waitForHttp(base, vite)
-  for (const channel of ['chrome', 'msedge']) {
-    try { browser = await chromium.launch({ channel, headless: true }); manifest.browserChannel = channel; break }
+  for (const channel of browserChannels()) {
+    try { browser = await chromium.launch({ ...(channel === 'chromium' ? {} : { channel }), headless: true }); manifest.browserChannel = channel; break }
     catch (error) { manifest.steps.push({ name: 'browser-launch-fallback', channel, error: error.message.split('\n')[0] }) }
   }
-  if (!browser) throw new Error('Neither installed Chrome nor Edge could be launched; no browser evidence available')
+  if (!browser) throw new Error('Configured browser could not be launched; install Playwright Chromium in CI or use local Chrome/Edge. No browser evidence available')
   manifest.browserVersion = browser.version()
   const context = await browser.newContext({ viewport: { width: 1365, height: 900 }, locale: 'zh-CN', timezoneId: 'Asia/Shanghai' })
   page = await context.newPage()
@@ -127,7 +140,7 @@ try {
     pendingResponses.push((async () => {
       try {
         const body = await response.body()
-        row.bodyFile = `response-${index}.json`
+        row.bodyFile = `response-${index}.${response.headers()['content-type']?.includes('application/json') ? 'json' : 'txt'}`
         writeFileSync(path.join(output, row.bodyFile), body, { flag: 'wx' })
         row.source = response.status() !== 200 && responsePhase === 'backend-stopped' ? 'vite-proxy-transport-failure' : 'java-via-vite'
       } catch (error) { row.captureError = error.message }
@@ -218,7 +231,7 @@ try {
   writeFileSync(path.join(output, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n', { flag: 'wx' })
 }
 if (exitCode === 0) {
-  const python = path.join(root, 'contracts', '.venv', 'Scripts', 'python.exe')
+  const python = contractPython(root)
   const result = spawnSync(python, [path.join(frontend, 'scripts', 'validate-captures.py'), output], { cwd: root, stdio: 'inherit', windowsHide: true })
   exitCode = result.status ?? 1
   manifest.schemaValidationExitCode = exitCode

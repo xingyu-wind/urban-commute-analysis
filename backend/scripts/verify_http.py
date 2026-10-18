@@ -135,6 +135,10 @@ def main():
         test_directory = BACKEND / "target" / "http-test-evidence"
         for name in ("health", "cities", "cities-empty", "error-500", "error-503"):
             metadata = json.loads((test_directory / (name + ".http.json")).read_text(encoding="utf-8"))
+            captured = datetime.fromisoformat(metadata["capturedAt"].replace("Z", "+00:00"))
+            age = (started_at - captured).total_seconds()
+            if not 0 <= age <= 600:
+                raise ValueError("JUnit HTTP evidence is stale; run Maven Wrapper verify immediately before this script")
             payload = json.loads((test_directory / (name + ".json")).read_text(encoding="utf-8"))
             errors = body_errors(spec, registry, checker, metadata["contractPath"], str(metadata["status"]), payload)
             assert not errors, "JUnit HTTP " + name + ": " + error_summary(errors)

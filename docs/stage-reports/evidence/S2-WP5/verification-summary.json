@@ -1,0 +1,58 @@
+{
+  "baseCommit": "4e779fd17a256534c456678ce827b67708cbb6ac",
+  "branch": "feat/s2-api-frontend",
+  "backend": {
+    "tests": 12,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "wrapperVerifyExitCode": 0
+  },
+  "frontend": {
+    "npmCiExitCode": 0,
+    "typeCheckExitCode": 0,
+    "tests": 27,
+    "passed": 27,
+    "failed": 0,
+    "testExitCode": 0,
+    "buildExitCode": 0
+  },
+  "openapi": {
+    "specValidatorExitCode": 0,
+    "fixtureValidatorExitCode": 0,
+    "positiveCases": 16,
+    "negativeCasesRejected": 9,
+    "externalExamplesValidated": 16
+  },
+  "http": {
+    "driverExitCode": 0,
+    "standaloneResponses": 12,
+    "junitResponses": 5
+  },
+  "browser": {
+    "driverExitCode": 0,
+    "steps": 8,
+    "javaSchemaResponses": 8,
+    "proxyFailures": 2,
+    "cleanup": {
+      "javaPortAvailable": true,
+      "vitePortAvailable": true,
+      "remainingOwnedChildren": 0
+    }
+  },
+  "negativeChecks": {
+    "driverExitCode": 0,
+    "expectedNonzeroChildren": 6
+  },
+  "ci": {
+    "actionlintVersion": "1.7.12",
+    "actionlintInitialExitCode": 1,
+    "actionlintFinalExitCode": 0,
+    "policyExitCode": 0,
+    "bashWrapperSyntaxExitCode": 0,
+    "cloudRun": "NOT_RUN",
+    "linuxFullRegression": "NOT_RUN",
+    "workflowSha256": "db9a4436e01864fe4da06ea89833772bc6512a532ad76fd77bda6865cfb8aab1"
+  },
+  "scope": "Actual Windows results only. No push, PR, deployment or remote merge. Raw logs/screenshots remain in ignored outputs; snapshots are for review, rerun drivers to produce new live evidence."
+}

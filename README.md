@@ -8,7 +8,7 @@
 
 规划采用 Python 离线清洗、MySQL 结构化存储、HDFS/Hive 历史数据分析、Python 机器学习、Spring Boot API 和 Vue 前端。MySQL、HDFS/Hive、真实数据源与预测模型尚未实现；HDFS/Hive 技术目标保留，不因当前样例规模小而取消。
 
-当前处于 **S2**：WP0～WP3 已完成执行阶段验收；WP4 已实现 Vue 前端并完成首次真实浏览器→Vite→Java 联调，等待执行对话审核。WP5/WP6 尚未开展，整个 S2 未宣告通过。
+当前处于 **S2**：WP0～WP4 已完成执行阶段验收；WP5 已完成本地全链路回归并编写 GitHub Actions CI，等待执行对话审核。云端 CI 尚未运行，WP6 尚未开展，整个 S2 未宣告通过。
 
 实际可运行的范围仅为 Java 21 + Spring Boot 3.5.16 的 `GET /health`、`GET /api/v1/cities`，以及 Vue 3 + TypeScript + Vite 的服务状态和城市选择页面。北京、上海是 `dev_seed` 开发样例，`dataAsOf=null`，不代表真实交通观测、通勤人数或预测结果。
 
@@ -53,7 +53,7 @@ npm.cmd run dev
 | docs/guides/ | 开发、协作和操作指南 |
 | docs/stage-reports/ | 阶段证据、进度和待办 |
 | scripts/ | 可复用的项目检查和辅助脚本 |
-| .github/ | Pull Request 模板及未来协作自动化 |
+| .github/ | Pull Request 模板及只读权限的全链路回归 CI |
 
 ## 角色与合作（按本轮确认的 V2.1 口径）
 
@@ -66,6 +66,6 @@ GitHub 分支协作入口见 [协作规范](docs/guides/collaboration.md) 和 [P
 
 ## 后续阶段与数据边界
 
-当前 WP4 完成后停止，等待执行对话审阅源码、测试和真实浏览器证据，并完成必要教学，再授权下一工作包。后续数据链路、数据库、大数据、模型及图表按正式阶段任务实施；S1 协作债务另行补验，不倒写历史结果。
+WP5 回归命令、Windows/Linux 入口与 CI 边界见 [回归与 CI 指南](docs/guides/s2-regression.md)。当前完成后停止，等待执行对话审核，再授权下一工作包；未推送 GitHub 或执行云端 CI。后续数据链路、数据库、大数据、模型及图表按正式阶段任务实施；S1 协作债务另行补验，不倒写历史结果。
 
 本项目独立实现，不直接复刻或上传第三方毕业设计。参考资料须先核实授权；原始第三方 ZIP、未授权数据、真实凭据和个人数据不得纳入仓库。环境模板见 `.env.example`，复制后填写的本地 `.env` 不应提交。

@@ -1,0 +1,270 @@
+{
+  "startedAt": "2026-10-18T15:07:41.287541+00:00",
+  "finishedAt": "2026-10-18T15:07:47.340735+00:00",
+  "driverExitCode": 0,
+  "javaOptions": "-Djdk.net.unixdomain.tmpdir=D:\\WindXingyu\\Temp\\java-unixdomain",
+  "processes": [
+    {
+      "mode": "seed",
+      "pid": 58140,
+      "command": [
+        "D:\\WindXingyu\\Apps\\Java\\jdk-21.0.12.1+1\\bin\\java.exe",
+        "-jar",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\urban-commute-backend-0.1.0-SNAPSHOT.jar",
+        "--server.address=127.0.0.1",
+        "--server.port=0"
+      ],
+      "startedAt": "2026-10-18T15:07:41.304546+00:00",
+      "port": 50862,
+      "processExitCode": 1,
+      "stoppedAt": "2026-10-18T15:07:44.725142+00:00",
+      "stopMethod": "terminate owned Popen child; Windows may report nonzero termination",
+      "stopped": true
+    },
+    {
+      "mode": "empty",
+      "pid": 10304,
+      "command": [
+        "D:\\WindXingyu\\Apps\\Java\\jdk-21.0.12.1+1\\bin\\java.exe",
+        "-jar",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\urban-commute-backend-0.1.0-SNAPSHOT.jar",
+        "--server.address=127.0.0.1",
+        "--server.port=0",
+        "--commute.cities.seed-enabled=false"
+      ],
+      "startedAt": "2026-10-18T15:07:44.732746+00:00",
+      "port": 50876,
+      "processExitCode": 1,
+      "stoppedAt": "2026-10-18T15:07:47.340735+00:00",
+      "stopMethod": "terminate owned Popen child; Windows may report nonzero termination",
+      "stopped": true
+    }
+  ],
+  "responses": [
+    {
+      "name": "health",
+      "method": "GET",
+      "url": "http://127.0.0.1:50862/health",
+      "accept": "application/json",
+      "requestBody": null,
+      "status": 200,
+      "contractPath": "/health",
+      "headers": {
+        "Content-Type": "application/json",
+        "Allow": null,
+        "X-Request-Id": "f6a8fce0-0749-41b4-a362-b3f6c79fd076"
+      },
+      "bodyFile": "health.json",
+      "schemaValidation": "PASS"
+    },
+    {
+      "name": "health-next",
+      "method": "GET",
+      "url": "http://127.0.0.1:50862/health",
+      "accept": "application/json",
+      "requestBody": null,
+      "status": 200,
+      "contractPath": "/health",
+      "headers": {
+        "Content-Type": "application/json",
+        "Allow": null,
+        "X-Request-Id": "75b095c5-2144-44df-a780-a7edcb9a0a94"
+      },
+      "bodyFile": "health-next.json",
+      "schemaValidation": "PASS"
+    },
+    {
+      "name": "cities",
+      "method": "GET",
+      "url": "http://127.0.0.1:50862/api/v1/cities",
+      "accept": "application/json",
+      "requestBody": null,
+      "status": 200,
+      "contractPath": "/api/v1/cities",
+      "headers": {
+        "Content-Type": "application/json",
+        "Allow": null,
+        "X-Request-Id": "146f970a-3b39-44a2-86b1-a4e2194baf90"
+      },
+      "bodyFile": "cities.json",
+      "schemaValidation": "PASS"
+    },
+    {
+      "name": "cities-next",
+      "method": "GET",
+      "url": "http://127.0.0.1:50862/api/v1/cities",
+      "accept": "application/json",
+      "requestBody": null,
+      "status": 200,
+      "contractPath": "/api/v1/cities",
+      "headers": {
+        "Content-Type": "application/json",
+        "Allow": null,
+        "X-Request-Id": "1c552074-bf47-4aa2-9e19-d923696a114b"
+      },
+      "bodyFile": "cities-next.json",
+      "schemaValidation": "PASS"
+    },
+    {
+      "name": "bad-query",
+      "method": "GET",
+      "url": "http://127.0.0.1:50862/api/v1/cities?limit=unexpected",
+      "accept": "application/json",
+      "requestBody": null,
+      "status": 400,
+      "contractPath": "/api/v1/cities",
+      "headers": {
+        "Content-Type": "application/json",
+        "Allow": null,
+        "X-Request-Id": "6bade1e8-3eda-471a-9487-f05b13918425"
+      },
+      "bodyFile": "bad-query.json",
+      "schemaValidation": "PASS"
+    },
+    {
+      "name": "get-body",
+      "method": "GET",
+      "url": "http://127.0.0.1:50862/health",
+      "accept": "application/json",
+      "requestBody": "{}",
+      "status": 400,
+      "contractPath": "/health",
+      "headers": {
+        "Content-Type": "application/json",
+        "Allow": null,
+        "X-Request-Id": "3fc5c271-fae7-4f4f-927e-6dc66722bdc7"
+      },
+      "bodyFile": "get-body.json",
+      "schemaValidation": "PASS"
+    },
+    {
+      "name": "not-found",
+      "method": "GET",
+      "url": "http://127.0.0.1:50862/not-a-route",
+      "accept": "application/json",
+      "requestBody": null,
+      "status": 404,
+      "contractPath": "/api/v1/cities",
+      "headers": {
+        "Content-Type": "application/json",
+        "Allow": null,
+        "X-Request-Id": "c6ad9d3c-00d3-4f33-a9a9-08007359e5d5"
+      },
+      "bodyFile": "not-found.json",
+      "schemaValidation": "PASS"
+    },
+    {
+      "name": "wrong-method",
+      "method": "POST",
+      "url": "http://127.0.0.1:50862/api/v1/cities",
+      "accept": "application/json",
+      "requestBody": null,
+      "status": 405,
+      "contractPath": "/api/v1/cities",
+      "headers": {
+        "Content-Type": "application/json",
+        "Allow": "GET",
+        "X-Request-Id": "4b9f155d-db52-4efc-9bdf-ce4ae39e2761"
+      },
+      "bodyFile": "wrong-method.json",
+      "schemaValidation": "PASS"
+    },
+    {
+      "name": "health-wrong-method",
+      "method": "POST",
+      "url": "http://127.0.0.1:50862/health",
+      "accept": "application/json",
+      "requestBody": null,
+      "status": 405,
+      "contractPath": "/health",
+      "headers": {
+        "Content-Type": "application/json",
+        "Allow": "GET",
+        "X-Request-Id": "9b0f8d1e-bd71-4a7b-932c-648aea58328e"
+      },
+      "bodyFile": "health-wrong-method.json",
+      "schemaValidation": "PASS"
+    },
+    {
+      "name": "not-acceptable",
+      "method": "GET",
+      "url": "http://127.0.0.1:50862/api/v1/cities",
+      "accept": "application/xml",
+      "requestBody": null,
+      "status": 406,
+      "contractPath": "/api/v1/cities",
+      "headers": {
+        "Content-Type": "application/json",
+        "Allow": null,
+        "X-Request-Id": "d266c71c-6064-4328-aefc-b351f506cb23"
+      },
+      "bodyFile": "not-acceptable.json",
+      "schemaValidation": "PASS"
+    },
+    {
+      "name": "health-not-acceptable",
+      "method": "GET",
+      "url": "http://127.0.0.1:50862/health",
+      "accept": "text/plain",
+      "requestBody": null,
+      "status": 406,
+      "contractPath": "/health",
+      "headers": {
+        "Content-Type": "application/json",
+        "Allow": null,
+        "X-Request-Id": "a1be2220-1328-41f5-9da2-3c2259af6eed"
+      },
+      "bodyFile": "health-not-acceptable.json",
+      "schemaValidation": "PASS"
+    },
+    {
+      "name": "cities-empty",
+      "method": "GET",
+      "url": "http://127.0.0.1:50876/api/v1/cities",
+      "accept": "application/json",
+      "requestBody": null,
+      "status": 200,
+      "contractPath": "/api/v1/cities",
+      "headers": {
+        "Content-Type": "application/json",
+        "Allow": null,
+        "X-Request-Id": "121a53d3-a604-4fa1-aef9-b93d080e0779"
+      },
+      "bodyFile": "cities-empty.json",
+      "schemaValidation": "PASS"
+    }
+  ],
+  "junitHttpValidation": [
+    {
+      "name": "health",
+      "status": 200,
+      "schemaValidation": "PASS",
+      "testServiceSubstitution": false
+    },
+    {
+      "name": "cities",
+      "status": 200,
+      "schemaValidation": "PASS",
+      "testServiceSubstitution": false
+    },
+    {
+      "name": "cities-empty",
+      "status": 200,
+      "schemaValidation": "PASS",
+      "testServiceSubstitution": true
+    },
+    {
+      "name": "error-500",
+      "status": 500,
+      "schemaValidation": "PASS",
+      "testServiceSubstitution": true
+    },
+    {
+      "name": "error-503",
+      "status": 503,
+      "schemaValidation": "PASS",
+      "testServiceSubstitution": true
+    }
+  ],
+  "scope": "Standalone packaged jar real HTTP; empty mode uses configuration, no test service mocks"
+}

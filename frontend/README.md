@@ -23,7 +23,7 @@ npm.cmd run dev
 | `npm.cmd test` | Vitest API/组件/代理配置测试 |
 | `npm.cmd run test:watch` | 单元测试监听 |
 | `npm.cmd run preview` | 本地查看静态构建，4173；不包含开发代理 |
-| `npm.cmd run test:e2e` | 启动本项目 Java/Vite，执行真实 Chrome/Edge 验收与契约校验 |
+| `npm.cmd run test:e2e` | 启动本项目 Java/Vite，执行真实浏览器验收与契约校验 |
 
 ## 调用关系与文件
 
@@ -40,6 +40,7 @@ App.vue -> api/client.ts -> fetch('/health', '/api/v1/cities')
 | `src/types/api.ts` | 对照 OpenAPI 的健康、城市成功与错误类型 |
 | `src/style.css` | 中文界面、桌面及窄屏布局、键盘焦点与减少动画支持 |
 | `config/proxy.ts`、`vite.config.ts` | 集中配置 `/health` 和 `/api` 的开发代理；不改后端 CORS |
+| `config/runtime.ts` | Windows/Linux Java、Python 入口和浏览器选择；支持 CI 进程配置 |
 | `tests/` | 使用契约 JSON 样例的单元测试；测试替身不进入正常页面 |
 | `scripts/verify-integration.mjs` | 无请求 Mock 的真实浏览器联调、停服/恢复/离线/空列表验收 |
 | `scripts/validate-captures.py` | 使用 WP2 的实际 OpenAPI Schema 检查浏览器真实响应并关联 Java 日志 |
@@ -88,5 +89,17 @@ npm.cmd run test:e2e -- outputs/integration-another-run
 ```
 
 `manifest.json` 保存命令、PID、端口、响应状态、浏览器版本、步骤、源文件哈希和清理结果；`schema-validation.json` 保存 OpenAPI 校验和真实 Java requestId 日志关联。期望退出 0；浏览器不能启动时明确失败，不会伪造验收。
+
+WP5 要求健康时间属于本次运行、requestId 不重复、四个成功阶段均有两个真实接口响应、停服阶段确实捕获两条代理故障。非 JSON 代理正文保存为 .txt。Java 就绪必须先在本任务子进程日志中出现启动成功信息，避免遗留服务掩盖启动失败。
+
+Windows 默认尝试已有 Chrome/Edge；Linux 默认使用 Playwright Chromium。可通过进程变量 `BROWSER_CHANNEL=chromium` 和 `CONTRACT_PYTHON=python` 指定 CI 浏览器及已装验证依赖的解释器。CI 浏览器二进制仅下载到 runner 临时目录，不安装系统软件；本机验收仍使用已有 Chrome。不要把本机通过视为 Linux 或 GitHub 云端已通过。
+
+成功联调后可执行故障检测自验（第二个输出目录必须不存在）：
+
+```powershell
+..\contracts\.venv\Scripts\python.exe scripts/check-regression-failures.py outputs/integration-another-run outputs/negative-another-run
+```
+
+它仅篡改自己创建的证据临时副本，确认非法来源、缺失 null 字段、历史时间、null 城市列表、缺失 Java 日志被拒绝，并实际用不存在的 JDK 路径验证启动失败。6 个子检查均应非零，整个检测驱动应退出 0。不是 Mock 接口联调。完整顺序见 [回归与 CI 指南](../docs/guides/s2-regression.md)。
 
 可提交的审阅快照见 [S2-WP4 证据目录](../docs/stage-reports/evidence/S2-WP4)，真实运行结果与边界见 [S2 报告](../docs/stage-reports/S2.md)。

@@ -87,6 +87,7 @@ class ApiIntegrationTest {
         evidence.put("contractPath", path); evidence.put("status", expectedStatus);
         evidence.put("contentType", response.getHeaders().getContentType().toString());
         evidence.put("requestId", requestId);
+        evidence.put("capturedAt", Instant.now().toString());
         evidence.put("testServiceSubstitution", List.of("cities-empty", "error-500", "error-503").contains(name));
         mapper.writerWithDefaultPrettyPrinter().writeValue(directory.resolve(name + ".http.json").toFile(), evidence);
         return body;

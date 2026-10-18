@@ -1,6 +1,6 @@
 # 后端模块
 
-S2-WP3 实现 Java 21 / Spring Boot 3.5.16 的两个真实 HTTP 接口，遵守 [OpenAPI 契约](../contracts/openapi.yaml)。当前仅内存开发样例；没有数据库、Security、Hadoop/Hive、预测模型或 Vue 工程。
+S2-WP3 实现 Java 21 / Spring Boot 3.5.16 的两个真实 HTTP 接口，遵守 [OpenAPI 契约](../contracts/openapi.yaml)。当前仅内存开发样例；没有数据库、Security、Hadoop/Hive 或预测模型。WP4 前端位于相邻 frontend/。
 
 ## 目录与职责
 
@@ -73,6 +73,8 @@ Get-NetTCPConnection -State Listen -LocalPort 8080 -ErrorAction SilentlyContinue
 
 原始 JSON、HTTP 状态、必要响应头、启动命令、PID、停止结果和驱动退出码保存到 `backend/target/live-http-evidence`。输出目录已存在时脚本拒绝覆盖；复测用 `--output` 指向一个新的目录。正常结果应退出 0。脚本在 `finally` 中只停止自己持有的 Popen 子进程；Windows 主动终止服务的退出码可能非零，必须与验证驱动退出码区分。
 
-JUnit 的真实随机端口响应另外保存在 `target/http-test-evidence`，其中明确标记空列表/500/503 使用测试替身。测试报告在 `target/surefire-reports`。这些构建证据与缓存均被 Git 忽略；阶段报告保留可审阅的响应快照和实测结果。
+JUnit 的真实随机端口响应另外保存在 `target/http-test-evidence`，其中明确标记空列表/500/503 使用测试替身。WP5 在测试证据元数据中加入 capturedAt；独立验证器拒绝超过 10 分钟或未来的 JUnit 证据，因此应在 Wrapper verify 后立即运行 HTTP 验证。此字段仅用于测试证据，不加入 HTTP 响应 DTO。测试报告在 `target/surefire-reports`。这些构建证据与缓存均被 Git 忽略；阶段报告保留可审阅的响应快照和实测结果。
+
+Linux 使用 `bash backend/mvnw -f backend/pom.xml -B -ntp verify`（仓库根目录），不依赖 Windows 的 .cmd 或文件可执行位。完整回归与 CI 说明见 [回归指南](../docs/guides/s2-regression.md)。
 
 框架错误处理依据：[Spring ResponseEntityExceptionHandler](https://docs.spring.io/spring-framework/docs/6.2.8/javadoc-api/org/springframework/web/servlet/mvc/method/annotation/ResponseEntityExceptionHandler.html)。Wrapper 来源：[Apache Maven Wrapper](https://maven.apache.org/tools/wrapper/index.html)。
