@@ -1,0 +1,14 @@
+{
+  "exitCode": 0,
+  "commitsScanned": [
+    "f966378d3721b5409413f25098f12d4bcf5613c8",
+    "4e779fd17a256534c456678ce827b67708cbb6ac",
+    "fced6b4eb1cfcff1bac03d19ab64c469e00e6083",
+    "5a3292e7d0504c41a843a305f33a5ce86cade6d5"
+  ],
+  "blobOccurrencesScanned": 156,
+  "forbiddenFiles": 0,
+  "secretPatternFindings": 0,
+  "ignoreProbesPassed": 8,
+  "limitation": "Pattern-based audit is not a formal proof that all secrets are absent; existing staged examples and small screenshots manually reviewed."
+}

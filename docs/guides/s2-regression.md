@@ -45,4 +45,4 @@ Maven/npm/pip 缓存按相应 pom/lock 文件生成。产物仅上传 surefire-r
 - 启动失败、Schema 不符、缺失阶段、历史时间、失去日志关联或清理失败均使验证非零。故障自验只有确认 6 个预期失败后才退出 0。
 - 驱动只关闭自己的浏览器及 Java/Vite 子进程，端口占用先诊断并选可用端口，不结束未知进程。Ctrl+C/外部强制中断不应当作成功验收；查阅 manifest 清理字段。
 
-`scripts/check_ci.py` 检查项目 CI 规则；另使用官方 [actionlint](https://github.com/rhysd/actionlint) 做工作流语法/上下文校验，不把前者等同完整 Actions 语义验证。WP5 本地临时 actionlint 1.7.12 检查退出 0，详情见阶段报告。未推送，未触发 GitHub 云端 CI；首次获授权的 PR/CI 运行必须另行留存结果。
+`scripts/check_ci.py` 检查项目 CI 规则；另使用官方 [actionlint](https://github.com/rhysd/actionlint) 做工作流语法/上下文校验，不把前者等同完整 Actions 语义验证。WP5 本地临时 actionlint 1.7.12 检查退出 0，当时尚未推送或运行云端 CI。WP6 获授权创建 [PR #2](https://github.com/xingyu-wind/urban-commute-analysis/pull/2) 后已取得真实 Linux 云端成功结果，证据见 [S2 报告](../stage-reports/S2.md)；每个后续提交仍须检查对应最新 Head 的 CI，不能借用旧 SHA 的通过结果。

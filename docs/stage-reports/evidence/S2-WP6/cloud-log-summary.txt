@@ -1,0 +1,35 @@
+2026-10-18T15:23:23.9074729Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.12-1/x64
+2026-10-18T15:23:29.4028407Z node: v24.19.0
+2026-10-18T15:23:29.4029120Z npm: 11.17.0
+2026-10-18T15:23:29.7225558Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.12-1/x64
+2026-10-18T15:23:31.6682469Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.12-1/x64
+2026-10-18T15:23:35.7593120Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.12-1/x64
+2026-10-18T15:23:35.8026312Z CI_POLICY=PASS; triggers, SHA pins, contents:read, Java21/Node24, dependency paths and Linux commands checked
+2026-10-18T15:23:36.6156619Z PASS fixtures: 16 accepted, 9 rejected; OpenAPI examples: 16 accepted
+2026-10-18T15:23:36.6543683Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.12-1/x64
+2026-10-18T15:24:00.8784127Z [INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.388 s -- in com.urbancommute.ApiIntegrationTest
+2026-10-18T15:24:01.2712111Z [INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0
+2026-10-18T15:24:03.7182851Z [INFO] BUILD SUCCESS
+2026-10-18T15:24:03.7406050Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.12-1/x64
+2026-10-18T15:24:11.8188328Z LIVE_HTTP_RESPONSES=12 DRIVER_EXIT=0
+2026-10-18T15:24:11.8627989Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.12-1/x64
+2026-10-18T15:24:14.6235536Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.12-1/x64
+2026-10-18T15:24:24.0956662Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.12-1/x64
+2026-10-18T15:24:34.5349628Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.12-1/x64
+2026-10-18T15:24:40.1762045Z PASS real-beijing-selection
+2026-10-18T15:24:40.2319945Z PASS real-shanghai-selection-and-source
+2026-10-18T15:24:55.3022043Z PASS backend-stop-detected-automatically
+2026-10-18T15:24:59.0456237Z PASS backend-restart-manual-retry-restored-success
+2026-10-18T15:24:59.1062796Z PASS actual-browser-network-offline-state
+2026-10-18T15:24:59.1718796Z PASS browser-network-retry-restored-success
+2026-10-18T15:25:03.1469237Z PASS real-java-empty-list-rendered-as-success
+2026-10-18T15:25:03.5642388Z CAPTURED_OPENAPI_VALIDATION=PASS; JAVA_RESPONSES=8; PROXY_FAILURES=2; JAVA_LOG_CORRELATION=PASS
+2026-10-18T15:25:03.6015139Z BROWSER_INTEGRATION_EXIT=0; EVIDENCE=/home/runner/work/urban-commute-analysis/urban-commute-analysis/frontend/outputs/ci-browser
+2026-10-18T15:25:03.6255481Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.12-1/x64
+2026-10-18T15:25:04.0036427Z PASS reject-real-time-source; actual rejection exit=1
+2026-10-18T15:25:04.3439444Z PASS reject-missing-required-null; actual rejection exit=1
+2026-10-18T15:25:04.7004180Z PASS reject-historical-timestamp; actual rejection exit=1
+2026-10-18T15:25:05.0435188Z PASS reject-null-cities; actual rejection exit=1
+2026-10-18T15:25:05.3829592Z PASS reject-missing-java-log; actual rejection exit=1
+2026-10-18T15:25:06.1251711Z PASS actual-java-startup-failure; driver exit=1
+2026-10-18T15:25:06.1386894Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.12-1/x64

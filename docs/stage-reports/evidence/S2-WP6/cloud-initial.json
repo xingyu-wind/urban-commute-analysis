@@ -1,0 +1,206 @@
+{
+  "runs": [
+    {
+      "id": 39140246431,
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "f966378d3721b5409413f25098f12d4bcf5613c8",
+      "html_url": "https://github.com/xingyu-wind/urban-commute-analysis/actions/runs/39140246431",
+      "created_at": "2026-10-18T15:23:16Z",
+      "updated_at": "2026-10-18T15:25:18Z"
+    },
+    {
+      "id": 39140223490,
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "f966378d3721b5409413f25098f12d4bcf5613c8",
+      "html_url": "https://github.com/xingyu-wind/urban-commute-analysis/actions/runs/39140223490",
+      "created_at": "2026-10-18T15:22:56Z",
+      "updated_at": "2026-10-18T15:25:05Z"
+    }
+  ],
+  "prJobs": [
+    {
+      "id": 117713027674,
+      "name": "regression",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/xingyu-wind/urban-commute-analysis/actions/runs/39140246431/job/117713027674",
+      "runner_name": "GitHub Actions 1000000001",
+      "runner_group_name": "GitHub Actions",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-18T15:23:19Z",
+          "completed_at": "2026-10-18T15:23:21Z"
+        },
+        {
+          "name": "Check out source without persisted credentials",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-18T15:23:21Z",
+          "completed_at": "2026-10-18T15:23:23Z"
+        },
+        {
+          "name": "Set isolated browser download directory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-18T15:23:23Z",
+          "completed_at": "2026-10-18T15:23:23Z"
+        },
+        {
+          "name": "Set up Java 21",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-18T15:23:23Z",
+          "completed_at": "2026-10-18T15:23:23Z"
+        },
+        {
+          "name": "Set up Node 24",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-18T15:23:23Z",
+          "completed_at": "2026-10-18T15:23:29Z"
+        },
+        {
+          "name": "Set up Python 3.11",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-18T15:23:29Z",
+          "completed_at": "2026-10-18T15:23:31Z"
+        },
+        {
+          "name": "Install locked contract validators",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-18T15:23:31Z",
+          "completed_at": "2026-10-18T15:23:35Z"
+        },
+        {
+          "name": "Validate CI policy and OpenAPI specification and fixtures",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-18T15:23:35Z",
+          "completed_at": "2026-10-18T15:23:36Z"
+        },
+        {
+          "name": "Backend tests and executable jar via Linux Maven Wrapper",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-18T15:23:36Z",
+          "completed_at": "2026-10-18T15:24:03Z"
+        },
+        {
+          "name": "Standalone Java HTTP and actual response Schema checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-18T15:24:03Z",
+          "completed_at": "2026-10-18T15:24:11Z"
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-18T15:24:11Z",
+          "completed_at": "2026-10-18T15:24:14Z"
+        },
+        {
+          "name": "Type check, unit tests and production build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-18T15:24:14Z",
+          "completed_at": "2026-10-18T15:24:24Z"
+        },
+        {
+          "name": "Install isolated Playwright Chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-18T15:24:24Z",
+          "completed_at": "2026-10-18T15:24:34Z"
+        },
+        {
+          "name": "Real browser proxy, stop and restore regression",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-18T15:24:34Z",
+          "completed_at": "2026-10-18T15:25:03Z"
+        },
+        {
+          "name": "Ensure broken captures and Java startup really fail",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-18T15:25:03Z",
+          "completed_at": "2026-10-18T15:25:06Z"
+        },
+        {
+          "name": "Retain test diagnostics on success or failure",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-10-18T15:25:06Z",
+          "completed_at": "2026-10-18T15:25:07Z"
+        },
+        {
+          "name": "Post Set up Python 3.11",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-10-18T15:25:07Z",
+          "completed_at": "2026-10-18T15:25:08Z"
+        },
+        {
+          "name": "Post Set up Node 24",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 30,
+          "started_at": "2026-10-18T15:25:08Z",
+          "completed_at": "2026-10-18T15:25:10Z"
+        },
+        {
+          "name": "Post Set up Java 21",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31,
+          "started_at": "2026-10-18T15:25:10Z",
+          "completed_at": "2026-10-18T15:25:14Z"
+        },
+        {
+          "name": "Post Check out source without persisted credentials",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 32,
+          "started_at": "2026-10-18T15:25:14Z",
+          "completed_at": "2026-10-18T15:25:14Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 33,
+          "started_at": "2026-10-18T15:25:14Z",
+          "completed_at": "2026-10-18T15:25:14Z"
+        }
+      ]
+    }
+  ],
+  "note": "Initial technical head. Final documentation head must also pass; see PR delivery record."
+}

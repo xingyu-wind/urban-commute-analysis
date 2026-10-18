@@ -1,0 +1,57 @@
+{
+  "testedHead": "f966378d3721b5409413f25098f12d4bcf5613c8",
+  "maven": {
+    "tests": 12,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "exitCode": 0
+  },
+  "frontend": {
+    "tests": 27,
+    "passed": 27,
+    "failed": 0,
+    "npmCiExitCode": 0,
+    "typeCheckExitCode": 0,
+    "testExitCode": 0,
+    "buildExitCode": 0
+  },
+  "openapi": {
+    "validatorExitCode": 0,
+    "positive": 16,
+    "negativeRejected": 9,
+    "externalExamples": 16
+  },
+  "http": {
+    "exitCode": 0,
+    "productionResponses": 12,
+    "junitNetworkResponses": 5
+  },
+  "browser": {
+    "exitCode": 0,
+    "steps": 8,
+    "javaSchemaResponses": 8,
+    "proxy502": 2,
+    "browserVersion": "155.0.8059.41",
+    "sourceHashesMatch": true,
+    "cleanup": {
+      "javaPortAvailable": true,
+      "vitePortAvailable": true,
+      "remainingOwnedChildren": 0
+    }
+  },
+  "negativeChecks": {
+    "exitCode": 0,
+    "expectedChildExitOne": 6
+  },
+  "actionlint": {
+    "version": "1.7.12",
+    "exitCode": 0
+  },
+  "ciPolicyExitCode": 0,
+  "independentProcessAndPortCheck": "PASS",
+  "initialPushExitCode": 0,
+  "remoteTreeEqualsLocal": true,
+  "remoteBlobCount": 159,
+  "scope": "Actual WP6 Windows local regression; cloud results recorded separately."
+}
