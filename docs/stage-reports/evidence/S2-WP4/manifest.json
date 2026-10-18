@@ -1,0 +1,318 @@
+{
+  "startedAt": "2026-10-18T14:49:39.503Z",
+  "noRequestMocking": true,
+  "steps": [
+    {
+      "name": "real-beijing-selection",
+      "at": "2026-10-18T14:49:44.071Z",
+      "cityId": "dev-city-001"
+    },
+    {
+      "name": "real-shanghai-selection-and-source",
+      "at": "2026-10-18T14:49:44.176Z",
+      "cityId": "dev-city-002",
+      "options": [
+        "请选择城市",
+        "北京",
+        "上海"
+      ]
+    },
+    {
+      "name": "responsive-layout-no-horizontal-overflow",
+      "at": "2026-10-18T14:49:44.333Z"
+    },
+    {
+      "name": "backend-stop-detected-automatically",
+      "at": "2026-10-18T14:49:59.090Z",
+      "noRetryClick": true
+    },
+    {
+      "name": "backend-restart-manual-retry-restored-success",
+      "at": "2026-10-18T14:50:01.636Z"
+    },
+    {
+      "name": "actual-browser-network-offline-state",
+      "at": "2026-10-18T14:50:01.658Z"
+    },
+    {
+      "name": "browser-network-retry-restored-success",
+      "at": "2026-10-18T14:50:01.712Z"
+    },
+    {
+      "name": "real-java-empty-list-rendered-as-success",
+      "at": "2026-10-18T14:50:04.439Z"
+    }
+  ],
+  "responses": [
+    {
+      "index": 0,
+      "phase": "initial",
+      "url": "http://127.0.0.1:5173/health",
+      "contractPath": "/health",
+      "status": 200,
+      "headers": {
+        "transfer-encoding": "chunked",
+        "x-request-id": "2d82f10f-4ba7-45e0-98a4-40f98cb7e787",
+        "date": "Sun, 18 Oct 2026 14:49:43 GMT",
+        "content-type": "application/json",
+        "vary": "Origin",
+        "connection": "close"
+      },
+      "bodyFile": "response-0.json",
+      "source": "java-via-vite"
+    },
+    {
+      "index": 1,
+      "phase": "initial",
+      "url": "http://127.0.0.1:5173/api/v1/cities",
+      "contractPath": "/api/v1/cities",
+      "status": 200,
+      "headers": {
+        "transfer-encoding": "chunked",
+        "x-request-id": "87271afe-a1de-40e5-8bd4-1c5dce7b0ca6",
+        "date": "Sun, 18 Oct 2026 14:49:43 GMT",
+        "content-type": "application/json",
+        "vary": "Origin",
+        "connection": "close"
+      },
+      "bodyFile": "response-1.json",
+      "source": "java-via-vite"
+    },
+    {
+      "index": 2,
+      "phase": "backend-stopped",
+      "url": "http://127.0.0.1:5173/health",
+      "contractPath": "/health",
+      "status": 502,
+      "headers": {
+        "transfer-encoding": "chunked",
+        "keep-alive": "timeout=5",
+        "date": "Sun, 18 Oct 2026 14:49:58 GMT",
+        "content-type": "text/plain",
+        "vary": "Origin",
+        "connection": "keep-alive"
+      },
+      "bodyFile": "response-2.json",
+      "source": "vite-proxy-transport-failure"
+    },
+    {
+      "index": 3,
+      "phase": "backend-stopped",
+      "url": "http://127.0.0.1:5173/api/v1/cities",
+      "contractPath": "/api/v1/cities",
+      "status": 502,
+      "headers": {
+        "transfer-encoding": "chunked",
+        "keep-alive": "timeout=5",
+        "date": "Sun, 18 Oct 2026 14:49:58 GMT",
+        "content-type": "text/plain",
+        "vary": "Origin",
+        "connection": "keep-alive"
+      },
+      "bodyFile": "response-3.json",
+      "source": "vite-proxy-transport-failure"
+    },
+    {
+      "index": 4,
+      "phase": "restored",
+      "url": "http://127.0.0.1:5173/health",
+      "contractPath": "/health",
+      "status": 200,
+      "headers": {
+        "transfer-encoding": "chunked",
+        "x-request-id": "817f2e07-aaf0-4bea-8a9f-0725dc9d4270",
+        "date": "Sun, 18 Oct 2026 14:50:01 GMT",
+        "content-type": "application/json",
+        "vary": "Origin",
+        "connection": "close"
+      },
+      "bodyFile": "response-4.json",
+      "source": "java-via-vite"
+    },
+    {
+      "index": 5,
+      "phase": "restored",
+      "url": "http://127.0.0.1:5173/api/v1/cities",
+      "contractPath": "/api/v1/cities",
+      "status": 200,
+      "headers": {
+        "transfer-encoding": "chunked",
+        "x-request-id": "e37367da-3fdb-492f-a9b8-a69d4f2c1af1",
+        "date": "Sun, 18 Oct 2026 14:50:01 GMT",
+        "content-type": "application/json",
+        "vary": "Origin",
+        "connection": "close"
+      },
+      "bodyFile": "response-5.json",
+      "source": "java-via-vite"
+    },
+    {
+      "index": 6,
+      "phase": "network-restored",
+      "url": "http://127.0.0.1:5173/health",
+      "contractPath": "/health",
+      "status": 200,
+      "headers": {
+        "transfer-encoding": "chunked",
+        "x-request-id": "17b2daae-31dd-45e1-b40e-23ff7fbf8525",
+        "date": "Sun, 18 Oct 2026 14:50:01 GMT",
+        "content-type": "application/json",
+        "vary": "Origin",
+        "connection": "close"
+      },
+      "bodyFile": "response-6.json",
+      "source": "java-via-vite"
+    },
+    {
+      "index": 7,
+      "phase": "network-restored",
+      "url": "http://127.0.0.1:5173/api/v1/cities",
+      "contractPath": "/api/v1/cities",
+      "status": 200,
+      "headers": {
+        "transfer-encoding": "chunked",
+        "x-request-id": "76cc2dbd-7fb0-410d-a148-93053aa8eeb9",
+        "date": "Sun, 18 Oct 2026 14:50:01 GMT",
+        "content-type": "application/json",
+        "vary": "Origin",
+        "connection": "close"
+      },
+      "bodyFile": "response-7.json",
+      "source": "java-via-vite"
+    },
+    {
+      "index": 8,
+      "phase": "empty",
+      "url": "http://127.0.0.1:5173/health",
+      "contractPath": "/health",
+      "status": 200,
+      "headers": {
+        "transfer-encoding": "chunked",
+        "x-request-id": "4618e8d1-4e01-466a-8a25-652a9c450ddb",
+        "date": "Sun, 18 Oct 2026 14:50:04 GMT",
+        "content-type": "application/json",
+        "vary": "Origin",
+        "connection": "close"
+      },
+      "bodyFile": "response-8.json",
+      "source": "java-via-vite"
+    },
+    {
+      "index": 9,
+      "phase": "empty",
+      "url": "http://127.0.0.1:5173/api/v1/cities",
+      "contractPath": "/api/v1/cities",
+      "status": 200,
+      "headers": {
+        "transfer-encoding": "chunked",
+        "x-request-id": "b4c1f87a-1ff9-403f-ace2-192a812739b4",
+        "date": "Sun, 18 Oct 2026 14:50:04 GMT",
+        "content-type": "application/json",
+        "vary": "Origin",
+        "connection": "close"
+      },
+      "bodyFile": "response-9.json",
+      "source": "java-via-vite"
+    }
+  ],
+  "processes": [
+    {
+      "name": "java-initial",
+      "pid": 16708,
+      "command": [
+        "D:\\WindXingyu\\Apps\\Java\\jdk-21.0.12.1+1\\bin\\java.exe",
+        "-jar",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\urban-commute-backend-0.1.0-SNAPSHOT.jar",
+        "--server.address=127.0.0.1",
+        "--server.port=8080"
+      ],
+      "startedAt": "2026-10-18T14:49:39.522Z",
+      "exitCode": null,
+      "signal": "SIGTERM",
+      "stoppedAt": "2026-10-18T14:49:44.365Z",
+      "stopped": true
+    },
+    {
+      "name": "vite",
+      "pid": 23076,
+      "command": [
+        "D:\\WindXingyu\\Apps\\Nodejs\\node-v24.19.0-win-x64\\node.exe",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\frontend\\node_modules\\vite\\bin\\vite.js",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "5173",
+        "--strictPort"
+      ],
+      "startedAt": "2026-10-18T14:49:42.648Z",
+      "exitCode": null,
+      "signal": "SIGTERM",
+      "stoppedAt": "2026-10-18T14:50:04.827Z",
+      "stopped": true
+    },
+    {
+      "name": "java-restored",
+      "pid": 34736,
+      "command": [
+        "D:\\WindXingyu\\Apps\\Java\\jdk-21.0.12.1+1\\bin\\java.exe",
+        "-jar",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\urban-commute-backend-0.1.0-SNAPSHOT.jar",
+        "--server.address=127.0.0.1",
+        "--server.port=8080"
+      ],
+      "startedAt": "2026-10-18T14:49:59.097Z",
+      "exitCode": null,
+      "signal": "SIGTERM",
+      "stoppedAt": "2026-10-18T14:50:01.731Z",
+      "stopped": true
+    },
+    {
+      "name": "java-empty",
+      "pid": 35948,
+      "command": [
+        "D:\\WindXingyu\\Apps\\Java\\jdk-21.0.12.1+1\\bin\\java.exe",
+        "-jar",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\urban-commute-backend-0.1.0-SNAPSHOT.jar",
+        "--server.address=127.0.0.1",
+        "--server.port=8080",
+        "--commute.cities.seed-enabled=false"
+      ],
+      "startedAt": "2026-10-18T14:50:01.740Z",
+      "exitCode": null,
+      "signal": "SIGTERM",
+      "stoppedAt": "2026-10-18T14:50:04.848Z",
+      "stopped": true
+    }
+  ],
+  "portDiagnostics": [],
+  "pageErrors": [],
+  "javaPort": 8080,
+  "vitePort": 5173,
+  "backendTarget": "http://127.0.0.1:8080",
+  "browserChannel": "chrome",
+  "browserVersion": "155.0.8059.41",
+  "cleanup": {
+    "javaPortAvailable": true,
+    "vitePortAvailable": true,
+    "remainingOwnedChildren": 0
+  },
+  "sourceHashes": {
+    "src/api/client.ts": "2973e22f2c78cc6ddffe1bce09ed02e36c1dce44f7a43006a3c0494dd0630b3c",
+    "src/App.vue": "6c7349b30f7913d0a2be4cdce32acaa4e881b73bac810d2d5a7526036033a06a",
+    "src/components/CitySelector.vue": "f14df317a386cc3e0f47075316be491ee42bfaf3662439bb196458f048bbad12",
+    "src/main.ts": "0d42fb6bb74a51d647f20a0cd2bcdcc7b89b146f4cdfbf6f1f7b640e7e036119",
+    "src/style.css": "97b90d1aeaa7ddbeac7eab33a270c387fb41f61782d2542fe16317209eef0a8a",
+    "src/types/api.ts": "7ebc8aacc4f82e9d3d492fab1dac699bfc6388375e10ea20f62469c434de58cf",
+    "config/proxy.ts": "1e16ba8e49617a3f1b917a4f0e9017cf5c5e348f2e7f3cb5960a2a7b5b70b01e",
+    "index.html": "59bc5703ca6ba490b962a5f003d419a87f4f73316fd914749bba22467f79587f",
+    "vite.config.ts": "1aa2a9ee8296ef81aca30b903cb6b99c5b279cc5171bbe8d9ec6ffd07bc4215a",
+    "tsconfig.json": "1e470a2131d623c4665f476d9884003f68dc48f3ec08a06c62b1ca77782309c4",
+    "package.json": "9fd4d45b524cf9a52d81c448506758fde753af7ad07e2ac99c672c60c9712f3d",
+    "package-lock.json": "88aaf9d71157d585d5e21de24aa759212a997bcbfd932d9e66f0ddb9697d9d76"
+  },
+  "backendJarSha256": "3571eeca1e29b83ad56bf0acaee5a9b6cf106e8ac96aa44699a5d6c96f9a3e34",
+  "testDriverSha256": "8d9550b7d6a3f2b3933eb7771250337461c2f8a7126ea28f0b95ad145ca65b8a",
+  "driverExitCode": 0,
+  "finishedAt": "2026-10-18T14:50:04.868Z",
+  "schemaValidationExitCode": 0
+}
