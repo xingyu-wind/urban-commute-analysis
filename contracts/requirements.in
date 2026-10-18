@@ -1,0 +1,6 @@
+# Python 3.11; complete resolved versions are in requirements.lock.txt.
+openapi-spec-validator==0.9.0
+jsonschema==4.26.0
+PyYAML==6.0.3
+referencing==0.37.0
+rfc3339-validator==0.1.4

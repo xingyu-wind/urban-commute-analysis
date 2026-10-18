@@ -1,0 +1,307 @@
+openapi: 3.1.0
+jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
+info:
+  title: 城市通勤系统 S2 API 契约
+  version: 1.0.0
+  description: |
+    本文件描述 S2 待实现的两个接口，不代表服务已经运行。
+    所有 examples 均为固定的契约示例，不是实时响应或真实交通采集结果。
+    /health 是版本前缀与业务封套的明确例外；业务接口使用 /api/v1。
+    HTTP 状态码表达协议结果，JSON code 是稳定的机器可读业务标识，两者不得混用。
+    时间使用 RFC 3339（带时区的 ISO 8601），推荐 UTC Z；无时区本地时间不合法。
+    所有 required 字段必须出现，null 不等于缺失；未声明字段不允许出现。
+    S2 城市只提供开发样例：dev_seed / dev-seed-cities-v1 / dataAsOf=null。
+    不包含真实统计、数据库、Hadoop/Hive 或机器学习接口。
+servers:
+  - url: http://localhost:8080
+    description: 后续开发服务的约定地址，本阶段未启动服务
+security: []
+tags:
+  - name: health
+    description: 无业务数据的健康探针
+  - name: cities
+    description: 开发样例城市列表
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      tags: [health]
+      summary: 检查服务是否可用
+      description: |
+        HTTP 200 仅返回 status=UP 和请求处理时生成的 timestamp。
+        不返回 code/message/data/meta，也不推断数据库或预测模块状态。
+        不可用时返回 HTTP 503 的统一错误封套，而不是 HTTP 200 + DOWN。
+      responses:
+        '200':
+          description: 服务可用；固定时间仅为契约示例
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+              examples:
+                healthy:
+                  summary: 契约示例，非实时服务时间
+                  externalValue: ./examples/health-success.json
+                offset:
+                  summary: 契约示例，合法的 +08:00 偏移
+                  externalValue: ./examples/health-offset.json
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '405':
+          $ref: '#/components/responses/MethodNotAllowed'
+        '406':
+          $ref: '#/components/responses/NotAcceptable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  /api/v1/cities:
+    get:
+      operationId: listCities
+      tags: [cities]
+      summary: 获取开发样例城市列表
+      description: |
+        无请求体、分页或筛选参数。返回完整的小型开发样例列表。
+        城市 id 是稳定字符串，不是数据库自增数字；name 是显示名，不作为主键。
+        无城市是正常结果：HTTP 200、code=OK、data=[]，不得用 null、404 或 204 替代。
+        meta 标明开发样例来源；dataAsOf=null，不能填响应时间或伪造采集时间。
+      responses:
+        '200':
+          description: 成功获取开发样例列表，允许空数组
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CitiesResponse'
+              examples:
+                cities:
+                  summary: 开发样例，不是交通观测数据
+                  externalValue: ./examples/cities-success.json
+                empty:
+                  summary: 成功但无城市，仍保留完整 meta
+                  externalValue: ./examples/cities-empty.json
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '405':
+          $ref: '#/components/responses/MethodNotAllowed'
+        '406':
+          $ref: '#/components/responses/NotAcceptable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+components:
+  schemas:
+    ZonedTimestamp:
+      type: string
+      format: date-time
+      pattern: '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$'
+      description: 带 Z 或显式偏移的 RFC 3339 时间；必须包含秒，推荐 UTC Z
+    RequestId:
+      type: string
+      format: uuid
+      description: 每个请求生成的 UUID，供日志关联；不是访问凭据
+    HealthResponse:
+      type: object
+      additionalProperties: false
+      required: [status, timestamp]
+      properties:
+        status:
+          type: string
+          const: UP
+        timestamp:
+          $ref: '#/components/schemas/ZonedTimestamp'
+    City:
+      type: object
+      additionalProperties: false
+      required: [id, name]
+      properties:
+        id:
+          type: string
+          minLength: 1
+          maxLength: 64
+          pattern: '^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$'
+          description: 稳定小写字符串标识；开发样例使用 dev-city-001 等，不得转换为数字
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: '\S'
+          description: 非空白显示名，可为中文；不是唯一标识
+    CityMeta:
+      type: object
+      additionalProperties: false
+      required: [requestId, dataAsOf, sourceType, datasetId]
+      properties:
+        requestId:
+          $ref: '#/components/schemas/RequestId'
+        dataAsOf:
+          type: 'null'
+          description: 开发样例没有真实采集截至时间，S2 必须显式为 null
+        sourceType:
+          type: string
+          const: dev_seed
+          description: 固定开发样例来源，不得声称实时或观测数据
+        datasetId:
+          type: string
+          const: dev-seed-cities-v1
+          description: 开发样例数据集版本；不是外部数据源或真实批次
+    CitiesResponse:
+      type: object
+      additionalProperties: false
+      required: [code, message, data, meta]
+      properties:
+        code:
+          type: string
+          const: OK
+          description: 机器可读业务成功标识，不是数字 HTTP 状态码
+        message:
+          type: string
+          minLength: 1
+          pattern: '\S'
+          description: 人类可读提示，不作为客户端分支判断依据
+        data:
+          type: array
+          description: 允许空数组，不允许 null；只包含开发样例城市
+          items:
+            $ref: '#/components/schemas/City'
+        meta:
+          $ref: '#/components/schemas/CityMeta'
+    ErrorMeta:
+      type: object
+      additionalProperties: false
+      required: [requestId, dataAsOf, sourceType, datasetId]
+      properties:
+        requestId:
+          $ref: '#/components/schemas/RequestId'
+        dataAsOf:
+          type: 'null'
+        sourceType:
+          type: 'null'
+        datasetId:
+          type: 'null'
+      description: 错误不发布业务数据，来源、数据集和截至时间全部显式为 null
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required: [code, message, data, meta]
+      properties:
+        code:
+          type: string
+          enum: [BAD_REQUEST, NOT_FOUND, METHOD_NOT_ALLOWED, NOT_ACCEPTABLE, INTERNAL_ERROR, SERVICE_UNAVAILABLE]
+        message:
+          type: string
+          minLength: 1
+          pattern: '\S'
+          description: 安全提示；不得泄露堆栈、路径、凭据或内部异常细节
+        data:
+          type: 'null'
+          description: 错误没有城市列表，必须为 null，而非 []
+        meta:
+          $ref: '#/components/schemas/ErrorMeta'
+    BadRequestError:
+      allOf:
+        - $ref: '#/components/schemas/ErrorResponse'
+        - properties:
+            code:
+              const: BAD_REQUEST
+    NotFoundError:
+      allOf:
+        - $ref: '#/components/schemas/ErrorResponse'
+        - properties:
+            code:
+              const: NOT_FOUND
+    MethodNotAllowedError:
+      allOf:
+        - $ref: '#/components/schemas/ErrorResponse'
+        - properties:
+            code:
+              const: METHOD_NOT_ALLOWED
+    NotAcceptableError:
+      allOf:
+        - $ref: '#/components/schemas/ErrorResponse'
+        - properties:
+            code:
+              const: NOT_ACCEPTABLE
+    InternalError:
+      allOf:
+        - $ref: '#/components/schemas/ErrorResponse'
+        - properties:
+            code:
+              const: INTERNAL_ERROR
+    ServiceUnavailableError:
+      allOf:
+        - $ref: '#/components/schemas/ErrorResponse'
+        - properties:
+            code:
+              const: SERVICE_UNAVAILABLE
+  responses:
+    BadRequest:
+      description: HTTP 400，格式或请求参数不合法；code=BAD_REQUEST
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BadRequestError'
+          examples:
+            error:
+              summary: 固定契约错误示例
+              externalValue: ./examples/error-400.json
+    NotFound:
+      description: HTTP 404，未映射的路径；不表示城市列表为空；code=NOT_FOUND
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NotFoundError'
+          examples:
+            error:
+              summary: 固定契约错误示例
+              externalValue: ./examples/error-404.json
+    MethodNotAllowed:
+      description: HTTP 405，已知路径不支持所用方法；code=METHOD_NOT_ALLOWED
+      headers:
+        Allow:
+          description: 必须由后续服务返回允许的方法；GET 是唯一业务操作，框架可包含 HEAD/OPTIONS
+          schema:
+            type: string
+            minLength: 1
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MethodNotAllowedError'
+          examples:
+            error:
+              summary: 固定契约错误示例
+              externalValue: ./examples/error-405.json
+    NotAcceptable:
+      description: HTTP 406，客户端不接受 application/json；code=NOT_ACCEPTABLE
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NotAcceptableError'
+          examples:
+            error:
+              summary: 固定契约错误示例
+              externalValue: ./examples/error-406.json
+    InternalError:
+      description: HTTP 500，未预期的服务错误；code=INTERNAL_ERROR
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InternalError'
+          examples:
+            error:
+              summary: 固定契约错误示例
+              externalValue: ./examples/error-500.json
+    ServiceUnavailable:
+      description: HTTP 503，服务当前不可用；code=SERVICE_UNAVAILABLE
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ServiceUnavailableError'
+          examples:
+            error:
+              summary: 固定契约错误示例
+              externalValue: ./examples/error-503.json

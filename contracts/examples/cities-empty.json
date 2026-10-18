@@ -1,0 +1,11 @@
+{
+  "code": "OK",
+  "message": "Success",
+  "data": [],
+  "meta": {
+    "requestId": "18f304c2-89b7-4a03-986b-6043cb773d74",
+    "dataAsOf": null,
+    "sourceType": "dev_seed",
+    "datasetId": "dev-seed-cities-v1"
+  }
+}

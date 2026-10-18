@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-18",
+  "wp3Commit": "fced6b4eb1cfcff1bac03d19ab64c469e00e6083",
+  "wp3Recheck": {
+    "command": "backend/mvnw.cmd -f backend/pom.xml -B -ntp -Dmaven.repo.local=D:\\WindXingyu\\Temp\\urban-commute-S2-WP3\\maven-repository verify",
+    "exitCode": 0,
+    "tests": 12,
+    "failures": 0,
+    "note": "Recorded WP3 jar/contract hashes checked before rebuild; current source verify passed before WP3 commit"
+  },
+  "versions": {
+    "node": "24.19.0",
+    "npm": "11.17.0",
+    "vue": "3.5.44",
+    "typescript": "5.9.3",
+    "vite": "8.3.4",
+    "vue-tsc": "3.3.13",
+    "vitest": "5.0.5",
+    "@playwright/test": "1.64.1"
+  },
+  "commands": [
+    {
+      "command": "npm.cmd install --no-audit --no-fund",
+      "exitCode": 0
+    },
+    {
+      "command": "npm.cmd run type-check (initial TypeScript 7)",
+      "exitCode": 1
+    },
+    {
+      "command": "npm.cmd install --save-dev --save-exact typescript@5.9.3 --no-audit --no-fund",
+      "exitCode": 0
+    },
+    {
+      "command": "npm.cmd ci --no-audit --no-fund",
+      "exitCode": 0
+    },
+    {
+      "command": "npm.cmd run type-check",
+      "exitCode": 0
+    },
+    {
+      "command": "npm.cmd test -- --reporter=json --outputFile=outputs/unit-results.json",
+      "exitCode": 0
+    },
+    {
+      "command": "npm.cmd run build",
+      "exitCode": 0
+    },
+    {
+      "command": "npm.cmd ls --depth=0",
+      "exitCode": 0
+    },
+    {
+      "command": "npm.cmd run test:e2e -- outputs/integration-final",
+      "exitCode": 0
+    }
+  ],
+  "unitTests": {
+    "passed": 24,
+    "failed": 0,
+    "total": 24,
+    "success": true
+  },
+  "browser": {
+    "channel": "chrome",
+    "version": "155.0.8059.41",
+    "steps": 8,
+    "exitCode": 0,
+    "javaPort": 8080,
+    "vitePort": 5173
+  },
+  "contractValidation": {
+    "exitCode": 0,
+    "javaResponsesAccepted": 8,
+    "infrastructureFailures": 2,
+    "javaLogCorrelation": "PASS"
+  },
+  "notes": [
+    "First TS 7 vue-tsc run failed with ERR_PACKAGE_PATH_NOT_EXPORTED. Project-only TypeScript 5.9.3 resolved it; lockfile reproducibility, tests and build passed.",
+    "Frontend outputs, node_modules and dist are ignored; reviewed screenshots/JSON only copied into this evidence directory.",
+    "No default mocks or backend CORS changes; existing system Chrome used in isolated headless session; only owned service processes stopped."
+  ]
+}

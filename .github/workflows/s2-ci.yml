@@ -1,0 +1,92 @@
+name: S2 regression
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main, 'feat/**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: s2-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  regression:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      CONTRACT_PYTHON: python
+      BROWSER_CHANNEL: chromium
+    steps:
+      - name: Check out source without persisted credentials
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - name: Set isolated browser download directory
+        run: echo "PLAYWRIGHT_BROWSERS_PATH=$RUNNER_TEMP/s2-playwright" >> "$GITHUB_ENV"
+      - name: Set up Java 21
+        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          cache-dependency-path: backend/pom.xml
+      - name: Set up Node 24
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24.19.0'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Set up Python 3.11
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: contracts/requirements.lock.txt
+      - name: Install locked contract validators
+        run: python -m pip install -r contracts/requirements.lock.txt
+      - name: Validate CI policy and OpenAPI specification and fixtures
+        run: |
+          python scripts/check_ci.py
+          python -m openapi_spec_validator contracts/openapi.yaml
+          python contracts/validate_contract.py
+      - name: Backend tests and executable jar via Linux Maven Wrapper
+        run: bash backend/mvnw -f backend/pom.xml -B -ntp verify
+      - name: Standalone Java HTTP and actual response Schema checks
+        run: python backend/scripts/verify_http.py --output backend/target/ci-http
+      - name: Install locked frontend dependencies
+        working-directory: frontend
+        run: npm ci --no-audit --no-fund
+      - name: Type check, unit tests and production build
+        working-directory: frontend
+        run: |
+          npm run type-check
+          mkdir -p outputs
+          npm test -- --reporter=json --outputFile=outputs/ci-unit.json
+          npm run build
+      - name: Install isolated Playwright Chromium
+        working-directory: frontend
+        # Browser binaries only in runner.temp; no apt, global install or local system changes.
+        # Standard Ubuntu runner already provides Chrome's OS shared-library prerequisites.
+        run: npx --no-install playwright install chromium
+      - name: Real browser proxy, stop and restore regression
+        working-directory: frontend
+        run: npm run test:e2e -- outputs/ci-browser
+      - name: Ensure broken captures and Java startup really fail
+        working-directory: frontend
+        run: python scripts/check-regression-failures.py outputs/ci-browser outputs/ci-negative
+      - name: Retain test diagnostics on success or failure
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: s2-regression-${{ github.run_id }}
+          path: |
+            backend/target/surefire-reports/
+            backend/target/ci-http/
+            frontend/outputs/
+          if-no-files-found: warn
+          retention-days: 7

@@ -1,0 +1,186 @@
+[
+  {
+    "name": "health-success",
+    "file": "examples/health-success.json",
+    "path": "/health",
+    "status": 200,
+    "valid": true
+  },
+  {
+    "name": "health-offset",
+    "file": "examples/health-offset.json",
+    "path": "/health",
+    "status": 200,
+    "valid": true
+  },
+  {
+    "name": "cities-success",
+    "file": "examples/cities-success.json",
+    "path": "/api/v1/cities",
+    "status": 200,
+    "valid": true
+  },
+  {
+    "name": "cities-empty",
+    "file": "examples/cities-empty.json",
+    "path": "/api/v1/cities",
+    "status": 200,
+    "valid": true
+  },
+  {
+    "name": "health-error-400",
+    "file": "examples/error-400.json",
+    "path": "/health",
+    "status": 400,
+    "valid": true
+  },
+  {
+    "name": "health-error-404",
+    "file": "examples/error-404.json",
+    "path": "/health",
+    "status": 404,
+    "valid": true
+  },
+  {
+    "name": "health-error-405",
+    "file": "examples/error-405.json",
+    "path": "/health",
+    "status": 405,
+    "valid": true
+  },
+  {
+    "name": "health-error-406",
+    "file": "examples/error-406.json",
+    "path": "/health",
+    "status": 406,
+    "valid": true
+  },
+  {
+    "name": "health-error-500",
+    "file": "examples/error-500.json",
+    "path": "/health",
+    "status": 500,
+    "valid": true
+  },
+  {
+    "name": "health-error-503",
+    "file": "examples/error-503.json",
+    "path": "/health",
+    "status": 503,
+    "valid": true
+  },
+  {
+    "name": "cities-error-400",
+    "file": "examples/error-400.json",
+    "path": "/api/v1/cities",
+    "status": 400,
+    "valid": true
+  },
+  {
+    "name": "cities-error-404",
+    "file": "examples/error-404.json",
+    "path": "/api/v1/cities",
+    "status": 404,
+    "valid": true
+  },
+  {
+    "name": "cities-error-405",
+    "file": "examples/error-405.json",
+    "path": "/api/v1/cities",
+    "status": 405,
+    "valid": true
+  },
+  {
+    "name": "cities-error-406",
+    "file": "examples/error-406.json",
+    "path": "/api/v1/cities",
+    "status": 406,
+    "valid": true
+  },
+  {
+    "name": "cities-error-500",
+    "file": "examples/error-500.json",
+    "path": "/api/v1/cities",
+    "status": 500,
+    "valid": true
+  },
+  {
+    "name": "cities-error-503",
+    "file": "examples/error-503.json",
+    "path": "/api/v1/cities",
+    "status": 503,
+    "valid": true
+  },
+  {
+    "name": "city-id-number",
+    "file": "examples/invalid/city-id-number.json",
+    "path": "/api/v1/cities",
+    "status": 200,
+    "valid": false,
+    "expectedKeyword": "type"
+  },
+  {
+    "name": "timestamp-without-zone",
+    "file": "examples/invalid/timestamp-without-zone.json",
+    "path": "/health",
+    "status": 200,
+    "valid": false,
+    "expectedKeyword": "format"
+  },
+  {
+    "name": "timestamp-impossible-date",
+    "file": "examples/invalid/timestamp-impossible-date.json",
+    "path": "/health",
+    "status": 200,
+    "valid": false,
+    "expectedKeyword": "format"
+  },
+  {
+    "name": "false-real-source",
+    "file": "examples/invalid/false-real-source.json",
+    "path": "/api/v1/cities",
+    "status": 200,
+    "valid": false,
+    "expectedKeyword": "const"
+  },
+  {
+    "name": "false-data-as-of",
+    "file": "examples/invalid/false-data-as-of.json",
+    "path": "/api/v1/cities",
+    "status": 200,
+    "valid": false,
+    "expectedKeyword": "type"
+  },
+  {
+    "name": "cities-null-list",
+    "file": "examples/invalid/cities-null-list.json",
+    "path": "/api/v1/cities",
+    "status": 200,
+    "valid": false,
+    "expectedKeyword": "type"
+  },
+  {
+    "name": "missing-dataset-id",
+    "file": "examples/invalid/missing-dataset-id.json",
+    "path": "/api/v1/cities",
+    "status": 200,
+    "valid": false,
+    "expectedKeyword": "required"
+  },
+  {
+    "name": "undeclared-traffic-field",
+    "file": "examples/invalid/undeclared-traffic-field.json",
+    "path": "/api/v1/cities",
+    "status": 200,
+    "valid": false,
+    "expectedKeyword": "additionalProperties"
+  },
+  {
+    "name": "http500-with-bad-request-code",
+    "file": "examples/invalid/http500-with-bad-request-code.json",
+    "path": "/api/v1/cities",
+    "status": 500,
+    "valid": false,
+    "expectedKeyword": "const"
+  }
+]

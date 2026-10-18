@@ -1,0 +1,139 @@
+{
+  "wp2LocalCommit": "5a3292e7d0504c41a843a305f33a5ce86cade6d5",
+  "reviewedFiles": [
+    {
+      "path": "contracts/README.md",
+      "purpose": "documentation",
+      "sha256": "af7db3eaedf02be3bc8ea3d9676d858c7c6ae64071aee51ba239384b49878d03"
+    },
+    {
+      "path": "contracts/cases.json",
+      "purpose": "validation fixture/case",
+      "sha256": "203764b142a3a1ab3fb9e321f549781b1a0074aaec7f16592646a96d77673ed7"
+    },
+    {
+      "path": "contracts/examples/cities-empty.json",
+      "purpose": "validation fixture/case",
+      "sha256": "1663147010a657b3d3be6bf1d690fc6b6cc9926b2a974c298742d8608a9e53de"
+    },
+    {
+      "path": "contracts/examples/cities-success.json",
+      "purpose": "validation fixture/case",
+      "sha256": "c57830d66029ae16a09a5f237307e3af5b3bffd744816a5dfd107f05a66d009f"
+    },
+    {
+      "path": "contracts/examples/error-400.json",
+      "purpose": "validation fixture/case",
+      "sha256": "b3fd8f03c3ce23f566ab6b9b98fb2981120b7eea031ccaa630561f708c79c28b"
+    },
+    {
+      "path": "contracts/examples/error-404.json",
+      "purpose": "validation fixture/case",
+      "sha256": "571ba8de029c1a20e905d476b8e2261a0ac5b345e2cc6b5856a8fd31e13e92e5"
+    },
+    {
+      "path": "contracts/examples/error-405.json",
+      "purpose": "validation fixture/case",
+      "sha256": "6d8d56a750ad8afdfbafb89b6c5ecaedec1efd2ccd6f7303a5b60c116c898851"
+    },
+    {
+      "path": "contracts/examples/error-406.json",
+      "purpose": "validation fixture/case",
+      "sha256": "6f27e15fdb2d4137887a28d868eecbcfd665b9d473d07ac53e390acfceb69d8e"
+    },
+    {
+      "path": "contracts/examples/error-500.json",
+      "purpose": "validation fixture/case",
+      "sha256": "7e4654ebffbc1f3fe29e1006bd214e0792de804a7ccbb2f01c94f7bac966965d"
+    },
+    {
+      "path": "contracts/examples/error-503.json",
+      "purpose": "validation fixture/case",
+      "sha256": "d2a112815f0c20057036c97e931462d9e7cfc00a27dc8558b04a584bbdc0f06d"
+    },
+    {
+      "path": "contracts/examples/health-offset.json",
+      "purpose": "validation fixture/case",
+      "sha256": "40a97baa1e8e924207a960e38b7ce730e86d920bdf5b473f056fac39f99dc373"
+    },
+    {
+      "path": "contracts/examples/health-success.json",
+      "purpose": "validation fixture/case",
+      "sha256": "c866e82abe9360dcfc7ec5af89427127bdafbe891df916df389b2f8de280c4b5"
+    },
+    {
+      "path": "contracts/examples/invalid/cities-null-list.json",
+      "purpose": "validation fixture/case",
+      "sha256": "c5a1b818134c2de1df4ef3ed419512f557e1323761c3c9ced81beda1f19d03d4"
+    },
+    {
+      "path": "contracts/examples/invalid/city-id-number.json",
+      "purpose": "validation fixture/case",
+      "sha256": "e2ce9824d8d66a8e138ae2ac6def8aba18ac545dd7a4812be82cce7c4b5c1fc6"
+    },
+    {
+      "path": "contracts/examples/invalid/false-data-as-of.json",
+      "purpose": "validation fixture/case",
+      "sha256": "16a27e4a44b5582d6862e75298f13397556be904bfbd2b71d203b544a3ff15ca"
+    },
+    {
+      "path": "contracts/examples/invalid/false-real-source.json",
+      "purpose": "validation fixture/case",
+      "sha256": "ef255aabea73bc21b4d63fc990f3a09ea2cc00c7fa6e846aeaccb095d3e31fa7"
+    },
+    {
+      "path": "contracts/examples/invalid/http500-with-bad-request-code.json",
+      "purpose": "validation fixture/case",
+      "sha256": "b3fd8f03c3ce23f566ab6b9b98fb2981120b7eea031ccaa630561f708c79c28b"
+    },
+    {
+      "path": "contracts/examples/invalid/missing-dataset-id.json",
+      "purpose": "validation fixture/case",
+      "sha256": "f51880a0cf9b30a66673e22e5ceb1fd28d0e350c74e1a297e97d291c88d1c0b7"
+    },
+    {
+      "path": "contracts/examples/invalid/timestamp-impossible-date.json",
+      "purpose": "validation fixture/case",
+      "sha256": "83fb40a5c203d7564296cfd2bfb0cb6a61d1fdb7cec47d4aefe88a69a721c970"
+    },
+    {
+      "path": "contracts/examples/invalid/timestamp-without-zone.json",
+      "purpose": "validation fixture/case",
+      "sha256": "fb74ebce0cf3fa38940280631fd620f2eaac18e7e0f6f1675c60749f9afbb83e"
+    },
+    {
+      "path": "contracts/examples/invalid/undeclared-traffic-field.json",
+      "purpose": "validation fixture/case",
+      "sha256": "62b13a66a027626365bf176794ec88f96ae60b7f3f66e8647600e101250bb887"
+    },
+    {
+      "path": "contracts/openapi.yaml",
+      "purpose": "OpenAPI contract",
+      "sha256": "1fca67a782559507033f574e72c7848a30ec592b9e8659ebe08857cf50cf662c"
+    },
+    {
+      "path": "contracts/requirements.in",
+      "purpose": "dependency pin",
+      "sha256": "7123b18f26f0f1ac2e0a8a4f03cd849523905899b877d266071352ae17bf3619"
+    },
+    {
+      "path": "contracts/requirements.lock.txt",
+      "purpose": "dependency pin",
+      "sha256": "4bbfdd61f3cc09d7d01993db31b909a1faba256563404262b993e771b24eda1b"
+    },
+    {
+      "path": "contracts/validate_contract.py",
+      "purpose": "validation source",
+      "sha256": "8bd3267402d561ec8615ab3cd85ef290a9970f98114f18d762c2dccb27fb4e14"
+    },
+    {
+      "path": "docs/stage-reports/S2.md",
+      "purpose": "documentation",
+      "sha256": "54d2efc871b40aadbadde5aa8958642f929291c032ebfdc71910006b937adf14"
+    }
+  ],
+  "unknownFiles": [],
+  "secretMarkerFindings": [],
+  "ignoredCache": "contracts/.venv",
+  "note": "Pattern scan and file review cannot prove absence of every possible secret"
+}

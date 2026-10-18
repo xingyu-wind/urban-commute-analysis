@@ -1,0 +1,1 @@
+{"code":"OK","message":"Success","data":[{"id":"dev-city-001","name":"北京"},{"id":"dev-city-002","name":"上海"}],"meta":{"requestId":"edb2423e-2af5-4291-ab20-70f7fb701c35","dataAsOf":null,"sourceType":"dev_seed","datasetId":"dev-seed-cities-v1"}}

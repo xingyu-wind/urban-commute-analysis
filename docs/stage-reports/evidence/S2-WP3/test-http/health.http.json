@@ -1,0 +1,9 @@
+{
+  "method" : "GET",
+  "url" : "http://127.0.0.1:55087/health",
+  "contractPath" : "/health",
+  "status" : 200,
+  "contentType" : "application/json",
+  "requestId" : "772e15c5-5074-4cbd-bdc6-b55d4a120823",
+  "testServiceSubstitution" : false
+}

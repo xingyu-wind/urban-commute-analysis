@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-18",
+  "java": "Temurin 21.0.12.1+1",
+  "springBoot": "3.5.16",
+  "maven": "3.9.16",
+  "wrapper": "3.3.4 only-script",
+  "wp2Commit": "5a3292e7d0504c41a843a305f33a5ce86cade6d5",
+  "commands": [
+    {
+      "cwd": "backend",
+      "command": "mvnw.cmd -v",
+      "exitCode": 0
+    },
+    {
+      "cwd": "backend",
+      "command": "mvnw.cmd -B -ntp -Dmaven.repo.local=D:\\WindXingyu\\Temp\\urban-commute-S2-WP3\\maven-repository verify",
+      "exitCode": 0
+    },
+    {
+      "cwd": "repository root",
+      "command": ".\\contracts\\.venv\\Scripts\\python.exe backend\\scripts\\verify_http.py",
+      "exitCode": 0
+    }
+  ],
+  "junit": {
+    "tests": "12",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "10.107"
+  },
+  "jarSha256": "3571eeca1e29b83ad56bf0acaee5a9b6cf106e8ac96aa44699a5d6c96f9a3e34",
+  "contractSha256": "1fca67a782559507033f574e72c7848a30ec592b9e8659ebe08857cf50cf662c",
+  "buildLog": "D:\\WindXingyu\\Temp\\urban-commute-S2-WP3\\maven-verify-first.log",
+  "liveHttpLog": "D:\\WindXingyu\\Temp\\urban-commute-S2-WP3\\live-http-validation.log",
+  "notes": [
+    "Wrapper source fetched from official Maven Central; published SHA-1 matched. Maven distribution verified against official SHA-512, with calculated SHA-256 pinned in wrapper properties.",
+    "Initial attempt requested unpublished checksum suffixes and received HTTP 404; corrected using actual published checksums.",
+    "Windows terminate of owned standalone Java processes returned 1; verification driver returned 0; processes and listener ports independently confirmed stopped.",
+    "Mockito dynamic Java agent and deprecated test API warnings are non-blocking; no global security options changed."
+  ]
+}

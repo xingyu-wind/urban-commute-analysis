@@ -64,6 +64,8 @@ id_ed25519
 **/tmp/
 **/runtime/
 /outputs/
+# Local frontend browser acceptance output (reviewed snapshots live under docs).
+/frontend/outputs/
 
 # Raw / unauthorized datasets: use explicit locations, not all CSV/JSON
 /data/raw/

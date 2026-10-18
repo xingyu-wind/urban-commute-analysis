@@ -1,0 +1,20 @@
+{
+  "code": "OK",
+  "message": "Success",
+  "data": [
+    {
+      "id": "dev-city-001",
+      "name": "北京"
+    },
+    {
+      "id": "dev-city-002",
+      "name": "上海"
+    }
+  ],
+  "meta": {
+    "requestId": "18f304c2-89b7-4a03-986b-6043cb773d74",
+    "dataAsOf": null,
+    "sourceType": "real_time",
+    "datasetId": "dev-seed-cities-v1"
+  }
+}

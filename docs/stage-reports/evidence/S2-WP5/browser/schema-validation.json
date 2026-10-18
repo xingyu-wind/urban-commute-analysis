@@ -1,0 +1,82 @@
+{
+  "exitCode": 0,
+  "javaResponsesAccepted": [
+    {
+      "index": 0,
+      "path": "/health",
+      "phase": "initial",
+      "requestId": "f528ea49-de43-471b-af39-8d47d0d6ea16",
+      "schemaValidation": "PASS",
+      "javaLogCorrelation": "PASS"
+    },
+    {
+      "index": 1,
+      "path": "/api/v1/cities",
+      "phase": "initial",
+      "requestId": "748e0be5-11c7-47f8-a265-b8fe0ebc8e6e",
+      "schemaValidation": "PASS",
+      "javaLogCorrelation": "PASS"
+    },
+    {
+      "index": 4,
+      "path": "/health",
+      "phase": "restored",
+      "requestId": "f67bf477-e6f5-4999-b8be-0f920245a46d",
+      "schemaValidation": "PASS",
+      "javaLogCorrelation": "PASS"
+    },
+    {
+      "index": 5,
+      "path": "/api/v1/cities",
+      "phase": "restored",
+      "requestId": "d0a0b723-7753-4f1a-b113-90b6dc85795b",
+      "schemaValidation": "PASS",
+      "javaLogCorrelation": "PASS"
+    },
+    {
+      "index": 6,
+      "path": "/health",
+      "phase": "network-restored",
+      "requestId": "ad1a094f-69d6-485a-980a-17f6b2fcbe7a",
+      "schemaValidation": "PASS",
+      "javaLogCorrelation": "PASS"
+    },
+    {
+      "index": 7,
+      "path": "/api/v1/cities",
+      "phase": "network-restored",
+      "requestId": "9264120a-045d-4405-b3a9-d26563f4753f",
+      "schemaValidation": "PASS",
+      "javaLogCorrelation": "PASS"
+    },
+    {
+      "index": 8,
+      "path": "/health",
+      "phase": "empty",
+      "requestId": "ec18b010-942b-4bbf-a8d6-85b8eaea44a4",
+      "schemaValidation": "PASS",
+      "javaLogCorrelation": "PASS"
+    },
+    {
+      "index": 9,
+      "path": "/api/v1/cities",
+      "phase": "empty",
+      "requestId": "ba8c6a81-b2ab-4a30-86af-cbfe26d074c9",
+      "schemaValidation": "PASS",
+      "javaLogCorrelation": "PASS"
+    }
+  ],
+  "infrastructureFailures": [
+    {
+      "index": 2,
+      "status": 502,
+      "note": "Vite infrastructure error, not a Java OpenAPI error envelope"
+    },
+    {
+      "index": 3,
+      "status": 502,
+      "note": "Vite infrastructure error, not a Java OpenAPI error envelope"
+    }
+  ],
+  "note": "Real captured browser responses; no mock success payloads"
+}

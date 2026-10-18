@@ -1,0 +1,9 @@
+{
+  "method" : "GET",
+  "url" : "http://127.0.0.1:55087/api/v1/cities",
+  "contractPath" : "/api/v1/cities",
+  "status" : 500,
+  "contentType" : "application/json",
+  "requestId" : "f365de99-6c8a-4d05-8bf9-2c53fcca1e02",
+  "testServiceSubstitution" : true
+}
