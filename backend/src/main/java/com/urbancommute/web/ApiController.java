@@ -16,10 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ApiController {
     private final CityService cityService;
-
-    public ApiController(CityService cityService) {
-        this.cityService = cityService;
-    }
+    public ApiController(CityService cityService) { this.cityService = cityService; }
 
     @GetMapping(value = "/health", produces = MediaType.APPLICATION_JSON_VALUE)
     public HealthResponse health(HttpServletRequest request) {
@@ -30,8 +27,9 @@ public class ApiController {
     @GetMapping(value = "/api/v1/cities", produces = MediaType.APPLICATION_JSON_VALUE)
     public ApiResponse<List<City>> cities(HttpServletRequest request) {
         validateRequest(request);
-        return new ApiResponse<>("OK", "Success", cityService.listCities(),
-                ResponseMeta.seed(RequestIdFilter.requestId(request)));
+        var catalog = cityService.listCities();
+        return new ApiResponse<>("OK", "Success", catalog.cities(),
+                ResponseMeta.catalog(RequestIdFilter.requestId(request), catalog.sourceType(), catalog.datasetId()));
     }
 
     private void validateRequest(HttpServletRequest request) {
