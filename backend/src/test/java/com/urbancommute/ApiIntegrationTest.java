@@ -170,7 +170,8 @@ class ApiIntegrationTest {
                     collected_at,avg_speed_kmh,congestion_index)
                 VALUES ('s3-synthetic-cities-v1','sample-beijing','sample-road','ROAD','sample-road',
                     '2026-01-04','2026-01-04',-1,2)"""))
-                .isInstanceOf(DataIntegrityViolationException.class);
+                // MySQL CHECK violation 3819/HY000 is not always translated by Spring's SQLExceptionTranslator.
+                .isInstanceOf(org.springframework.jdbc.UncategorizedSQLException.class);
         assertThatThrownBy(() -> jdbc.update("""
                 INSERT INTO traffic_observation(dataset_id,city_id,road_segment_id,target_type,target_id,observed_at,
                     collected_at,avg_speed_kmh,congestion_index)
