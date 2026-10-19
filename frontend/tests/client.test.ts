@@ -16,7 +16,7 @@ describe('contract-based API client', () => {
     expect(fetch.mock.calls.map(call => call[0])).toEqual(['/health', '/api/v1/cities'])
     expect(fetch.mock.calls[0]?.[1]).toMatchObject({ headers: { Accept: 'application/json' }, cache: 'no-store' })
   })
-  it('accepts an empty successful city list with dev metadata', async () => {
+  it('accepts an empty successful city list with database catalog metadata', async () => {
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(json({ ...cities, data: [] })))
     expect((await getCities()).data).toEqual([])
   })

@@ -22,6 +22,9 @@ require(workflow['permissions'] == {'contents': 'read'}, 'Only read-only source 
 job = workflow['jobs']['regression']
 require(job['runs-on'] == 'ubuntu-24.04', 'Unexpected runner')
 require('permissions' not in job, 'Job must not override read-only permissions')
+mysql = job.get('services', {}).get('mysql', {})
+require(mysql.get('image') == 'mysql:8.4', 'S3 requires real MySQL 8.4')
+require('urban_commute_ci' in job.get('env', {}).get('DB_URL', ''), 'Tests require a disposable CI schema')
 steps = job['steps']
 actions = {}
 for step in steps:

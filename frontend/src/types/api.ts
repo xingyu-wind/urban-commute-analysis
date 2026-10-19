@@ -4,8 +4,8 @@ export interface City { id: string; name: string }
 export interface CityMeta {
   requestId: string
   dataAsOf: null
-  sourceType: 'dev_seed'
-  datasetId: 'dev-seed-cities-v1'
+  sourceType: 'database_catalog' | 'mixed_catalog' | 'dev_seed' | 'synthetic_test' | 'historical_snapshot' | 'authorized_live' | 'simulation' | 'mock' | 'forecast'
+  datasetId: string | null
 }
 export interface CitiesResponse {
   code: 'OK'

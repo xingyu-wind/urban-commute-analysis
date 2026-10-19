@@ -1,26 +1,26 @@
 openapi: 3.1.0
 jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
 info:
-  title: 城市通勤系统 S2 API 契约
+  title: 城市通勤系统 S3 API 契约
   version: 1.0.0
   description: |
-    本文件描述 S2 待实现的两个接口，不代表服务已经运行。
+    本文件描述 S3 的两个接口；城市数据直接来自 MySQL，迁移不插入城市。
     所有 examples 均为固定的契约示例，不是实时响应或真实交通采集结果。
     /health 是版本前缀与业务封套的明确例外；业务接口使用 /api/v1。
     HTTP 状态码表达协议结果，JSON code 是稳定的机器可读业务标识，两者不得混用。
     时间使用 RFC 3339（带时区的 ISO 8601），推荐 UTC Z；无时区本地时间不合法。
     所有 required 字段必须出现，null 不等于缺失；未声明字段不允许出现。
-    S2 城市只提供开发样例：dev_seed / dev-seed-cities-v1 / dataAsOf=null。
-    不包含真实统计、数据库、Hadoop/Hive 或机器学习接口。
+    S3 区分 dev_seed、synthetic_test、historical_snapshot、authorized_live 等来源；城市目录不等于道路观测。
+    不包含已核验真实交通统计、Hadoop/Hive 或机器学习接口。
 servers:
   - url: http://localhost:8080
-    description: 后续开发服务的约定地址，本阶段未启动服务
+    description: 本机开发服务约定地址
 security: []
 tags:
   - name: health
     description: 无业务数据的健康探针
   - name: cities
-    description: 开发样例城市列表
+    description: MySQL 城市目录
 paths:
   /health:
     get:
@@ -61,22 +61,22 @@ paths:
     get:
       operationId: listCities
       tags: [cities]
-      summary: 获取开发样例城市列表
+      summary: 从 MySQL 读取城市列表
       description: |
-        无请求体、分页或筛选参数。返回完整的小型开发样例列表。
+        无请求体、分页或筛选参数。读取 city JOIN dataset_registry，按稳定 id 排序。
         城市 id 是稳定字符串，不是数据库自增数字；name 是显示名，不作为主键。
         无城市是正常结果：HTTP 200、code=OK、data=[]，不得用 null、404 或 204 替代。
-        meta 标明开发样例来源；dataAsOf=null，不能填响应时间或伪造采集时间。
+        meta 基于数据库来源登记标识同质数据集；空目录标为 database_catalog/null，混合来源标为 mixed_catalog/null。dataAsOf 始终 null（城市目录非观测）。
       responses:
         '200':
-          description: 成功获取开发样例列表，允许空数组
+          description: 数据库查询成功，允许空数组
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/CitiesResponse'
               examples:
                 cities:
-                  summary: 开发样例，不是交通观测数据
+                  summary: 合成测试城市列表，不是交通观测数据
                   externalValue: ./examples/cities-success.json
                 empty:
                   summary: 成功但无城市，仍保留完整 meta
@@ -124,7 +124,7 @@ components:
           minLength: 1
           maxLength: 64
           pattern: '^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$'
-          description: 稳定小写字符串标识；开发样例使用 dev-city-001 等，不得转换为数字
+          description: 稳定小写字符串标识；合成样例使用 sample-beijing 等，不得转换为数字
         name:
           type: string
           minLength: 1
@@ -140,15 +140,34 @@ components:
           $ref: '#/components/schemas/RequestId'
         dataAsOf:
           type: 'null'
-          description: 开发样例没有真实采集截至时间，S2 必须显式为 null
+          description: 城市目录不是观测时间序列
         sourceType:
           type: string
-          const: dev_seed
-          description: 固定开发样例来源，不得声称实时或观测数据
+          enum: [database_catalog, mixed_catalog, dev_seed, synthetic_test, historical_snapshot, authorized_live, simulation, mock, forecast]
         datasetId:
-          type: string
-          const: dev-seed-cities-v1
-          description: 开发样例数据集版本；不是外部数据源或真实批次
+          anyOf:
+            - type: string
+              minLength: 1
+              maxLength: 64
+            - type: 'null'
+      allOf:
+        - if:
+            properties:
+              sourceType:
+                enum: [database_catalog, mixed_catalog]
+          then:
+            properties:
+              datasetId:
+                type: 'null'
+        - if:
+            properties:
+              sourceType:
+                enum: [dev_seed, synthetic_test, historical_snapshot, authorized_live, simulation, mock, forecast]
+          then:
+            properties:
+              datasetId:
+                type: string
+                minLength: 1
     CitiesResponse:
       type: object
       additionalProperties: false
@@ -165,7 +184,7 @@ components:
           description: 人类可读提示，不作为客户端分支判断依据
         data:
           type: array
-          description: 允许空数组，不允许 null；只包含开发样例城市
+          description: 允许空数组，不允许 null；只包含真实数据库查询的城市目录
           items:
             $ref: '#/components/schemas/City'
         meta:

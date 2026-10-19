@@ -22,16 +22,16 @@ describe('city dashboard', () => {
     expect(wrapper.text()).not.toContain('服务正常')
     expect(wrapper.get('button').attributes('disabled')).toBeDefined()
   })
-  it('renders real-contract seed choices and changes the selected city', async () => {
+  it('renders real-contract synthetic MySQL catalog choices and changes the selected city', async () => {
     vi.stubGlobal('fetch', responses())
     const wrapper = start(); await flushPromises()
     expect(wrapper.text()).toContain('服务正常')
-    expect(wrapper.text()).toContain('dev_seed')
-    expect(wrapper.text()).toContain('无采集时间')
+    expect(wrapper.text()).toContain('synthetic_test')
+    expect(wrapper.text()).toContain('不适用（城市目录非交通观测）')
     expect(wrapper.findAll('option').map(option => option.text())).toEqual(['请选择城市', '北京', '上海'])
-    await wrapper.get('select').setValue('dev-city-001')
+    await wrapper.get('select').setValue('sample-beijing')
     expect(wrapper.get('[data-testid="selected-city"]').text()).toBe('北京')
-    await wrapper.get('select').setValue('dev-city-002')
+    await wrapper.get('select').setValue('sample-shanghai')
     expect(wrapper.get('[data-testid="selected-city"]').text()).toBe('上海')
   })
   it('renders empty data as a successful empty state', async () => {
@@ -39,7 +39,7 @@ describe('city dashboard', () => {
     const wrapper = start(); await flushPromises()
     expect(wrapper.text()).toContain('暂无可选城市')
     expect(wrapper.text()).toContain('服务正常')
-    expect(wrapper.text()).toContain('dev_seed')
+    expect(wrapper.text()).toContain('synthetic_test')
     expect(wrapper.find('select').exists()).toBe(false)
   })
   it('shows HTTP failure and restores success after retry', async () => {
@@ -56,7 +56,7 @@ describe('city dashboard', () => {
   it('removes stale health and cities when a later request fails over the network', async () => {
     const fetch = responses(); vi.stubGlobal('fetch', fetch)
     const wrapper = start(); await flushPromises()
-    await wrapper.get('select').setValue('dev-city-001')
+    await wrapper.get('select').setValue('sample-beijing')
     fetch.mockRejectedValue(new TypeError('offline'))
     await wrapper.get('button').trigger('click'); await flushPromises()
     expect(wrapper.text()).not.toContain('服务正常')

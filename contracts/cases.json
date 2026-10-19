@@ -141,7 +141,7 @@
     "path": "/api/v1/cities",
     "status": 200,
     "valid": false,
-    "expectedKeyword": "const"
+    "expectedKeyword": "enum"
   },
   {
     "name": "false-data-as-of",

@@ -76,7 +76,7 @@ def main():
     def run_server(mode):
         command = [str(java), "-jar", str(jar), "--server.address=127.0.0.1", "--server.port=0"]
         if mode == "empty":
-            command.append("--commute.cities.seed-enabled=false")
+            command.append("--commute.cities.dataset-filter=absent-ci-dataset")
         with (output / (mode + "-server.log")).open("x", encoding="utf-8") as log:
             process = subprocess.Popen(command, cwd=BACKEND, stdout=log, stderr=subprocess.STDOUT)
             row = {"mode": mode, "pid": process.pid, "command": command,
@@ -109,7 +109,7 @@ def main():
                 first = capture(port, "cities", "/api/v1/cities")
                 second = capture(port, "cities-next", "/api/v1/cities")
                 assert first["meta"]["requestId"] != second["meta"]["requestId"]
-                assert [item["id"] for item in first["data"]] == ["dev-city-001", "dev-city-002"]
+                assert [item["id"] for item in first["data"]] == ["sample-beijing", "sample-shanghai"]
                 capture(port, "bad-query", "/api/v1/cities?limit=unexpected", 400)
                 capture(port, "get-body", "/health", 400, "/health", body="{}")
                 capture(port, "not-found", "/not-a-route", 404)
@@ -146,7 +146,7 @@ def main():
                                    "schemaValidation": "PASS",
                                    "testServiceSubstitution": metadata["testServiceSubstitution"]})
             print(f"PASS JUnit real embedded HTTP {name} SCHEMA=PASS", flush=True)
-        run_server("seed")
+        run_server("synthetic")
         run_server("empty")
     except Exception as error:
         exit_code = 1

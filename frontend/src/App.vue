@@ -58,7 +58,7 @@ onUnmounted(() => { disposed = true; clearInterval(interval) })
 
     <main>
       <section class="page-heading">
-        <div><p class="eyebrow">服务与城市</p><h1>城市通勤数据分析及智能预测系统</h1><p class="subtitle">连接后端服务，选择城市。当前仅提供开发样例，不包含真实交通观测。</p></div>
+        <div><p class="eyebrow">服务与城市</p><h1>城市通勤数据分析及智能预测系统</h1><p class="subtitle">连接后端服务，选择城市。城市列表来自 MySQL；合成测试条目必须明确标注来源，当前没有已核验的真实交通观测。</p></div>
         <button class="refresh-button" :disabled="loading" @click="refresh"><svg :class="{ spinning: loading }" viewBox="0 0 20 20" aria-hidden="true"><path d="M16 8a6.3 6.3 0 1 0 .1 4M16 3v5h-5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>{{ loading ? '正在请求…' : '重新请求' }}</button>
       </section>
 
@@ -74,20 +74,20 @@ onUnmounted(() => { disposed = true; clearInterval(interval) })
         </section>
 
         <section class="panel city-panel" aria-labelledby="city-title" :aria-busy="loading">
-          <div class="panel-heading"><span class="panel-number">02</span><h2 id="city-title">城市选择</h2><span v-if="cities" class="source-badge">开发样例 <code>dev_seed</code></span></div>
+          <div class="panel-heading"><span class="panel-number">02</span><h2 id="city-title">城市选择</h2><span v-if="cities" class="source-badge">{{ cities.meta.sourceType === 'synthetic_test' ? '合成测试' : '数据库目录' }} <code>{{ cities.meta.sourceType }}</code></span></div>
           <p class="panel-description">从后端返回的城市列表中选择，查看当前城市。</p>
           <div v-if="loading" class="state-box loading-state" role="status"><span class="loading-dots">•••</span><p>正在加载城市列表…</p></div>
           <div v-else-if="citiesError" class="state-box error-state" role="alert"><strong>城市列表获取失败</strong><p>{{ citiesError }}</p><span>点击右上角“重新请求”再次连接。</span></div>
-          <div v-else-if="cities && cities.data.length === 0" class="state-box empty-state" role="status"><strong>暂无可选城市</strong><p>服务已正常响应，但当前城市列表为空。</p><span>开发样例来源仍有效，未将空列表视为错误。</span></div>
+          <div v-else-if="cities && cities.data.length === 0" class="state-box empty-state" role="status"><strong>暂无可选城市</strong><p>服务已正常响应，但当前城市列表为空。</p><span>数据库查询返回空数组，未将空列表视为错误。</span></div>
           <template v-else-if="cities">
             <CitySelector v-model="selectedId" :cities="cities.data" />
             <div class="selected-city" aria-live="polite"><span class="selection-icon" aria-hidden="true">⌖</span><div><span class="field-caption">当前选择</span><strong data-testid="selected-city">{{ selectedCity?.name ?? '尚未选择城市' }}</strong></div><span class="selection-tag">{{ selectedCity ? '已选择' : '待选择' }}</span></div>
           </template>
-          <div v-if="cities" class="dataset-info"><div><span>数据集</span><code>{{ cities.meta.datasetId }}</code></div><div><span>数据采集时间</span><span>无采集时间（开发样例）</span></div></div>
+          <div v-if="cities" class="dataset-info"><div><span>数据集</span><code>{{ cities.meta.datasetId ?? '—（空目录或混合来源）' }}</code></div><div><span>数据采集时间</span><span>不适用（城市目录非交通观测）</span></div></div>
         </section>
       </div>
 
-      <aside class="data-notice"><span class="notice-icon" aria-hidden="true">i</span><div><strong>开发样例说明</strong><p>北京、上海仅用于验证接口与城市选择交互。尚未接入真实交通观测数据，当前不提供交通统计或预测结果。</p></div></aside>
+      <aside class="data-notice"><span class="notice-icon" aria-hidden="true">i</span><div><strong>数据来源说明</strong><p>测试环境里的北京、上海条目属于 synthetic_test 合成测试城市目录，不能证明真实交通采集。当前不提供交通统计或预测结果。</p></div></aside>
       <footer><span>城市通勤 · 以明确的数据来源为基础</span><span>健康状态与城市列表均来自后端请求</span></footer>
     </main>
   </div>
