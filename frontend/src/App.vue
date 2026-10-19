@@ -12,9 +12,27 @@ const loading = ref(true)
 const selectedId = ref('')
 const sourceLabels = {
   database_catalog: '空数据库目录', mixed_catalog: '混合来源目录', dev_seed: '开发样例',
-  synthetic_test: '合成测试', historical_snapshot: '已授权历史快照',
-  authorized_live: '已授权实时来源目录', simulation: '模拟数据', mock: '模拟接口', forecast: '预测数据',
+  synthetic_test: '合成测试', historical_snapshot: '历史快照登记',
+  authorized_live: '授权来源登记', simulation: '模拟数据', mock: '模拟接口', forecast: '预测数据',
 }
+const sourceDescriptions: Record<CitiesResponse['meta']['sourceType'], string> = {
+  database_catalog: '数据库城市目录本身不证明存在真实交通观测，也不能证明外部授权真实性。',
+  mixed_catalog: '本次城市目录包含多个数据集，不能统一归为合成测试或真实观测；仅凭该目录不能确定单个城市的来源或授权真实性。',
+  dev_seed: '本次城市目录登记为 dev_seed 开发样例，用于开发交互验证，不代表真实交通观测。',
+  synthetic_test: '本次城市目录登记为 synthetic_test 合成测试数据，不代表真实交通采集，也不能据此推断通勤人数或交通状态。',
+  historical_snapshot: '本次城市目录登记为 historical_snapshot 历史快照。来源及授权状态仅为数据库登记，不表示外部授权真实性已经核实，也不表示实时交通观测。',
+  authorized_live: '本次城市目录登记为 authorized_live 授权来源。来源及授权状态仅为数据库登记，不表示外部授权真实性已经核实，也不能仅凭城市目录证明实时交通采集。',
+  simulation: '本次城市目录登记为 simulation 模拟数据，不代表真实交通观测。',
+  mock: '本次城市目录登记为 mock 模拟接口数据，不代表真实交通观测。',
+  forecast: '本次城市目录登记为 forecast 预测来源，不代表已经发生的交通观测，也不表示本页面已提供交通预测结果。',
+}
+const sourceDescription = computed(() => {
+  if (!cities.value) return loading.value
+    ? '正在获取城市目录，数据来源尚未确认。'
+    : '未取得有效城市目录响应，暂无法确认数据来源。'
+  if (cities.value.data.length === 0) return '本次 API 未返回城市条目；空目录不能证明存在合成样例、真实交通观测或已核实的外部授权。'
+  return sourceDescriptions[cities.value.meta.sourceType]
+})
 const selectedCity = computed(() => cities.value?.data.find(city => city.id === selectedId.value))
 const checkedTime = computed(() => health.value ? new Date(health.value.timestamp).toLocaleString('zh-CN', {
   timeZone: 'Asia/Shanghai', hour12: false,
@@ -92,7 +110,7 @@ onUnmounted(() => { disposed = true; clearInterval(interval) })
         </section>
       </div>
 
-      <aside class="data-notice"><span class="notice-icon" aria-hidden="true">i</span><div><strong>数据来源说明</strong><p>测试环境里的北京、上海条目属于 synthetic_test 合成测试城市目录，不能证明真实交通采集。当前不提供交通统计或预测结果。</p></div></aside>
+      <aside class="data-notice"><span class="notice-icon" aria-hidden="true">i</span><div><strong>数据来源说明</strong><p>{{ sourceDescription }}</p></div></aside>
       <footer><span>城市通勤 · 以明确的数据来源为基础</span><span>健康状态与城市列表均来自后端请求</span></footer>
     </main>
   </div>

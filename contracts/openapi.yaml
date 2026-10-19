@@ -145,6 +145,10 @@ components:
         sourceType:
           type: string
           enum: [database_catalog, mixed_catalog, dev_seed, synthetic_test, historical_snapshot, authorized_live, simulation, mock, forecast]
+          description: |
+            数据库登记的目录来源类别，不构成外部授权真实性核验结论。
+            historical_snapshot 和 authorized_live 仅表达来源及授权状态登记，不能据城市目录证明实时采集或外部授权已核实。
+            空数组不证明存在任何城市样例或观测；mixed_catalog 不能推断单个城市的来源。
         datasetId:
           anyOf:
             - type: string
