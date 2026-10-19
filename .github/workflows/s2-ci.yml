@@ -30,9 +30,7 @@ jobs:
           --health-cmd="mysqladmin ping -h 127.0.0.1 -pci-ephemeral-only"
           --health-interval=10s --health-timeout=5s --health-retries=15
     env:
-      DB_URL: jdbc:mysql://127.0.0.1:33067/urban_commute_ci?connectionTimeZone=UTC
-      DB_USER: root
-      DB_PASSWORD: ci-ephemeral-only
+      S3_ADMIN_PASSWORD: ci-ephemeral-only
       CONTRACT_PYTHON: python
       BROWSER_CHANNEL: chromium
     steps:
@@ -69,7 +67,9 @@ jobs:
           python -m openapi_spec_validator contracts/openapi.yaml
           python contracts/validate_contract.py
       - name: MySQL 8.4 Flyway and backend integration regression
-        run: bash backend/mvnw -f backend/pom.xml -B -ntp verify
+        run: python scripts/s3_database.py --probe-isolation --output backend/target/s3-first.json -- bash backend/mvnw -f backend/pom.xml -B -ntp verify
+      - name: Repeat complete backend suite in a new schema without cleaning prior data
+        run: python scripts/s3_database.py --output backend/target/s3-repeat.json -- bash backend/mvnw -f backend/pom.xml -B -ntp verify
       - name: Standalone Java HTTP and actual response Schema checks
         run: python backend/scripts/verify_http.py --output backend/target/ci-http
       - name: Install locked frontend dependencies
@@ -101,6 +101,8 @@ jobs:
           path: |
             backend/target/surefire-reports/
             backend/target/ci-http/
+            backend/target/s3-*.json
+            backend/target/s3-*.log
             frontend/outputs/
           if-no-files-found: warn
           retention-days: 7

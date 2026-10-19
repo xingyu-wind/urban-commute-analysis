@@ -1,0 +1,1 @@
+{"code":"OK","message":"Success","data":[{"id":"sample-beijing","name":"北京"},{"id":"sample-shanghai","name":"上海"}],"meta":{"requestId":"b6fc5eca-ab81-4b54-aa4b-58537c4c051e","dataAsOf":null,"sourceType":"synthetic_test","datasetId":"s3-synthetic-cities-v1"}}

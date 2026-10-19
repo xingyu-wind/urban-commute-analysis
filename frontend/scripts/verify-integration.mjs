@@ -142,7 +142,7 @@ try {
         const body = await response.body()
         row.bodyFile = `response-${index}.${response.headers()['content-type']?.includes('application/json') ? 'json' : 'txt'}`
         writeFileSync(path.join(output, row.bodyFile), body, { flag: 'wx' })
-        row.source = response.status() !== 200 && responsePhase === 'backend-stopped' ? 'vite-proxy-transport-failure' : 'java-via-vite'
+        row.source = response.status() !== 200 && ['backend-stopped', 'empty-restarting'].includes(responsePhase) ? 'vite-proxy-transport-failure' : 'java-via-vite'
       } catch (error) { row.captureError = error.message }
     })())
   })
@@ -198,6 +198,8 @@ try {
   await expect(page.getByTestId('service-status')).toHaveText('服务正常')
   step('browser-network-retry-restored-success')
 
+  // Automatic refresh can run while the next Java process is starting on slower machines.
+  phase = 'empty-restarting'
   await stop(java)
   java = await startJava('java-empty', true)
   phase = 'empty'

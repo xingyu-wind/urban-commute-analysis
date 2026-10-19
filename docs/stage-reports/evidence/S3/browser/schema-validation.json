@@ -1,0 +1,98 @@
+{
+  "exitCode": 0,
+  "javaResponsesAccepted": [
+    {
+      "index": 0,
+      "path": "/health",
+      "phase": "initial",
+      "requestId": "8036462a-d0e8-4544-8361-098fcdf1c468",
+      "schemaValidation": "PASS",
+      "javaLogCorrelation": "PASS"
+    },
+    {
+      "index": 1,
+      "path": "/api/v1/cities",
+      "phase": "initial",
+      "requestId": "ae487c49-1f28-49a4-9f4b-b70c1bb48400",
+      "schemaValidation": "PASS",
+      "javaLogCorrelation": "PASS"
+    },
+    {
+      "index": 4,
+      "path": "/health",
+      "phase": "restored",
+      "requestId": "0c8501ab-8bb4-4203-b071-a55e0547f1ae",
+      "schemaValidation": "PASS",
+      "javaLogCorrelation": "PASS"
+    },
+    {
+      "index": 5,
+      "path": "/api/v1/cities",
+      "phase": "restored",
+      "requestId": "0c9abd27-8c48-4c57-a91f-5159d69a6c8f",
+      "schemaValidation": "PASS",
+      "javaLogCorrelation": "PASS"
+    },
+    {
+      "index": 6,
+      "path": "/health",
+      "phase": "network-restored",
+      "requestId": "57e0e734-5daf-45ff-a119-fbd53abc93b6",
+      "schemaValidation": "PASS",
+      "javaLogCorrelation": "PASS"
+    },
+    {
+      "index": 7,
+      "path": "/api/v1/cities",
+      "phase": "network-restored",
+      "requestId": "b6fc5eca-ab81-4b54-aa4b-58537c4c051e",
+      "schemaValidation": "PASS",
+      "javaLogCorrelation": "PASS"
+    },
+    {
+      "index": 8,
+      "path": "/health",
+      "phase": "empty",
+      "requestId": "e96afcee-2b35-4900-9089-f68cd2b50c88",
+      "schemaValidation": "PASS",
+      "javaLogCorrelation": "PASS"
+    },
+    {
+      "index": 9,
+      "path": "/api/v1/cities",
+      "phase": "empty",
+      "requestId": "22b6fca9-2ba6-4354-823f-9ffd61cece1b",
+      "schemaValidation": "PASS",
+      "javaLogCorrelation": "PASS"
+    },
+    {
+      "index": 10,
+      "path": "/health",
+      "phase": "empty",
+      "requestId": "9f729138-dc5d-4943-a413-c38554c59e8f",
+      "schemaValidation": "PASS",
+      "javaLogCorrelation": "PASS"
+    },
+    {
+      "index": 11,
+      "path": "/api/v1/cities",
+      "phase": "empty",
+      "requestId": "357fb7f7-896f-4780-88ac-5097363c4748",
+      "schemaValidation": "PASS",
+      "javaLogCorrelation": "PASS"
+    }
+  ],
+  "infrastructureFailures": [
+    {
+      "index": 2,
+      "status": 502,
+      "note": "Vite infrastructure error, not a Java OpenAPI error envelope"
+    },
+    {
+      "index": 3,
+      "status": 502,
+      "note": "Vite infrastructure error, not a Java OpenAPI error envelope"
+    }
+  ],
+  "note": "Real captured browser responses; no mock success payloads"
+}

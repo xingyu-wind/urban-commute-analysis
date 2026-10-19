@@ -67,6 +67,7 @@ paths:
         城市 id 是稳定字符串，不是数据库自增数字；name 是显示名，不作为主键。
         无城市是正常结果：HTTP 200、code=OK、data=[]，不得用 null、404 或 204 替代。
         meta 基于数据库来源登记标识同质数据集；空目录标为 database_catalog/null，混合来源标为 mixed_catalog/null。dataAsOf 始终 null（城市目录非观测）。
+        来源登记不构成外部授权证明；synthetic_test、simulation、mock、forecast 不能解释为真实观测。
       responses:
         '200':
           description: 数据库查询成功，允许空数组

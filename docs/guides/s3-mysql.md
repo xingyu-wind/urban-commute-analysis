@@ -1,81 +1,49 @@
-# S3｜MySQL + Flyway 可复现验收指南
+# S3 工程运行与验证
 
-> **操作边界：** 下列是供用户或获授权的 Codex 在 Windows 上执行的步骤。当前 ChatGPT 无权访问 `D:\WindXingyu\Code\urban-commute-analysis`，未在该电脑安装 MySQL、创建数据库或改动其文件。不得重置现有数据库、执行参考 ZIP 原 SQL 或复制明文账号。
+## 普通应用
 
-## 1. 核对环境（只读）
+需要 MySQL 8.4、Java 21。只对经过授权的目标库设置 DB_URL、DB_USER、DB_PASSWORD；不要把密码放在命令行、VITE_*、Git 或截图中。Spring Boot 不会自动读取仓库根目录的 .env；模板仅供变量参考。
 
-在 PowerShell 中到正式工程目录，核对 `git status -sb`、`git log -1 --format=%H`、`java -version`、`node --version`、`mysql --version`（若存在）、MySQL 服务运行情况。先保存任何未提交工作，不在已有目录里重新 clone 或强制 reset。创建/切换 S3 本地分支仅在同步并保护现有改动后执行。
-
-S3 GitHub 分支：`feat/s3-mysql-flyway`；PR #3：<https://github.com/xingyu-wind/urban-commute-analysis/pull/3>；**保持 main 不变，未经总规划师审核不得合并**。
-
-## 2. 准备独立数据库（需用户授权后由本人或 Codex 执行）
-
-使用 MySQL **8.4.x**，在 MySQL 管理工具中单独创建新数据库 `urban_commute`（开发）和 `urban_commute_ci`（隔离测试），**切勿使用原参考库或现有业务库**。使用 UTF8MB4、现代 MySQL 8.4 默认排序规则。应用账号只授予自身模式所需的 SELECT/INSERT/UPDATE/DELETE 和 Flyway 建表需用的 CREATE/ALTER/INDEX/REFERENCES 权限，不用生产 root；密钥只保存在本机私有环境中。若 MySQL 未安装或需修改 PATH/Windows 服务，先向用户申请明确授权。
-
-PowerShell 会话中按实际环境配置：
+构建（不连接数据库）：
 
 ```powershell
-$env:DB_URL = 'jdbc:mysql://127.0.0.1:3306/urban_commute?connectionTimeZone=UTC'
-$env:DB_USER = 'urban_commute'
-$env:DB_PASSWORD = '<从安全位置读取的本机密码，不写入 Git>'
+.\backend\mvnw.cmd -f backend/pom.xml -B -ntp package -DskipTests
 ```
 
-生产迁移目录来自 Maven 自动打包的 `database/migrations/`，不要使用 Spring `ddl-auto` 替代 Flyway；schema `V1` 在空库上运行一次，第二次启动应记录 `No migration necessary`。
-
-## 3. 运行与观察
+启动会执行 Flyway，属于数据库结构变更，目标库必须已获授权。不要使用参考 ZIP 的库。V1 不变，V2 新增约束；应用默认禁止 Flyway clean、禁止非空库自动 baseline，并验证历史 checksum。不要用 repair 绕过错误。
 
 ```powershell
-.\backend\mvnw.cmd -f backend\pom.xml -B -ntp package -DskipTests
-java -jar backend\target\urban-commute-backend-0.1.0-SNAPSHOT.jar
+java -jar backend/target/urban-commute-backend-0.1.0-SNAPSHOT.jar
 ```
 
-新开一个 PowerShell 终端执行：
+空库 API 返回 `data=[]`、`database_catalog/null`。城市目录非交通观测，dataAsOf 永远 null。CITY_DATASET_FILTER 仅为部署/验证筛选配置，不是公开 API 参数。
+
+## 隔离集成测试
+
+直接 `mvn verify` 不会回退到普通应用的 DB_URL；缺少 TEST_DB_* 时拒绝启动测试。先使用 `scripts/s3_database.py` 在已授权的专用实例创建全新随机库和单库权限账号。它从进程环境读取 S3_ADMIN_PASSWORD、S3_ADMIN_USER（默认 root）、S3_MYSQL_PORT（默认 33067）及 MYSQL_CLIENT。
 
 ```powershell
-Invoke-RestMethod http://127.0.0.1:8080/health
-Invoke-RestMethod http://127.0.0.1:8080/api/v1/cities
+python scripts/s3_database.py --probe-isolation --output backend/target/s3-new-run.json -- cmd /c backend\mvnw.cmd -f backend/pom.xml -B -ntp verify
 ```
 
-空 `urban_commute` 的城市 API 返回 `data=[]`、`sourceType=database_catalog`、`datasetId=null`；`/health` 仍返回 UP + 带时区时间，**不代表数据库存在真实观测数据**。若城市非空，先审查该库来源再判断；不能以“页面能显示城市”证明数据真实性。
+每次选择新的证据文件名。准备器不 DROP、不复用库；SQL 对库名转义，账号无全局权限。密码随机生成且只传给子进程，不写证据。CI 为后续 JAR/浏览器步骤通过 GITHUB_ENV 传递受遮蔽的单库凭据。
 
-### MySQL 可复制核验 SQL（只读）
+测试迁移前使用实际连接验证 SELECT DATABASE()、CURRENT_USER()、@@server_uuid；库名必须完整匹配 s3test_ 加 32 位十六进制标识，账号匹配独立随机账号。验证发生在 FlywayMigrationStrategy 内，迁移之前，且测试禁用其他 SQL 初始化。错误库身份或服务器 UUID 的真实 Spring 启动必须失败；准备器检查目标库仍为零张表，防止把编译失败冒充保护生效。
 
-```sql
-SELECT VERSION(), DATABASE();
-SELECT installed_rank, version, success FROM flyway_schema_history ORDER BY installed_rank;
-SELECT COUNT(*) AS city_count FROM city;
-SELECT COUNT(*) AS source_count FROM dataset_registry;
-SELECT COUNT(*) AS observation_count FROM traffic_observation;
-SHOW CREATE TABLE traffic_observation;
-```
-
-## 4. 隔离合成数据与自动测试
-
-**仅在已获授权且确认是独立新建的测试库** `urban_commute_ci` 执行回归；`ApiIntegrationTest` 在插入合成 fixture 前硬性校验 JDBC URL 包含该名称、`city` 表为空，避免误碰开发库。不要预先手动导入 `fixtures/s3-synthetic.sql` 后再运行这些 JUnit 测试，否则“初始空库”断言会拒绝执行。
+完整本机测试（同一授权实例上另建隔离库）：
 
 ```powershell
-$env:DB_URL = 'jdbc:mysql://127.0.0.1:3306/urban_commute_ci?connectionTimeZone=UTC'
-.\backend\mvnw.cmd -f backend\pom.xml -B -ntp verify
+.\contracts\.venv\Scripts\python.exe scripts/s3_database.py --output backend/target/s3-full-run.json -- contracts\.venv\Scripts\python.exe scripts/s3_checks.py --output backend/target/s3-full-evidence
 ```
 
-测试由真实 MySQL 插入合成数据，断言：空库 Flyway V1、重复 `migrate()` 不重复执行、外键/跨城市约束、速度负数 CHECK、观测记录重复键、`city` JOIN 查询、健康/异常响应。后续独立验证 JAR 和浏览器 E2E 需要保持该测试库中的 fixture，并有 Java21、Node24、Python3.11、Chromium 等依赖。CI 自动提供可丢弃 MySQL 8.4 service，可直接查 PR #3 的 Actions 和测试日志。
+该入口依次执行 Windows Maven Wrapper、CI 策略、OpenAPI、契约、独立 JAR HTTP、前端类型/单元测试/构建、真实 Chrome/Edge 浏览器及反向驱动验证。依赖已按锁文件安装。首次需使用项目 Python venv 和 npm ci；不需要全局安装或改 PATH。只停止由测试驱动持有的 Java/Vite 子进程。MySQL 实例由授权管理者持有，不由测试驱动批量终止。
 
-```powershell
-cd frontend
-npm ci
-npm run type-check
-npm test
-npm run build
-```
+## 核验与失败边界
 
-注意前端不会直接访问 SQL；Vue 通过 Vite 的代理调用 Spring Boot。浏览器对合成测试城市应显示 `synthetic_test`，空目录应显示 `database_catalog`。不得将本机步骤写成已验收，除非保留真实运行日志、MySQL 版本、数据库名称（不含凭据）、API 响应及浏览器证据。
+只读核验 SQL：SELECT VERSION(), DATABASE(); SHOW TABLES; SELECT version,checksum,success FROM flyway_schema_history ORDER BY installed_rank; SHOW CREATE TABLE traffic_observation;
 
-## 5. 常见问题与责任边界
+数据库不可用：先检查自己实例的端口、配置和权限；不要改防火墙或结束未知进程。V2 遇到历史脏数据会失败；MySQL DDL 不能保证整文件原子回滚，应保留现场、评审数据修复，不 repair、不清库。
 
-- `Communications link failure`：先检查 MySQL 8.4 服务、端口、独立库、账号；不直接修改防火墙或暴露公网端口。
-- `Flyway checksum mismatch`：不要修改已应用的 V1 或使用 `repair` 掩盖差异；新增 V2 并履行迁移评审。
-- `duplicate entry`：通常证明观测唯一键生效；先检查 dataset/target/time，不能用删除旧数据来绕过。
-- `CHECK 3819/HY000`：MySQL 8.4 正常拒绝非法行；Spring JDBC 异常包装类型不一定是 `DataIntegrityViolationException`。
-- `flyway upgrade recommended`：当前被 BOM 管理的 Flyway 有版本兼容性提示，实际执行通过也不能等于官方已保证所有 MySQL 8.4 行为；后续升级前应单独评审和复跑迁移。
+本机生成的凭据位于工程外、仅当前 Windows 用户可访问的私有实例目录。不可上传该目录。需要停止实例时先核验可执行路径、配置路径和监听进程身份；保留数据目录，不删除既有数据。
 
-流程：Controller 接收 HTTP → CityService 定义查询语义与来源 → CityRepository(JdbcTemplate) JOIN MySQL → City DTO/ResponseMeta → JSON → Vue。Flyway 在 Spring Boot 启动时负责**版本化建表**，不在浏览器请求时迁移表。
+最新实际结果、环境和代码索引见 [S3 报告](../stage-reports/S3.md)。

@@ -1,12 +1,12 @@
 // Wire contract: contracts/openapi.yaml. Health intentionally has no business envelope.
 export interface HealthResponse { status: 'UP'; timestamp: string }
 export interface City { id: string; name: string }
-export interface CityMeta {
+export type CitySource = 'dev_seed' | 'synthetic_test' | 'historical_snapshot' | 'authorized_live' | 'simulation' | 'mock' | 'forecast'
+export type CityMeta = {
   requestId: string
   dataAsOf: null
-  sourceType: 'database_catalog' | 'mixed_catalog' | 'dev_seed' | 'synthetic_test' | 'historical_snapshot' | 'authorized_live' | 'simulation' | 'mock' | 'forecast'
-  datasetId: string | null
-}
+} & ({ sourceType: 'database_catalog' | 'mixed_catalog'; datasetId: null }
+  | { sourceType: CitySource; datasetId: string })
 export interface CitiesResponse {
   code: 'OK'
   message: string

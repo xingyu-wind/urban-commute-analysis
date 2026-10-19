@@ -10,6 +10,11 @@ const healthError = ref('')
 const citiesError = ref('')
 const loading = ref(true)
 const selectedId = ref('')
+const sourceLabels = {
+  database_catalog: '空数据库目录', mixed_catalog: '混合来源目录', dev_seed: '开发样例',
+  synthetic_test: '合成测试', historical_snapshot: '已授权历史快照',
+  authorized_live: '已授权实时来源目录', simulation: '模拟数据', mock: '模拟接口', forecast: '预测数据',
+}
 const selectedCity = computed(() => cities.value?.data.find(city => city.id === selectedId.value))
 const checkedTime = computed(() => health.value ? new Date(health.value.timestamp).toLocaleString('zh-CN', {
   timeZone: 'Asia/Shanghai', hour12: false,
@@ -74,7 +79,7 @@ onUnmounted(() => { disposed = true; clearInterval(interval) })
         </section>
 
         <section class="panel city-panel" aria-labelledby="city-title" :aria-busy="loading">
-          <div class="panel-heading"><span class="panel-number">02</span><h2 id="city-title">城市选择</h2><span v-if="cities" class="source-badge">{{ cities.meta.sourceType === 'synthetic_test' ? '合成测试' : '数据库目录' }} <code>{{ cities.meta.sourceType }}</code></span></div>
+          <div class="panel-heading"><span class="panel-number">02</span><h2 id="city-title">城市选择</h2><span v-if="cities" class="source-badge">{{ sourceLabels[cities.meta.sourceType] }} <code>{{ cities.meta.sourceType }}</code></span></div>
           <p class="panel-description">从后端返回的城市列表中选择，查看当前城市。</p>
           <div v-if="loading" class="state-box loading-state" role="status"><span class="loading-dots">•••</span><p>正在加载城市列表…</p></div>
           <div v-else-if="citiesError" class="state-box error-state" role="alert"><strong>城市列表获取失败</strong><p>{{ citiesError }}</p><span>点击右上角“重新请求”再次连接。</span></div>

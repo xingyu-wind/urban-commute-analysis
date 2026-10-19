@@ -14,6 +14,16 @@ function responses(body: unknown = cities) {
 afterEach(() => { wrappers.splice(0).forEach(wrapper => wrapper.unmount()); vi.unstubAllGlobals(); vi.useRealTimers() })
 
 describe('city dashboard', () => {
+  it.each([
+    ['dev_seed','开发样例'], ['historical_snapshot','已授权历史快照'],
+    ['authorized_live','已授权实时来源目录'], ['simulation','模拟数据'],
+    ['mock','模拟接口'], ['forecast','预测数据'], ['mixed_catalog','混合来源目录'],
+  ])('labels %s without treating it as synthetic or actual traffic', async (sourceType, label) => {
+    vi.stubGlobal('fetch', responses({ ...cities, meta: { ...cities.meta, sourceType, datasetId: sourceType === 'mixed_catalog' ? null : 'source-v1' } }))
+    const wrapper = start(); await flushPromises()
+    expect(wrapper.get('.source-badge').text()).toContain(label)
+    expect(wrapper.get('.source-badge').text()).toContain(sourceType)
+  })
   it('shows loading without prematurely claiming the backend is healthy', () => {
     vi.stubGlobal('fetch', vi.fn(() => new Promise(() => {})))
     const wrapper = start()

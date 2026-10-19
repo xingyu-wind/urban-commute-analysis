@@ -6,11 +6,9 @@
 
 ## 技术规划与当前状态
 
-规划采用 Python 离线清洗、MySQL 结构化存储、HDFS/Hive 历史数据分析、Python 机器学习、Spring Boot API 和 Vue 前端。MySQL、HDFS/Hive、真实数据源与预测模型尚未实现；HDFS/Hive 技术目标保留，不因当前样例规模小而取消。
+规划采用 Python 离线清洗、MySQL、HDFS/Hive、机器学习、Spring Boot 和 Vue。S2 已据总规划师通知 ACCEPTED，S3 实现 MySQL 8.4 + Flyway + JDBC 城市目录链路，交付位于现有 [PR #3](https://github.com/xingyu-wind/urban-commute-analysis/pull/3)，等待独立审核，尚未合并。HDFS/Hive、真实交通采集、统计与预测留待后续正式阶段，不提前进入 S4。
 
-当前处于 **S2 / SUBMITTED_FOR_INDEPENDENT_REVIEW**：WP0～WP5 已完成执行阶段验收；WP6 已推送功能分支并创建 [PR #2](https://github.com/xingyu-wind/urban-commute-analysis/pull/2)，真实 Linux GitHub Actions 已取得成功运行。最终交付 SHA 与最新检查见 PR，完整证据见 S2 报告。PR 尚未合并，未获总规划师 ACCEPTED，不进入 S3。
-
-实际可运行的范围仅为 Java 21 + Spring Boot 3.5.16 的 `GET /health`、`GET /api/v1/cities`，以及 Vue 3 + TypeScript + Vite 的服务状态和城市选择页面。北京、上海是 `dev_seed` 开发样例，`dataAsOf=null`，不代表真实交通观测、通勤人数或预测结果。
+实际接口为 `GET /health`、`GET /api/v1/cities`；城市来自 MySQL。测试北京/上海标为 `synthetic_test`，不是交通实测；空/混合目录有独立标记，dataAsOf=null。报告与实际证据见 [S3 报告](docs/stage-reports/S3.md)。
 
 S1 的 PR #1 已 Squash Merge，main 合并 SHA 为 `b47f0af593f4173d4a5e12af607c47a9343f64a5`。真实队友参与、交叉审核与双机协作的 `S1-COLLAB-DEBT` 仍未关闭；不把文档合并或单人测试当成双人协作补验。
 
@@ -18,13 +16,11 @@ S1 的 PR #1 已 Squash Merge，main 合并 SHA 为 `b47f0af593f4173d4a5e12af607
 
 ## 本地运行
 
-后端终端（Java 21 环境，具体缓存与环境说明见 [backend/README.md](backend/README.md)）：
+先按 [S3 运行说明](docs/guides/s3-mysql.md) 准备已经授权的 MySQL 实例、库和私有进程变量。启动会执行迁移，不能指向未经授权的既有库。构建使用 Windows Maven Wrapper；集成测试必须通过隔离准备器，不直接在持久开发库运行 verify。
 
 ```powershell
-cd backend
-$env:MAVEN_USER_HOME = 'D:\WindXingyu\Temp\urban-commute-S2-WP3\maven-user-home'
-.\mvnw.cmd -B -ntp '-Dmaven.repo.local=D:\WindXingyu\Temp\urban-commute-S2-WP3\maven-repository' verify
-java -jar target\urban-commute-backend-0.1.0-SNAPSHOT.jar
+.\backend\mvnw.cmd -f backend/pom.xml -B -ntp package -DskipTests
+java -jar backend/target/urban-commute-backend-0.1.0-SNAPSHOT.jar
 ```
 
 另开前端终端（Node.js 24 LTS，npm 使用 .cmd，不调整执行策略）：
@@ -66,6 +62,6 @@ GitHub 分支协作入口见 [协作规范](docs/guides/collaboration.md) 和 [P
 
 ## 后续阶段与数据边界
 
-回归命令、Windows/Linux 入口与 CI 边界见 [回归与 CI 指南](docs/guides/s2-regression.md)，交付清单见 [S2 验收提交摘要](docs/stage-reports/S2-acceptance-summary.md)。本轮按 WP6 授权完成分支 Push、PR 和真实云端验证，停止等待独立审核，不合并 PR。后续数据链路、数据库、大数据、模型及图表按正式阶段任务实施；S1 协作债务另行补验，不倒写历史结果。
+S3 的运行命令、测试隔离与验收证据见 [S3 操作说明](docs/guides/s3-mysql.md) 和 [S3 报告](docs/stage-reports/S3.md)。S2 历史证据保留，不将当前实现倒写成过去成果。PR 未合并；S1 协作债务保持 OPEN。
 
 本项目独立实现，不直接复刻或上传第三方毕业设计。参考资料须先核实授权；原始第三方 ZIP、未授权数据、真实凭据和个人数据不得纳入仓库。环境模板见 `.env.example`，复制后填写的本地 `.env` 不应提交。

@@ -1,0 +1,49 @@
+{
+  "exitCode": 0,
+  "attempts": [
+    {
+      "attempt": 1,
+      "port": 63992,
+      "responses": {
+        "/health": {
+          "status": "UP",
+          "timestamp": "2026-10-19T01:12:58.471808800Z"
+        },
+        "/api/v1/cities": {
+          "code": "OK",
+          "message": "Success",
+          "data": [],
+          "meta": {
+            "requestId": "d0410be1-1fee-43e6-9dfe-e6891a31d561",
+            "dataAsOf": null,
+            "sourceType": "database_catalog",
+            "datasetId": null
+          }
+        }
+      },
+      "repeatMigrationSkipped": false
+    },
+    {
+      "attempt": 2,
+      "port": 54012,
+      "responses": {
+        "/health": {
+          "status": "UP",
+          "timestamp": "2026-10-19T01:13:06.102626300Z"
+        },
+        "/api/v1/cities": {
+          "code": "OK",
+          "message": "Success",
+          "data": [],
+          "meta": {
+            "requestId": "97a0a14c-2fff-405b-b094-94ae0ec57208",
+            "dataAsOf": null,
+            "sourceType": "database_catalog",
+            "datasetId": null
+          }
+        }
+      },
+      "repeatMigrationSkipped": true
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "capturedAt": "2026-10-19T01:18:05.603220+00:00",
+  "workspace": "D:\\WindXingyu\\Code\\urban-commute-analysis",
+  "mysqlInstance": "D:\\WindXingyu\\Temp\\urban-commute-s3-mysql-20261019",
+  "address": "127.0.0.1:33067",
+  "registeredWindowsService": false,
+  "checks": [
+    {
+      "command": [
+        "java",
+        "-version"
+      ],
+      "exitCode": 0,
+      "output": "NOTE: Picked up JDK_JAVA_OPTIONS: -Djdk.net.unixdomain.tmpdir=D:\\WindXingyu\\Temp\\java-unixdomain\nopenjdk version \"21.0.12.1\" 2026-08-18 LTS\nOpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)\nOpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode, sharing)\n"
+    },
+    {
+      "command": [
+        "javac",
+        "-version"
+      ],
+      "exitCode": 0,
+      "output": "javac 21.0.12.1\n"
+    },
+    {
+      "command": [
+        "cmd",
+        "/c",
+        "backend\\mvnw.cmd",
+        "--version"
+      ],
+      "exitCode": 0,
+      "output": "Apache Maven 3.9.16 (2bdd9fddda4b155ebf8000e807eb73fd829a51d5)\nMaven home: C:\\Users\\WindXingyu\\.m2\\wrapper\\dists\\apache-maven-3.9.16\\0daed3be3ebd1c706f0e69e8b07c6b73f5cc4ea3dfce72a8d0ec2e849ca2ddb0\nJava version: 21.0.12.1, vendor: Eclipse Adoptium, runtime: D:\\WindXingyu\\Apps\\Java\\jdk-21.0.12.1+1\nDefault locale: zh_CN, platform encoding: UTF-8\nOS name: \"windows 11\", version: \"10.0\", arch: \"amd64\", family: \"windows\"\nNOTE: Picked up JDK_JAVA_OPTIONS: -Djdk.net.unixdomain.tmpdir=D:\\WindXingyu\\Temp\\java-unixdomain\n"
+    },
+    {
+      "command": [
+        "node",
+        "--version"
+      ],
+      "exitCode": 0,
+      "output": "v24.19.0\n"
+    },
+    {
+      "command": [
+        "cmd",
+        "/c",
+        "npm",
+        "--version"
+      ],
+      "exitCode": 0,
+      "output": "11.17.0\n"
+    },
+    {
+      "command": [
+        "D:\\WindXingyu\\Apps\\urban-commute-phase01\\mysql-8.4.11-winx64\\bin\\mysqld.exe",
+        "--version"
+      ],
+      "exitCode": 0,
+      "output": "D:\\WindXingyu\\Apps\\urban-commute-phase01\\mysql-8.4.11-winx64\\bin\\mysqld.exe  Ver 8.4.11 for Win64 on x86_64 (MySQL Community Server - GPL)\n"
+    }
+  ]
+}

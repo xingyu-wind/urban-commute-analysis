@@ -38,6 +38,14 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         return error(HttpStatus.SERVICE_UNAVAILABLE, new HttpHeaders(), request);
     }
 
+    @ExceptionHandler({org.springframework.jdbc.CannotGetJdbcConnectionException.class,
+            org.springframework.transaction.CannotCreateTransactionException.class})
+    public ResponseEntity<Object> databaseUnavailable(Exception exception, HttpServletRequest request) {
+        // Do not log connection strings, driver messages, or authentication details.
+        LOG.warn("requestId={} database unavailable", RequestIdFilter.requestId(request));
+        return error(HttpStatus.SERVICE_UNAVAILABLE, new HttpHeaders(), request);
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> unexpected(Exception exception, HttpServletRequest request) {
         LOG.error("requestId={} unexpected server exception", RequestIdFilter.requestId(request), exception);

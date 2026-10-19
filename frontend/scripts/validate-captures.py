@@ -36,7 +36,7 @@ phases = {}
 for response in manifest['responses']:
     require(not response.get('captureError'), 'Failed to capture a real response')
     if response['source'] == 'vite-proxy-transport-failure':
-        require(response['phase'] == 'backend-stopped' and response['status'] in (500, 502, 503, 504)
+        require(response['phase'] in ('backend-stopped', 'empty-restarting') and response['status'] in (500, 502, 503, 504)
                 and not response['headers'].get('x-request-id'), 'Not an actual stopped-backend proxy failure')
         transport.append({'index': response['index'], 'status': response['status'], 'note': 'Vite infrastructure error, not a Java OpenAPI error envelope'})
         continue
@@ -59,7 +59,7 @@ for response in manifest['responses']:
     accepted.append({'index': response['index'], 'path': response['contractPath'], 'phase': response['phase'], 'requestId': request_id, 'schemaValidation': 'PASS', 'javaLogCorrelation': 'PASS'})
 for phase in ('initial', 'restored', 'network-restored', 'empty'):
     require(phases.get(phase) == {'/health', '/api/v1/cities'}, 'Missing real endpoint response in phase: ' + phase)
-require({row['contractPath'] for row in manifest['responses'] if row['source'] == 'vite-proxy-transport-failure'} == {'/health', '/api/v1/cities'}, 'Backend-stop test must capture both actual proxy failures')
+require({row['contractPath'] for row in manifest['responses'] if row['source'] == 'vite-proxy-transport-failure' and row['phase'] == 'backend-stopped'} == {'/health', '/api/v1/cities'}, 'Backend-stop test must capture both actual proxy failures')
 result = {'exitCode': 0, 'javaResponsesAccepted': accepted, 'infrastructureFailures': transport, 'note': 'Real captured browser responses; no mock success payloads'}
 (directory / 'schema-validation.json').write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 print(f'CAPTURED_OPENAPI_VALIDATION=PASS; JAVA_RESPONSES={len(accepted)}; PROXY_FAILURES={len(transport)}; JAVA_LOG_CORRELATION=PASS')
