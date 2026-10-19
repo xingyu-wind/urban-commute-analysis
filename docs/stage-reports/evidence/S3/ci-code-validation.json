@@ -1,0 +1,195 @@
+{
+  "codeHead": "af8abc87db04592a89f964e44104bb94af716ba3",
+  "runId": 39184934522,
+  "jobId": 117845250400,
+  "conclusion": "success",
+  "runUrl": "https://github.com/xingyu-wind/urban-commute-analysis/actions/runs/39184934522",
+  "jobUrl": "https://github.com/xingyu-wind/urban-commute-analysis/actions/runs/39184934522/job/117845250400",
+  "jobs": [
+    {
+      "id": 117845250400,
+      "name": "regression",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 39184934522,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Initialize containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Check out source without persisted credentials",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Set isolated browser download directory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Set up Java 21",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Set up Node 24",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Set up Python 3.11",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Install locked contract validators",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Validate CI policy and OpenAPI specification and fixtures",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "MySQL 8.4 Flyway and backend integration regression",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Repeat complete backend suite in a new schema without cleaning prior data",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Standalone Java HTTP and actual response Schema checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Type check, unit tests and production build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Install isolated Playwright Chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Real browser proxy, stop and restore regression",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Ensure broken captures and Java startup really fail",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Retain test diagnostics on success or failure",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Post Set up Python 3.11",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 32
+        },
+        {
+          "name": "Post Set up Node 24",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 33
+        },
+        {
+          "name": "Post Set up Java 21",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 34
+        },
+        {
+          "name": "Post Check out source without persisted credentials",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 35
+        },
+        {
+          "name": "Stop containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 36
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 37
+        }
+      ]
+    }
+  ],
+  "highlights": [
+    "2026-10-19T01:22:05.7060020Z PASS migration blocked before writes: TEST_DB_SCHEMA",
+    "2026-10-19T01:22:18.1266342Z PASS migration blocked before writes: TEST_DB_SERVER_UUID",
+    "2026-10-19T01:22:28.5708371Z PASS migration blocked before writes: TEST_DB_URL",
+    "2026-10-19T01:22:39.7038046Z 2026-10-19T01:22:39.657Z  INFO 3907 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema `s3test_6f2c2c203061447f92d9b2ed84491644`, now at version v1 (execution time 00:00.075s)",
+    "2026-10-19T01:22:40.0010306Z 2026-10-19T01:22:39.907Z  INFO 3907 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema `s3test_6f2c2c203061447f92d9b2ed84491644`, now at version v2 (execution time 00:00.141s)",
+    "2026-10-19T01:22:42.0512122Z 2026-10-19T01:22:42.033Z  INFO 3907 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema `s3test_6f2c2c203061447f92d9b2ed84491644` is up to date. No migration necessary.",
+    "2026-10-19T01:22:43.5112305Z [INFO] Tests run: 60, Failures: 0, Errors: 0, Skipped: 0",
+    "2026-10-19T01:22:58.7928115Z 2026-10-19T01:22:58.717Z  INFO 4238 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema `s3test_c5ed1f4ac6a64101ab9543ecc78f9c08`, now at version v1 (execution time 00:00.082s)",
+    "2026-10-19T01:22:59.0006143Z 2026-10-19T01:22:58.949Z  INFO 4238 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema `s3test_c5ed1f4ac6a64101ab9543ecc78f9c08`, now at version v2 (execution time 00:00.127s)",
+    "2026-10-19T01:23:01.0190155Z 2026-10-19T01:23:01.008Z  INFO 4238 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema `s3test_c5ed1f4ac6a64101ab9543ecc78f9c08` is up to date. No migration necessary.",
+    "2026-10-19T01:23:02.4903246Z [INFO] Tests run: 60, Failures: 0, Errors: 0, Skipped: 0",
+    "2026-10-19T01:24:15.2880673Z CAPTURED_OPENAPI_VALIDATION=PASS; JAVA_RESPONSES=8; PROXY_FAILURES=2; JAVA_LOG_CORRELATION=PASS",
+    "2026-10-19T01:24:15.3169520Z BROWSER_INTEGRATION_EXIT=0; EVIDENCE=/home/runner/work/urban-commute-analysis/urban-commute-analysis/frontend/outputs/ci-browser",
+    "2026-10-19T01:24:15.8188511Z PASS reject-transport-outside-stop-window; actual rejection exit=1",
+    "2026-10-19T01:24:16.2435573Z PASS reject-real-time-source; actual rejection exit=1",
+    "2026-10-19T01:24:16.6448855Z PASS reject-missing-required-null; actual rejection exit=1",
+    "2026-10-19T01:24:17.7955756Z PASS reject-historical-timestamp; actual rejection exit=1",
+    "2026-10-19T01:24:18.3354064Z PASS reject-null-cities; actual rejection exit=1",
+    "2026-10-19T01:24:18.7139440Z PASS reject-missing-java-log; actual rejection exit=1",
+    "2026-10-19T01:24:19.4658514Z PASS actual-java-startup-failure; driver exit=1",
+    "2026-10-19T01:24:22.6474763Z  2026-10-19 01:21:10+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.11-1.el9 started.",
+    "2026-10-19T01:24:22.6476792Z  2026-10-19T01:21:11.087565Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.11) initializing of server in progress as process 78",
+    "2026-10-19T01:24:22.6493672Z  2026-10-19T01:21:13.488461Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.11) starting as process 117",
+    "2026-10-19T01:24:22.6503161Z  2026-10-19T01:21:13.863683Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.11'  socket: '/var/run/mysqld/mysqld.sock'  port: 0  MySQL Community Server - GPL.",
+    "2026-10-19T01:24:22.6504487Z  2026-10-19T01:21:15.477055Z 11 [System] [MY-013172] [Server] Received SHUTDOWN from user root. Shutting down mysqld (Version: 8.4.11).",
+    "2026-10-19T01:24:22.6505963Z  2026-10-19T01:21:16.263192Z 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 8.4.11)  MySQL Community Server - GPL.",
+    "2026-10-19T01:24:22.6507985Z  2026-10-19T01:21:16.675982Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.11) starting as process 1",
+    "2026-10-19T01:24:22.6517930Z  2026-10-19T01:21:17.021683Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.11'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.",
+    "2026-10-19T01:24:22.6518994Z  2026-10-19 01:21:10+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.11-1.el9 started."
+  ]
+}
