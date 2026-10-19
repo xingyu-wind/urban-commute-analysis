@@ -1,6 +1,7 @@
 package com.urbancommute;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -14,6 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.urbancommute.api.ApiResponse;
 import com.urbancommute.api.City;
 import com.urbancommute.api.ResponseMeta;
+import com.urbancommute.service.CityCatalog;
 import com.urbancommute.service.CityService;
 import com.urbancommute.web.ServiceUnavailableException;
 import jakarta.validation.Validator;
@@ -25,29 +27,63 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import org.flywaydb.core.Flyway;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ApiIntegrationTest {
     @Autowired MockMvc mvc;
     @Autowired ObjectMapper mapper;
     @Autowired TestRestTemplate http;
     @Autowired Validator validator;
+    @Autowired JdbcTemplate jdbc;
+    @Autowired Flyway flyway;
+    @Value("${spring.datasource.url}") String datasourceUrl;
     @LocalServerPort int port;
     @MockitoSpyBean CityService cityService;
+
+    @BeforeAll void loadSyntheticFixtureOnlyIntoDisposableCiDatabase() {
+        // Fail closed: CI and local testing must use a dedicated throwaway schema.
+        assertThat(datasourceUrl).contains("urban_commute_ci");
+        assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM city", Integer.class)).isZero();
+        assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM flyway_schema_history WHERE success=1", Integer.class)).isEqualTo(1);
+        jdbc.update("""
+                INSERT INTO dataset_registry(dataset_id,source_name,source_type,license_status,dataset_version,description)
+                VALUES ('s3-synthetic-cities-v1','S3 generated catalog fixture','synthetic_test',
+                        'not_applicable','v1','Invented test labels; no actual traffic data')""");
+        jdbc.update("INSERT INTO city(id,name,dataset_id) VALUES ('sample-beijing','北京','s3-synthetic-cities-v1')");
+        jdbc.update("INSERT INTO city(id,name,dataset_id) VALUES ('sample-shanghai','上海','s3-synthetic-cities-v1')");
+        jdbc.update("""
+                INSERT INTO region(id,city_id,name,center_lat,center_lon,coordinate_system)
+                VALUES ('sample-region','sample-beijing','合成一区',39.900000,116.400000,'WGS84')""");
+        jdbc.update("""
+                INSERT INTO road_segment(id,city_id,region_id,name)
+                VALUES ('sample-road','sample-beijing','sample-region','合成测试道路')""");
+        jdbc.update("""
+                INSERT INTO traffic_observation(dataset_id,city_id,road_segment_id,target_type,target_id,
+                                                observed_at,collected_at,avg_speed_kmh,congestion_index)
+                VALUES ('s3-synthetic-cities-v1','sample-beijing','sample-road','ROAD','sample-road',
+                        '2026-01-02 00:00:00.000','2026-01-03 00:00:00.000',32.50,3.25)""");
+    }
 
     private JsonNode json(MvcResult result) throws Exception {
         return mapper.readTree(result.getResponse().getContentAsString(StandardCharsets.UTF_8));
@@ -107,25 +143,51 @@ class ApiIntegrationTest {
         assertThat(next).isNotEqualTo(id);
     }
 
-    @Test void citiesHaveStringIdsSeedMetadataAndExplicitNull() throws Exception {
+    @Test void citiesAreReadFromActualMySqlWithProvenance() throws Exception {
         JsonNode body = json(mvc.perform(get("/api/v1/cities")).andExpect(status().isOk()).andReturn());
         assertThat(body.size()).isEqualTo(4);
         assertThat(body.path("code").asText()).isEqualTo("OK");
         assertThat(body.path("data").size()).isEqualTo(2);
-        assertThat(body.at("/data/0/id").isTextual()).isTrue();
-        assertThat(body.at("/data/0/id").asText()).isEqualTo("dev-city-001");
-        assertThat(body.at("/meta/sourceType").asText()).isEqualTo("dev_seed");
-        assertThat(body.at("/meta/datasetId").asText()).isEqualTo("dev-seed-cities-v1");
-        assertThat(body.path("meta").has("dataAsOf")).isTrue();
+        assertThat(body.at("/data/0/id").asText()).isEqualTo("sample-beijing");
+        assertThat(body.at("/meta/sourceType").asText()).isEqualTo("synthetic_test");
+        assertThat(body.at("/meta/datasetId").asText()).isEqualTo("s3-synthetic-cities-v1");
         assertThat(body.at("/meta/dataAsOf").isNull()).isTrue();
     }
 
+    @Test void repeatMigrationIsIdempotentAndDataRetained() {
+        assertThat(flyway.migrate().migrationsExecuted).isZero();
+        assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM flyway_schema_history WHERE success=1", Integer.class)).isEqualTo(1);
+        assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM city", Integer.class)).isEqualTo(2);
+    }
+
+    @Test void mysqlEnforcesForeignKeysCheckRangesAndDeduplication() {
+        assertThat(jdbc.queryForObject("SELECT AVG(avg_speed_kmh) FROM traffic_observation", java.math.BigDecimal.class))
+                .isEqualByComparingTo("32.50");
+        assertThatThrownBy(() -> jdbc.update("INSERT INTO region(id,city_id,name) VALUES ('bad-region','missing-city','x')"))
+                .isInstanceOf(DataIntegrityViolationException.class);
+        assertThatThrownBy(() -> jdbc.update("""
+                INSERT INTO traffic_observation(dataset_id,city_id,road_segment_id,target_type,target_id,observed_at,
+                    collected_at,avg_speed_kmh,congestion_index)
+                VALUES ('s3-synthetic-cities-v1','sample-beijing','sample-road','ROAD','sample-road',
+                    '2026-01-04','2026-01-04',-1,2)"""))
+                .isInstanceOf(DataIntegrityViolationException.class);
+        assertThatThrownBy(() -> jdbc.update("""
+                INSERT INTO traffic_observation(dataset_id,city_id,road_segment_id,target_type,target_id,observed_at,
+                    collected_at,avg_speed_kmh,congestion_index)
+                VALUES ('s3-synthetic-cities-v1','sample-beijing','sample-road','ROAD','sample-road',
+                    '2026-01-02','2026-01-03',32.50,3.25)"""))
+                .isInstanceOf(DataIntegrityViolationException.class);
+        assertThatThrownBy(() -> jdbc.update("""
+                INSERT INTO road_segment(id,city_id,region_id,name)
+                VALUES ('cross-city','sample-shanghai','sample-region','invalid cross-city road')"""))
+                .isInstanceOf(DataIntegrityViolationException.class);
+    }
+
     @Test void emptyServiceResultRemainsHttp200Array() throws Exception {
-        doReturn(List.of()).when(cityService).listCities();
+        doReturn(new CityCatalog(List.of(), "database_catalog", null)).when(cityService).listCities();
         JsonNode body = live("cities-empty", "/api/v1/cities", 200);
-        assertThat(body.path("data").isArray()).isTrue();
         assertThat(body.path("data").isEmpty()).isTrue();
-        assertThat(body.at("/meta/sourceType").asText()).isEqualTo("dev_seed");
+        assertThat(body.at("/meta/sourceType").asText()).isEqualTo("database_catalog");
     }
 
     @Test void unknownRouteUsesUniform404() throws Exception {
@@ -155,7 +217,7 @@ class ApiIntegrationTest {
     }
 
     @Test void unexpectedServiceExceptionIsSafe500OverRealHttp() throws Exception {
-        doThrow(new IllegalStateException("private-path-and-secret-example" )).when(cityService).listCities();
+        doThrow(new IllegalStateException("private-path-and-secret-example")).when(cityService).listCities();
         JsonNode body = live("error-500", "/api/v1/cities", 500);
         assertError(body, "INTERNAL_ERROR");
         assertThat(body.toString()).doesNotContain("private-path", "stackTrace", "exception");
@@ -179,7 +241,7 @@ class ApiIntegrationTest {
     }
 
     @Test void cityValidationRejectsInvalidIdsAndBlankNames() {
-        assertThat(validator.validate(new City("dev-city-001", "北京"))).isEmpty();
+        assertThat(validator.validate(new City("sample-beijing", "北京"))).isEmpty();
         assertThat(validator.validate(new City("INVALID ID", " "))).hasSize(2);
     }
 }
