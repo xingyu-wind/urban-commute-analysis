@@ -1,0 +1,82 @@
+{
+  "numTotalTests": 49,
+  "numPassedTests": 49,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "success": true,
+  "scope": "Local Vue/client/runtime/proxy unit tests using test fetch responses; real MySQL/browser regression is separately verified by final Head CI",
+  "appCases": [
+    {
+      "name": "city dashboard labels dev_seed without treating it as synthetic or actual traffic",
+      "status": "passed"
+    },
+    {
+      "name": "city dashboard labels historical_snapshot without treating it as synthetic or actual traffic",
+      "status": "passed"
+    },
+    {
+      "name": "city dashboard labels authorized_live without treating it as synthetic or actual traffic",
+      "status": "passed"
+    },
+    {
+      "name": "city dashboard labels simulation without treating it as synthetic or actual traffic",
+      "status": "passed"
+    },
+    {
+      "name": "city dashboard labels mock without treating it as synthetic or actual traffic",
+      "status": "passed"
+    },
+    {
+      "name": "city dashboard labels forecast without treating it as synthetic or actual traffic",
+      "status": "passed"
+    },
+    {
+      "name": "city dashboard labels mixed_catalog without treating it as synthetic or actual traffic",
+      "status": "passed"
+    },
+    {
+      "name": "city dashboard qualifies historical_snapshot as a database registration, not verified external authorization",
+      "status": "passed"
+    },
+    {
+      "name": "city dashboard qualifies authorized_live as a database registration, not verified external authorization",
+      "status": "passed"
+    },
+    {
+      "name": "city dashboard shows loading without prematurely claiming the backend is healthy",
+      "status": "passed"
+    },
+    {
+      "name": "city dashboard renders real-contract synthetic MySQL catalog choices and changes the selected city",
+      "status": "passed"
+    },
+    {
+      "name": "city dashboard describes an empty database_catalog response without inferring any city provenance",
+      "status": "passed"
+    },
+    {
+      "name": "city dashboard describes an empty synthetic_test response without inferring any city provenance",
+      "status": "passed"
+    },
+    {
+      "name": "city dashboard describes an empty authorized_live response without inferring any city provenance",
+      "status": "passed"
+    },
+    {
+      "name": "city dashboard updates the notice when actual responses change from synthetic to mixed, registered and empty",
+      "status": "passed"
+    },
+    {
+      "name": "city dashboard shows HTTP failure and restores success after retry",
+      "status": "passed"
+    },
+    {
+      "name": "city dashboard removes stale health and cities when a later request fails over the network",
+      "status": "passed"
+    },
+    {
+      "name": "city dashboard detects a stopped backend on the 15-second automatic check",
+      "status": "passed"
+    }
+  ]
+}

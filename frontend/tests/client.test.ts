@@ -16,15 +16,25 @@ describe('contract-based API client', () => {
     expect(fetch.mock.calls.map(call => call[0])).toEqual(['/health', '/api/v1/cities'])
     expect(fetch.mock.calls[0]?.[1]).toMatchObject({ headers: { Accept: 'application/json' }, cache: 'no-store' })
   })
-  it('accepts an empty successful city list with dev metadata', async () => {
-    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(json({ ...cities, data: [] })))
+  it('accepts an empty successful city list with database catalog metadata', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(json({ ...cities, data: [], meta: { ...cities.meta, sourceType: 'database_catalog', datasetId: null } })))
     expect((await getCities()).data).toEqual([])
+  })
+  it.each(['dev_seed', 'synthetic_test', 'historical_snapshot', 'authorized_live', 'simulation', 'mock', 'forecast'])('accepts explicit %s catalog provenance', async sourceType => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(json({ ...cities, meta: { ...cities.meta, sourceType } })))
+    expect((await getCities()).meta.sourceType).toBe(sourceType)
+  })
+  it('accepts mixed sources without inventing a single dataset', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(json({ ...cities, meta: { ...cities.meta, sourceType: 'mixed_catalog', datasetId: null } })))
+    expect((await getCities()).meta.datasetId).toBeNull()
   })
   it.each([
     { ...cities, data: [{ id: 1, name: '北京' }] },
     { ...cities, data: null },
     { ...cities, meta: { ...cities.meta, sourceType: 'real_time' } },
     { ...cities, meta: { ...cities.meta, dataAsOf: health.timestamp } },
+    { ...cities, meta: { ...cities.meta, sourceType: 'mixed_catalog' } },
+    { ...cities, meta: { ...cities.meta, sourceType: 'authorized_live', datasetId: null } },
   ])('rejects malformed city data rather than presenting a fake success', async body => {
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(json(body)))
     await expect(getCities()).rejects.toMatchObject({ kind: 'contract' })

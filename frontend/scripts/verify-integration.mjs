@@ -107,7 +107,7 @@ async function startJava(name, empty = false) {
   const javaHome = process.env.JAVA_HOME
   if (!javaHome) throw new Error('JAVA_HOME is required for this process')
   const jar = path.join(root, 'backend', 'target', 'urban-commute-backend-0.1.0-SNAPSHOT.jar')
-  const child = launch(name, javaExecutable(javaHome), ['-jar', jar, '--server.address=127.0.0.1', `--server.port=${javaPort}`, ...(empty ? ['--commute.cities.seed-enabled=false'] : [])])
+  const child = launch(name, javaExecutable(javaHome), ['-jar', jar, '--server.address=127.0.0.1', `--server.port=${javaPort}`, ...(empty ? ['--commute.cities.dataset-filter=absent-ci-dataset'] : [])])
   await waitForHttp(`http://127.0.0.1:${javaPort}/health`, child)
   return child
 }
@@ -142,7 +142,7 @@ try {
         const body = await response.body()
         row.bodyFile = `response-${index}.${response.headers()['content-type']?.includes('application/json') ? 'json' : 'txt'}`
         writeFileSync(path.join(output, row.bodyFile), body, { flag: 'wx' })
-        row.source = response.status() !== 200 && responsePhase === 'backend-stopped' ? 'vite-proxy-transport-failure' : 'java-via-vite'
+        row.source = response.status() !== 200 && ['backend-stopped', 'empty-restarting'].includes(responsePhase) ? 'vite-proxy-transport-failure' : 'java-via-vite'
       } catch (error) { row.captureError = error.message }
     })())
   })
@@ -152,14 +152,16 @@ try {
   await expect(page.getByLabel('城市', { exact: true })).toBeVisible()
   const options = await page.locator('#city-select option').allTextContents()
   expect(options).toEqual(['请选择城市', '北京', '上海'])
-  await page.getByLabel('城市', { exact: true }).selectOption('dev-city-001')
+  await page.getByLabel('城市', { exact: true }).selectOption('sample-beijing')
   await expect(page.getByTestId('selected-city')).toHaveText('北京')
-  step('real-beijing-selection', { cityId: 'dev-city-001' })
-  await page.getByLabel('城市', { exact: true }).selectOption('dev-city-002')
+  step('real-beijing-selection', { cityId: 'sample-beijing' })
+  await page.getByLabel('城市', { exact: true }).selectOption('sample-shanghai')
   await expect(page.getByTestId('selected-city')).toHaveText('上海')
-  await expect(page.locator('.source-badge')).toContainText('dev_seed')
+  await expect(page.locator('.source-badge')).toContainText('synthetic_test')
+  await expect(page.locator('.data-notice')).toContainText('synthetic_test 合成测试数据')
+  await expect(page.locator('.data-notice')).not.toContainText('北京、上海')
   await page.screenshot({ path: path.join(output, 'success.png'), fullPage: true })
-  step('real-shanghai-selection-and-source', { cityId: 'dev-city-002', options })
+  step('real-shanghai-selection-and-source', { cityId: 'sample-shanghai', options })
   await page.setViewportSize({ width: 1024, height: 768 })
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
   await page.screenshot({ path: path.join(output, 'desktop-1024.png'), fullPage: true })
@@ -175,6 +177,7 @@ try {
   await expect(page.getByTestId('service-status')).toHaveText('服务暂不可用', { timeout: 22000 })
   await expect(page.getByText('城市列表获取失败', { exact: true })).toBeVisible()
   await expect(page.locator('#city-select')).toHaveCount(0)
+  await expect(page.locator('.data-notice')).toContainText('暂无法确认数据来源')
   await page.screenshot({ path: path.join(output, 'backend-stopped.png'), fullPage: true })
   step('backend-stop-detected-automatically', { noRetryClick: true })
 
@@ -198,13 +201,17 @@ try {
   await expect(page.getByTestId('service-status')).toHaveText('服务正常')
   step('browser-network-retry-restored-success')
 
+  // Automatic refresh can run while the next Java process is starting on slower machines.
+  phase = 'empty-restarting'
   await stop(java)
   java = await startJava('java-empty', true)
   phase = 'empty'
   await page.getByRole('button', { name: '重新请求', exact: true }).click()
   await expect(page.getByText('暂无可选城市', { exact: true })).toBeVisible()
   await expect(page.getByTestId('service-status')).toHaveText('服务正常')
-  await expect(page.locator('.source-badge')).toContainText('dev_seed')
+  await expect(page.locator('.source-badge')).toContainText('database_catalog')
+  await expect(page.locator('.data-notice')).toContainText('本次 API 未返回城市条目')
+  await expect(page.locator('.data-notice')).not.toContainText('synthetic_test')
   await page.screenshot({ path: path.join(output, 'empty.png'), fullPage: true })
   step('real-java-empty-list-rendered-as-success')
   expect(manifest.pageErrors).toEqual([])

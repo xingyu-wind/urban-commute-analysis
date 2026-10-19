@@ -29,7 +29,16 @@ def mutate_body(directory, predicate, mutation):
     file.write_text(json.dumps(body, ensure_ascii=False), encoding='utf-8')
 
 
+def mislabel_transport(directory):
+    file = directory / 'manifest.json'
+    changed = json.loads(file.read_text(encoding='utf-8'))
+    row = next(row for row in changed['responses'] if row['source'] == 'vite-proxy-transport-failure')
+    row['phase'] = 'initial'
+    file.write_text(json.dumps(changed, ensure_ascii=False), encoding='utf-8')
+
+
 cases = {
+    'reject-transport-outside-stop-window': mislabel_transport,
     'reject-real-time-source': lambda directory: mutate_body(directory,
         lambda row: row['phase'] == 'initial' and row['contractPath'] == '/api/v1/cities',
         lambda body: body['meta'].update(sourceType='real_time')),

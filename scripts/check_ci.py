@@ -22,6 +22,9 @@ require(workflow['permissions'] == {'contents': 'read'}, 'Only read-only source 
 job = workflow['jobs']['regression']
 require(job['runs-on'] == 'ubuntu-24.04', 'Unexpected runner')
 require('permissions' not in job, 'Job must not override read-only permissions')
+mysql = job.get('services', {}).get('mysql', {})
+require(mysql.get('image') == 'mysql:8.4', 'S3 requires real MySQL 8.4')
+require('DB_URL' not in job.get('env', {}), 'Integration tests must not inherit a persistent datasource')
 steps = job['steps']
 actions = {}
 for step in steps:
@@ -38,6 +41,8 @@ require(actions['actions/setup-node']['node-version'].startswith('24.'), 'Node m
 for action in ('actions/setup-java', 'actions/setup-node', 'actions/setup-python'):
     require((ROOT / actions[action]['cache-dependency-path']).is_file(), 'Invalid dependency cache path')
 commands = '\n'.join(step.get('run', '') for step in steps)
+require('s3_database.py --probe-isolation' in commands, 'Missing pre-migration isolation rejection evidence')
+require('s3-repeat.json' in commands, 'Missing repeated suite with a fresh schema')
 for command in ('bash backend/mvnw', 'npm ci', 'npm run type-check', 'npm test', 'npm run build',
                 'contracts/validate_contract.py', 'backend/scripts/verify_http.py', 'test:e2e', 'check-regression-failures.py'):
     require(command in commands, 'Missing regression command: ' + command)

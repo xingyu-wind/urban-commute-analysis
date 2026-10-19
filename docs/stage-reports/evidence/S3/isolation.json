@@ -1,0 +1,24 @@
+{
+  "mysqlVersion": "8.4.11",
+  "schema": "s3test_b6e9b50ae0094ca2bfe72e9b502ec0c7",
+  "account": "s3t_d0099f466f004ba3724c",
+  "serverUuid": "3df5d695-cb59-11f1-af6c-00ffd09b65ea",
+  "newSchema": true,
+  "newScopedAccount": true,
+  "existingDataDeleted": false,
+  "rejectedBeforeMigration": [
+    {
+      "setting": "TEST_DB_SCHEMA",
+      "tableCountAfter": 0
+    },
+    {
+      "setting": "TEST_DB_SERVER_UUID",
+      "tableCountAfter": 0
+    },
+    {
+      "setting": "TEST_DB_URL",
+      "tableCountAfter": 0
+    }
+  ],
+  "exitCode": 0
+}

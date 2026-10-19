@@ -70,7 +70,11 @@ export async function getCities(): Promise<CitiesResponse> {
       && typeof city.name === 'string' && !!city.name.trim() && city.name.length <= 100)
     || !object(value.meta) || !keys(value.meta, ['requestId', 'dataAsOf', 'sourceType', 'datasetId'])
     || typeof value.meta.requestId !== 'string' || !uuid.test(value.meta.requestId)
-    || value.meta.dataAsOf !== null || value.meta.sourceType !== 'dev_seed' || value.meta.datasetId !== 'dev-seed-cities-v1') {
+    || value.meta.dataAsOf !== null || typeof value.meta.sourceType !== 'string'
+    || !['database_catalog', 'mixed_catalog', 'dev_seed', 'synthetic_test', 'historical_snapshot', 'authorized_live', 'simulation', 'mock', 'forecast'].includes(value.meta.sourceType)
+    || ((value.meta.sourceType === 'database_catalog' || value.meta.sourceType === 'mixed_catalog')
+      ? value.meta.datasetId !== null
+      : typeof value.meta.datasetId !== 'string' || !value.meta.datasetId.trim() || value.meta.datasetId.length > 64)) {
     throw new ApiClientError('contract', '城市响应不符合接口约定，未将其展示为有效数据。')
   }
   return value as unknown as CitiesResponse

@@ -1,0 +1,6 @@
+{
+  "filesScanned": 245,
+  "findings": [],
+  "reachableHistoryCheckedForGeneratedLocalCredentials": true,
+  "scope": "known local credentials plus common token/private-key patterns; not a universal secret-detection guarantee"
+}

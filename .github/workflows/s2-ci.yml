@@ -1,4 +1,4 @@
-name: S2 regression
+name: S3 MySQL and S2 regression
 
 on:
   pull_request:
@@ -17,8 +17,20 @@ concurrency:
 jobs:
   regression:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 35
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: ci-ephemeral-only
+          MYSQL_DATABASE: urban_commute_ci
+        ports:
+          - 33067:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -pci-ephemeral-only"
+          --health-interval=10s --health-timeout=5s --health-retries=15
     env:
+      S3_ADMIN_PASSWORD: ci-ephemeral-only
       CONTRACT_PYTHON: python
       BROWSER_CHANNEL: chromium
     steps:
@@ -54,8 +66,10 @@ jobs:
           python scripts/check_ci.py
           python -m openapi_spec_validator contracts/openapi.yaml
           python contracts/validate_contract.py
-      - name: Backend tests and executable jar via Linux Maven Wrapper
-        run: bash backend/mvnw -f backend/pom.xml -B -ntp verify
+      - name: MySQL 8.4 Flyway and backend integration regression
+        run: python scripts/s3_database.py --probe-isolation --output backend/target/s3-first.json -- bash backend/mvnw -f backend/pom.xml -B -ntp verify
+      - name: Repeat complete backend suite in a new schema without cleaning prior data
+        run: python scripts/s3_database.py --output backend/target/s3-repeat.json -- bash backend/mvnw -f backend/pom.xml -B -ntp verify
       - name: Standalone Java HTTP and actual response Schema checks
         run: python backend/scripts/verify_http.py --output backend/target/ci-http
       - name: Install locked frontend dependencies
@@ -83,10 +97,12 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: s2-regression-${{ github.run_id }}
+          name: s3-regression-${{ github.run_id }}
           path: |
             backend/target/surefire-reports/
             backend/target/ci-http/
+            backend/target/s3-*.json
+            backend/target/s3-*.log
             frontend/outputs/
           if-no-files-found: warn
           retention-days: 7
