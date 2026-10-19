@@ -15,8 +15,8 @@ ON DUPLICATE KEY UPDATE id=id;
 -- WGS84 point is an invented renderer fixture and NOT the documented position of a real region.
 -- West has no coordinate to verify it is not plotted as if geolocated.
 INSERT INTO region (id,city_id,name,center_lat,center_lon,coordinate_system) VALUES
-('s4-demo-east','演示东区',39.900000,116.400000,'WGS84'),
-('s4-demo-west','演示西区',NULL,NULL,NULL)
+('s4-demo-east','s4-demo-city','演示东区',39.900000,116.400000,'WGS84'),
+('s4-demo-west','s4-demo-city','演示西区',NULL,NULL,NULL)
 ON DUPLICATE KEY UPDATE id=id;
 
 INSERT INTO road_segment (id,city_id,region_id,name) VALUES
