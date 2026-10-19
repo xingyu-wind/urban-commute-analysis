@@ -12,3 +12,5 @@
 - demo-smoke.json：独立新库的演示启动入口实际就绪并正常退出。
 
 完整原始日志留在本机 backend/target/s4-integrated；CI 日志和短期下载产物以 S4 报告的 GitHub Run/Job 为准。本目录未包含私有实例口令。故障用例中 not-a-real-password 仅为不可达假数据源的固定测试值。
+
+cloud-initial.json 是北京时间2026-10-19 23:50的实际 GitHub API 快照：实现提交 PR Run排队超过15分钟、无runner、无执行步骤；云端CI为NOT_VERIFIED，不能将该快照当作通过证明。

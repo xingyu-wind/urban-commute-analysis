@@ -1,0 +1,29 @@
+{
+  "observedAtUtc": "2026-10-19 15:50:05 UTC",
+  "implementationSha": "766bf78add1f7b01e19f59292305c9954d7939fe",
+  "result": "NOT_VERIFIED",
+  "reason": "GitHub job queued for over 15 minutes, no runner assigned and no executed steps",
+  "runs": [
+    {
+      "id": 39279086541,
+      "name": "S4 traffic analytics and S2-S3 regression",
+      "status": "queued",
+      "conclusion": null,
+      "run_number": 31,
+      "jobs_url": "https://api.github.com/repos/xingyu-wind/urban-commute-analysis/actions/runs/39279086541/jobs",
+      "logs_url": "https://api.github.com/repos/xingyu-wind/urban-commute-analysis/actions/runs/39279086541/logs",
+      "workflow_id": 388541586
+    }
+  ],
+  "jobs": [
+    {
+      "id": 118149926638,
+      "name": "regression",
+      "status": "queued",
+      "conclusion": null,
+      "run_id": 39279086541,
+      "logs_url": null,
+      "steps": null
+    }
+  ]
+}
