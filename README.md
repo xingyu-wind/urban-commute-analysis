@@ -6,9 +6,9 @@
 
 ## 技术规划与当前状态
 
-规划采用 Python 离线清洗、MySQL、HDFS/Hive、机器学习、Spring Boot 和 Vue。S2 已据总规划师通知 ACCEPTED，S3 实现 MySQL 8.4 + Flyway + JDBC 城市目录链路，交付位于现有 [PR #3](https://github.com/xingyu-wind/urban-commute-analysis/pull/3)，等待独立审核，尚未合并。HDFS/Hive、真实交通采集、统计与预测留待后续正式阶段，不提前进入 S4。
+规划采用 Python 离线清洗、MySQL、HDFS/Hive、机器学习、Spring Boot 和 Vue。S2、S3 已正式 ACCEPTED；S3 合并基线为 `e487e64`。S4 在 MySQL 8.4 + Flyway + JDBC 链路上增加交通统计、ECharts、区域点位地图与比赛大屏，状态为 SUBMITTED_FOR_INDEPENDENT_REVIEW。HDFS/Hive、ETL 与预测留待后续阶段，本次不进入 S5。
 
-实际接口为 `GET /health`、`GET /api/v1/cities`；城市来自 MySQL。测试北京/上海标为 `synthetic_test`，不是交通实测；空/混合目录有独立标记，dataAsOf=null。报告与实际证据见 [S3 报告](docs/stage-reports/S3.md)。
+实际接口为 `GET /health`、`GET /api/v1/cities` 和 `/api/v1/traffic/{summary,series,regions,roads}`；城市与统计来自 MySQL。测试北京/上海标为 `synthetic_test`，不是交通实测；空/混合目录有独立标记，dataAsOf=null。报告与实际证据见 [S4 报告](docs/stage-reports/S4.md)，[启动与演示](docs/guides/s4-dashboard.md)，[知识关联说明](docs/learning/S4-知识关联与项目实现说明.md)。
 
 S1 的 PR #1 已 Squash Merge，main 合并 SHA 为 `b47f0af593f4173d4a5e12af607c47a9343f64a5`。真实队友参与、交叉审核与双机协作的 `S1-COLLAB-DEBT` 仍未关闭；不把文档合并或单人测试当成双人协作补验。
 
@@ -37,8 +37,8 @@ npm.cmd run dev
 
 | 目录 | 职责 |
 |---|---|
-| backend/ | 已运行的 Spring Boot 两接口、服务层、DTO、错误处理与测试；未实现鉴权 |
-| frontend/ | 已运行的服务状态与城市选择页面、API 客户端、组件及浏览器验证；图表未实现 |
+| backend/ | Spring Boot 城市与统计 API、参数校验、JDBC、DTO、错误处理与集成测试；未实现鉴权 |
+| frontend/ | 服务与城市目录、ECharts 分析工作台、区域点位地图、大屏及浏览器验证 |
 | database/ | MySQL 建表、迁移和字段说明 |
 | data-pipeline/ | 数据校验、清洗、标准化和导入 |
 | bigdata/ | HDFS 分区规划、Hive DDL 与离线聚合 |
@@ -62,6 +62,6 @@ GitHub 分支协作入口见 [协作规范](docs/guides/collaboration.md) 和 [P
 
 ## 后续阶段与数据边界
 
-S3 的运行命令、测试隔离与验收证据见 [S3 操作说明](docs/guides/s3-mysql.md) 和 [S3 报告](docs/stage-reports/S3.md)。S2 历史证据保留，不将当前实现倒写成过去成果。PR 未合并；S1 协作债务保持 OPEN。
+S3 的运行命令、测试隔离与验收证据见 [S3 操作说明](docs/guides/s3-mysql.md) 和 [S3 报告](docs/stage-reports/S3.md)。S2 历史证据保留，不将当前实现倒写成过去成果。S4 PR 保持未合并；S1 协作债务保持 OPEN。
 
 本项目独立实现，不直接复刻或上传第三方毕业设计。参考资料须先核实授权；原始第三方 ZIP、未授权数据、真实凭据和个人数据不得纳入仓库。环境模板见 `.env.example`，复制后填写的本地 `.env` 不应提交。

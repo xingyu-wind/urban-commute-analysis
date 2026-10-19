@@ -1,0 +1,24 @@
+{
+  "code": "OK",
+  "message": "Success",
+  "data": {
+    "window": {
+      "cityId": "s4-demo-city",
+      "from": "2026-10-15T00:00:00Z",
+      "to": "2026-10-17T00:00:00Z",
+      "level": "CITY"
+    },
+    "metrics": {
+      "sampleCount": 3,
+      "avgSpeedKmh": 36,
+      "congestionIndex": 5,
+      "dataAsOf": "2026-10-16T08:00:00Z"
+    }
+  },
+  "meta": {
+    "requestId": "00000000-0000-4000-8000-000000000004",
+    "dataAsOf": "2026-10-16T08:00:00Z",
+    "sourceType": "synthetic_test",
+    "datasetId": "s4-synthetic-v1"
+  }
+}

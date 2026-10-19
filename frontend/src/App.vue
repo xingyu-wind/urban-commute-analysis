@@ -2,6 +2,7 @@
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { ApiClientError, getCities, getHealth } from './api/client'
 import CitySelector from './components/CitySelector.vue'
+import TrafficDashboard from './components/TrafficDashboard.vue'
 import type { CitiesResponse, HealthResponse } from './types/api'
 
 const health = ref<HealthResponse | null>(null)
@@ -73,7 +74,7 @@ onUnmounted(() => { disposed = true; clearInterval(interval) })
 </script>
 
 <template>
-  <div class="app-shell">
+  <div class="app-shell" :class="{ 'has-analysis': selectedId }">
     <header class="topbar">
       <div class="brand"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none"><path d="M7 20V8l7 5 7-5v12M7 8l7-3 7 3M14 13v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>城市通勤<span class="brand-divider">/</span>数据工作台</span></div>
       <span class="environment"><span class="dot"></span>本地开发环境</span>
@@ -109,6 +110,8 @@ onUnmounted(() => { disposed = true; clearInterval(interval) })
           <div v-if="cities" class="dataset-info"><div><span>数据集</span><code>{{ cities.meta.datasetId ?? '—（空目录或混合来源）' }}</code></div><div><span>数据采集时间</span><span>不适用（城市目录非交通观测）</span></div></div>
         </section>
       </div>
+
+      <TrafficDashboard v-if="selectedId" :city-id="selectedId" :city-name="selectedCity?.name ?? selectedId" />
 
       <aside class="data-notice"><span class="notice-icon" aria-hidden="true">i</span><div><strong>数据来源说明</strong><p>{{ sourceDescription }}</p></div></aside>
       <footer><span>城市通勤 · 以明确的数据来源为基础</span><span>健康状态与城市列表均来自后端请求</span></footer>

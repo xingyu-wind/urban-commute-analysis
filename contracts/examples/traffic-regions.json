@@ -1,0 +1,46 @@
+{
+  "code": "OK",
+  "message": "Success",
+  "data": {
+    "window": {
+      "cityId": "s4-demo-city",
+      "from": "2026-10-15T00:00:00Z",
+      "to": "2026-10-17T00:00:00Z",
+      "level": "REGION"
+    },
+    "items": [
+      {
+        "id": "s4-demo-east",
+        "name": "演示东区",
+        "latitude": 39.9,
+        "longitude": 116.4,
+        "coordinateSystem": "WGS84",
+        "metrics": {
+          "sampleCount": 2,
+          "avgSpeedKmh": 25,
+          "congestionIndex": 6,
+          "dataAsOf": "2026-10-16T08:00:00Z"
+        }
+      },
+      {
+        "id": "s4-demo-west",
+        "name": "演示西区",
+        "latitude": null,
+        "longitude": null,
+        "coordinateSystem": null,
+        "metrics": {
+          "sampleCount": 1,
+          "avgSpeedKmh": 50,
+          "congestionIndex": 2,
+          "dataAsOf": "2026-10-15T08:00:00Z"
+        }
+      }
+    ]
+  },
+  "meta": {
+    "requestId": "00000000-0000-4000-8000-000000000004",
+    "dataAsOf": "2026-10-16T08:00:00Z",
+    "sourceType": "synthetic_test",
+    "datasetId": "s4-synthetic-v1"
+  }
+}

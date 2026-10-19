@@ -1,0 +1,1 @@
+{"code":"OK","message":"Success","data":{"window":{"cityId":"sample-shanghai","from":"2026-10-15T00:00:00Z","to":"2026-10-17T00:00:00Z","level":"REGION"},"items":[]},"meta":{"requestId":"544817ac-3415-4a74-a267-24adf384d406","dataAsOf":null,"sourceType":"synthetic_test","datasetId":"s3-synthetic-cities-v1"}}

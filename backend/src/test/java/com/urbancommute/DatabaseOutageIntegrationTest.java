@@ -35,7 +35,9 @@ class DatabaseOutageIntegrationTest {
 
     @Test void jdbcUnavailableReturnsSafe503WhileLivenessStaysUp() throws Exception {
         assertThat(http.getForObject("/health", JsonNode.class).path("status").asText()).isEqualTo("UP");
-        var response = http.getForEntity("/api/v1/cities", JsonNode.class);
+        for (String route : new String[]{"/api/v1/cities", "/api/v1/traffic/summary", "/api/v1/traffic/series", "/api/v1/traffic/regions", "/api/v1/traffic/roads"}) {
+        String query = route.contains("/traffic/") ? "?cityId=s4-demo-city&from=2026-10-15T00:00:00Z&to=2026-10-17T00:00:00Z" : "";
+        var response = http.getForEntity(route + query, JsonNode.class);
         assertThat(response.getStatusCode().value()).isEqualTo(503);
         var body = response.getBody();
         assertThat(body.path("code").asText()).isEqualTo("SERVICE_UNAVAILABLE");
@@ -45,6 +47,7 @@ class DatabaseOutageIntegrationTest {
         assertThat(http.getForObject("/health", JsonNode.class).path("status").asText()).isEqualTo("UP");
         Path directory = Path.of("target", "http-test-evidence");
         Files.createDirectories(directory);
-        Files.writeString(directory.resolve("actual-jdbc-unavailable.json"), body.toPrettyString());
+        Files.writeString(directory.resolve("actual-jdbc-unavailable-" + route.substring(route.lastIndexOf('/') + 1) + ".json"), body.toPrettyString());
+        }
     }
 }

@@ -16,6 +16,7 @@
     "test:e2e": "node scripts/verify-integration.mjs"
   },
   "dependencies": {
+    "echarts": "6.1.0",
     "vue": "3.5.44"
   },
   "devDependencies": {

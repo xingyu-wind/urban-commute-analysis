@@ -1,6 +1,6 @@
 # S4 执行蓝图｜交通统计、ECharts 和地图大屏
 
-状态：**IN_PROGRESS，不代表功能已完成或验收通过**。依据 2026-10-19 总规划 V3.0 和已核对的 S3 main `e487e647f8b2737f5377139e5a77c94a2daa27d0`。
+状态：**SUBMITTED_FOR_INDEPENDENT_REVIEW**。本文件保留执行蓝图，实际功能、测试及交付以 [S4 报告](../stage-reports/S4.md) 为准；不代表已经 ACCEPTED。依据 2026-10-19 总规划 V3.0 和已核对的 S3 main `e487e647f8b2737f5377139e5a77c94a2daa27d0`。
 
 分支：`feat/s4-traffic-dashboard`；禁止在独立总规划师裁定与明确合并授权前合并 PR。
 

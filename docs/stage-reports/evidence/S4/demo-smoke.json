@@ -1,0 +1,10 @@
+{
+  "mysqlVersion": "8.4.11",
+  "schema": "s3test_dd383e195eb642ff84a1abc7aec42d9d",
+  "account": "s3t_fd2e008e864a482497bd",
+  "serverUuid": "3df5d695-cb59-11f1-af6c-00ffd09b65ea",
+  "newSchema": true,
+  "newScopedAccount": true,
+  "existingDataDeleted": false,
+  "exitCode": 0
+}

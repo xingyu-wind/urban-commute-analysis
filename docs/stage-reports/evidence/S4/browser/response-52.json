@@ -1,0 +1,1 @@
+{"code":"OK","message":"Success","data":{"window":{"cityId":"s4-demo-city","from":"2026-10-18T00:00:00Z","to":"2026-10-19T00:00:00Z","level":"CITY"},"metrics":{"sampleCount":0,"avgSpeedKmh":null,"congestionIndex":null,"dataAsOf":null}},"meta":{"requestId":"8ab038eb-efe1-46bb-a09f-44ecaf5b585a","dataAsOf":null,"sourceType":"synthetic_test","datasetId":"s4-synthetic-v1"}}
