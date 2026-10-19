@@ -81,7 +81,7 @@ onUnmounted(() => { disposed = true; clearInterval(interval) })
 
     <main>
       <section class="page-heading">
-        <div><p class="eyebrow">服务与城市</p><h1>城市通勤数据分析及智能预测系统</h1><p class="subtitle">连接后端服务，选择城市。城市列表来自 MySQL；合成测试条目必须明确标注来源，当前没有已核验的真实交通观测。</p></div>
+        <div><p class="eyebrow">服务与城市</p><h1>城市通勤数据分析及智能预测系统</h1><p class="subtitle">连接后端服务，选择城市。城市目录非交通观测；来源及授权状态来自数据库登记，外部授权真实性仍需另行核实。</p></div>
         <button class="refresh-button" :disabled="loading" @click="refresh"><svg :class="{ spinning: loading }" viewBox="0 0 20 20" aria-hidden="true"><path d="M16 8a6.3 6.3 0 1 0 .1 4M16 3v5h-5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>{{ loading ? '正在请求…' : '重新请求' }}</button>
       </section>
 

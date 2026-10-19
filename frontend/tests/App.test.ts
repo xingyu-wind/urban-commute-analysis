@@ -33,6 +33,7 @@ describe('city dashboard', () => {
     expect(wrapper.get('.data-notice').text()).toContain('仅为数据库登记')
     expect(wrapper.get('.data-notice').text()).toContain('不表示外部授权真实性已经核实')
     expect(wrapper.get('.source-badge').text()).not.toContain('已授权')
+    expect(wrapper.get('.subtitle').text()).toContain('外部授权真实性仍需另行核实')
   })
   it('shows loading without prematurely claiming the backend is healthy', () => {
     vi.stubGlobal('fetch', vi.fn(() => new Promise(() => {})))
