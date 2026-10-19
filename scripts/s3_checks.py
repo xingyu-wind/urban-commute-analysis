@@ -46,9 +46,10 @@ def main():
             raise RuntimeError('Evidence query requires the isolated datasource')
         env = os.environ.copy()
         env['MYSQL_PWD'] = env['DB_PASSWORD']
+        env['MYSQL_TEST_LOGIN_FILE'] = str(output / 'nonexistent-login.cnf')
         query = "SELECT VERSION(), DATABASE(), @@time_zone; SHOW TABLES; SELECT version,checksum,success FROM flyway_schema_history ORDER BY installed_rank; SELECT COUNT(*) AS cities FROM city; SELECT COUNT(*) AS observations FROM traffic_observation;"
         query += ''.join(' SHOW CREATE TABLE ' + table + ';' for table in ('dataset_registry', 'city', 'region', 'road_segment', 'traffic_observation'))
-        result = subprocess.run([os.environ.get('MYSQL_CLIENT', 'mysql'), '--no-defaults', '--no-login-paths', '--protocol=TCP', '-h127.0.0.1', '-P' + match[1], '-u' + env['DB_USER'], match[2], '--default-character-set=utf8mb4', '--batch'], input=query, text=True, encoding='utf-8', capture_output=True, env=env)
+        result = subprocess.run([os.environ.get('MYSQL_CLIENT', 'mysql'), '--no-defaults', '--protocol=TCP', '-h127.0.0.1', '-P' + match[1], '-u' + env['DB_USER'], match[2], '--default-character-set=utf8mb4', '--batch'], input=query, text=True, encoding='utf-8', capture_output=True, env=env)
         if result.returncode:
             raise RuntimeError('Read-only database evidence query failed')
         (output / 'database.txt').write_text(result.stdout, encoding='utf-8')

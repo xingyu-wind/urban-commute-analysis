@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 from pathlib import Path
 import secrets
 import subprocess
@@ -33,7 +34,10 @@ def main():
     client = os.environ.get('MYSQL_CLIENT', 'mysql')
     admin_env = os.environ.copy()
     admin_env['MYSQL_PWD'] = os.environ['S3_ADMIN_PASSWORD']
-    command = [client, '--no-defaults', '--no-login-paths', '--protocol=TCP',
+    # MySQL 8.0 clients on Ubuntu lack --no-login-paths. Both versions support
+    # this isolated nonexistent login file; never read a user's .mylogin.cnf.
+    admin_env['MYSQL_TEST_LOGIN_FILE'] = str(args.output.resolve().parent / (schema + '.no-login.cnf'))
+    command = [client, '--no-defaults', '--protocol=TCP',
                '-h' + host, '-P' + str(port), '-u' + os.environ.get('S3_ADMIN_USER', 'root'),
                '--batch', '--skip-column-names', '--default-character-set=utf8mb4']
 
@@ -42,7 +46,9 @@ def main():
                                 capture_output=True, env=admin_env)
         if result.returncode:
             # Never echo SQL or authentication diagnostics into public logs.
-            raise RuntimeError('Isolated database provisioning failed; no existing objects were removed')
+            code = re.search(r'ERROR (\d+) \(([A-Z0-9]+)\)', result.stderr)
+            reason = ('MySQL ' + code.group(1) + '/' + code.group(2)) if code else 'client option/launch failure'
+            raise RuntimeError('Isolated database provisioning failed (' + reason + '); no existing objects were removed')
         return result.stdout.strip()
 
     version, server_uuid = sql('SELECT VERSION(), @@server_uuid;').split('\t')
