@@ -134,6 +134,8 @@ def main():
         assert count('managed_import')==count('managed_job')==0 and not list(managed.iterdir())
         reader_last_access=time.monotonic()
         request(admin,'POST','/api/v1/operations/uploads',403,b'',csrf=False,label='missing-csrf-admin')
+        request(admin,'POST','/api/v1/operations/imports/------------------------------------/execute',400,label='malformed-uuid')
+        request(admin,'POST',f'/api/v1/operations/imports/{fake["id"]}/execute',404,label='unknown-import')
         for filename, data, status, mime in [
             ('../escape.csv',raw,400,'text/csv'),('..\\escape.csv',raw,400,'text/csv'),
             ('payload.exe',raw,400,'text/csv'),('fake.csv',b'<html>execute me</html>',422,'text/csv'),

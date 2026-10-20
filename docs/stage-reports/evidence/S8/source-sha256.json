@@ -1,0 +1,54 @@
+[
+  {
+    "path": "backend/src/main/java/com/urbancommute/security/AdapterWorker.java",
+    "sha256": "eed3e6c80566564575be765863e490148920bd75b15a30e8e3cb7f42c8578a99"
+  },
+  {
+    "path": "backend/src/main/java/com/urbancommute/security/Audit.java",
+    "sha256": "44974fc3d0d77e4242b4c9a3892f341335bea20a3910b57a2e78126faf8cbb3a"
+  },
+  {
+    "path": "backend/src/main/java/com/urbancommute/security/AuthController.java",
+    "sha256": "168a9fec46851ceede9fd0911134d29bb8cdffdabfd5a6ead8443c396f0cf34e"
+  },
+  {
+    "path": "backend/src/main/java/com/urbancommute/security/OperationFailure.java",
+    "sha256": "784b77b00c2cca936bf62c726ec68e6c976b7fd3e09ebeb0b1305f715874a78b"
+  },
+  {
+    "path": "backend/src/main/java/com/urbancommute/security/Operations.java",
+    "sha256": "58d2486e4f933331895cf29f4b51c10f29155ff590023a0293e7a8162a905faa"
+  },
+  {
+    "path": "backend/src/main/java/com/urbancommute/security/OperationsController.java",
+    "sha256": "c0feff8adb137d40dc1f9ce6070fc8eab1ec3e5788fe68096824c59a2136bbb3"
+  },
+  {
+    "path": "backend/src/main/java/com/urbancommute/security/SecurityConfig.java",
+    "sha256": "25cafe01bc4a315f25baa7e21258f65a80cb3a35da7e6b131371092a958829a3"
+  },
+  {
+    "path": "backend/src/main/java/com/urbancommute/security/UserProvisioning.java",
+    "sha256": "9f09977bdc3e28c2778b10e2ab8e6676d5c56470e8c539d00123bdf46cb70c7b"
+  },
+  {
+    "path": "scripts/s8_checks.py",
+    "sha256": "505c8e95266644b0d30bf7cb6aa19464d934c7eb004b1866af4bd9916c46227e"
+  },
+  {
+    "path": "scripts/s8_adapter_bridge.py",
+    "sha256": "8df47aaf7606fadef303474b1955a95256cee51912db45fc6987ed03c2e577dc"
+  },
+  {
+    "path": "frontend/src/components/OperationsPanel.vue",
+    "sha256": "8476e1de65350825182d2c14ec0f2ee391edefd56c549d761016cb558904c663"
+  },
+  {
+    "path": "frontend/scripts/verify-s8.mjs",
+    "sha256": "e3d378608dc0470399e1f9b88ddf1446e97ec5a1c4a8005f445009f53189507f"
+  },
+  {
+    "path": "contracts/openapi.yaml",
+    "sha256": "c09bfc4ab09f0632f90e6c3b6c856d81427e813ad5ba6f32ffcdddc3d381bacd"
+  }
+]

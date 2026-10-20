@@ -32,7 +32,7 @@ public class Operations {
         catch (UnsupportedOperationException ignored) { /* Windows: use the owning account's private directory ACL. */ }
     }
     private Path dir(String id) {
-        if (!id.matches("[0-9a-f-]{36}") || !UUID.fromString(id).toString().equals(id)) throw new OperationFailure(400,"INVALID_ID");
+        if (!id.matches("[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")) throw new OperationFailure(400,"INVALID_ID");
         Path p=root.resolve(id);
         if (Files.isSymbolicLink(p)) throw new OperationFailure(400,"INVALID_PATH");
         return p;
