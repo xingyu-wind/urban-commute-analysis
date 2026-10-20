@@ -9,3 +9,5 @@
 后续设计阶段补充架构，开发阶段补充操作指南，各阶段结束前更新报告；未确定的阶段编号不提前承诺。
 
 S4 当前入口：[阶段报告](stage-reports/S4.md)、[运行与演示](guides/s4-dashboard.md)、[知识关联与讲述方法](learning/S4-知识关联与项目实现说明.md)。S1–S3 报告保留历史原文。
+
+S5 当前入口：[阶段报告](stage-reports/S5.md)、[Python ETL与恢复操作](../data-pipeline/README.md)、[S6输入字典](../data-pipeline/DATA_DICTIONARY.md)、[知识关联与项目实现说明](learning/S5-知识关联与项目实现说明.md)。S4已ACCEPTED，S5等待独立验收，不进入S6。

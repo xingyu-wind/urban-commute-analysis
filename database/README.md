@@ -1,6 +1,8 @@
-# S3 数据库模式｜MySQL 8.4 / Flyway
+# 数据库模式｜MySQL 8.4 / Flyway
 
 S3 采用全新 **MySQL 8.4** 业务模式，不复用原 ZIP 的任何建表或插入脚本。结构源：`migrations/V1__commute_core.sql`（历史不变）和 `migrations/V2__strengthen_core_constraints.sql`（编译时纳入后端 classpath:/db/migration）。迁移仅建表/调整约束与索引，不插入样例、不删表、不清库。V2 的 DROP CHECK / DROP INDEX 仅替换约束或索引，不删除业务行。
+
+S5新增 `migrations/V3__etl_audit.sql`，由现有Java启动/Flyway统一执行。etl_source保存解析版本和完整来源配置快照；etl_batch保存文件哈希、质量数量、落库数量、状态、时间和冲突明细；etl_rejection保存清洗拒绝；etl_batch_observation逐条关联WRITTEN/EXISTING观测。Python导入器仅操作已迁移的S3新隔离库，V1/V2校验和不变。[ETL事务及操作说明](../data-pipeline/README.md)与[标准化字典](../data-pipeline/DATA_DICTIONARY.md)。
 
 ## 字段字典与关联
 
@@ -28,7 +30,7 @@ S3 采用全新 **MySQL 8.4** 业务模式，不复用原 ZIP 的任何建表或
 
 - `traffic_observation` 的 `uq_obs_dataset_target_time` 去重键防止同一来源、同一目标、同一观测时刻重复导入。
 - `idx_obs_city_time`、`idx_obs_region_time`、`idx_obs_road_time` 支持后续按时空维度读取。
-- City Repository 将 `city` 与 `dataset_registry` JOIN 返回稳定 id/name 和列表 provenance；当前 API 只有城市目录，只做来源说明，不暴露未完成的交通 KPI。
+- City Repository 将 `city` 与 `dataset_registry` JOIN 返回稳定 id/name 和列表 provenance；S4已增加分层交通统计API，S5通过Python导入实际改变其观测结果。
 - MySQL 8.4.11 实测约束、重复迁移和空库结构由 S3 GitHub Actions 流水线证据记录；Windows 实测证据见 S3 阶段报告。
 
 可复现步骤与风险边界：`docs/guides/s3-mysql.md`。合成样例：`fixtures/s3-synthetic.sql`（不可提前导入将运行集成测试的空库）。
