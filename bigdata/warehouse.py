@@ -57,6 +57,8 @@ def snapshot(inputs, output, start, end):
     connection = connect()
     records, batches, seen_batches = [], [], set()
     try:
+        with connection.cursor() as cur:
+            cur.execute('SET TRANSACTION ISOLATION LEVEL REPEATABLE READ')
         connection.begin()
         with connection.cursor() as cur:
             for directory in map(Path, inputs):
