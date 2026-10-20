@@ -1,0 +1,272 @@
+[
+  {
+    "viewport": 320,
+    "scrollWidth": 320,
+    "outside": [],
+    "clippedKpis": [],
+    "obstructed": [],
+    "charts": [
+      {
+        "containerWidth": 278,
+        "containerHeight": 285,
+        "scrollWidth": 278,
+        "overflowX": "auto",
+        "rendererWidth": 278,
+        "svgWidth": 278
+      },
+      {
+        "containerWidth": 278,
+        "containerHeight": 285,
+        "scrollWidth": 278,
+        "overflowX": "auto",
+        "rendererWidth": 278,
+        "svgWidth": 278
+      },
+      {
+        "containerWidth": 278,
+        "containerHeight": 285,
+        "scrollWidth": 278,
+        "overflowX": "auto",
+        "rendererWidth": 278,
+        "svgWidth": 278
+      }
+    ],
+    "tables": [
+      {
+        "clientWidth": 264,
+        "scrollWidth": 264,
+        "lastColumnReachable": true
+      },
+      {
+        "clientWidth": 278,
+        "scrollWidth": 278,
+        "lastColumnReachable": true
+      }
+    ]
+  },
+  {
+    "viewport": 375,
+    "scrollWidth": 375,
+    "outside": [],
+    "clippedKpis": [],
+    "obstructed": [],
+    "charts": [
+      {
+        "containerWidth": 333,
+        "containerHeight": 285,
+        "scrollWidth": 333,
+        "overflowX": "auto",
+        "rendererWidth": 333,
+        "svgWidth": 333
+      },
+      {
+        "containerWidth": 333,
+        "containerHeight": 285,
+        "scrollWidth": 333,
+        "overflowX": "auto",
+        "rendererWidth": 333,
+        "svgWidth": 333
+      },
+      {
+        "containerWidth": 333,
+        "containerHeight": 285,
+        "scrollWidth": 333,
+        "overflowX": "auto",
+        "rendererWidth": 333,
+        "svgWidth": 333
+      }
+    ],
+    "tables": [
+      {
+        "clientWidth": 319,
+        "scrollWidth": 319,
+        "lastColumnReachable": true
+      },
+      {
+        "clientWidth": 333,
+        "scrollWidth": 333,
+        "lastColumnReachable": true
+      }
+    ]
+  },
+  {
+    "viewport": 390,
+    "scrollWidth": 390,
+    "outside": [],
+    "clippedKpis": [],
+    "obstructed": [],
+    "charts": [
+      {
+        "containerWidth": 348,
+        "containerHeight": 285,
+        "scrollWidth": 348,
+        "overflowX": "auto",
+        "rendererWidth": 348,
+        "svgWidth": 348
+      },
+      {
+        "containerWidth": 348,
+        "containerHeight": 285,
+        "scrollWidth": 348,
+        "overflowX": "auto",
+        "rendererWidth": 348,
+        "svgWidth": 348
+      },
+      {
+        "containerWidth": 348,
+        "containerHeight": 285,
+        "scrollWidth": 348,
+        "overflowX": "auto",
+        "rendererWidth": 348,
+        "svgWidth": 348
+      }
+    ],
+    "tables": [
+      {
+        "clientWidth": 334,
+        "scrollWidth": 334,
+        "lastColumnReachable": true
+      },
+      {
+        "clientWidth": 348,
+        "scrollWidth": 348,
+        "lastColumnReachable": true
+      }
+    ]
+  },
+  {
+    "viewport": 768,
+    "scrollWidth": 768,
+    "outside": [],
+    "clippedKpis": [],
+    "obstructed": [],
+    "charts": [
+      {
+        "containerWidth": 680,
+        "containerHeight": 285,
+        "scrollWidth": 680,
+        "overflowX": "auto",
+        "rendererWidth": 680,
+        "svgWidth": 680
+      },
+      {
+        "containerWidth": 680,
+        "containerHeight": 285,
+        "scrollWidth": 680,
+        "overflowX": "auto",
+        "rendererWidth": 680,
+        "svgWidth": 680
+      },
+      {
+        "containerWidth": 680,
+        "containerHeight": 285,
+        "scrollWidth": 680,
+        "overflowX": "auto",
+        "rendererWidth": 680,
+        "svgWidth": 680
+      }
+    ],
+    "tables": [
+      {
+        "clientWidth": 666,
+        "scrollWidth": 666,
+        "lastColumnReachable": true
+      },
+      {
+        "clientWidth": 680,
+        "scrollWidth": 680,
+        "lastColumnReachable": true
+      }
+    ]
+  },
+  {
+    "viewport": 1024,
+    "scrollWidth": 1024,
+    "outside": [],
+    "clippedKpis": [],
+    "obstructed": [],
+    "charts": [
+      {
+        "containerWidth": 936,
+        "containerHeight": 285,
+        "scrollWidth": 936,
+        "overflowX": "auto",
+        "rendererWidth": 680,
+        "svgWidth": 680
+      },
+      {
+        "containerWidth": 936,
+        "containerHeight": 285,
+        "scrollWidth": 936,
+        "overflowX": "auto",
+        "rendererWidth": 680,
+        "svgWidth": 680
+      },
+      {
+        "containerWidth": 936,
+        "containerHeight": 285,
+        "scrollWidth": 936,
+        "overflowX": "auto",
+        "rendererWidth": 680,
+        "svgWidth": 680
+      }
+    ],
+    "tables": [
+      {
+        "clientWidth": 922,
+        "scrollWidth": 922,
+        "lastColumnReachable": true
+      },
+      {
+        "clientWidth": 936,
+        "scrollWidth": 936,
+        "lastColumnReachable": true
+      }
+    ]
+  },
+  {
+    "viewport": 1440,
+    "scrollWidth": 1440,
+    "outside": [],
+    "clippedKpis": [],
+    "obstructed": [],
+    "charts": [
+      {
+        "containerWidth": 697,
+        "containerHeight": 285,
+        "scrollWidth": 697,
+        "overflowX": "auto",
+        "rendererWidth": 697,
+        "svgWidth": 697
+      },
+      {
+        "containerWidth": 601,
+        "containerHeight": 285,
+        "scrollWidth": 601,
+        "overflowX": "auto",
+        "rendererWidth": 601,
+        "svgWidth": 601
+      },
+      {
+        "containerWidth": 697,
+        "containerHeight": 285,
+        "scrollWidth": 697,
+        "overflowX": "auto",
+        "rendererWidth": 697,
+        "svgWidth": 697
+      }
+    ],
+    "tables": [
+      {
+        "clientWidth": 683,
+        "scrollWidth": 683,
+        "lastColumnReachable": true
+      },
+      {
+        "clientWidth": 601,
+        "scrollWidth": 601,
+        "lastColumnReachable": true
+      }
+    ]
+  }
+]

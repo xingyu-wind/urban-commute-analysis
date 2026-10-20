@@ -1,0 +1,20 @@
+PASS actual-api-kpi-charts-and-wgs84-map
+PASS deferred-chart-resize-contained-and-observer-completed
+locator.click: Element is outside of the viewport
+Call log:
+  - waiting for locator('.map-panel .traffic-chart svg path[fill="#48d9bf"]').first()
+    - locator resolved to <path fill="#48d9bf" stroke="#9af1e0" fill-opacity="0.8" stroke-opacity="0.8" filter="url(#zr2-s0)" d="M1 0A1 1 0 1 1 1 -0.0001" stroke-width="0.18181818181818182" transform="matrix(11,0,0,11,437.4316,125)"></path>
+  - attempting click action
+    - scrolling into view if needed
+    - done scrolling
+
+    at /home/runner/work/urban-commute-analysis/urban-commute-analysis/frontend/scripts/verify-s4.mjs:183:19 {
+  log: [
+    `  - waiting for locator('.map-panel .traffic-chart svg path[fill="#48d9bf"]').first()`,
+    '    - locator resolved to <path fill="#48d9bf" stroke="#9af1e0" fill-opacity="0.8" stroke-opacity="0.8" filter="url(#zr2-s0)" d="M1 0A1 1 0 1 1 1 -0.0001" stroke-width="0.18181818181818182" transform="matrix(11,0,0,11,437.4316,125)"></path>',
+    '  - attempting click action',
+    '    - scrolling into view if needed',
+    '    - done scrolling'
+  ],
+  name: 'Error'
+}

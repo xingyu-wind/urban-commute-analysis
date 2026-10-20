@@ -1,0 +1,13 @@
+PASS actual-api-kpi-charts-and-wgs84-map
+PASS deferred-chart-resize-contained-and-observer-completed
+PASS actual-map-point-click-linked-to-road-query
+PASS literal-search-empty-results-and-pagination
+PASS hourly-sparse-buckets-and-interactive-svg-charts
+PASS database-mutate
+PASS mysql-mutation-reflected-through-java-api-in-browser
+PASS database-restore
+PASS controlled-observation-restored-and-ui-refreshed
+PASS competition-presentation-and-responsive-390-1024
+PASS empty-null-metrics-and-city-selection-without-stale-overwrite
+PASS actual-http-all-four-endpoints-and-invalid-parameters
+PASS actual-database-unavailable-safe-503-and-stale-dashboard-removed
