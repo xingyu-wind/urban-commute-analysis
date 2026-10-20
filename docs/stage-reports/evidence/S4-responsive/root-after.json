@@ -1,0 +1,27 @@
+{
+  "viewport": 390,
+  "scrollWidth": 390,
+  "charts": [
+    {
+      "containerWidth": 298,
+      "rendererWidth": 862,
+      "overflowX": "auto",
+      "scrollWidth": 862,
+      "scrollReachable": true
+    },
+    {
+      "containerWidth": 298,
+      "rendererWidth": 862,
+      "overflowX": "auto",
+      "scrollWidth": 862,
+      "scrollReachable": true
+    },
+    {
+      "containerWidth": 298,
+      "rendererWidth": 862,
+      "overflowX": "auto",
+      "scrollWidth": 862,
+      "scrollReachable": true
+    }
+  ]
+}

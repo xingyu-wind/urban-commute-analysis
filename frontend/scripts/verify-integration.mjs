@@ -1,5 +1,6 @@
 // Real Java -> Vite proxy -> isolated real Chromium browser. No request mocking.
 import { chromium, expect as baseExpect } from '@playwright/test'
+import { checkResponsiveMatrix, measureLayout } from './responsive-layout.mjs'
 import { browserChannels, contractPython, javaExecutable } from '../config/runtime.ts'
 import { spawn, spawnSync } from 'node:child_process'
 import { createServer } from 'node:net'
@@ -168,6 +169,7 @@ try {
   await page.setViewportSize({ width: 390, height: 844 })
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
   await page.screenshot({ path: path.join(output, 'narrow-390.png'), fullPage: true })
+  await checkResponsiveMatrix(page, expect, output, 'responsive')
   await page.setViewportSize({ width: 1365, height: 900 })
   step('responsive-layout-no-horizontal-overflow')
 
@@ -179,6 +181,7 @@ try {
   await expect(page.locator('#city-select')).toHaveCount(0)
   await expect(page.locator('.data-notice')).toContainText('暂无法确认数据来源')
   await page.screenshot({ path: path.join(output, 'backend-stopped.png'), fullPage: true })
+  await checkResponsiveMatrix(page, expect, output, 'error-responsive')
   step('backend-stop-detected-automatically', { noRetryClick: true })
 
   java = await startJava('java-restored')
@@ -219,7 +222,10 @@ try {
   exitCode = 1
   manifest.failure = error.stack
   console.error(error)
-  if (page && !page.isClosed()) await page.screenshot({ path: path.join(output, 'failure.png'), fullPage: true }).catch(() => {})
+  if (page && !page.isClosed()) {
+    await measureLayout(page).then(layout => writeFileSync(path.join(output, 'failure-layout.json'), JSON.stringify(layout, null, 2))).catch(() => {})
+    await page.screenshot({ path: path.join(output, 'failure.png'), fullPage: true }).catch(() => {})
+  }
 } finally {
   await Promise.allSettled(pendingResponses)
   if (browser) await browser.close()

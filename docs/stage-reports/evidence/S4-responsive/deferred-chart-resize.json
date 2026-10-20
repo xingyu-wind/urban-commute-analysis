@@ -1,0 +1,48 @@
+{
+  "held": {
+    "viewport": 390,
+    "scrollWidth": 390,
+    "outside": [],
+    "clippedKpis": [],
+    "obstructed": [],
+    "charts": [
+      {
+        "containerWidth": 298,
+        "containerHeight": 280,
+        "scrollWidth": 862,
+        "overflowX": "auto",
+        "rendererWidth": 862,
+        "svgWidth": 862
+      },
+      {
+        "containerWidth": 298,
+        "containerHeight": 250,
+        "scrollWidth": 862,
+        "overflowX": "auto",
+        "rendererWidth": 862,
+        "svgWidth": 862
+      },
+      {
+        "containerWidth": 298,
+        "containerHeight": 250,
+        "scrollWidth": 862,
+        "overflowX": "auto",
+        "rendererWidth": 862,
+        "svgWidth": 862
+      }
+    ],
+    "tables": [
+      {
+        "clientWidth": 284,
+        "scrollWidth": 284,
+        "lastColumnReachable": true
+      },
+      {
+        "clientWidth": 298,
+        "scrollWidth": 298,
+        "lastColumnReachable": true
+      }
+    ]
+  },
+  "fullChartReachableByInternalScroll": true
+}

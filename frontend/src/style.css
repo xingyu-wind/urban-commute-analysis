@@ -782,6 +782,9 @@ footer {
   height:270px;
   width:100%;
   min-width:0;
+  /* ECharts retains its previous pixel width until ResizeObserver runs.
+     Keep that interim surface scrollable inside the chart, never on the page. */
+  overflow:auto;
 }
 .trend-panel .traffic-chart {
   height:280px;

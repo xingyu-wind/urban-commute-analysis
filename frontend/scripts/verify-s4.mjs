@@ -1,5 +1,6 @@
 // Real Java -> Vite proxy -> isolated real Chromium browser. No request mocking.
 import { chromium, expect as baseExpect } from '@playwright/test'
+import { checkResponsiveMatrix, checkDeferredChartResize, installResizeProbe } from './responsive-layout.mjs'
 import { browserChannels, contractPython, javaExecutable } from '../config/runtime.ts'
 import { spawn, spawnSync } from 'node:child_process'
 import { createServer } from 'node:net'
@@ -132,6 +133,7 @@ try {
   if (!browser) throw new Error('No supported real Chromium browser available')
   manifest.browserVersion = browser.version()
   const context = await browser.newContext({ viewport: { width: 1500, height: 1080 }, locale: 'zh-CN', timezoneId: 'Asia/Shanghai' })
+  await installResizeProbe(context)
   page = await context.newPage()
   page.on('pageerror', error => manifest.pageErrors.push(error.message))
   // Capture all Java traffic responses, including negative HTTP cases. No route interception.
@@ -165,6 +167,11 @@ try {
   await expect(page.locator('.traffic-chart svg')).toHaveCount(3)
   await page.screenshot({ path: path.join(output, 'dashboard-desktop.png'), fullPage: true })
   step('actual-api-kpi-charts-and-wgs84-map', { citySamples: 3, speed: 36, congestion: 5, noRoadGeometry: true })
+
+  await checkDeferredChartResize(page, expect, output)
+  step('deferred-chart-resize-contained-and-observer-completed')
+  // Exercise the existing map/filter/pagination flow on the formerly failing mobile width.
+  await page.setViewportSize({ width: 390, height: 844 })
 
   // Actual SVG point click, then keyboard-accessible equivalent to clear the same selection.
   const mapSymbol = page.locator('.map-panel .traffic-chart svg path[fill="#48d9bf"]').first()
@@ -212,6 +219,7 @@ try {
   await expect(page.getByTestId('kpi-speed')).toContainText('36.00')
   step('controlled-observation-restored-and-ui-refreshed')
 
+  await checkResponsiveMatrix(page, expect, output, 's4-responsive')
   for (const width of [1024, 390]) {
     await page.setViewportSize({ width, height: width === 390 ? 844 : 900 })
     await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
@@ -221,6 +229,7 @@ try {
   await page.getByRole('button', { name: '比赛大屏', exact: true }).click()
   await expect(page.locator('.traffic-workspace')).toHaveClass(/presentation/)
   await page.screenshot({ path: path.join(output, 'presentation.png'), fullPage: true })
+  await checkResponsiveMatrix(page, expect, output, 'presentation-responsive', '.traffic-workspace.presentation')
   await page.getByRole('button', { name: '退出大屏', exact: true }).click()
   step('competition-presentation-and-responsive-390-1024')
 

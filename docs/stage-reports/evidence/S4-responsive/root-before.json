@@ -1,0 +1,52 @@
+{
+  "viewport": 390,
+  "scrollWidth": 908,
+  "charts": [
+    {
+      "parent": {
+        "width": 298,
+        "right": 344,
+        "overflow": "visible"
+      },
+      "renderer": {
+        "width": 862,
+        "right": 908,
+        "style": "position: relative; overflow: hidden; width: 862px; height: 280px;"
+      },
+      "svg": {
+        "width": 862
+      }
+    },
+    {
+      "parent": {
+        "width": 298,
+        "right": 344,
+        "overflow": "visible"
+      },
+      "renderer": {
+        "width": 862,
+        "right": 908,
+        "style": "position: relative; overflow: hidden; width: 862px; height: 270px;"
+      },
+      "svg": {
+        "width": 862
+      }
+    }
+  ],
+  "overflows": [
+    {
+      "tag": "DIV",
+      "class": "",
+      "right": 908,
+      "width": 862,
+      "scrollWidth": 862
+    },
+    {
+      "tag": "DIV",
+      "class": "",
+      "right": 908,
+      "width": 862,
+      "scrollWidth": 862
+    }
+  ]
+}

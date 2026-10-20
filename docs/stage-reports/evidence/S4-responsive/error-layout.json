@@ -1,0 +1,56 @@
+[
+  {
+    "viewport": 320,
+    "scrollWidth": 320,
+    "outside": [],
+    "clippedKpis": [],
+    "obstructed": [],
+    "charts": [],
+    "tables": []
+  },
+  {
+    "viewport": 375,
+    "scrollWidth": 375,
+    "outside": [],
+    "clippedKpis": [],
+    "obstructed": [],
+    "charts": [],
+    "tables": []
+  },
+  {
+    "viewport": 390,
+    "scrollWidth": 390,
+    "outside": [],
+    "clippedKpis": [],
+    "obstructed": [],
+    "charts": [],
+    "tables": []
+  },
+  {
+    "viewport": 768,
+    "scrollWidth": 768,
+    "outside": [],
+    "clippedKpis": [],
+    "obstructed": [],
+    "charts": [],
+    "tables": []
+  },
+  {
+    "viewport": 1024,
+    "scrollWidth": 1024,
+    "outside": [],
+    "clippedKpis": [],
+    "obstructed": [],
+    "charts": [],
+    "tables": []
+  },
+  {
+    "viewport": 1440,
+    "scrollWidth": 1440,
+    "outside": [],
+    "clippedKpis": [],
+    "obstructed": [],
+    "charts": [],
+    "tables": []
+  }
+]
