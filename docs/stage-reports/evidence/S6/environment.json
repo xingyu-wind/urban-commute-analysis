@@ -1,0 +1,40 @@
+{
+  "checked_at": "2026-10-20",
+  "workspace_clean_at_start": true,
+  "baseline": "99bf4f37662ea1c4652975a0c1a314cde931cfce",
+  "branch": "feat/s6-hadoop-hive-warehouse",
+  "os": "Windows 11 Home Chinese 10.0.26200",
+  "ram_total_kib": 32675512,
+  "ram_available_kib_at_start": 12330644,
+  "disk_free_bytes_at_start": {
+    "C": 408632922112,
+    "D": 435961057280
+  },
+  "available_tools": [
+    "PowerShell 7.6.5",
+    "Git",
+    "Java21.0.12.1",
+    "Python3.11",
+    "Node24.19.0",
+    "OpenSSH"
+  ],
+  "not_found": [
+    "Docker executable",
+    "Hadoop",
+    "Hive",
+    "active VM services",
+    "installed WSL Linux distribution"
+  ],
+  "spring_java_changed": false,
+  "system_installations": false,
+  "authorization": "Owner explicitly approved format only for this new empty ephemeral GitHub Actions NameNode directory; no existing HDFS or local Windows changes",
+  "runtime_image": "apache/hive:4.1.0@sha256:b957bb0e698e560d24e162b7549d79f191d58703e92899a886618c317f6e8f30",
+  "measured_container_versions": {
+    "Hadoop": "3.4.1",
+    "Hive": "4.1.0",
+    "Tez": "0.10.5",
+    "Java": "Temurin17.0.12+7"
+  },
+  "official_version_reference": "https://hive.apache.org/general/downloads/",
+  "image_source_reference": "https://github.com/apache/hive/blob/rel/release-4.1.0/packaging/src/docker/Dockerfile"
+}

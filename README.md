@@ -6,13 +6,15 @@
 
 ## 技术规划与当前状态
 
-规划采用 Python 离线清洗、MySQL、HDFS/Hive、机器学习、Spring Boot 和 Vue。S2–S4 已正式 ACCEPTED；S4 合并基线为 `f4a89c6`。S5 增加来源准入、CSV/JSON Python ETL、V3 批次审计与故障恢复，接通已有统计 API 和图表，提交独立审查、不自行合并。Hadoop/Hive 和预测尚未实施，不进入 S6。
+规划采用 Python 离线清洗、MySQL、HDFS/Hive、机器学习、Spring Boot 和 Vue。S2–S5 已正式 ACCEPTED，S5 PR #6 合并基线为 `99bf4f3`。S6 在此基础上接入 HDFS、Hive 四层数仓、ADS 安全发布与离线分析入口；实现范围、实测环境与独立验收状态见 [S6报告](docs/stage-reports/S6.md)。预测与权限系统尚未实施。
 
-实际接口为 `GET /health`、`GET /api/v1/cities` 和 `/api/v1/traffic/{summary,series,regions,roads}`；城市与统计来自 MySQL。测试北京/上海标为 `synthetic_test`，不是交通实测；空/混合目录有独立标记，dataAsOf=null。报告与实际证据见 [S4 报告](docs/stage-reports/S4.md)，[启动与演示](docs/guides/s4-dashboard.md)，[知识关联说明](docs/learning/S4-知识关联与项目实现说明.md)。
+实际接口为 `GET /health`、`GET /api/v1/cities`、`/api/v1/traffic/{summary,series,regions,roads}`，以及 S6 `/api/v1/warehouse/metrics`；城市与历史观测统计来自 MySQL，离线接口读取经校验发布到 MySQL 的 Hive ADS。测试北京/上海标为 `synthetic_test`，不是交通实测；空/混合目录有独立标记，dataAsOf=null。报告与实际证据见 [S4 报告](docs/stage-reports/S4.md)，[启动与演示](docs/guides/s4-dashboard.md)，[知识关联说明](docs/learning/S4-知识关联与项目实现说明.md)。
 
 S1 的 PR #1 已 Squash Merge，main 合并 SHA 为 `b47f0af593f4173d4a5e12af607c47a9343f64a5`。真实队友参与、交叉审核与双机协作的 `S1-COLLAB-DEBT` 仍未关闭；不把文档合并或单人测试当成双人协作补验。
 
 当前入口见 [S5 ETL 使用说明](data-pipeline/README.md)、[标准化数据字典](data-pipeline/DATA_DICTIONARY.md)、[S5阶段报告](docs/stage-reports/S5.md) 和 [知识关联说明](docs/learning/S5-知识关联与项目实现说明.md)。S1–S4 报告保留历史事实，[架构规划](docs/architecture/overview.md)不表示后续模块已经实现。
+
+S6 入口：[数仓使用说明](bigdata/README.md)、[知识关联与项目实现说明](docs/learning/S6-知识关联与项目实现说明.md)。城市工作台点击“打开 Hive 离线分析”，查看已发布版本及同窗口历史统计比较。
 
 ## 本地运行
 
@@ -41,7 +43,7 @@ npm.cmd run dev
 | frontend/ | 服务与城市目录、ECharts 分析工作台、区域点位地图、大屏及浏览器验证 |
 | database/ | MySQL 建表、迁移和字段说明 |
 | data-pipeline/ | 数据校验、清洗、标准化和导入 |
-| bigdata/ | HDFS 分区规划、Hive DDL 与离线聚合 |
+| bigdata/ | HDFS、Hive 四层 SQL、独立对账与原子发布；[使用说明](bigdata/README.md) |
 | ml/ | 特征、预测训练、评估及推理任务 |
 | contracts/ | API、数据字段、指标口径和版本约定 |
 | infra/ | 本地及部署环境配置模板 |

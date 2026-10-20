@@ -1,0 +1,109 @@
+[
+    {
+        "Id": "sha256:db546cd5dd71968d3198261b8cd06c3ae2538806a2c27586a341644d19efd08f",
+        "RepoTags": [],
+        "RepoDigests": [
+            "apache/hive@sha256:b957bb0e698e560d24e162b7549d79f191d58703e92899a886618c317f6e8f30"
+        ],
+        "Parent": "",
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2025-07-30T05:15:13.397573951Z",
+        "DockerVersion": "",
+        "Author": "",
+        "Config": {
+            "Hostname": "",
+            "Domainname": "",
+            "User": "hive",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "10000/tcp": {},
+                "10002/tcp": {},
+                "9083/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/opt/hive/bin:/opt/hadoop/bin:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "container=oci",
+                "JAVA_HOME=/opt/java/openjdk",
+                "LANG=en_US.UTF-8",
+                "LANGUAGE=en_US:en",
+                "LC_ALL=en_US.UTF-8",
+                "JAVA_VERSION=jdk-17.0.12+7",
+                "HADOOP_HOME=/opt/hadoop",
+                "HIVE_HOME=/opt/hive",
+                "TEZ_HOME=/opt/tez",
+                "HIVE_VER=4.1.0"
+            ],
+            "Cmd": null,
+            "Image": "",
+            "Volumes": null,
+            "WorkingDir": "/opt/hive",
+            "Entrypoint": [
+                "sh",
+                "-c",
+                "/entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "architecture": "x86_64",
+                "build-date": "2024-09-18T21:23:26",
+                "com.redhat.component": "ubi9-minimal-container",
+                "com.redhat.license_terms": "https://www.redhat.com/en/about/red-hat-end-user-license-agreements#UBI",
+                "description": "The Universal Base Image Minimal is a stripped down image that uses microdnf as a package manager. This base image is freely redistributable, but Red Hat only supports Red Hat technologies through subscriptions for Red Hat products. This image is maintained by Red Hat and updated regularly.",
+                "distribution-scope": "public",
+                "io.buildah.version": "1.29.0",
+                "io.k8s.description": "The Universal Base Image Minimal is a stripped down image that uses microdnf as a package manager. This base image is freely redistributable, but Red Hat only supports Red Hat technologies through subscriptions for Red Hat products. This image is maintained by Red Hat and updated regularly.",
+                "io.k8s.display-name": "Red Hat Universal Base Image 9 Minimal",
+                "io.openshift.expose-services": "",
+                "io.openshift.tags": "minimal rhel9",
+                "maintainer": "Red Hat, Inc.",
+                "name": "ubi9-minimal",
+                "release": "1227.1726694542",
+                "summary": "Provides the latest release of the minimal Red Hat Universal Base Image 9.",
+                "url": "https://access.redhat.com/containers/#/registry.access.redhat.com/ubi9-minimal/images/9.4-1227.1726694542",
+                "vcs-ref": "94baa7760359088a42ad33dc22d329a5ee2c7209",
+                "vcs-type": "git",
+                "vendor": "Red Hat, Inc.",
+                "version": "9.4"
+            }
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 2403795042,
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/8e617794733af90986c94e5899684e3c368ace73cf49108b992b914887918c62/diff:/var/lib/docker/overlay2/d83793e2442def0e68571a6654c6986796b593bcb439e664effb791987e8ee80/diff:/var/lib/docker/overlay2/0756f59c4a29a9a2cc77d9d7cdae11a5e48b36136631172f960027757849f115/diff:/var/lib/docker/overlay2/cf76503c932b7a506f3d535d94d9a9e01cb77c31cc8c92c45e1c16a1bbdc7898/diff:/var/lib/docker/overlay2/b36d5a1e5b6f4d544316428f101ba06aa2bf16d63227935d569008102b8eba6a/diff:/var/lib/docker/overlay2/65ea5d74a975b17c3cb6f0531f7d5e1a2fa4faf362e83f7ad89b8700768d857f/diff:/var/lib/docker/overlay2/c9c4d17bd602d99889cb52e78ef7828e6d409a901688f9896b71f08f5ddf59e5/diff:/var/lib/docker/overlay2/58f56efcd72d6e0533a99051b74859faab33d1a0b0c2761864b58a60a5ddea7d/diff:/var/lib/docker/overlay2/a17bf55fb324f6279f962aa274cf09fbb5f2533d69a2cccfde45ddc9349bef97/diff:/var/lib/docker/overlay2/f0ec1d5c2a35fcc3657a05c8e617951e622d482e18d4cbd9775dcc40a57c671e/diff:/var/lib/docker/overlay2/f6cbee9eaa8ae2535a99f64f9b2ac553bcc245b609d05c8a79eb28cb77fa19f6/diff:/var/lib/docker/overlay2/ad805f3db9229abd1497a6bd4487ba29c3ae1279b39e64ae7ef12590f5176d29/diff:/var/lib/docker/overlay2/052abd0112ae6e72730d9780d739311975cc96a0f2ea4697a7e84e1eba62a56a/diff",
+                "MergedDir": "/var/lib/docker/overlay2/49358f8005907f1d6597f539afe187b4488183a957ad1e27edc342ef9f6b3f1a/merged",
+                "UpperDir": "/var/lib/docker/overlay2/49358f8005907f1d6597f539afe187b4488183a957ad1e27edc342ef9f6b3f1a/diff",
+                "WorkDir": "/var/lib/docker/overlay2/49358f8005907f1d6597f539afe187b4488183a957ad1e27edc342ef9f6b3f1a/work"
+            },
+            "Name": "overlay2"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:f72362c98463bf060742f99c00c98289030cc7ab433ff61d58dd67e6a4a5c001",
+                "sha256:26494b582f166245fa64d9374ac5db0828f143c5ed72db4472d8e8a19da87091",
+                "sha256:a504009444d382fd8dd6db4f768af32ad213b1af2e598be78dbf584e141444e6",
+                "sha256:ead9e7502e533d2ecde7a90f502a90be3628ff05b1a183f49ece75605053f97d",
+                "sha256:8d394bb4511d22c4d769424d2781de360bb5a412e4e26dffb7f4c598a085e32f",
+                "sha256:c4eed5c5ccfa298a778323c1e5f57555e07b5fd0381f0b9499585ee9f5acb20f",
+                "sha256:bd36ef3d4972c06a935d1bd7e215ba2ec2c30f1c8cc340c1cae7419ac2645b8b",
+                "sha256:3f1d13487fb2c7013ad5598b611983ef1954db4a9ba0d1266dd948ad2276cd57",
+                "sha256:042b266f5c0525d8b48a0363e1a377ecd050a6bc656098e93a18a63b0b1c5422",
+                "sha256:7da51e660e14b01658fa745e2a76ca5afb805aec6b173f72558322de1da49750",
+                "sha256:aaf6b29b15bd8746cf494f7d6a1e830aec4d0e11ec3c5465142c963e17b390f7",
+                "sha256:1459826912863aa0f1e82e986db53223147b7fbc797551d6f410cffb58479591",
+                "sha256:4bafa92067bd56edb5cdb45fcaca995d91f93054bd2af405bfdb2ccebf803b46",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "0001-01-01T00:00:00Z"
+        }
+    }
+]

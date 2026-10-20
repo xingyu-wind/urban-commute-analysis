@@ -1,0 +1,323 @@
+{
+  "ciRun": 39378722907,
+  "ciJob": 118482642419,
+  "ciHead": "05a887136279d3c79d097ff7f83241a1055b2390",
+  "artifactId": 12244548425,
+  "artifactDigest": "sha256:a6717137b86f1f3caea9c18520c5a4edc69f058606384adb1cf17570f8f6c522",
+  "bytePreservingCopies": true,
+  "entries": [
+    {
+      "path": "ci-39378722907/summary.json",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/summary.json",
+      "sha256": "33c9274ff7a74b8b0ba7bef053cd7331acb6bcf0c2c579cbe83a46892f9a0091",
+      "bytes": 250
+    },
+    {
+      "path": "ci-39378722907/admission.json",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/admission.json",
+      "sha256": "efa106cca2d08d7f7c6b8a42e664d93cd0a134854d626871e2da9f2f25c91c0c",
+      "bytes": 153
+    },
+    {
+      "path": "ci-39378722907/hive-reconciliation.json",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/hive-reconciliation.json",
+      "sha256": "81d7b9319eee7848c30211c0ab6b72e5af01dbcbb0b6460d84d92e8d1bddb08a",
+      "bytes": 22704
+    },
+    {
+      "path": "ci-39378722907/mysql-reconciliation.json",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/mysql-reconciliation.json",
+      "sha256": "c6486f3b231724360d1b45d3baa28e4d8b6ca93a9e51d4c19badd8dce65541e8",
+      "bytes": 3050
+    },
+    {
+      "path": "ci-39378722907/oracle.json",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/oracle.json",
+      "sha256": "721bb89b955e4bbef9fe1a6b3fe29ac950b4767bfa9655002125bbaf205520a5",
+      "bytes": 21191
+    },
+    {
+      "path": "ci-39378722907/publication.json",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/publication.json",
+      "sha256": "1e92a3f75a6d45b90db2f72c3c60d9bd18a6c8ed1675b25477c187591972d9c9",
+      "bytes": 811
+    },
+    {
+      "path": "ci-39378722907/negative-cases.json",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/negative-cases.json",
+      "sha256": "e1145f214273f28582ad95a769f64515726b91739ba5721c6a6ffaae38b1c65f",
+      "bytes": 148
+    },
+    {
+      "path": "ci-39378722907/image-inspect.txt",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/image-inspect.log",
+      "sha256": "c418f85c6bdaf1cfbf2e40f0df2c71367b2bfbd413e6969a51cbf26994a24585",
+      "bytes": 6815
+    },
+    {
+      "path": "ci-39378722907/hive/runtime.txt",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/hive/runtime.log",
+      "sha256": "f0c40a2c5b9f196ac012c9a2cfa504d7d0e1010f736da7615cd387be8018bf61",
+      "bytes": 9774
+    },
+    {
+      "path": "ci-39378722907/hive/namenode-format.txt",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/hive/namenode-format.log",
+      "sha256": "2e7eafbf21c05fd808150c7d35cdfb79a3bb209bf2e926d3c5a1381420ccceab",
+      "bytes": 30732
+    },
+    {
+      "path": "ci-39378722907/hive/schematool.txt",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/hive/schematool.log",
+      "sha256": "a1caa9e15bf73ff94a71a3cc07a1ff005b2b653b967d5623a323417c7f9d1f65",
+      "bytes": 2171
+    },
+    {
+      "path": "ci-39378722907/hive/hive-first.txt",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/hive/hive-first.log",
+      "sha256": "6e7614c48d69d3e82072f8e0ad848380a67b174c048a7acd7ca0de0ad9f0a1fc",
+      "bytes": 83439
+    },
+    {
+      "path": "ci-39378722907/hive/hive-repeat.txt",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/hive/hive-repeat.log",
+      "sha256": "e9ccd078064a9b4e0466352501a606f35d0856e1d9ecbfc4a6c37c1863cd3392",
+      "bytes": 82950
+    },
+    {
+      "path": "ci-39378722907/hive/hdfs-fsck.txt",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/hive/hdfs-fsck.log",
+      "sha256": "07e80f1ff6fa2631adaaf71fc941ccc5ecb22d3a4d022c483ba7a07975574c10",
+      "bytes": 3650
+    },
+    {
+      "path": "ci-39378722907/hive/executed.hql",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/hive/executed.hql",
+      "sha256": "6842a97e32d14c1049981ca12e0a226f8a97c927a92f9bd3187114810de2a413",
+      "bytes": 7438
+    },
+    {
+      "path": "ci-39378722907/hive/core-site.xml",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/hive/core-site.xml",
+      "sha256": "158ddf315d1241a536f7757b4217766107a097a1a3fc53758d4ac6f275e2a1cc",
+      "bytes": 207
+    },
+    {
+      "path": "ci-39378722907/hive/hdfs-site.xml",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/hive/hdfs-site.xml",
+      "sha256": "315f6a3cc12eefeb7a8232cc8a77bc5f54ca28fa429f6a26955d4b737610c6ac",
+      "bytes": 667
+    },
+    {
+      "path": "ci-39378722907/hive/hive-site.xml",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/hive/hive-site.xml",
+      "sha256": "c3be99ee3fa49f9d1d33c3e290773fe84ff706e4eb82b1ba9332e0d9f1489c11",
+      "bytes": 599
+    },
+    {
+      "path": "ci-39378722907/hive/tez-site.xml",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/hive/tez-site.xml",
+      "sha256": "de196fd30ec26f09773803d79d18996853a7463017c6c425eca0cf04b8c92974",
+      "bytes": 401
+    },
+    {
+      "path": "ci-39378722907/hive/ads-first.tsv",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/hive/ads-first.tsv",
+      "sha256": "77e37b05894f7babd066dae4252e12d6a2a17c96b2b294a6f31480014bc06774",
+      "bytes": 6548
+    },
+    {
+      "path": "ci-39378722907/hive/ads-repeat.tsv",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/hive/ads-repeat.tsv",
+      "sha256": "77e37b05894f7babd066dae4252e12d6a2a17c96b2b294a6f31480014bc06774",
+      "bytes": 6548
+    },
+    {
+      "path": "ci-39378722907/hive/download.tsv",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/hive/download.tsv",
+      "sha256": "fe98d80ba4bd9ebb899bb78b5c63f98ebdb8e4d915caec779573528a03ebc869",
+      "bytes": 8105
+    },
+    {
+      "path": "ci-39378722907/bundle/manifest.json",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/bundle/manifest.json",
+      "sha256": "e4fa361d93b085797eacf25a06c4e262669b249cd9630923ffd01e659729dd2f",
+      "bytes": 1888
+    },
+    {
+      "path": "ci-39378722907/bundle/observations.json",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/bundle/observations.json",
+      "sha256": "4207afe93b86f6d7c60b2cca9dfdc0467a5481342a662e2f39d4c054b7d7cae6",
+      "bytes": 22538
+    },
+    {
+      "path": "ci-39378722907/bundle/ods.tsv",
+      "origin": "GitHub Actions run39378722907 artifact12244548425 s6-ci/bundle/ods.tsv",
+      "sha256": "fe98d80ba4bd9ebb899bb78b5c63f98ebdb8e4d915caec779573528a03ebc869",
+      "bytes": 8105
+    },
+    {
+      "path": "local/summary.json",
+      "origin": "Windows new isolated MySQL; reused real Hive output from run39378722907; s6-local-chain/summary.json",
+      "sha256": "3a944f411684460302e2261559bfb1baf97bfcfc949aebcd33086566f1ca7ebf",
+      "bytes": 292
+    },
+    {
+      "path": "local/admission.json",
+      "origin": "Windows new isolated MySQL; reused real Hive output from run39378722907; s6-local-chain/admission.json",
+      "sha256": "393a29b34047e5bf5e04afc0436c2c788f98d256430cb6b6382ea63c7576388a",
+      "bytes": 163
+    },
+    {
+      "path": "local/mysql-reconciliation.json",
+      "origin": "Windows new isolated MySQL; reused real Hive output from run39378722907; s6-local-chain/mysql-reconciliation.json",
+      "sha256": "2a57535b5d9cd8cbd539484564a81143a635070289fe96225e9f44b1667d5f62",
+      "bytes": 3184
+    },
+    {
+      "path": "local/hive-reconciliation.json",
+      "origin": "Windows new isolated MySQL; reused real Hive output from run39378722907; s6-local-chain/hive-reconciliation.json",
+      "sha256": "e6332d144b486006552420d97fbb9de7981c7dd4db0afbcf116047e4ce638f92",
+      "bytes": 23432
+    },
+    {
+      "path": "local/publication.json",
+      "origin": "Windows new isolated MySQL; reused real Hive output from run39378722907; s6-local-chain/publication.json",
+      "sha256": "ef74a673da79dece2e7b4fd14580c1563432022a791acbfc4fb98698bd0998ac",
+      "bytes": 843
+    },
+    {
+      "path": "local/browser/warehouse-desktop.png",
+      "origin": "Windows Java21 MySQL8.4 Chrome; reused real Hive export; s6-local-chain/browser/warehouse-desktop.png",
+      "sha256": "2e74926873c73fce8d1fd8698658b4c98c3f87636addaa08de6c6401af6222ad",
+      "bytes": 69079
+    },
+    {
+      "path": "local/browser/warehouse-mobile.png",
+      "origin": "Windows Java21 MySQL8.4 Chrome; reused real Hive export; s6-local-chain/browser/warehouse-mobile.png",
+      "sha256": "286e403dcecf7f58303e3ad9b712b5d97d27a05404f4a8c6d707255049fb7e57",
+      "bytes": 58153
+    },
+    {
+      "path": "local/browser/manifest.json",
+      "origin": "Windows Java21 MySQL8.4 Chrome; reused real Hive export; s6-local-chain/browser/manifest.json",
+      "sha256": "598bbae6fc37fb684d412260063a05b639e8ff0a426c1cd1e652ce50e9f648f3",
+      "bytes": 14715
+    },
+    {
+      "path": "local/browser/response-0.json",
+      "origin": "Windows Java21 MySQL8.4 Chrome; reused real Hive export; s6-local-chain/browser/response-0.json",
+      "sha256": "fce69c5c61c2c20aca63de6ccfb3cdcc85b34042473b6a89cc00c26c405b2b26",
+      "bytes": 2137
+    },
+    {
+      "path": "local/browser/response-1.json",
+      "origin": "Windows Java21 MySQL8.4 Chrome; reused real Hive export; s6-local-chain/browser/response-1.json",
+      "sha256": "c5e8f99394735af161da3d986a02823253109a8ef52dcaa6b410d28a98402783",
+      "bytes": 3774
+    },
+    {
+      "path": "local/browser/response-2.json",
+      "origin": "Windows Java21 MySQL8.4 Chrome; reused real Hive export; s6-local-chain/browser/response-2.json",
+      "sha256": "14677e11dcf765436cf0a11781e9a3683ce7bfb00589a874364d344f70bad0af",
+      "bytes": 2534
+    },
+    {
+      "path": "local/browser/response-3.json",
+      "origin": "Windows Java21 MySQL8.4 Chrome; reused real Hive export; s6-local-chain/browser/response-3.json",
+      "sha256": "1a7ed5604a744d9126908655a3b78bec9f2b8d12e9ad0dea65f115603abcac2f",
+      "bytes": 2164
+    },
+    {
+      "path": "local/browser/response-4.json",
+      "origin": "Windows Java21 MySQL8.4 Chrome; reused real Hive export; s6-local-chain/browser/response-4.json",
+      "sha256": "8b586f85d3fe52d4ad1b4e51a5bf33cf7ee5ef3feed1b93ecbaf069827363e09",
+      "bytes": 217
+    },
+    {
+      "path": "local/browser/response-5.json",
+      "origin": "Windows Java21 MySQL8.4 Chrome; reused real Hive export; s6-local-chain/browser/response-5.json",
+      "sha256": "11d24cf6744272307ac34952d39aeed84c501748d7dd53abf026777db9324270",
+      "bytes": 217
+    },
+    {
+      "path": "local/browser/response-6.json",
+      "origin": "Windows Java21 MySQL8.4 Chrome; reused real Hive export; s6-local-chain/browser/response-6.json",
+      "sha256": "31da4469f05a94e115666acb50c64d391b149636724a518390751aac7530188b",
+      "bytes": 217
+    },
+    {
+      "path": "local/browser/response-7.json",
+      "origin": "Windows Java21 MySQL8.4 Chrome; reused real Hive export; s6-local-chain/browser/response-7.json",
+      "sha256": "61ec50bc32f1d28246f0c965856292cd91a03a5224e2a3ba54c9de22ab385b57",
+      "bytes": 217
+    },
+    {
+      "path": "ci-39379190899/summary.json",
+      "origin": "GitHub Actions run39379190899 artifact12244812508 s6-ci/summary.json",
+      "sha256": "33c9274ff7a74b8b0ba7bef053cd7331acb6bcf0c2c579cbe83a46892f9a0091",
+      "bytes": 250
+    },
+    {
+      "path": "ci-39379190899/hive-reconciliation.json",
+      "origin": "GitHub Actions run39379190899 artifact12244812508 s6-ci/hive-reconciliation.json",
+      "sha256": "81d7b9319eee7848c30211c0ab6b72e5af01dbcbb0b6460d84d92e8d1bddb08a",
+      "bytes": 22704
+    },
+    {
+      "path": "ci-39379190899/mysql-reconciliation.json",
+      "origin": "GitHub Actions run39379190899 artifact12244812508 s6-ci/mysql-reconciliation.json",
+      "sha256": "88dfede523b24b933ef942566801683b789516feef7f8cded2f015b94ae493d7",
+      "bytes": 3050
+    },
+    {
+      "path": "ci-39379190899/admission.json",
+      "origin": "GitHub Actions run39379190899 artifact12244812508 s6-ci/admission.json",
+      "sha256": "efa106cca2d08d7f7c6b8a42e664d93cd0a134854d626871e2da9f2f25c91c0c",
+      "bytes": 153
+    },
+    {
+      "path": "ci-39379190899/hive/hive-first.txt",
+      "origin": "GitHub Actions run39379190899 artifact12244812508 s6-ci/hive/hive-first.log",
+      "sha256": "edb9c9d28792aab5a115d4981d94cf89115b981bb64b987e5726b02015214d12",
+      "bytes": 106330
+    },
+    {
+      "path": "ci-39379190899/hive/hive-repeat.txt",
+      "origin": "GitHub Actions run39379190899 artifact12244812508 s6-ci/hive/hive-repeat.log",
+      "sha256": "4774fa52ddfd2262a52e85987c2a95e3274e73e039e76192b8f3b846b461da7f",
+      "bytes": 106051
+    },
+    {
+      "path": "ci-39379190899/hive/hive-invalid.txt",
+      "origin": "GitHub Actions run39379190899 artifact12244812508 s6-ci/hive/hive-invalid.log",
+      "sha256": "782609bfef55fd1b850439d40057220e844c59fe6b73077d7ae3705e71704059",
+      "bytes": 116628
+    },
+    {
+      "path": "ci-39379190899/hive/executed.hql",
+      "origin": "GitHub Actions run39379190899 artifact12244812508 s6-ci/hive/executed.hql",
+      "sha256": "50a4e7c73ad6a996ae97020e512d702840a8bbaea1f791529e23629c95612c9a",
+      "bytes": 8652
+    },
+    {
+      "path": "ci-39379190899/hive/hdfs-fsck.txt",
+      "origin": "GitHub Actions run39379190899 artifact12244812508 s6-ci/hive/hdfs-fsck.log",
+      "sha256": "0eeaff18ff06f3e45888bdea04e302f3fd944dfe656591bb86c69c80d4137c80",
+      "bytes": 3381
+    },
+    {
+      "path": "ci-39379190899/browser/manifest.json",
+      "origin": "GitHub Actions run39379190899 artifact12244812508 s6-ci/browser/manifest.json",
+      "sha256": "41ce1f8e2b5b9a32f7174a1a99afb5265e6466226f72c1f6e083b86e260d3967",
+      "bytes": 14715
+    }
+  ],
+  "enhancedRun": {
+    "run": 39379190899,
+    "job": 118484120279,
+    "head": "83c51a4bf5956f2eb39fe74fa6b5ba150e257e84",
+    "artifactId": 12244812508,
+    "artifactDigest": "sha256:5c9f1ec748cd8eedf0ae275525c51298686444a27691c8bdd774bf622abfa377"
+  }
+}

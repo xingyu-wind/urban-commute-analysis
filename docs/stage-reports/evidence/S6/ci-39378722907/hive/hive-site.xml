@@ -1,0 +1,8 @@
+<configuration>
+<property><name>javax.jdo.option.ConnectionURL</name><value>jdbc:derby:;databaseName=/tmp/s6-warehouse.DVwUM19w/metastore;create=true</value></property>
+<property><name>hive.metastore.warehouse.dir</name><value>/s6/warehouse</value></property>
+<property><name>hive.execution.engine</name><value>tez</value></property>
+<property><name>hive.server2.enable.doAs</name><value>false</value></property>
+<property><name>hive.exec.submit.local.task.via.child</name><value>false</value></property>
+<property><name>hive.tez.container.size</name><value>1024</value></property>
+</configuration>

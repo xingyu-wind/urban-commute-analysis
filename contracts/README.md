@@ -1,6 +1,6 @@
 # 共享契约模块
 
-S4 OpenAPI 3.1 定义六条 GET：`/health`、`/api/v1/cities` 和 `/api/v1/traffic/{summary,series,regions,roads}`。正式约定在 [openapi.yaml](openapi.yaml)，统计参数与口径见 [S4 指南](../docs/guides/s4-dashboard.md)。
+S6 OpenAPI 3.1 定义七条 GET：`/health`、`/api/v1/cities` 、`/api/v1/traffic/{summary,series,regions,roads}` 和 `/api/v1/warehouse/metrics`。正式约定在 [openapi.yaml](openapi.yaml)，统计参数与口径见 [S4 指南](../docs/guides/s4-dashboard.md)。
 
 ## 响应语义
 
@@ -24,6 +24,8 @@ contracts/.venv/Scripts/python.exe contracts/validate_contract.py
 contracts/.venv/Scripts/python.exe contracts/validate_contract.py --instance contracts/examples/traffic-summary.json --path /api/v1/traffic/summary
 ```
 
-`validate_contract.py` 仍严格校验完整六路径白名单、GET、全部错误状态、重复 YAML/JSON 键、格式、正反案例及全部外部示例。S4 扩展了原先 S2 两路径限制，没有绕过检查。
+`validate_contract.py` 仍严格校验完整七路径白名单、GET、全部错误状态、重复 YAML/JSON 键、格式、正反案例及全部外部示例。S4 扩展了原先 S2 两路径限制，没有绕过检查。
 
 `cases.json` 包含21条正例和13条反例；其中 S4 覆盖四个接口、空指标、负样本数、指数越界和非法坐标。静态样例不是实时采集。真实 Java 响应由 `scripts/s4_validate_captures.py` 再按同一 OpenAPI Schema 校验，集成结果见 [S4 报告](../docs/stage-reports/S4.md)。Vue 类型及运行时验证器位于 `frontend/src/types/traffic.ts` 和 `frontend/src/api/traffic.ts`。
+
+S6 离线接口默认返回最新已发布快照的 WINDOW 指标，也支持 DAY/HOUR。发布为空时 release=null、items=[]；版本、UTC 窗口、来源、批次、源 SHA 及规范化 ADS 内容 SHA 随结果返回。后端只读 current JOIN PUBLISHED，均值按总和/有效样本数 HALF_UP 到两位，不混合目标层级或数据版本。真实 HTTP 响应/粒度与 Chromium 验证由 `frontend/scripts/verify-s6.mjs` 执行；其实际响应逐份通过同一 OpenAPI 校验。类型与运行时校验位于 `frontend/src/types/warehouse.ts`、`frontend/src/api/warehouse.ts`。

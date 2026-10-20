@@ -1,0 +1,8 @@
+[
+  "altered-candidate",
+  "failed-batch",
+  "duplicate-batch-directory",
+  "incomplete-hive-export",
+  "stale-snapshot",
+  "release-id-conflict"
+]

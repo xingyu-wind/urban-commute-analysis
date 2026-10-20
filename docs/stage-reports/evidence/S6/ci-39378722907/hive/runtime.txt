@@ -1,0 +1,160 @@
++ java -version
+openjdk version "17.0.12" 2024-07-16
+OpenJDK Runtime Environment Temurin-17.0.12+7 (build 17.0.12+7)
+OpenJDK 64-Bit Server VM Temurin-17.0.12+7 (build 17.0.12+7, mixed mode, sharing)
++ hadoop version
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/tez/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Reload4jLoggerFactory]
+Hadoop 3.4.1
+Source code repository https://github.com/apache/hadoop.git -r 4d7825309348956336b8f06a08322b78422849b1
+Compiled by mthakur on 2024-10-09T14:57Z
+Compiled on platform linux-x86_64
+Compiled with protoc 3.23.4
+From source with checksum 7292fe9dba5e2e44e3a9f763fce3e680
+This command was run using /opt/hadoop/share/hadoop/common/hadoop-common-3.4.1.jar
++ ls /opt/hive/lib/hive-common-4.1.0.jar /opt/tez/tez-api-0.10.5.jar
+/opt/hive/lib/hive-common-4.1.0.jar
+/opt/tez/tez-api-0.10.5.jar
++ [[ /tmp/s6-warehouse.DVwUM19w == /tmp/s6-warehouse.* ]]
++ [[ -d /tmp/s6-warehouse.DVwUM19w/name ]]
+++ ls -A /tmp/s6-warehouse.DVwUM19w/name
++ [[ -z '' ]]
++ hdfs namenode -format -nonInteractive
++ hdfs --daemon start namenode
++ hdfs --daemon start datanode
++ trap 'cp -r "$run_dir/logs" /evidence/daemon-logs; hdfs --daemon stop datanode; hdfs --daemon stop namenode' EXIT
++ hdfs dfsadmin -safemode wait
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/tez/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Reload4jLoggerFactory]
+Safe mode is OFF
++ hdfs dfsadmin -report
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/tez/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Reload4jLoggerFactory]
+Configured Capacity: 76887154688 (71.61 GB)
+Present Capacity: 8864755712 (8.26 GB)
+DFS Remaining: 8864731136 (8.26 GB)
+DFS Used: 24576 (24 KB)
+DFS Used%: 0.00%
+Replicated Blocks:
+	Under replicated blocks: 0
+	Blocks with corrupt replicas: 0
+	Missing blocks: 0
+	Missing blocks (with replication factor 1): 0
+	Low redundancy blocks with highest priority to recover: 0
+	Pending deletion blocks: 0
+Erasure Coded Block Groups: 
+	Low redundancy block groups: 0
+	Block groups with corrupt internal blocks: 0
+	Missing block groups: 0
+	Low redundancy blocks with highest priority to recover: 0
+	Pending deletion blocks: 0
+
+-------------------------------------------------
+Live datanodes (1):
+
+Name: 127.0.0.1:9866 (localhost)
+Hostname: 9db8bd3988b0
+Decommission Status : Normal
+Configured Capacity: 76887154688 (71.61 GB)
+DFS Used: 24576 (24 KB)
+Non DFS Used: 68005621760 (63.34 GB)
+DFS Remaining: 8864731136 (8.26 GB)
+DFS Used%: 0.00%
+DFS Remaining%: 11.53%
+Configured Cache Capacity: 0 (0 B)
+Cache Used: 0 (0 B)
+Cache Remaining: 0 (0 B)
+Cache Used%: 100.00%
+Cache Remaining%: 0.00%
+Xceivers: 0
+Last contact: Tue Oct 20 06:11:41 UTC 2026
+Last Block Report: Tue Oct 20 06:11:41 UTC 2026
+Num of Blocks: 0
+
+
++ hdfs dfs -mkdir -p /s6/ods/snapshot_id=run1
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/tez/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Reload4jLoggerFactory]
++ hdfs dfs -mkdir -p /s6/manifests/run1
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/tez/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Reload4jLoggerFactory]
++ hdfs dfs -put /bundle/manifest.json /s6/manifests/run1/manifest.json
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/tez/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Reload4jLoggerFactory]
++ hdfs dfs -put /bundle/ods.tsv /s6/ods/snapshot_id=run1/observations.tsv
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/tez/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Reload4jLoggerFactory]
++ hdfs dfs -ls -R /s6/ods
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/tez/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Reload4jLoggerFactory]
+drwxr-xr-x   - root supergroup          0 2026-10-20 06:11 /s6/ods/snapshot_id=run1
+-rw-r--r--   1 root supergroup       8105 2026-10-20 06:11 /s6/ods/snapshot_id=run1/observations.tsv
++ hdfs dfs -get /s6/ods/snapshot_id=run1/observations.tsv /evidence/download.tsv
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/tez/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Reload4jLoggerFactory]
++ sha256sum /bundle/ods.tsv /evidence/download.tsv
+fe98d80ba4bd9ebb899bb78b5c63f98ebdb8e4d915caec779573528a03ebc869  /bundle/ods.tsv
+fe98d80ba4bd9ebb899bb78b5c63f98ebdb8e4d915caec779573528a03ebc869  /evidence/download.tsv
++ cmp /bundle/ods.tsv /evidence/download.tsv
++ schematool -dbType derby -initSchema
++ printf 'SET hivevar:snapshot=run1;\nSET hivevar:from=%s;\nSET hivevar:to=%s;\n' 2026-10-15T00:00:00.000Z 2026-10-17T00:00:00.000Z
++ cat /source/bigdata/sql/warehouse.hql
++ cp /tmp/s6-warehouse.DVwUM19w/job.hql /evidence/executed.hql
++ for iteration in first repeat
++ beeline -u jdbc:hive2:// -n root --silent=true --showHeader=false --outputformat=tsv2 -f /tmp/s6-warehouse.DVwUM19w/job.hql
++ hdfs dfs -getmerge /s6/export/run1 /evidence/ads-first.tsv
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/tez/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Reload4jLoggerFactory]
++ for iteration in first repeat
++ beeline -u jdbc:hive2:// -n root --silent=true --showHeader=false --outputformat=tsv2 -f /tmp/s6-warehouse.DVwUM19w/job.hql
++ hdfs dfs -getmerge /s6/export/run1 /evidence/ads-repeat.tsv
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/tez/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Reload4jLoggerFactory]
++ sort /evidence/ads-first.tsv
++ sort /evidence/ads-repeat.tsv
++ cmp /evidence/ads-first.sorted /evidence/ads-repeat.sorted
++ hdfs fsck /s6 -files -blocks
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/tez/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Reload4jLoggerFactory]
+Connecting to namenode via http://127.0.0.1:9870/fsck?ugi=root&files=1&blocks=1&path=%2Fs6
++ echo S6_REAL_HDFS_HIVE_PASS
+S6_REAL_HDFS_HIVE_PASS
++ cp -r /tmp/s6-warehouse.DVwUM19w/logs /evidence/daemon-logs
++ hdfs --daemon stop datanode
++ hdfs --daemon stop namenode

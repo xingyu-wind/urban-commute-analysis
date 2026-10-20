@@ -1,0 +1,453 @@
+{
+  "passed": true,
+  "noRequestMocking": true,
+  "errors": [],
+  "responses": [
+    {
+      "query": "cityId=s5-city",
+      "status": 200,
+      "body": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "engine": "Hive",
+          "release": {
+            "id": "s6-failed-switch",
+            "datasetVersion": "1",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "capturedAt": "2026-10-20T06:15:38.871Z",
+            "publishedAt": "2026-10-20T06:18:52.825Z",
+            "adsSha256": "3c553c9d15070b65ccfc2086f82c9ecb813ebd6c22aa7259c527b11f61a86a90",
+            "batchIds": [
+              "s6-csv",
+              "s6-json",
+              "s6-repeat"
+            ],
+            "sourceHashes": [
+              "92d190e34daabcf5dbb93cbec7b64a1584bc4e907385f54f6814f9992b0ade79",
+              "fa9a67282b0b4e1a1087bdab3530dce189801367f64e977b9349ef9afcd8d453"
+            ]
+          },
+          "items": [
+            {
+              "targetType": "CITY",
+              "targetId": "s5-city",
+              "roadRegionId": null,
+              "grain": "WINDOW",
+              "bucketStart": "2026-10-15T00:00:00Z",
+              "sampleCount": 3,
+              "speedSum": 120,
+              "congestionSum": 15,
+              "avgSpeedKmh": 40,
+              "congestionIndex": 5,
+              "observedFrom": "2026-10-15T00:00:00Z",
+              "observedTo": "2026-10-16T06:00:00Z"
+            },
+            {
+              "targetType": "REGION",
+              "targetId": "s5-east",
+              "roadRegionId": null,
+              "grain": "WINDOW",
+              "bucketStart": "2026-10-15T00:00:00Z",
+              "sampleCount": 2,
+              "speedSum": 72,
+              "congestionSum": 6,
+              "avgSpeedKmh": 36,
+              "congestionIndex": 3,
+              "observedFrom": "2026-10-15T00:00:00Z",
+              "observedTo": "2026-10-15T01:00:00Z"
+            },
+            {
+              "targetType": "ROAD",
+              "targetId": "s5-road",
+              "roadRegionId": "s5-east",
+              "grain": "WINDOW",
+              "bucketStart": "2026-10-15T00:00:00Z",
+              "sampleCount": 2,
+              "speedSum": 36,
+              "congestionSum": 6,
+              "avgSpeedKmh": 18,
+              "congestionIndex": 3,
+              "observedFrom": "2026-10-15T00:00:00Z",
+              "observedTo": "2026-10-15T01:00:00Z"
+            }
+          ]
+        },
+        "meta": {
+          "requestId": "8390864b-91db-4b65-9bc2-b93984e2ca70",
+          "dataAsOf": "2026-10-16T06:00:00Z",
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1"
+        }
+      }
+    },
+    {
+      "query": "cityId=s5-city&grain=HOUR",
+      "status": 200,
+      "body": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "engine": "Hive",
+          "release": {
+            "id": "s6-failed-switch",
+            "datasetVersion": "1",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "capturedAt": "2026-10-20T06:15:38.871Z",
+            "publishedAt": "2026-10-20T06:18:52.825Z",
+            "adsSha256": "3c553c9d15070b65ccfc2086f82c9ecb813ebd6c22aa7259c527b11f61a86a90",
+            "batchIds": [
+              "s6-csv",
+              "s6-json",
+              "s6-repeat"
+            ],
+            "sourceHashes": [
+              "92d190e34daabcf5dbb93cbec7b64a1584bc4e907385f54f6814f9992b0ade79",
+              "fa9a67282b0b4e1a1087bdab3530dce189801367f64e977b9349ef9afcd8d453"
+            ]
+          },
+          "items": [
+            {
+              "targetType": "CITY",
+              "targetId": "s5-city",
+              "roadRegionId": null,
+              "grain": "HOUR",
+              "bucketStart": "2026-10-15T00:00:00Z",
+              "sampleCount": 1,
+              "speedSum": 36,
+              "congestionSum": 2,
+              "avgSpeedKmh": 36,
+              "congestionIndex": 2,
+              "observedFrom": "2026-10-15T00:00:00Z",
+              "observedTo": "2026-10-15T00:00:00Z"
+            },
+            {
+              "targetType": "CITY",
+              "targetId": "s5-city",
+              "roadRegionId": null,
+              "grain": "HOUR",
+              "bucketStart": "2026-10-15T01:00:00Z",
+              "sampleCount": 1,
+              "speedSum": 72,
+              "congestionSum": 4,
+              "avgSpeedKmh": 72,
+              "congestionIndex": 4,
+              "observedFrom": "2026-10-15T01:00:00Z",
+              "observedTo": "2026-10-15T01:00:00Z"
+            },
+            {
+              "targetType": "CITY",
+              "targetId": "s5-city",
+              "roadRegionId": null,
+              "grain": "HOUR",
+              "bucketStart": "2026-10-16T06:00:00Z",
+              "sampleCount": 1,
+              "speedSum": 12,
+              "congestionSum": 9,
+              "avgSpeedKmh": 12,
+              "congestionIndex": 9,
+              "observedFrom": "2026-10-16T06:00:00Z",
+              "observedTo": "2026-10-16T06:00:00Z"
+            },
+            {
+              "targetType": "REGION",
+              "targetId": "s5-east",
+              "roadRegionId": null,
+              "grain": "HOUR",
+              "bucketStart": "2026-10-15T00:00:00Z",
+              "sampleCount": 1,
+              "speedSum": 18,
+              "congestionSum": 2,
+              "avgSpeedKmh": 18,
+              "congestionIndex": 2,
+              "observedFrom": "2026-10-15T00:00:00Z",
+              "observedTo": "2026-10-15T00:00:00Z"
+            },
+            {
+              "targetType": "REGION",
+              "targetId": "s5-east",
+              "roadRegionId": null,
+              "grain": "HOUR",
+              "bucketStart": "2026-10-15T01:00:00Z",
+              "sampleCount": 1,
+              "speedSum": 54,
+              "congestionSum": 4,
+              "avgSpeedKmh": 54,
+              "congestionIndex": 4,
+              "observedFrom": "2026-10-15T01:00:00Z",
+              "observedTo": "2026-10-15T01:00:00Z"
+            },
+            {
+              "targetType": "ROAD",
+              "targetId": "s5-road",
+              "roadRegionId": "s5-east",
+              "grain": "HOUR",
+              "bucketStart": "2026-10-15T00:00:00Z",
+              "sampleCount": 1,
+              "speedSum": 7.2,
+              "congestionSum": 2,
+              "avgSpeedKmh": 7.2,
+              "congestionIndex": 2,
+              "observedFrom": "2026-10-15T00:00:00Z",
+              "observedTo": "2026-10-15T00:00:00Z"
+            },
+            {
+              "targetType": "ROAD",
+              "targetId": "s5-road",
+              "roadRegionId": "s5-east",
+              "grain": "HOUR",
+              "bucketStart": "2026-10-15T01:00:00Z",
+              "sampleCount": 1,
+              "speedSum": 28.8,
+              "congestionSum": 4,
+              "avgSpeedKmh": 28.8,
+              "congestionIndex": 4,
+              "observedFrom": "2026-10-15T01:00:00Z",
+              "observedTo": "2026-10-15T01:00:00Z"
+            }
+          ]
+        },
+        "meta": {
+          "requestId": "ff56b202-e223-4171-aad6-2f4fa43fa647",
+          "dataAsOf": "2026-10-16T06:00:00Z",
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1"
+        }
+      }
+    },
+    {
+      "query": "cityId=s5-city&grain=DAY",
+      "status": 200,
+      "body": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "engine": "Hive",
+          "release": {
+            "id": "s6-failed-switch",
+            "datasetVersion": "1",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "capturedAt": "2026-10-20T06:15:38.871Z",
+            "publishedAt": "2026-10-20T06:18:52.825Z",
+            "adsSha256": "3c553c9d15070b65ccfc2086f82c9ecb813ebd6c22aa7259c527b11f61a86a90",
+            "batchIds": [
+              "s6-csv",
+              "s6-json",
+              "s6-repeat"
+            ],
+            "sourceHashes": [
+              "92d190e34daabcf5dbb93cbec7b64a1584bc4e907385f54f6814f9992b0ade79",
+              "fa9a67282b0b4e1a1087bdab3530dce189801367f64e977b9349ef9afcd8d453"
+            ]
+          },
+          "items": [
+            {
+              "targetType": "CITY",
+              "targetId": "s5-city",
+              "roadRegionId": null,
+              "grain": "DAY",
+              "bucketStart": "2026-10-15T00:00:00Z",
+              "sampleCount": 2,
+              "speedSum": 108,
+              "congestionSum": 6,
+              "avgSpeedKmh": 54,
+              "congestionIndex": 3,
+              "observedFrom": "2026-10-15T00:00:00Z",
+              "observedTo": "2026-10-15T01:00:00Z"
+            },
+            {
+              "targetType": "CITY",
+              "targetId": "s5-city",
+              "roadRegionId": null,
+              "grain": "DAY",
+              "bucketStart": "2026-10-16T00:00:00Z",
+              "sampleCount": 1,
+              "speedSum": 12,
+              "congestionSum": 9,
+              "avgSpeedKmh": 12,
+              "congestionIndex": 9,
+              "observedFrom": "2026-10-16T06:00:00Z",
+              "observedTo": "2026-10-16T06:00:00Z"
+            },
+            {
+              "targetType": "REGION",
+              "targetId": "s5-east",
+              "roadRegionId": null,
+              "grain": "DAY",
+              "bucketStart": "2026-10-15T00:00:00Z",
+              "sampleCount": 2,
+              "speedSum": 72,
+              "congestionSum": 6,
+              "avgSpeedKmh": 36,
+              "congestionIndex": 3,
+              "observedFrom": "2026-10-15T00:00:00Z",
+              "observedTo": "2026-10-15T01:00:00Z"
+            },
+            {
+              "targetType": "ROAD",
+              "targetId": "s5-road",
+              "roadRegionId": "s5-east",
+              "grain": "DAY",
+              "bucketStart": "2026-10-15T00:00:00Z",
+              "sampleCount": 2,
+              "speedSum": 36,
+              "congestionSum": 6,
+              "avgSpeedKmh": 18,
+              "congestionIndex": 3,
+              "observedFrom": "2026-10-15T00:00:00Z",
+              "observedTo": "2026-10-15T01:00:00Z"
+            }
+          ]
+        },
+        "meta": {
+          "requestId": "5b0a1991-90d5-4562-9388-a837b130a199",
+          "dataAsOf": "2026-10-16T06:00:00Z",
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1"
+        }
+      }
+    },
+    {
+      "query": "cityId=s5-other",
+      "status": 200,
+      "body": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "engine": "Hive",
+          "release": {
+            "id": "s6-failed-switch",
+            "datasetVersion": "1",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "capturedAt": "2026-10-20T06:15:38.871Z",
+            "publishedAt": "2026-10-20T06:18:52.825Z",
+            "adsSha256": "3c553c9d15070b65ccfc2086f82c9ecb813ebd6c22aa7259c527b11f61a86a90",
+            "batchIds": [
+              "s6-csv",
+              "s6-json",
+              "s6-repeat"
+            ],
+            "sourceHashes": [
+              "92d190e34daabcf5dbb93cbec7b64a1584bc4e907385f54f6814f9992b0ade79",
+              "fa9a67282b0b4e1a1087bdab3530dce189801367f64e977b9349ef9afcd8d453"
+            ]
+          },
+          "items": [
+            {
+              "targetType": "CITY",
+              "targetId": "s5-other",
+              "roadRegionId": null,
+              "grain": "WINDOW",
+              "bucketStart": "2026-10-15T00:00:00Z",
+              "sampleCount": 1,
+              "speedSum": 108,
+              "congestionSum": 8,
+              "avgSpeedKmh": 108,
+              "congestionIndex": 8,
+              "observedFrom": "2026-10-15T00:00:00Z",
+              "observedTo": "2026-10-15T00:00:00Z"
+            },
+            {
+              "targetType": "REGION",
+              "targetId": "s5-other-region",
+              "roadRegionId": null,
+              "grain": "WINDOW",
+              "bucketStart": "2026-10-15T00:00:00Z",
+              "sampleCount": 1,
+              "speedSum": 108,
+              "congestionSum": 8,
+              "avgSpeedKmh": 108,
+              "congestionIndex": 8,
+              "observedFrom": "2026-10-15T00:00:00Z",
+              "observedTo": "2026-10-15T00:00:00Z"
+            },
+            {
+              "targetType": "ROAD",
+              "targetId": "s5-other-road",
+              "roadRegionId": "s5-other-region",
+              "grain": "WINDOW",
+              "bucketStart": "2026-10-15T00:00:00Z",
+              "sampleCount": 1,
+              "speedSum": 108,
+              "congestionSum": 8,
+              "avgSpeedKmh": 108,
+              "congestionIndex": 8,
+              "observedFrom": "2026-10-15T00:00:00Z",
+              "observedTo": "2026-10-15T00:00:00Z"
+            }
+          ]
+        },
+        "meta": {
+          "requestId": "90572f6d-c452-4882-9fd0-f2980a52fece",
+          "dataAsOf": "2026-10-15T00:00:00Z",
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1"
+        }
+      }
+    },
+    {
+      "query": "cityId=s5-city&grain=BAD",
+      "status": 400,
+      "body": {
+        "code": "BAD_REQUEST",
+        "message": "Invalid request",
+        "data": null,
+        "meta": {
+          "requestId": "bf4f9001-bfee-482c-ab8f-9f5bfa6f028d",
+          "dataAsOf": null,
+          "sourceType": null,
+          "datasetId": null
+        }
+      }
+    },
+    {
+      "query": "cityId=s5-city&cityId=s5-city",
+      "status": 400,
+      "body": {
+        "code": "BAD_REQUEST",
+        "message": "Invalid request",
+        "data": null,
+        "meta": {
+          "requestId": "e213ad00-c60a-4727-8707-ffb7701f110c",
+          "dataAsOf": null,
+          "sourceType": null,
+          "datasetId": null
+        }
+      }
+    },
+    {
+      "query": "cityId=s5-city&from=bad",
+      "status": 400,
+      "body": {
+        "code": "BAD_REQUEST",
+        "message": "Invalid request",
+        "data": null,
+        "meta": {
+          "requestId": "5e3027c4-15c4-449b-a2f0-fffe661067dc",
+          "dataAsOf": null,
+          "sourceType": null,
+          "datasetId": null
+        }
+      }
+    },
+    {
+      "query": "cityId=unknown-city",
+      "status": 400,
+      "body": {
+        "code": "BAD_REQUEST",
+        "message": "Invalid request",
+        "data": null,
+        "meta": {
+          "requestId": "1532db0d-4f9a-4241-91cb-6dc39ac7da65",
+          "dataAsOf": null,
+          "sourceType": null,
+          "datasetId": null
+        }
+      }
+    }
+  ]
+}

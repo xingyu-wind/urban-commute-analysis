@@ -1,0 +1,75 @@
+{
+  "code": "OK",
+  "message": "Success",
+  "data": {
+    "engine": "Hive",
+    "release": {
+      "id": "s6-failed-switch",
+      "datasetVersion": "1",
+      "from": "2026-10-15T00:00:00Z",
+      "to": "2026-10-17T00:00:00Z",
+      "capturedAt": "2026-10-20T06:15:19.724Z",
+      "publishedAt": "2026-10-20T06:15:20.140Z",
+      "adsSha256": "3c553c9d15070b65ccfc2086f82c9ecb813ebd6c22aa7259c527b11f61a86a90",
+      "batchIds": [
+        "s6-csv",
+        "s6-json",
+        "s6-repeat"
+      ],
+      "sourceHashes": [
+        "92d190e34daabcf5dbb93cbec7b64a1584bc4e907385f54f6814f9992b0ade79",
+        "fa9a67282b0b4e1a1087bdab3530dce189801367f64e977b9349ef9afcd8d453"
+      ]
+    },
+    "items": [
+      {
+        "targetType": "CITY",
+        "targetId": "s5-other",
+        "roadRegionId": null,
+        "grain": "WINDOW",
+        "bucketStart": "2026-10-15T00:00:00Z",
+        "sampleCount": 1,
+        "speedSum": 108,
+        "congestionSum": 8,
+        "avgSpeedKmh": 108,
+        "congestionIndex": 8,
+        "observedFrom": "2026-10-15T00:00:00Z",
+        "observedTo": "2026-10-15T00:00:00Z"
+      },
+      {
+        "targetType": "REGION",
+        "targetId": "s5-other-region",
+        "roadRegionId": null,
+        "grain": "WINDOW",
+        "bucketStart": "2026-10-15T00:00:00Z",
+        "sampleCount": 1,
+        "speedSum": 108,
+        "congestionSum": 8,
+        "avgSpeedKmh": 108,
+        "congestionIndex": 8,
+        "observedFrom": "2026-10-15T00:00:00Z",
+        "observedTo": "2026-10-15T00:00:00Z"
+      },
+      {
+        "targetType": "ROAD",
+        "targetId": "s5-other-road",
+        "roadRegionId": "s5-other-region",
+        "grain": "WINDOW",
+        "bucketStart": "2026-10-15T00:00:00Z",
+        "sampleCount": 1,
+        "speedSum": 108,
+        "congestionSum": 8,
+        "avgSpeedKmh": 108,
+        "congestionIndex": 8,
+        "observedFrom": "2026-10-15T00:00:00Z",
+        "observedTo": "2026-10-15T00:00:00Z"
+      }
+    ]
+  },
+  "meta": {
+    "requestId": "4f3315db-7236-44ae-9b30-c17786741a6c",
+    "dataAsOf": "2026-10-15T00:00:00Z",
+    "sourceType": "synthetic_test",
+    "datasetId": "s5-synthetic-v1"
+  }
+}

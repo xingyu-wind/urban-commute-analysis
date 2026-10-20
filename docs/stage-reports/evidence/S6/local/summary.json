@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "scope": "real-hive-chain",
+  "hiveEvidenceReused": "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s6-ci-second\\s6-ci\\hive",
+  "steps": [
+    "backend",
+    "etl-csv",
+    "etl-json",
+    "etl-repeat",
+    "etl-edge",
+    "browser"
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "core": {
+    "backend": {
+      "tests": 82,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "frontend": {
+      "numTotalTests": 63,
+      "numPassedTests": 63,
+      "numFailedTests": 0
+    },
+    "mysql": "8.4.11",
+    "commands": [
+      {
+        "name": "backend",
+        "command": [
+          "cmd",
+          "/c",
+          "backend\\mvnw.cmd",
+          "-f",
+          "backend/pom.xml",
+          "-B",
+          "-ntp",
+          "verify"
+        ],
+        "exitCode": 0
+      },
+      {
+        "name": "ci-policy",
+        "command": [
+          "D:\\WindXingyu\\Code\\urban-commute-analysis\\contracts\\.venv\\Scripts\\python.exe",
+          "scripts/check_ci.py"
+        ],
+        "exitCode": 0
+      },
+      {
+        "name": "openapi",
+        "command": [
+          "D:\\WindXingyu\\Code\\urban-commute-analysis\\contracts\\.venv\\Scripts\\python.exe",
+          "-m",
+          "openapi_spec_validator",
+          "contracts/openapi.yaml"
+        ],
+        "exitCode": 0
+      },
+      {
+        "name": "contract",
+        "command": [
+          "D:\\WindXingyu\\Code\\urban-commute-analysis\\contracts\\.venv\\Scripts\\python.exe",
+          "contracts/validate_contract.py"
+        ],
+        "exitCode": 0
+      },
+      {
+        "name": "http",
+        "command": [
+          "D:\\WindXingyu\\Code\\urban-commute-analysis\\contracts\\.venv\\Scripts\\python.exe",
+          "backend/scripts/verify_http.py",
+          "--output",
+          "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s6-core\\core\\core\\http"
+        ],
+        "exitCode": 0
+      },
+      {
+        "name": "types",
+        "command": [
+          "cmd",
+          "/c",
+          "npm",
+          "run",
+          "type-check"
+        ],
+        "exitCode": 0
+      },
+      {
+        "name": "frontend-unit",
+        "command": [
+          "cmd",
+          "/c",
+          "npm",
+          "test",
+          "--",
+          "--reporter=json",
+          "--outputFile=D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s6-core\\core\\core\\frontend-unit.json"
+        ],
+        "exitCode": 0
+      },
+      {
+        "name": "build",
+        "command": [
+          "cmd",
+          "/c",
+          "npm",
+          "run",
+          "build"
+        ],
+        "exitCode": 0
+      },
+      {
+        "name": "browser",
+        "command": [
+          "cmd",
+          "/c",
+          "npm",
+          "run",
+          "test:e2e",
+          "--",
+          "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s6-core\\core\\core\\browser"
+        ],
+        "exitCode": 0
+      },
+      {
+        "name": "negative-driver",
+        "command": [
+          "D:\\WindXingyu\\Code\\urban-commute-analysis\\contracts\\.venv\\Scripts\\python.exe",
+          "scripts/check-regression-failures.py",
+          "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s6-core\\core\\core\\browser",
+          "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s6-core\\core\\core\\negative"
+        ],
+        "exitCode": 0
+      }
+    ],
+    "exitCode": 0
+  },
+  "s5": {
+    "passed": true,
+    "commands": [
+      {
+        "name": "core",
+        "exitCode": 0
+      },
+      {
+        "name": "pytest",
+        "exitCode": 0
+      },
+      {
+        "name": "prepare",
+        "exitCode": 0
+      },
+      {
+        "name": "browser",
+        "exitCode": 0
+      },
+      {
+        "name": "schemas",
+        "exitCode": 0
+      }
+    ]
+  },
+  "s6_mysql_admission": {
+    "passed": true,
+    "ods": 39,
+    "unique": 21,
+    "negativeCases": [
+      "altered-candidate",
+      "failed-batch",
+      "duplicate-batch-directory"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "scope": "real-hive-chain",
+  "hiveEvidenceReused": null,
+  "steps": [
+    "backend",
+    "etl-csv",
+    "etl-json",
+    "etl-repeat",
+    "etl-edge",
+    "docker-pull",
+    "image-inspect",
+    "real-hive",
+    "browser"
+  ]
+}

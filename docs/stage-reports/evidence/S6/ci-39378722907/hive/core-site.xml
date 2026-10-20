@@ -1,0 +1,1 @@
+<configuration><property><name>fs.defaultFS</name><value>hdfs://127.0.0.1:9000</value></property><property><name>hadoop.tmp.dir</name><value>/tmp/s6-warehouse.DVwUM19w/tmp</value></property></configuration>

@@ -1,0 +1,134 @@
+{
+  "releases": [
+    {
+      "release_id": "s6-failed-commit",
+      "status": "PUBLISHED",
+      "row_count": 40,
+      "published_at": "2026-10-20 06:15:20.063000"
+    },
+    {
+      "release_id": "s6-failed-insert",
+      "status": "PUBLISHED",
+      "row_count": 40,
+      "published_at": "2026-10-20 06:15:19.986000"
+    },
+    {
+      "release_id": "s6-failed-switch",
+      "status": "PUBLISHED",
+      "row_count": 40,
+      "published_at": "2026-10-20 06:15:20.140000"
+    },
+    {
+      "release_id": "s6-first",
+      "status": "PUBLISHED",
+      "row_count": 40,
+      "published_at": "2026-10-20 06:15:19.831000"
+    },
+    {
+      "release_id": "s6-remains-failed",
+      "status": "FAILED",
+      "row_count": 40,
+      "published_at": null
+    }
+  ],
+  "totals": [
+    {
+      "release_id": "s6-failed-commit",
+      "grain": "DAY",
+      "metric_rows": 12,
+      "samples": "21",
+      "speed_sum": "1134.01",
+      "congestion_sum": "84.00"
+    },
+    {
+      "release_id": "s6-failed-commit",
+      "grain": "HOUR",
+      "metric_rows": 18,
+      "samples": "21",
+      "speed_sum": "1134.01",
+      "congestion_sum": "84.00"
+    },
+    {
+      "release_id": "s6-failed-commit",
+      "grain": "WINDOW",
+      "metric_rows": 10,
+      "samples": "21",
+      "speed_sum": "1134.01",
+      "congestion_sum": "84.00"
+    },
+    {
+      "release_id": "s6-failed-insert",
+      "grain": "DAY",
+      "metric_rows": 12,
+      "samples": "21",
+      "speed_sum": "1134.01",
+      "congestion_sum": "84.00"
+    },
+    {
+      "release_id": "s6-failed-insert",
+      "grain": "HOUR",
+      "metric_rows": 18,
+      "samples": "21",
+      "speed_sum": "1134.01",
+      "congestion_sum": "84.00"
+    },
+    {
+      "release_id": "s6-failed-insert",
+      "grain": "WINDOW",
+      "metric_rows": 10,
+      "samples": "21",
+      "speed_sum": "1134.01",
+      "congestion_sum": "84.00"
+    },
+    {
+      "release_id": "s6-failed-switch",
+      "grain": "DAY",
+      "metric_rows": 12,
+      "samples": "21",
+      "speed_sum": "1134.01",
+      "congestion_sum": "84.00"
+    },
+    {
+      "release_id": "s6-failed-switch",
+      "grain": "HOUR",
+      "metric_rows": 18,
+      "samples": "21",
+      "speed_sum": "1134.01",
+      "congestion_sum": "84.00"
+    },
+    {
+      "release_id": "s6-failed-switch",
+      "grain": "WINDOW",
+      "metric_rows": 10,
+      "samples": "21",
+      "speed_sum": "1134.01",
+      "congestion_sum": "84.00"
+    },
+    {
+      "release_id": "s6-first",
+      "grain": "DAY",
+      "metric_rows": 12,
+      "samples": "21",
+      "speed_sum": "1134.01",
+      "congestion_sum": "84.00"
+    },
+    {
+      "release_id": "s6-first",
+      "grain": "HOUR",
+      "metric_rows": 18,
+      "samples": "21",
+      "speed_sum": "1134.01",
+      "congestion_sum": "84.00"
+    },
+    {
+      "release_id": "s6-first",
+      "grain": "WINDOW",
+      "metric_rows": 10,
+      "samples": "21",
+      "speed_sum": "1134.01",
+      "congestion_sum": "84.00"
+    }
+  ],
+  "visible": "s6-failed-switch",
+  "passed": true
+}
