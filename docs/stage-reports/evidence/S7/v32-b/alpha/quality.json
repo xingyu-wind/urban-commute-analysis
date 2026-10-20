@@ -1,0 +1,48 @@
+{
+  "status": "TRAINABLE",
+  "reasons": [],
+  "task": {
+    "target": "speed",
+    "unit": "km/h",
+    "spatialGrain": "SENSOR",
+    "frequencySeconds": 3600,
+    "seasonSteps": 24,
+    "horizon": 6,
+    "minTrainingSteps": 168,
+    "validationSteps": 48,
+    "testSteps": 48,
+    "minimumCoverage": 0.9,
+    "fullRequiredSteps": 264,
+    "baselineRequiredSteps": 48,
+    "policy": "7 seasonal training cycles + 2 validation cycles + 2 test cycles; baseline-only needs one cycle + four horizons",
+    "missingPolicy": "causal past-only carry-forward features; never impute evaluation/training labels",
+    "noUniversal365DayRequirement": true
+  },
+  "datasetId": "alpha-synthetic-v1",
+  "datasetVersion": "1",
+  "domainId": "alpha",
+  "cityId": "alpha",
+  "target": "speed",
+  "unit": "km/h",
+  "sourceType": "synthetic_test",
+  "sourceSha256": "99305c0b29f63edb1b958990f11d23da7fd7d9488b247e345f3b8be2ad072de8",
+  "mappingSha256": "96fcf025e2962163c0689576dcdda8528c8f4dc2df161072965ac3e6cd808adb",
+  "duplicatesRemoved": 0,
+  "entities": [
+    {
+      "entityId": "synthetic-sensor",
+      "status": "TRAINABLE",
+      "reasons": [],
+      "steps": 336,
+      "observedLabels": 336,
+      "missingLabels": 0,
+      "coverage": 1.0,
+      "longestMissingRun": 0,
+      "fromUtc": "2023-12-31T16:00:00+00:00",
+      "toUtc": "2024-01-14T15:00:00+00:00",
+      "validationOrigins": 2,
+      "testOrigins": 2
+    }
+  ],
+  "interpretation": "synthetic engineering readiness only; not real traffic validity"
+}

@@ -1,0 +1,43 @@
+{
+  "state": "CONFIRMED",
+  "adapterVersion": "traffic-adapter-v1",
+  "file": {
+    "sha256": "99305c0b29f63edb1b958990f11d23da7fd7d9488b247e345f3b8be2ad072de8",
+    "md5": "4b16ebfeee0a8be5455611d56242c597",
+    "bytes": 17467
+  },
+  "review": {
+    "mapping_version": "1",
+    "preprocessing_version": "1",
+    "adapter": "long-csv-v1",
+    "mapping": {
+      "timestamp": "measured_at",
+      "entity": "sensor",
+      "value": "velocity"
+    },
+    "dataset_id": "alpha-synthetic-v1",
+    "dataset_version": "1",
+    "domain_id": "alpha",
+    "city_id": "alpha",
+    "source_type": "synthetic_test",
+    "source_url": "generated-fixture://ml/examples/fixtures.py",
+    "license_status": "not_applicable",
+    "license_evidence": "original deterministic synthetic test observations; no real traffic",
+    "allowed_uses": [
+      "analysis"
+    ],
+    "timezone": "Asia/Shanghai",
+    "time_format": null,
+    "target": "speed",
+    "unit": "km/h",
+    "frequency_seconds": 3600,
+    "spatial_grain": "SENSOR",
+    "zero_policy": "valid"
+  },
+  "confirmation": {
+    "actor": "original-synthetic-fixture-owner",
+    "proposalSha256": "caeebbacd1c0c120d71c0edbc7a1b9540ef82e2f3fe0a7e9fa92caad645ee65d",
+    "confirmedAt": "2026-10-20T14:23:41.809708+00:00"
+  },
+  "configurationSha256": "96fcf025e2962163c0689576dcdda8528c8f4dc2df161072965ac3e6cd808adb"
+}

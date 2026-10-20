@@ -37,3 +37,9 @@ python ml/forecast.py publish --batch-output <同一S5成功输出目录> --outp
 发布前重新核验全部S5来源/批次/版本/观测与训练输入，并验证工件 SHA、选模结果及七日连续性。V5 独立 model/job/evaluation/result/current 表，按城市/数据集命名锁串行发布；STAGING先持久化，全部明细、评估、PUBLISHED与指针同事务提交。失败回滚、FAILED保留；进程硬退出可留下STAGING，后继持锁者安全恢复。相同科学输出复用同一任务，不重复明细；旧成功重放不会倒退指针；过期或同生成时间的新任务拒绝覆盖。S6 `warehouse_current` 不变。
 
 `GET /api/v1/predictions?cityId=...&datasetId=...` 只读当前PUBLISHED快照，无模型返回release=null与空数组。Java DTO、OpenAPI、TS运行时验证同步。Vue打开“七日预测”后显示历史实线/预测虚线、七点表、模型/来源/版本/时间/误差/限制；没有HTTP触发训练、Mock曲线或生产调度。
+
+## V3.2 通用离线研究
+
+字段契约、任务门槛、真实来源核查与阻塞详见 [DATA_SOURCES.md](DATA_SOURCES.md)。运行 `python scripts/s7_data_checks.py --output <新目录>` 可复现原创合成CSV/JSON的确认、转换、质量、按域评估与冻结源域迁移。`python ml/data_cli.py --help` 提供独立步骤；inspect仅推荐，confirm必须显式review/actor/摘要确认。真实原文件及含样例检查结果只能留在被忽略的data/raw、data/private或data/external，不进入CI。
+
+发布完整性已加强：每次发布先重新准入，再用可信代码独立重训、重算评估/选模和七日推理，比较模型字节SHA及逐点结果；从不加载提交目录的joblib。增加发布耗时以获得独立复核，未经核验的预测不会创建可见任务或切换指针。

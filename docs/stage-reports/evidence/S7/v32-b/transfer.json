@@ -1,0 +1,361 @@
+{
+  "status": "EVALUATED",
+  "sourceDomain": "alpha",
+  "targetDomain": "beta",
+  "target": "speed",
+  "unit": "km/h",
+  "sourceSelectedModel": "seasonal",
+  "models": {
+    "naive": {
+      "mae": 5.773508333333335,
+      "rmse": 6.2457569608628445,
+      "count": 12,
+      "byHorizon": [
+        {
+          "step": 1,
+          "mae": 1.8806000000000012,
+          "rmse": 1.9216967632797852,
+          "count": 2
+        },
+        {
+          "step": 2,
+          "mae": 3.9455000000000027,
+          "rmse": 3.954229256125651,
+          "count": 2
+        },
+        {
+          "step": 3,
+          "mae": 5.182900000000004,
+          "rmse": 5.187060024715353,
+          "count": 2
+        },
+        {
+          "step": 4,
+          "mae": 6.958400000000001,
+          "rmse": 6.961185256118387,
+          "count": 2
+        },
+        {
+          "step": 5,
+          "mae": 7.9162,
+          "rmse": 7.916272585630184,
+          "count": 2
+        },
+        {
+          "step": 6,
+          "mae": 8.757450000000002,
+          "rmse": 8.757680577927013,
+          "count": 2
+        }
+      ],
+      "windows": [
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-12T16:00:00+00:00",
+          "mae": 5.955533333333336,
+          "rmse": 6.365079302464872,
+          "count": 6
+        },
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-13T16:00:00+00:00",
+          "mae": 5.591483333333334,
+          "rmse": 6.124110180398999,
+          "count": 6
+        }
+      ]
+    },
+    "seasonal": {
+      "mae": 0.2028833333333336,
+      "rmse": 0.2753043981970978,
+      "count": 12,
+      "byHorizon": [
+        {
+          "step": 1,
+          "mae": 0.20570000000000022,
+          "rmse": 0.28914136680869135,
+          "count": 2
+        },
+        {
+          "step": 2,
+          "mae": 0.35694999999999766,
+          "rmse": 0.41590167708245546,
+          "count": 2
+        },
+        {
+          "step": 3,
+          "mae": 0.0409000000000006,
+          "rmse": 0.041528905595982324,
+          "count": 2
+        },
+        {
+          "step": 4,
+          "mae": 0.0663000000000018,
+          "rmse": 0.08563486439529186,
+          "count": 2
+        },
+        {
+          "step": 5,
+          "mae": 0.2563000000000031,
+          "rmse": 0.3209609477802565,
+          "count": 2
+        },
+        {
+          "step": 6,
+          "mae": 0.29114999999999824,
+          "rmse": 0.29343521431484515,
+          "count": 2
+        }
+      ],
+      "windows": [
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-12T16:00:00+00:00",
+          "mae": 0.18871666666666798,
+          "rmse": 0.27494398520425933,
+          "count": 6
+        },
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-13T16:00:00+00:00",
+          "mae": 0.21704999999999922,
+          "rmse": 0.27566433997405676,
+          "count": 6
+        }
+      ]
+    },
+    "random_forest": {
+      "mae": 9.978577266498123,
+      "rmse": 10.257837314115713,
+      "count": 12,
+      "byHorizon": [
+        {
+          "step": 1,
+          "mae": 6.080231236559499,
+          "rmse": 6.083683469304765,
+          "count": 2
+        },
+        {
+          "step": 2,
+          "mae": 8.15165647248585,
+          "rmse": 8.152006059164286,
+          "count": 2
+        },
+        {
+          "step": 3,
+          "mae": 9.389056472485851,
+          "rmse": 9.389079060839995,
+          "count": 2
+        },
+        {
+          "step": 4,
+          "mae": 11.164556472485849,
+          "rmse": 11.164560769488656,
+          "count": 2
+        },
+        {
+          "step": 5,
+          "mae": 12.122356472485848,
+          "rmse": 12.124370891511308,
+          "count": 2
+        },
+        {
+          "step": 6,
+          "mae": 12.96360647248585,
+          "rmse": 12.964195252024277,
+          "count": 2
+        }
+      ],
+      "windows": [
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-12T16:00:00+00:00",
+          "mae": 9.972951885574224,
+          "rmse": 10.223387860031265,
+          "count": 6
+        },
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-13T16:00:00+00:00",
+          "mae": 9.984202647422025,
+          "rmse": 10.292171461314405,
+          "count": 6
+        }
+      ]
+    },
+    "xgboost": {
+      "mae": 10.65837937215169,
+      "rmse": 10.91989364233031,
+      "count": 12,
+      "byHorizon": [
+        {
+          "step": 1,
+          "mae": 6.765471038818358,
+          "rmse": 6.768559535055443,
+          "count": 2
+        },
+        {
+          "step": 2,
+          "mae": 8.83037103881836,
+          "rmse": 8.830662531526274,
+          "count": 2
+        },
+        {
+          "step": 3,
+          "mae": 10.06777103881836,
+          "rmse": 10.067785139372498,
+          "count": 2
+        },
+        {
+          "step": 4,
+          "mae": 11.843271038818358,
+          "rmse": 11.843272584105025,
+          "count": 2
+        },
+        {
+          "step": 5,
+          "mae": 12.801071038818357,
+          "rmse": 12.803043868681153,
+          "count": 2
+        },
+        {
+          "step": 6,
+          "mae": 13.64232103881836,
+          "rmse": 13.64291496038094,
+          "count": 2
+        }
+      ],
+      "windows": [
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-12T16:00:00+00:00",
+          "mae": 10.649554372151693,
+          "rmse": 10.883880997495217,
+          "count": 6
+        },
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-13T16:00:00+00:00",
+          "mae": 10.667204372151692,
+          "rmse": 10.955787911052969,
+          "count": 6
+        }
+      ]
+    }
+  },
+  "exactOverlapRatio": 0.0,
+  "sourceTrainingBeforeUtc": "2024-01-12T16:00:00+00:00",
+  "targetTestFromUtc": "2024-01-12T16:00:00+00:00",
+  "targetLabelsUsedForFitOrSelection": false,
+  "sourceInputSha256": "29ca55622503de7fe8ae1b23126eac05b21960f99d595c527846d9a9c57360fb",
+  "targetInputSha256": "28763a2e9baa78b27efef4f5744472e838de2bddb5ff1637fd1c21c5804299a2",
+  "realGeneralizationConclusion": "NOT_EVALUABLE",
+  "limitation": "synthetic domains demonstrate engineering only",
+  "task": {
+    "target": "speed",
+    "unit": "km/h",
+    "spatialGrain": "SENSOR",
+    "frequencySeconds": 3600,
+    "seasonSteps": 24,
+    "horizon": 6,
+    "minTrainingSteps": 168,
+    "validationSteps": 48,
+    "testSteps": 48,
+    "minimumCoverage": 0.9,
+    "fullRequiredSteps": 264,
+    "baselineRequiredSteps": 48,
+    "policy": "7 seasonal training cycles + 2 validation cycles + 2 test cycles; baseline-only needs one cycle + four horizons",
+    "missingPolicy": "causal past-only carry-forward features; never impute evaluation/training labels",
+    "noUniversal365DayRequirement": true
+  },
+  "seed": 20261020,
+  "modelConfigurations": {
+    "random_forest": {
+      "n_estimators": 24,
+      "max_depth": 6,
+      "min_samples_leaf": 3,
+      "n_jobs": 1
+    },
+    "xgboost": {
+      "n_estimators": 30,
+      "max_depth": 3,
+      "learning_rate": 0.08,
+      "n_jobs": 1,
+      "tree_method": "hist",
+      "objective": "reg:squarederror"
+    }
+  },
+  "runtime": {
+    "seed": 20261020,
+    "strategy": "recursive-refit-each-origin",
+    "horizon": 7,
+    "min_days": 365,
+    "validation_days": 28,
+    "test_days": 28,
+    "origin_stride": 7,
+    "lags": [
+      1,
+      7,
+      14,
+      28
+    ],
+    "daily_policy": "UTC; >=4 samples and all four 6h slots; no missing days; no imputation; same-day collection",
+    "selection": "validation MAE, RMSE, fixed candidate order; ML must improve best baseline MAE by >=1%",
+    "random_forest": {
+      "n_estimators": 60,
+      "max_depth": 9,
+      "min_samples_leaf": 3,
+      "n_jobs": 1
+    },
+    "xgboost": {
+      "n_estimators": 80,
+      "max_depth": 3,
+      "learning_rate": 0.06,
+      "subsample": 1.0,
+      "colsample_bytree": 1.0,
+      "n_jobs": 1,
+      "tree_method": "hist",
+      "objective": "reg:squarederror"
+    },
+    "packages": {
+      "numpy": "2.2.6",
+      "scipy": "1.15.3",
+      "scikit-learn": "1.7.2",
+      "xgboost": "3.0.5",
+      "joblib": "1.5.2",
+      "threadpoolctl": "3.6.0",
+      "tzdata": "2025.2",
+      "PyMySQL": "1.1.2",
+      "cryptography": "50.0.2",
+      "cffi": "2.1.1",
+      "pycparser": "3.11",
+      "pytest": "8.4.2",
+      "colorama": "0.4.6",
+      "iniconfig": "2.3.1",
+      "packaging": "26.3",
+      "pluggy": "1.7.0",
+      "Pygments": "2.21.0"
+    },
+    "code_sha256": "7e920e8b9d30a8c901b831f33af782eecc89a656a6d13457040149129c5ad854",
+    "python": "3.11",
+    "lock_sha256": {
+      "ml/requirements.lock.txt": "5948ac5c01206c64bafe8c078f98f5477f128af85340f6a22f9b88ff037b59b3",
+      "ml/requirements.in": "3d54915dc93ccdb5cb68889ba47c5aba215b500903d345314be36c48fab4351a",
+      "data-pipeline/requirements.lock.txt": "e3bb90f09ac21ab82f22b1682b67b2fe0e2316e89c89b9fcf8cfc20030489d64"
+    },
+    "code_sha256s": {
+      "ml/forecast.py": "7e920e8b9d30a8c901b831f33af782eecc89a656a6d13457040149129c5ad854",
+      "bigdata/warehouse.py": "1dc651e7541083ac575316162d1a5fc2b8969286e459e7742f9aa7a60a12cec7",
+      "data-pipeline/commute_etl/clean.py": "6ae11987d13ef3e5b951a8412f568a02f2a66e69873da250ecbc748a356624a7",
+      "data-pipeline/commute_etl/store.py": "bef3818ca4c57d8ecf9390c05b83ec085f2da4416040486f2111db73b15abf92"
+    },
+    "publication_verification": "fresh deterministic refit/backtest/artifact/inference replay v1"
+  },
+  "sourceMappingSha256": "96fcf025e2962163c0689576dcdda8528c8f4dc2df161072965ac3e6cd808adb",
+  "targetMappingSha256": "88cbdfc953c646a4ee32b6ad9919d51099c8fef14dfdc866c257647fd5e4d96a",
+  "evaluatorSha256": "1cdda6544ecbe39371fc9cbdd0c9130db6feb6b5878233c0420979a050fc1cac",
+  "adapterSha256": "6cfc93f36f977e709cee20f22cc424d31e496f0059ef20c187fc635f73c930fc",
+  "evaluationOnly": true,
+  "apiPublication": false,
+  "evaluationVersion": "387cdbfada41a9379570e3504f76906da291739528a5476e1bda7c03d23bbf23"
+}

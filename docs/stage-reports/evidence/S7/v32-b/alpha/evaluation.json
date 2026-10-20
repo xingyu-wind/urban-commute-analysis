@@ -1,0 +1,682 @@
+{
+  "status": "TRAINABLE",
+  "readiness": {
+    "status": "TRAINABLE",
+    "reasons": [],
+    "task": {
+      "target": "speed",
+      "unit": "km/h",
+      "spatialGrain": "SENSOR",
+      "frequencySeconds": 3600,
+      "seasonSteps": 24,
+      "horizon": 6,
+      "minTrainingSteps": 168,
+      "validationSteps": 48,
+      "testSteps": 48,
+      "minimumCoverage": 0.9,
+      "fullRequiredSteps": 264,
+      "baselineRequiredSteps": 48,
+      "policy": "7 seasonal training cycles + 2 validation cycles + 2 test cycles; baseline-only needs one cycle + four horizons",
+      "missingPolicy": "causal past-only carry-forward features; never impute evaluation/training labels",
+      "noUniversal365DayRequirement": true
+    },
+    "datasetId": "alpha-synthetic-v1",
+    "datasetVersion": "1",
+    "domainId": "alpha",
+    "cityId": "alpha",
+    "target": "speed",
+    "unit": "km/h",
+    "sourceType": "synthetic_test",
+    "sourceSha256": "99305c0b29f63edb1b958990f11d23da7fd7d9488b247e345f3b8be2ad072de8",
+    "mappingSha256": "96fcf025e2962163c0689576dcdda8528c8f4dc2df161072965ac3e6cd808adb",
+    "duplicatesRemoved": 0,
+    "entities": [
+      {
+        "entityId": "synthetic-sensor",
+        "status": "TRAINABLE",
+        "reasons": [],
+        "steps": 336,
+        "observedLabels": 336,
+        "missingLabels": 0,
+        "coverage": 1.0,
+        "longestMissingRun": 0,
+        "fromUtc": "2023-12-31T16:00:00+00:00",
+        "toUtc": "2024-01-14T15:00:00+00:00",
+        "validationOrigins": 2,
+        "testOrigins": 2
+      }
+    ],
+    "interpretation": "synthetic engineering readiness only; not real traffic validity"
+  },
+  "task": {
+    "target": "speed",
+    "unit": "km/h",
+    "spatialGrain": "SENSOR",
+    "frequencySeconds": 3600,
+    "seasonSteps": 24,
+    "horizon": 6,
+    "minTrainingSteps": 168,
+    "validationSteps": 48,
+    "testSteps": 48,
+    "minimumCoverage": 0.9,
+    "fullRequiredSteps": 264,
+    "baselineRequiredSteps": 48,
+    "policy": "7 seasonal training cycles + 2 validation cycles + 2 test cycles; baseline-only needs one cycle + four horizons",
+    "missingPolicy": "causal past-only carry-forward features; never impute evaluation/training labels",
+    "noUniversal365DayRequirement": true
+  },
+  "selected": "seasonal",
+  "bestBaseline": "seasonal",
+  "rule": "validation MAE/RMSE/fixed order; ML needs >=1% MAE improvement",
+  "boundaries": {
+    "synthetic-sensor": {
+      "validation": [
+        "2024-01-10T16:00:00+00:00",
+        "2024-01-11T16:00:00+00:00"
+      ],
+      "test": [
+        "2024-01-12T16:00:00+00:00",
+        "2024-01-13T16:00:00+00:00"
+      ]
+    }
+  },
+  "validation": {
+    "naive": {
+      "mae": 5.724233333333334,
+      "rmse": 6.184022940071725,
+      "count": 12,
+      "byHorizon": [
+        {
+          "step": 1,
+          "mae": 1.8415,
+          "rmse": 1.8594716077423719,
+          "count": 2
+        },
+        {
+          "step": 2,
+          "mae": 3.7952000000000012,
+          "rmse": 3.8018874523057633,
+          "count": 2
+        },
+        {
+          "step": 3,
+          "mae": 5.5225500000000025,
+          "rmse": 5.527080835757699,
+          "count": 2
+        },
+        {
+          "step": 4,
+          "mae": 6.734550000000002,
+          "rmse": 6.742032460986822,
+          "count": 2
+        },
+        {
+          "step": 5,
+          "mae": 7.972349999999999,
+          "rmse": 7.972969016934656,
+          "count": 2
+        },
+        {
+          "step": 6,
+          "mae": 8.47925,
+          "rmse": 8.48345426492063,
+          "count": 2
+        }
+      ],
+      "windows": [
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-10T16:00:00+00:00",
+          "trainingBeforeUtc": "2024-01-10T16:00:00+00:00",
+          "mae": 5.956066666666669,
+          "rmse": 6.389769002084507,
+          "count": 6,
+          "missingLabels": 0
+        },
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-11T16:00:00+00:00",
+          "trainingBeforeUtc": "2024-01-11T16:00:00+00:00",
+          "mae": 5.492399999999999,
+          "rmse": 5.971191802870399,
+          "count": 6,
+          "missingLabels": 0
+        }
+      ]
+    },
+    "seasonal": {
+      "mae": 0.1231666666666662,
+      "rmse": 0.13874443532384675,
+      "count": 12,
+      "byHorizon": [
+        {
+          "step": 1,
+          "mae": 0.11680000000000135,
+          "rmse": 0.11876232567611793,
+          "count": 2
+        },
+        {
+          "step": 2,
+          "mae": 0.06899999999999906,
+          "rmse": 0.06913385567144252,
+          "count": 2
+        },
+        {
+          "step": 3,
+          "mae": 0.043600000000001415,
+          "rmse": 0.05096979497702599,
+          "count": 2
+        },
+        {
+          "step": 4,
+          "mae": 0.18364999999999654,
+          "rmse": 0.19797960753572252,
+          "count": 2
+        },
+        {
+          "step": 5,
+          "mae": 0.14894999999999925,
+          "rmse": 0.1519115696713057,
+          "count": 2
+        },
+        {
+          "step": 6,
+          "mae": 0.1769999999999996,
+          "rmse": 0.17817171492692002,
+          "count": 2
+        }
+      ],
+      "windows": [
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-10T16:00:00+00:00",
+          "trainingBeforeUtc": "2024-01-10T16:00:00+00:00",
+          "mae": 0.10056666666666558,
+          "rmse": 0.11456415960790768,
+          "count": 6,
+          "missingLabels": 0
+        },
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-11T16:00:00+00:00",
+          "trainingBeforeUtc": "2024-01-11T16:00:00+00:00",
+          "mae": 0.14576666666666682,
+          "rmse": 0.1592956057146588,
+          "count": 6,
+          "missingLabels": 0
+        }
+      ]
+    },
+    "random_forest": {
+      "mae": 0.13684732754179704,
+      "rmse": 0.1717537574085596,
+      "count": 12,
+      "byHorizon": [
+        {
+          "step": 1,
+          "mae": 0.06010984623015858,
+          "rmse": 0.06055391357731107,
+          "count": 2
+        },
+        {
+          "step": 2,
+          "mae": 0.05812893518518791,
+          "rmse": 0.06746759760907257,
+          "count": 2
+        },
+        {
+          "step": 3,
+          "mae": 0.29229423321759285,
+          "rmse": 0.3016313516729731,
+          "count": 2
+        },
+        {
+          "step": 4,
+          "mae": 0.1353137235449715,
+          "rmse": 0.16238211732858812,
+          "count": 2
+        },
+        {
+          "step": 5,
+          "mae": 0.09260967907382422,
+          "rmse": 0.11696450498159007,
+          "count": 2
+        },
+        {
+          "step": 6,
+          "mae": 0.18262754799904712,
+          "rmse": 0.19428676270223175,
+          "count": 2
+        }
+      ],
+      "windows": [
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-10T16:00:00+00:00",
+          "trainingBeforeUtc": "2024-01-10T16:00:00+00:00",
+          "mae": 0.14575213040329635,
+          "rmse": 0.18729596158164716,
+          "count": 6,
+          "missingLabels": 0
+        },
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-11T16:00:00+00:00",
+          "trainingBeforeUtc": "2024-01-11T16:00:00+00:00",
+          "mae": 0.12794252468029774,
+          "rmse": 0.15465745744425916,
+          "count": 6,
+          "missingLabels": 0
+        }
+      ]
+    },
+    "xgboost": {
+      "mae": 0.3631419143676761,
+      "rmse": 0.4211563534452643,
+      "count": 12,
+      "byHorizon": [
+        {
+          "step": 1,
+          "mae": 0.05997966918945252,
+          "rmse": 0.07105050459925422,
+          "count": 2
+        },
+        {
+          "step": 2,
+          "mae": 0.18875901489257885,
+          "rmse": 0.19452222862649496,
+          "count": 2
+        },
+        {
+          "step": 3,
+          "mae": 0.43477432861328325,
+          "rmse": 0.46360531749925304,
+          "count": 2
+        },
+        {
+          "step": 4,
+          "mae": 0.3907051452636736,
+          "rmse": 0.4128599467730172,
+          "count": 2
+        },
+        {
+          "step": 5,
+          "mae": 0.6297239410400373,
+          "rmse": 0.6357847375001784,
+          "count": 2
+        },
+        {
+          "step": 6,
+          "mae": 0.47490938720703113,
+          "rmse": 0.4813974596412767,
+          "count": 2
+        }
+      ],
+      "windows": [
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-10T16:00:00+00:00",
+          "trainingBeforeUtc": "2024-01-10T16:00:00+00:00",
+          "mae": 0.42491567484537757,
+          "rmse": 0.46462693454223264,
+          "count": 6,
+          "missingLabels": 0
+        },
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-11T16:00:00+00:00",
+          "trainingBeforeUtc": "2024-01-11T16:00:00+00:00",
+          "mae": 0.3013681538899746,
+          "rmse": 0.37264884246769464,
+          "count": 6,
+          "missingLabels": 0
+        }
+      ]
+    }
+  },
+  "test": {
+    "naive": {
+      "mae": 5.812041666666666,
+      "rmse": 6.281318337804041,
+      "count": 12,
+      "byHorizon": [
+        {
+          "step": 1,
+          "mae": 1.8175500000000007,
+          "rmse": 1.8278053028153742,
+          "count": 2
+        },
+        {
+          "step": 2,
+          "mae": 3.9232999999999976,
+          "rmse": 3.923585118230517,
+          "count": 2
+        },
+        {
+          "step": 3,
+          "mae": 5.48875,
+          "rmse": 5.491156441497546,
+          "count": 2
+        },
+        {
+          "step": 4,
+          "mae": 6.92285,
+          "rmse": 6.9253603317805785,
+          "count": 2
+        },
+        {
+          "step": 5,
+          "mae": 8.141649999999998,
+          "rmse": 8.141864136977476,
+          "count": 2
+        },
+        {
+          "step": 6,
+          "mae": 8.57815,
+          "rmse": 8.578519775870427,
+          "count": 2
+        }
+      ],
+      "windows": [
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-12T16:00:00+00:00",
+          "trainingBeforeUtc": "2024-01-12T16:00:00+00:00",
+          "mae": 5.8689833333333326,
+          "rmse": 6.365165741623176,
+          "count": 6,
+          "missingLabels": 0
+        },
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-13T16:00:00+00:00",
+          "trainingBeforeUtc": "2024-01-13T16:00:00+00:00",
+          "mae": 5.7551,
+          "rmse": 6.196336434001412,
+          "count": 6,
+          "missingLabels": 0
+        }
+      ]
+    },
+    "seasonal": {
+      "mae": 0.25568333333333193,
+      "rmse": 0.2937126997594743,
+      "count": 12,
+      "byHorizon": [
+        {
+          "step": 1,
+          "mae": 0.24389999999999645,
+          "rmse": 0.24390592448728723,
+          "count": 2
+        },
+        {
+          "step": 2,
+          "mae": 0.17684999999999818,
+          "rmse": 0.1874859594743021,
+          "count": 2
+        },
+        {
+          "step": 3,
+          "mae": 0.267949999999999,
+          "rmse": 0.3353504510210174,
+          "count": 2
+        },
+        {
+          "step": 4,
+          "mae": 0.461749999999995,
+          "rmse": 0.46509137274302925,
+          "count": 2
+        },
+        {
+          "step": 5,
+          "mae": 0.15204999999999913,
+          "rmse": 0.1879907045574321,
+          "count": 2
+        },
+        {
+          "step": 6,
+          "mae": 0.2316000000000038,
+          "rmse": 0.24259307492177426,
+          "count": 2
+        }
+      ],
+      "windows": [
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-12T16:00:00+00:00",
+          "trainingBeforeUtc": "2024-01-12T16:00:00+00:00",
+          "mae": 0.17224999999999824,
+          "rmse": 0.21209118714992786,
+          "count": 6,
+          "missingLabels": 0
+        },
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-13T16:00:00+00:00",
+          "trainingBeforeUtc": "2024-01-13T16:00:00+00:00",
+          "mae": 0.3391166666666656,
+          "rmse": 0.3571437082370798,
+          "count": 6,
+          "missingLabels": 0
+        }
+      ]
+    },
+    "random_forest": {
+      "mae": 0.17198365293269724,
+      "rmse": 0.19693707282231598,
+      "count": 12,
+      "byHorizon": [
+        {
+          "step": 1,
+          "mae": 0.15325167245370253,
+          "rmse": 0.15792265257475252,
+          "count": 2
+        },
+        {
+          "step": 2,
+          "mae": 0.12295023682421657,
+          "rmse": 0.12820574327823245,
+          "count": 2
+        },
+        {
+          "step": 3,
+          "mae": 0.2988656470959654,
+          "rmse": 0.3019245877110347,
+          "count": 2
+        },
+        {
+          "step": 4,
+          "mae": 0.2327649413029107,
+          "rmse": 0.23653640678458335,
+          "count": 2
+        },
+        {
+          "step": 5,
+          "mae": 0.10073990642748143,
+          "rmse": 0.13149634295097454,
+          "count": 2
+        },
+        {
+          "step": 6,
+          "mae": 0.1233295134919068,
+          "rmse": 0.1641029265328397,
+          "count": 2
+        }
+      ],
+      "windows": [
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-12T16:00:00+00:00",
+          "trainingBeforeUtc": "2024-01-12T16:00:00+00:00",
+          "mae": 0.1681924383499537,
+          "rmse": 0.19137357139029704,
+          "count": 6,
+          "missingLabels": 0
+        },
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-13T16:00:00+00:00",
+          "trainingBeforeUtc": "2024-01-13T16:00:00+00:00",
+          "mae": 0.17577486751544077,
+          "rmse": 0.2023476648666034,
+          "count": 6,
+          "missingLabels": 0
+        }
+      ]
+    },
+    "xgboost": {
+      "mae": 0.4723330413818356,
+      "rmse": 0.6348651593883741,
+      "count": 12,
+      "byHorizon": [
+        {
+          "step": 1,
+          "mae": 0.9412389312744125,
+          "rmse": 1.176083101556941,
+          "count": 2
+        },
+        {
+          "step": 2,
+          "mae": 0.13546315307617007,
+          "rmse": 0.18245783675278882,
+          "count": 2
+        },
+        {
+          "step": 3,
+          "mae": 0.33476604919433584,
+          "rmse": 0.4261721563944702,
+          "count": 2
+        },
+        {
+          "step": 4,
+          "mae": 0.40186457824707134,
+          "rmse": 0.487265771220069,
+          "count": 2
+        },
+        {
+          "step": 5,
+          "mae": 0.5883502777099601,
+          "rmse": 0.6036241123635546,
+          "count": 2
+        },
+        {
+          "step": 6,
+          "mae": 0.43231525878906396,
+          "rmse": 0.4673837737403405,
+          "count": 2
+        }
+      ],
+      "windows": [
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-12T16:00:00+00:00",
+          "trainingBeforeUtc": "2024-01-12T16:00:00+00:00",
+          "mae": 0.5171539550781242,
+          "rmse": 0.552932812125076,
+          "count": 6,
+          "missingLabels": 0
+        },
+        {
+          "entityId": "synthetic-sensor",
+          "originUtc": "2024-01-13T16:00:00+00:00",
+          "trainingBeforeUtc": "2024-01-13T16:00:00+00:00",
+          "mae": 0.42751212768554697,
+          "rmse": 0.7073703743343418,
+          "count": 6,
+          "missingLabels": 0
+        }
+      ]
+    }
+  },
+  "seed": 20261020,
+  "modelConfigurations": {
+    "random_forest": {
+      "n_estimators": 24,
+      "max_depth": 6,
+      "min_samples_leaf": 3,
+      "n_jobs": 1
+    },
+    "xgboost": {
+      "n_estimators": 30,
+      "max_depth": 3,
+      "learning_rate": 0.08,
+      "n_jobs": 1,
+      "tree_method": "hist",
+      "objective": "reg:squarederror"
+    }
+  },
+  "evaluationOnly": true,
+  "apiPublication": false,
+  "sourceSha256": "99305c0b29f63edb1b958990f11d23da7fd7d9488b247e345f3b8be2ad072de8",
+  "mappingSha256": "96fcf025e2962163c0689576dcdda8528c8f4dc2df161072965ac3e6cd808adb",
+  "inputSha256": "29ca55622503de7fe8ae1b23126eac05b21960f99d595c527846d9a9c57360fb",
+  "evaluatorSha256": "1cdda6544ecbe39371fc9cbdd0c9130db6feb6b5878233c0420979a050fc1cac",
+  "adapterSha256": "6cfc93f36f977e709cee20f22cc424d31e496f0059ef20c187fc635f73c930fc",
+  "runtime": {
+    "seed": 20261020,
+    "strategy": "recursive-refit-each-origin",
+    "horizon": 7,
+    "min_days": 365,
+    "validation_days": 28,
+    "test_days": 28,
+    "origin_stride": 7,
+    "lags": [
+      1,
+      7,
+      14,
+      28
+    ],
+    "daily_policy": "UTC; >=4 samples and all four 6h slots; no missing days; no imputation; same-day collection",
+    "selection": "validation MAE, RMSE, fixed candidate order; ML must improve best baseline MAE by >=1%",
+    "random_forest": {
+      "n_estimators": 60,
+      "max_depth": 9,
+      "min_samples_leaf": 3,
+      "n_jobs": 1
+    },
+    "xgboost": {
+      "n_estimators": 80,
+      "max_depth": 3,
+      "learning_rate": 0.06,
+      "subsample": 1.0,
+      "colsample_bytree": 1.0,
+      "n_jobs": 1,
+      "tree_method": "hist",
+      "objective": "reg:squarederror"
+    },
+    "packages": {
+      "numpy": "2.2.6",
+      "scipy": "1.15.3",
+      "scikit-learn": "1.7.2",
+      "xgboost": "3.0.5",
+      "joblib": "1.5.2",
+      "threadpoolctl": "3.6.0",
+      "tzdata": "2025.2",
+      "PyMySQL": "1.1.2",
+      "cryptography": "50.0.2",
+      "cffi": "2.1.1",
+      "pycparser": "3.11",
+      "pytest": "8.4.2",
+      "colorama": "0.4.6",
+      "iniconfig": "2.3.1",
+      "packaging": "26.3",
+      "pluggy": "1.7.0",
+      "Pygments": "2.21.0"
+    },
+    "code_sha256": "7e920e8b9d30a8c901b831f33af782eecc89a656a6d13457040149129c5ad854",
+    "python": "3.11",
+    "lock_sha256": {
+      "ml/requirements.lock.txt": "5948ac5c01206c64bafe8c078f98f5477f128af85340f6a22f9b88ff037b59b3",
+      "ml/requirements.in": "3d54915dc93ccdb5cb68889ba47c5aba215b500903d345314be36c48fab4351a",
+      "data-pipeline/requirements.lock.txt": "e3bb90f09ac21ab82f22b1682b67b2fe0e2316e89c89b9fcf8cfc20030489d64"
+    },
+    "code_sha256s": {
+      "ml/forecast.py": "7e920e8b9d30a8c901b831f33af782eecc89a656a6d13457040149129c5ad854",
+      "bigdata/warehouse.py": "1dc651e7541083ac575316162d1a5fc2b8969286e459e7742f9aa7a60a12cec7",
+      "data-pipeline/commute_etl/clean.py": "6ae11987d13ef3e5b951a8412f568a02f2a66e69873da250ecbc748a356624a7",
+      "data-pipeline/commute_etl/store.py": "bef3818ca4c57d8ecf9390c05b83ec085f2da4416040486f2111db73b15abf92"
+    },
+    "publication_verification": "fresh deterministic refit/backtest/artifact/inference replay v1"
+  },
+  "evaluationVersion": "003956797e7aa1d111afa1f23588565c103c1647ec9df38bf1e99b39882ce1e6"
+}

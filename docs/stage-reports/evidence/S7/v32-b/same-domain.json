@@ -1,0 +1,9 @@
+{
+  "status": "NOT_EVALUABLE",
+  "reasons": [
+    "domains/cities are not isolated",
+    "same source file",
+    ">=20% exact time/value overlap; conservative duplicate/overlap rejection"
+  ],
+  "exactOverlapRatio": 1.0
+}

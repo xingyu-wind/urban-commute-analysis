@@ -70,6 +70,7 @@ id_ed25519
 # Raw / unauthorized datasets: use explicit locations, not all CSV/JSON
 /data/raw/
 /data/private/
+/data/external/
 /data/unauthorized/
 /data-pipeline/data/raw/
 /data-pipeline/data/private/

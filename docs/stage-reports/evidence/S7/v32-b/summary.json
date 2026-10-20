@@ -1,0 +1,248 @@
+{
+  "passed": true,
+  "sourceType": "synthetic_test",
+  "realTrafficConclusion": "NOT_EVALUABLE",
+  "sameInputEvaluationExactlyReproduced": true,
+  "models": [
+    "naive",
+    "seasonal",
+    "random_forest",
+    "xgboost"
+  ],
+  "steps": [
+    {
+      "name": "alpha-inspect",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\data_cli.py",
+        "inspect",
+        "--input",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\alpha\\traffic.csv",
+        "--output",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\alpha\\proposal.json",
+        "--synthetic-fixture"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "alpha-unconfirmed",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\data_cli.py",
+        "convert",
+        "--input",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\alpha\\traffic.csv",
+        "--output",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\alpha\\refused.json",
+        "--config",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\alpha\\proposal.json"
+      ],
+      "exitCode": 1
+    },
+    {
+      "name": "alpha-confirm",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\data_cli.py",
+        "confirm",
+        "--input",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\alpha\\proposal.json",
+        "--output",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\alpha\\confirmed.json",
+        "--review",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\alpha\\review.json",
+        "--actor",
+        "original-synthetic-fixture-owner",
+        "--acknowledgement",
+        "caeebbacd1c0c120d71c0edbc7a1b9540ef82e2f3fe0a7e9fa92caad645ee65d"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "alpha-convert",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\data_cli.py",
+        "convert",
+        "--input",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\alpha\\traffic.csv",
+        "--output",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\alpha\\normalized.json",
+        "--config",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\alpha\\confirmed.json"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "alpha-quality",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\data_cli.py",
+        "quality",
+        "--input",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\alpha\\normalized.json",
+        "--output",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\alpha\\quality.json"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "alpha-evaluate",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\data_cli.py",
+        "evaluate",
+        "--input",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\alpha\\normalized.json",
+        "--output",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\alpha\\evaluation.json"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "alpha-repeat",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\data_cli.py",
+        "evaluate",
+        "--input",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\alpha\\normalized.json",
+        "--output",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\alpha\\evaluation-repeat.json"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "beta-inspect",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\data_cli.py",
+        "inspect",
+        "--input",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\beta\\traffic.json",
+        "--output",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\beta\\proposal.json",
+        "--synthetic-fixture"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "beta-unconfirmed",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\data_cli.py",
+        "convert",
+        "--input",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\beta\\traffic.json",
+        "--output",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\beta\\refused.json",
+        "--config",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\beta\\proposal.json"
+      ],
+      "exitCode": 1
+    },
+    {
+      "name": "beta-confirm",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\data_cli.py",
+        "confirm",
+        "--input",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\beta\\proposal.json",
+        "--output",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\beta\\confirmed.json",
+        "--review",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\beta\\review.json",
+        "--actor",
+        "original-synthetic-fixture-owner",
+        "--acknowledgement",
+        "5f2ef91231604261c452c00f0e7cc9076e2784f064156c6b51c45a3da6ee77f2"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "beta-convert",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\data_cli.py",
+        "convert",
+        "--input",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\beta\\traffic.json",
+        "--output",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\beta\\normalized.json",
+        "--config",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\beta\\confirmed.json"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "beta-quality",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\data_cli.py",
+        "quality",
+        "--input",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\beta\\normalized.json",
+        "--output",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\beta\\quality.json"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "beta-evaluate",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\data_cli.py",
+        "evaluate",
+        "--input",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\beta\\normalized.json",
+        "--output",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\beta\\evaluation.json"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "beta-repeat",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\data_cli.py",
+        "evaluate",
+        "--input",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\beta\\normalized.json",
+        "--output",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\beta\\evaluation-repeat.json"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "transfer",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\data_cli.py",
+        "transfer",
+        "--input",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\alpha\\normalized.json",
+        "--output",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\transfer.json",
+        "--target",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\beta\\normalized.json"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "same-domain",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\data_cli.py",
+        "transfer",
+        "--input",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\alpha\\normalized.json",
+        "--output",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\same-domain.json",
+        "--target",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-b-cli\\alpha\\normalized.json"
+      ],
+      "exitCode": 0
+    }
+  ]
+}

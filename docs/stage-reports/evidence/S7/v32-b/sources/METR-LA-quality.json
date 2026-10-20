@@ -1,0 +1,35 @@
+{
+  "adapter": "zenodo-5724362-csv-v6",
+  "distributionFile": "METR-LA.csv",
+  "record": "5724362",
+  "version": "v6",
+  "file": {
+    "sha256": "71e310d27b32344a1f04f7373b57bed9c6a4ca567ce66520f97c15831112957d",
+    "md5": "4f9d8f3707827851227c97406b8d5c18",
+    "bytes": 2930156
+  },
+  "expected": {
+    "bytes": 72467662,
+    "md5": "7c463fcbd28ecc6c9cd93e1ca120aaaa"
+  },
+  "integrity": "FAILED",
+  "sensorColumns": 207,
+  "observedRows": 1364,
+  "invalidRowsOrValues": 1,
+  "missingCells": 0,
+  "zeroCells": 9907,
+  "observedNaiveFrom": "2012-03-01 00:00:00",
+  "observedNaiveTo": "2012-03-05 17:35:00",
+  "irregularIntervals": 0,
+  "observedFrequencySeconds": 300,
+  "timezone": null,
+  "unit": null,
+  "target": "speed_candidate_unconfirmed",
+  "fullDistributionCoverageVerified": false,
+  "status": "NOT_EVALUABLE",
+  "reasons": [
+    "user has not approved real training",
+    "unit/timezone/zero semantics and upstream rights not confirmed",
+    "transfer incomplete or differs from distribution size/MD5; no full-series claim"
+  ]
+}

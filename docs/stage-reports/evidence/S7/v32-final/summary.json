@@ -1,0 +1,162 @@
+{
+  "passed": true,
+  "steps": [
+    {
+      "name": "backend",
+      "command": [
+        "cmd",
+        "/c",
+        "backend\\mvnw.cmd",
+        "-f",
+        "backend/pom.xml",
+        "-B",
+        "-ntp",
+        "verify"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "python-unit",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "ml/tests",
+        "-q",
+        "--junitxml=D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-final\\pytest.xml"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "frontend-types",
+      "command": [
+        "cmd",
+        "/c",
+        "npm",
+        "run",
+        "type-check"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "frontend-unit",
+      "command": [
+        "cmd",
+        "/c",
+        "npm",
+        "test",
+        "--",
+        "--reporter=json",
+        "--outputFile=D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-final\\frontend-unit.json"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "frontend-build",
+      "command": [
+        "cmd",
+        "/c",
+        "npm",
+        "run",
+        "build"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "etl",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "-m",
+        "commute_etl",
+        "--config",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-final\\fixture\\config.json",
+        "--input",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-final\\fixture\\traffic.json",
+        "--batch",
+        "s7-history",
+        "--load",
+        "--output",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-final\\etl"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "train",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "ml/forecast.py",
+        "train",
+        "--output",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-final\\train",
+        "--batch-output",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-final\\etl",
+        "--city",
+        "s7-city",
+        "--dataset",
+        "s7-synthetic-v1",
+        "--from",
+        "2023-10-23T00:00:00.000Z",
+        "--cutoff",
+        "2026-10-19T00:00:00.000Z"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "train-repeat",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "ml/forecast.py",
+        "train",
+        "--output",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-final\\repeat",
+        "--batch-output",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-final\\etl",
+        "--city",
+        "s7-city",
+        "--dataset",
+        "s7-synthetic-v1",
+        "--from",
+        "2023-10-23T00:00:00.000Z",
+        "--cutoff",
+        "2026-10-19T00:00:00.000Z"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "hard-crash",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "-c",
+        "import sys; sys.path.insert(0,'ml'); from forecast import publish; publish(sys.argv[1],[sys.argv[2]],fail_at='crash')",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-final\\candidate",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-final\\etl"
+      ],
+      "exitCode": 73
+    },
+    {
+      "name": "browser",
+      "command": [
+        "node",
+        "frontend/scripts/verify-s7.mjs",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-final\\browser",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-v32-final\\expected.json"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "negativeCases": [
+    "legal-value-tampering-independent-replay",
+    "insert-rollback-retry",
+    "commit-rollback-retry",
+    "switch-rollback-retry",
+    "hard-crash-rollback-safe-recovery",
+    "stale-generation",
+    "same-generation-cannot-overwrite",
+    "noncontinuous-prediction",
+    "artifact-checksum",
+    "duplicate-batch-input",
+    "changed-committed-input",
+    "failed-batch-input",
+    "changed-dataset-version"
+  ]
+}

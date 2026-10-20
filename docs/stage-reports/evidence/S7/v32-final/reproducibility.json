@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "sameInputConfiguration": true,
+  "sameEvaluationBytes": true,
+  "sameModelArtifact": true,
+  "modelVersion": "2710e7d636bf7b89dec4a4d48e65de01881434f39e254edd3f1ed1438ada5f55"
+}
