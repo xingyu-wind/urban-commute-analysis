@@ -10,6 +10,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'bigdata'))
 from warehouse import snapshot, oracle, reconcile, publish, write_json, connect
+from s6_edge_fixture import generate
 
 START, END = '2026-10-15T00:00:00.000Z', '2026-10-17T00:00:00.000Z'
 
@@ -38,16 +39,23 @@ def main():
             run('etl-' + name, [sys.executable, '-m', 'commute_etl', '--config', str(ROOT / f'data-pipeline/examples/{fmt}-config.json'),
                 '--input', str(ROOT / f'data-pipeline/examples/traffic.{fmt}'), '--batch', 's6-' + name, '--load', '--output', str(destination)], ROOT / 'data-pipeline')
             batches.append(destination)
+        edge = generate(ROOT, output / 'edge-fixture')
+        run('etl-edge', [sys.executable, '-m', 'commute_etl', '--config', str(edge / 'config.json'), '--input', str(edge / 'traffic.json'), '--batch', 's6-edge', '--load', '--output', str(output / 'edge')], ROOT / 'data-pipeline')
+        batches.append(output / 'edge')
         bundle = output / 'bundle'
         manifest = snapshot(batches, bundle, START, END)
         expected = oracle(bundle)
         write_json(output / 'oracle.json', expected)
-        assert manifest['ods_count'] == 28 and manifest['unique_count'] == 10
+        assert manifest['ods_count'] == 39 and manifest['unique_count'] == 21
         checks = {(r['target_type'], r['target_id']): (r['sample_count'], r['avg_speed_kmh'], r['congestion_index'])
-                  for r in expected if r['grain'] == 'WINDOW'}
+                  for r in expected if r['grain'] == 'WINDOW' and r['dataset_id'] == 's5-synthetic-v1'}
         assert checks['CITY', 's5-city'] == ('3', '40.00', '5.00')
         assert checks['REGION', 's5-east'] == ('2', '36.00', '3.00')
         assert checks['ROAD', 's5-road'] == ('2', '18.00', '3.00')
+        edge_city = next(r for r in expected if r['dataset_id'] == 's6-edge-v2' and r['target_id'] == 's5-city' and r['grain'] == 'WINDOW')
+        assert edge_city['sample_count'] == '6' and edge_city['avg_speed_kmh'] == '41.67'
+        edge_hour = next(r for r in expected if r['dataset_id'] == 's6-edge-v2' and r['target_type'] == 'REGION' and r['grain'] == 'HOUR' and r['bucket_start'] == '2026-10-16T01:00:00.000Z')
+        assert edge_hour['avg_speed_kmh'] == '1.01'
         evidence = output / 'hive'
         evidence.mkdir()
         # Official image; no ports, privileged mode, or host data volumes.
