@@ -17,6 +17,7 @@ import joblib
 import numpy as np
 from sklearn.ensemble import RandomForestRegressor
 from xgboost import XGBRegressor
+from packaging.requirements import Requirement
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'bigdata'))
@@ -35,6 +36,29 @@ CONFIG = dict(seed=SEED, strategy='recursive-refit-each-origin', horizon=7, min_
 
 def digest(value):
     return hashlib.sha256(canonical(value).encode()).hexdigest()
+
+
+def runtime_config():
+    """Bind actual installed runtime, dependency locks and every input/training code file."""
+    if sys.version_info[:2] != (3, 11):
+        raise ValueError('Python 3.11 required')
+    packages = {}
+    for lock in ('ml/requirements.lock.txt', 'data-pipeline/requirements.lock.txt'):
+        for line in (ROOT / lock).read_text(encoding='utf-8').splitlines():
+            if not line.strip() or line.startswith('#'):
+                continue
+            requirement = Requirement(line)
+            if requirement.marker and not requirement.marker.evaluate():
+                continue
+            installed = version(requirement.name)
+            if installed not in requirement.specifier:
+                raise ValueError('installed runtime differs from dependency lock: ' + requirement.name)
+            packages[requirement.name] = installed
+    locks = ['ml/requirements.lock.txt', 'ml/requirements.in', 'data-pipeline/requirements.lock.txt']
+    code = ['ml/forecast.py', 'bigdata/warehouse.py', 'data-pipeline/commute_etl/clean.py', 'data-pipeline/commute_etl/store.py']
+    return dict(**CONFIG, packages=packages, code_sha256=sha(Path(__file__)), python='3.11',
+                lock_sha256={p: sha(ROOT / p) for p in locks}, code_sha256s={p: sha(ROOT / p) for p in code},
+                publication_verification='fresh deterministic refit/backtest/artifact/inference replay v1')
 
 
 def daily(records, city, dataset, cutoff):
@@ -145,8 +169,7 @@ def train(series, identity, output):
     validation = {name: backtest(name, values, start, validation_origins) for name in NAMES}
     selected = choose(validation)  # Frozen before any test scores are computed.
     test = {name: backtest(name, values, start, test_origins) for name in NAMES}
-    config = dict(**CONFIG, packages={p: version(p) for p in ('numpy', 'scipy', 'scikit-learn', 'xgboost', 'joblib', 'threadpoolctl')},
-                  code_sha256=sha(Path(__file__)), python='3.11')
+    config = runtime_config()
     model_version = digest(dict(identity=identity, config=config, series=series))
     model = fit(selected, values, start)
     # Baselines also have a real, inspectable artifact; never load arbitrary joblib via CLI.
@@ -170,6 +193,31 @@ def train(series, identity, output):
         artifacts={p: sha(output / p) for p in ('model.joblib', 'evaluation.json', 'training-input.json')})
     write_json(output / 'run.json', result)
     return result
+
+
+def verify_run(run_dir, result, series, identity):
+    """Reconstruct trusted scientific outputs; NEVER deserialize the submitted model.
+
+    A file digest supplied by that same file's author is not proof of inference.
+    Replay under the locked runtime independently binds model bytes, all evaluation
+    labels/windows/selection, and each of the seven rounded inference values.
+    """
+    if result['config'] != runtime_config():
+        raise ValueError('configuration/code/dependency lock mismatch')
+    with tempfile.TemporaryDirectory(prefix='s7-verify-') as temp:
+        reference = train(series, identity, Path(temp) / 'trusted')
+        ignored = {'trainedAt', 'generatedAt', 'limitation'}
+        if {k: v for k, v in result.items() if k not in ignored} != {k: v for k, v in reference.items() if k not in ignored}:
+            raise ValueError('independent model/evaluation/seven-point replay mismatch')
+        for name, expected in reference['artifacts'].items():
+            if sha(Path(run_dir) / name) != expected:
+                raise ValueError('independent model artifact replay mismatch')
+        if not isinstance(result['limitation'], str) or not result['limitation'].startswith(reference['limitation']):
+            raise ValueError('source limitation changed')
+    if timestamp(result['trainedAt']) > timestamp(result['generatedAt']):
+        raise ValueError('generation precedes training')
+    return dict(method='fresh deterministic replay; no deserialization', verifiedPredictionCount=7,
+                modelVersion=reference['modelVersion'], inputSha256=reference['inputSha256'])
 
 
 def admit(inputs, output, city, dataset, start, cutoff):
@@ -219,6 +267,7 @@ def publish(run_dir, inputs, fail_at=None):
     if len(result['predictions']) != 7 or any(p['date'] != (first + timedelta(days=i)).isoformat()
         or not np.isfinite(p['value']) or not 0 <= p['value'] <= 10 for i, p in enumerate(result['predictions'])):
         raise ValueError('invalid seven-day prediction')
+    verification = verify_run(run_dir, result, series, actual)
     stable = {k: v for k, v in result.items() if k not in ('trainedAt', 'generatedAt')}
     content = digest(stable)
     job_id = content[:32]
@@ -236,7 +285,7 @@ def publish(run_dir, inputs, fail_at=None):
                 raise ValueError('job identity conflict')
             if prior and prior['status'] == 'PUBLISHED':
                 connection.commit()
-                return dict(jobId=job_id, reused=True)
+                return dict(jobId=job_id, reused=True, verification=verification)
             cur.execute('SELECT j.* FROM prediction_current c JOIN prediction_job j USING(job_id) WHERE c.city_id=%s AND c.dataset_id=%s',
                         (result['cityId'], result['datasetId']))
             current = cur.fetchone()
@@ -280,7 +329,7 @@ def publish(run_dir, inputs, fail_at=None):
             if fail_at == 'crash':
                 os._exit(73)  # Test-only hook: socket close must roll back the switch.
             connection.commit()
-        return dict(jobId=job_id, reused=False)
+        return dict(jobId=job_id, reused=False, verification=verification)
     except BaseException:
         connection.rollback()
         if started:

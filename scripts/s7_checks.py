@@ -68,9 +68,29 @@ def main():
         assert not first['reused'] and publish(output / 'train', [etl])['reused']
         assert publish(output / 'repeat', [etl])['reused']
         visible = first['jobId']
+        assert first['verification']['verifiedPredictionCount'] == 7
+        import shutil
+        tampered = output / 'tampered-forecast'
+        shutil.copytree(output / 'train', tampered)
+        changed = copy.deepcopy(result)
+        changed['predictions'][3]['value'] = round(changed['predictions'][3]['value'] + .125, 6)
+        assert 0 <= changed['predictions'][3]['value'] <= 10
+        write_json(tampered / 'run.json', changed)
+        reject('legal-value-tampering-independent-replay', lambda: publish(tampered, [etl]))
+        assert current() == visible
+        c = connect()
+        with c.cursor() as cur:
+            cur.execute('SELECT COUNT(*) n FROM prediction_job')
+            assert cur.fetchone()['n'] == 1
+            cur.execute('SELECT value FROM prediction_result WHERE job_id=%s AND step=4', (visible,))
+            assert float(cur.fetchone()['value']) == result['predictions'][3]['value']
+        c.close()
+        write_json(output / 'prediction-integrity.json', dict(passed=True, mutatedStep=4,
+            originalValue=result['predictions'][3]['value'], tamperedValue=changed['predictions'][3]['value'],
+            sameInput=True, legalDatesAndRange=True, rejected=True, pointerUnchanged=visible,
+            erroneousJobRows=0, verification=first['verification']))
         # Separate candidate generated times exercise failure/retry with the exact same model.
         candidate = output / 'candidate'
-        import shutil
         shutil.copytree(output / 'train', candidate)
         doc = copy.deepcopy(result)
         from datetime import datetime, timedelta, timezone
