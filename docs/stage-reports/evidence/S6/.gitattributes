@@ -1,4 +1,4 @@
 # Preserve original evidence bytes, including platform-specific line endings.
-** -text
+** -text -whitespace
 README.md text eol=lf
 .gitattributes text eol=lf
