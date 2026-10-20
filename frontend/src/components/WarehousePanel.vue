@@ -58,7 +58,7 @@ const number = (v: number | null | undefined) => v == null ? '—' : v.toFixed(2
 </template>
 
 <style scoped>
-.warehouse-panel { margin-top: 24px; padding: 24px; min-width: 0; }
+.warehouse-panel { margin-top: 24px; padding: 24px; min-width: 0; background: #0d1c2c; color: #e4edf6; border-color: #293e54; }
 .warehouse-filter { display: flex; align-items: end; gap: 16px; flex-wrap: wrap; margin: 20px 0; }
 .warehouse-filter label { display: grid; gap: 8px; }
 input { background: #132337; color: #e4edf6; border: 1px solid #496079; padding: 10px; border-radius: 6px; }

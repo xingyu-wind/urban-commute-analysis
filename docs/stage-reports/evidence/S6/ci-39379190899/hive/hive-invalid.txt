@@ -1,0 +1,1222 @@
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.24.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/tez/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.24.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/tez/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+2026-10-20T06:18:29.783753788Z main WARN The use of package scanning to locate Log4j plugins is deprecated.
+Please remove the `packages` attribute from your configuration file.
+See https://logging.apache.org/log4j/2.x/faq.html#package-scanning for details.
+2026-10-20T06:18:29.910375931Z main INFO Starting configuration org.apache.logging.log4j.core.config.properties.PropertiesConfiguration@479460a6...
+2026-10-20T06:18:29.910661272Z main INFO Start watching for changes to jar:file:/opt/hive/lib/hive-beeline-4.1.0.jar!/beeline-log4j2.properties every 0 seconds
+2026-10-20T06:18:29.910870441Z main INFO Configuration org.apache.logging.log4j.core.config.properties.PropertiesConfiguration@479460a6 started.
+2026-10-20T06:18:29.913130309Z main INFO Stopping configuration org.apache.logging.log4j.core.config.DefaultConfiguration@1b2abca6...
+2026-10-20T06:18:29.913542456Z main INFO Configuration org.apache.logging.log4j.core.config.DefaultConfiguration@1b2abca6 stopped.
+Hive Session ID = fca37287-8829-47c5-bd8a-ada6e7d8ba37
+26/10/20 06:18:33 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:18:33 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:18:33 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:18:33 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:18:33 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:18:33 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:18:33 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:18:33 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:18:33 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:18:33 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:18:33 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:18:33 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:18:35 [main]: WARN session.SessionState: Configuration hive.reloadable.aux.jars.path not specified
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+26/10/20 06:18:40 [4adf890e-58d9-4dd3-85ac-4eb563b2a6ac main]: WARN calcite.RelOptHiveTable: No Stats for commute_s6@ods_observation, Columns: observed_at, road_segment_id, region_id, target_type, congestion_index, target_id, avg_speed_kmh, city_id, collected_at
+No Stats for commute_s6@ods_observation, Columns: observed_at, road_segment_id, region_id, target_type, congestion_index, target_id, avg_speed_kmh, city_id, collected_at
+Query ID = root_20261020061838_dad00273-d7af-4092-8ab4-eb5fc2a23898
+Total jobs = 1
+Launching Job 1 out of 1
+26/10/20 06:18:43 [DAGAppMaster Thread]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+26/10/20 06:18:43 [HiveServer2-Background-Pool: Thread-64]: WARN tez.TezConfigurationFactory: Skip adding 'tez.ignore.lib.uris' to dagConf, as it's an AM scoped property
+26/10/20 06:18:43 [HiveServer2-Background-Pool: Thread-64]: WARN tez.TezConfigurationFactory: Skip adding 'tez.local.mode' to dagConf, as it's an AM scoped property
+26/10/20 06:18:43 [HiveServer2-Background-Pool: Thread-64]: WARN tez.TezConfigurationFactory: Skip adding 'tez.application.tags' to dagConf, as it's an AM scoped property
+26/10/20 06:18:43 [HiveServer2-Background-Pool: Thread-64]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:18:43 [HiveServer2-Background-Pool: Thread-64]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:18:43 [HiveServer2-Background-Pool: Thread-64]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:18:43 Running Dag: dag_1792477122144_0001_1
+2026-10-20 06:18:43 Running Dag: dag_1792477122144_0001_1
+Status: Running (Executing on YARN cluster with App id application_1792477122144_0001)
+
+26/10/20 06:18:44 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:18:44 Starting to run new task attempt: attempt_1792477122144_0001_1_00_000000_0
+2026-10-20 06:18:44 Starting to run new task attempt: attempt_1792477122144_0001_1_00_000000_0
+26/10/20 06:18:44 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:18:45 Completed running task attempt: attempt_1792477122144_0001_1_00_000000_0
+2026-10-20 06:18:45 Completed running task attempt: attempt_1792477122144_0001_1_00_000000_0
+26/10/20 06:18:45 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:18:45 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:18:45 Starting to run new task attempt: attempt_1792477122144_0001_1_01_000000_0
+2026-10-20 06:18:45 Starting to run new task attempt: attempt_1792477122144_0001_1_01_000000_0
+26/10/20 06:18:45 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:18:45 [TezChild]: ERROR tez.ReduceRecordProcessor: Hit error while closing operators - failing tree
+26/10/20 06:18:45 [TezChild]: ERROR tez.TezProcessor: Failed initializeAndRunProcessor
+java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381) ~[tez-runtime-internals-0.10.5.jar:0.10.5]
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86) ~[tez-runtime-internals-0.10.5.jar:0.10.5]
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72) ~[tez-runtime-internals-0.10.5.jar:0.10.5]
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source) [?:?]
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source) [?:?]
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953) [hadoop-common-3.4.1.jar:?]
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72) [tez-runtime-internals-0.10.5.jar:0.10.5]
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42) [tez-runtime-internals-0.10.5.jar:0.10.5]
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36) [tez-common-0.10.5.jar:0.10.5]
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111) [guava-22.0.jar:?]
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58) [guava-22.0.jar:?]
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75) [guava-22.0.jar:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) [?:?]
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356) ~[hive-exec-4.1.0.jar:4.1.0]
+	... 17 more
+26/10/20 06:18:46 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:18:46 Starting to run new task attempt: attempt_1792477122144_0001_1_01_000000_1
+2026-10-20 06:18:46 Starting to run new task attempt: attempt_1792477122144_0001_1_01_000000_1
+26/10/20 06:18:46 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:18:46 [TezChild]: ERROR tez.ReduceRecordProcessor: Hit error while closing operators - failing tree
+26/10/20 06:18:46 [TezChild]: ERROR tez.TezProcessor: Failed initializeAndRunProcessor
+java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381) ~[tez-runtime-internals-0.10.5.jar:0.10.5]
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86) ~[tez-runtime-internals-0.10.5.jar:0.10.5]
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72) ~[tez-runtime-internals-0.10.5.jar:0.10.5]
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source) [?:?]
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source) [?:?]
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953) [hadoop-common-3.4.1.jar:?]
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72) [tez-runtime-internals-0.10.5.jar:0.10.5]
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42) [tez-runtime-internals-0.10.5.jar:0.10.5]
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36) [tez-common-0.10.5.jar:0.10.5]
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111) [guava-22.0.jar:?]
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58) [guava-22.0.jar:?]
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75) [guava-22.0.jar:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) [?:?]
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356) ~[hive-exec-4.1.0.jar:4.1.0]
+	... 17 more
+26/10/20 06:18:46 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:18:46 Starting to run new task attempt: attempt_1792477122144_0001_1_01_000000_2
+2026-10-20 06:18:46 Starting to run new task attempt: attempt_1792477122144_0001_1_01_000000_2
+26/10/20 06:18:46 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:18:46 [TezChild]: ERROR tez.ReduceRecordProcessor: Hit error while closing operators - failing tree
+26/10/20 06:18:46 [TezChild]: ERROR tez.TezProcessor: Failed initializeAndRunProcessor
+java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381) ~[tez-runtime-internals-0.10.5.jar:0.10.5]
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86) ~[tez-runtime-internals-0.10.5.jar:0.10.5]
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72) ~[tez-runtime-internals-0.10.5.jar:0.10.5]
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source) [?:?]
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source) [?:?]
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953) [hadoop-common-3.4.1.jar:?]
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72) [tez-runtime-internals-0.10.5.jar:0.10.5]
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42) [tez-runtime-internals-0.10.5.jar:0.10.5]
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36) [tez-common-0.10.5.jar:0.10.5]
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111) [guava-22.0.jar:?]
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58) [guava-22.0.jar:?]
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75) [guava-22.0.jar:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) [?:?]
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356) ~[hive-exec-4.1.0.jar:4.1.0]
+	... 17 more
+26/10/20 06:18:46 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:18:46 Starting to run new task attempt: attempt_1792477122144_0001_1_01_000000_3
+2026-10-20 06:18:46 Starting to run new task attempt: attempt_1792477122144_0001_1_01_000000_3
+26/10/20 06:18:46 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:18:46 [TezChild]: ERROR tez.ReduceRecordProcessor: Hit error while closing operators - failing tree
+26/10/20 06:18:46 [TezChild]: ERROR tez.TezProcessor: Failed initializeAndRunProcessor
+java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381) ~[tez-runtime-internals-0.10.5.jar:0.10.5]
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86) ~[tez-runtime-internals-0.10.5.jar:0.10.5]
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72) ~[tez-runtime-internals-0.10.5.jar:0.10.5]
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source) [?:?]
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source) [?:?]
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953) [hadoop-common-3.4.1.jar:?]
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72) [tez-runtime-internals-0.10.5.jar:0.10.5]
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42) [tez-runtime-internals-0.10.5.jar:0.10.5]
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36) [tez-common-0.10.5.jar:0.10.5]
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111) [guava-22.0.jar:?]
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58) [guava-22.0.jar:?]
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75) [guava-22.0.jar:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) [?:?]
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356) ~[hive-exec-4.1.0.jar:4.1.0]
+	... 17 more
+2026-10-20 06:18:46 Completed Dag: dag_1792477122144_0001_1
+2026-10-20 06:18:46 Completed Dag: dag_1792477122144_0001_1
+26/10/20 06:18:46 [Dispatcher thread {Central}]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+Status: Failed
+26/10/20 06:18:46 [HiveServer2-Background-Pool: Thread-64]: ERROR SessionState: Status: Failed
+Vertex failed, vertexName=Reducer 2, vertexId=vertex_1792477122144_0001_1_01, diagnostics=[Task failed, taskId=task_1792477122144_0001_1_01_000000, diagnostics=[TaskAttempt 0 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_0:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+], TaskAttempt 1 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_1:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+], TaskAttempt 2 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_2:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+], TaskAttempt 3 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_3:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+]], Vertex did not succeed due to OWN_TASK_FAILURE, failedTasks:1 killedTasks:0, Vertex vertex_1792477122144_0001_1_01 [Reducer 2] killed/failed due to:OWN_TASK_FAILURE]
+26/10/20 06:18:46 [HiveServer2-Background-Pool: Thread-64]: ERROR SessionState: Vertex failed, vertexName=Reducer 2, vertexId=vertex_1792477122144_0001_1_01, diagnostics=[Task failed, taskId=task_1792477122144_0001_1_01_000000, diagnostics=[TaskAttempt 0 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_0:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+], TaskAttempt 1 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_1:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+], TaskAttempt 2 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_2:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+], TaskAttempt 3 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_3:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+]], Vertex did not succeed due to OWN_TASK_FAILURE, failedTasks:1 killedTasks:0, Vertex vertex_1792477122144_0001_1_01 [Reducer 2] killed/failed due to:OWN_TASK_FAILURE]
+DAG did not succeed due to VERTEX_FAILURE. failedVertices:1 killedVertices:0
+26/10/20 06:18:46 [HiveServer2-Background-Pool: Thread-64]: ERROR SessionState: DAG did not succeed due to VERTEX_FAILURE. failedVertices:1 killedVertices:0
+FAILED: Execution Error, return code 2 from org.apache.hadoop.hive.ql.exec.tez.TezTask. Vertex failed, vertexName=Reducer 2, vertexId=vertex_1792477122144_0001_1_01, diagnostics=[Task failed, taskId=task_1792477122144_0001_1_01_000000, diagnostics=[TaskAttempt 0 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_0:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+], TaskAttempt 1 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_1:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+], TaskAttempt 2 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_2:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+], TaskAttempt 3 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_3:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+]], Vertex did not succeed due to OWN_TASK_FAILURE, failedTasks:1 killedTasks:0, Vertex vertex_1792477122144_0001_1_01 [Reducer 2] killed/failed due to:OWN_TASK_FAILURE]DAG did not succeed due to VERTEX_FAILURE. failedVertices:1 killedVertices:0
+26/10/20 06:18:46 [HiveServer2-Background-Pool: Thread-64]: ERROR ql.Driver: FAILED: Execution Error, return code 2 from org.apache.hadoop.hive.ql.exec.tez.TezTask. Vertex failed, vertexName=Reducer 2, vertexId=vertex_1792477122144_0001_1_01, diagnostics=[Task failed, taskId=task_1792477122144_0001_1_01_000000, diagnostics=[TaskAttempt 0 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_0:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+], TaskAttempt 1 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_1:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+], TaskAttempt 2 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_2:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+], TaskAttempt 3 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_3:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+]], Vertex did not succeed due to OWN_TASK_FAILURE, failedTasks:1 killedTasks:0, Vertex vertex_1792477122144_0001_1_01 [Reducer 2] killed/failed due to:OWN_TASK_FAILURE]DAG did not succeed due to VERTEX_FAILURE. failedVertices:1 killedVertices:0
+26/10/20 06:18:46 [HiveServer2-Background-Pool: Thread-64]: ERROR operation.SQLOperation: Error running hive query
+org.apache.hive.service.cli.HiveSQLException: Error while compiling statement: FAILED: Execution Error, return code 2 from org.apache.hadoop.hive.ql.exec.tez.TezTask. Vertex failed, vertexName=Reducer 2, vertexId=vertex_1792477122144_0001_1_01, diagnostics=[Task failed, taskId=task_1792477122144_0001_1_01_000000, diagnostics=[TaskAttempt 0 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_0:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+], TaskAttempt 1 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_1:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+], TaskAttempt 2 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_2:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+], TaskAttempt 3 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_3:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+]], Vertex did not succeed due to OWN_TASK_FAILURE, failedTasks:1 killedTasks:0, Vertex vertex_1792477122144_0001_1_01 [Reducer 2] killed/failed due to:OWN_TASK_FAILURE]DAG did not succeed due to VERTEX_FAILURE. failedVertices:1 killedVertices:0; Query ID: root_20261020061838_dad00273-d7af-4092-8ab4-eb5fc2a23898
+	at org.apache.hive.service.cli.operation.Operation.toSQLException(Operation.java:376) ~[hive-service-4.1.0.jar:4.1.0]
+	at org.apache.hive.service.cli.operation.SQLOperation.runQuery(SQLOperation.java:247) ~[hive-service-4.1.0.jar:4.1.0]
+	at org.apache.hive.service.cli.operation.SQLOperation$BackgroundWork$1.run(SQLOperation.java:334) ~[hive-service-4.1.0.jar:4.1.0]
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source) [?:?]
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source) [?:?]
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953) [hadoop-common-3.4.1.jar:?]
+	at org.apache.hive.service.cli.operation.SQLOperation$BackgroundWork.run(SQLOperation.java:354) [hive-service-4.1.0.jar:4.1.0]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source) [?:?]
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source) [?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) [?:?]
+Caused by: org.apache.hadoop.hive.ql.exec.tez.TezRuntimeException: Vertex failed, vertexName=Reducer 2, vertexId=vertex_1792477122144_0001_1_01, diagnostics=[Task failed, taskId=task_1792477122144_0001_1_01_000000, diagnostics=[TaskAttempt 0 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_0:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+], TaskAttempt 1 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_1:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+], TaskAttempt 2 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_2:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+], TaskAttempt 3 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_3:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+]], Vertex did not succeed due to OWN_TASK_FAILURE, failedTasks:1 killedTasks:0, Vertex vertex_1792477122144_0001_1_01 [Reducer 2] killed/failed due to:OWN_TASK_FAILURE]DAG did not succeed due to VERTEX_FAILURE. failedVertices:1 killedVertices:0
+	at org.apache.hadoop.hive.ql.exec.tez.TezTask.execute(TezTask.java:286) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.Task.executeTask(Task.java:214) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.TaskRunner.runSequential(TaskRunner.java:105) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.launchTask(Executor.java:354) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.launchTasks(Executor.java:327) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.runTasks(Executor.java:244) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.execute(Executor.java:105) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.execute(Driver.java:345) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.runInternal(Driver.java:189) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:142) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:137) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.reexec.ReExecDriver.run(ReExecDriver.java:190) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hive.service.cli.operation.SQLOperation.runQuery(SQLOperation.java:234) ~[hive-service-4.1.0.jar:4.1.0]
+	... 10 more
+Error: Error while compiling statement: FAILED: Execution Error, return code 2 from org.apache.hadoop.hive.ql.exec.tez.TezTask. Vertex failed, vertexName=Reducer 2, vertexId=vertex_1792477122144_0001_1_01, diagnostics=[Task failed, taskId=task_1792477122144_0001_1_01_000000, diagnostics=[TaskAttempt 0 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_0:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+], TaskAttempt 1 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_1:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+], TaskAttempt 2 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_2:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+], TaskAttempt 3 failed, info=[Error: Node: 719239e96376/172.17.0.2 : Error while running task ( failure ) : attempt_1792477122144_0001_1_01_000000_3:java.lang.RuntimeException: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:331)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:277)
+	at org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:381)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:86)
+	at org.apache.tez.runtime.task.TaskRunner2Callable$1.run(TaskRunner2Callable.java:72)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:72)
+	at org.apache.tez.runtime.task.TaskRunner2Callable.callInternal(TaskRunner2Callable.java:42)
+	at org.apache.tez.common.CallableWithNdc.call(CallableWithNdc.java:36)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:111)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:58)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Hive Runtime Error while closing operators: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:379)
+	at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:311)
+	... 16 more
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: ASSERT_TRUE(): assertion failed.
+	at org.apache.hadoop.hive.ql.udf.generic.GenericUDFAssertTrue.evaluate(GenericUDFAssertTrue.java:71)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.setResult(VectorUDFAdaptor.java:190)
+	at org.apache.hadoop.hive.ql.exec.vector.udf.VectorUDFAdaptor.evaluate(VectorUDFAdaptor.java:150)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorSelectOperator.process(VectorSelectOperator.java:146)
+	at org.apache.hadoop.hive.ql.exec.Operator.vectorForward(Operator.java:919)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.flushOutput(VectorGroupByOperator.java:1381)
+	at org.apache.hadoop.hive.ql.exec.vector.VectorGroupByOperator.closeOp(VectorGroupByOperator.java:1389)
+	at org.apache.hadoop.hive.ql.exec.Operator.close(Operator.java:686)
+	at org.apache.hadoop.hive.ql.exec.tez.ReduceRecordProcessor.close(ReduceRecordProcessor.java:356)
+	... 17 more
+]], Vertex did not succeed due to OWN_TASK_FAILURE, failedTasks:1 killedTasks:0, Vertex vertex_1792477122144_0001_1_01 [Reducer 2] killed/failed due to:OWN_TASK_FAILURE]DAG did not succeed due to VERTEX_FAILURE. failedVertices:1 killedVertices:0; Query ID: root_20261020061838_dad00273-d7af-4092-8ab4-eb5fc2a23898 (state=08S01,code=2)
+Shutting down tez session.
+26/10/20 06:18:47 [pool-65-thread-2]: WARN util.ShutdownHookManager: Shutdown in progress, cannot cancel a deleteOnExit
+26/10/20 06:18:47 [pool-65-thread-2]: WARN util.ShutdownHookManager: Shutdown in progress, cannot cancel a deleteOnExit
+26/10/20 06:18:47 [pool-65-thread-1]: WARN util.ShutdownHookManager: Shutdown in progress, cannot cancel a deleteOnExit
+26/10/20 06:18:47 [pool-65-thread-1]: WARN util.ShutdownHookManager: Shutdown in progress, cannot cancel a deleteOnExit
+26/10/20 06:18:47 [shutdown-hook-0]: WARN util.ShutdownHookManager: Shutdown in progress, cannot cancel a deleteOnExit
+26/10/20 06:18:47 [shutdown-hook-0]: WARN util.ShutdownHookManager: Shutdown in progress, cannot cancel a deleteOnExit

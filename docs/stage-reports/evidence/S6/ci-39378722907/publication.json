@@ -1,0 +1,32 @@
+[
+  {
+    "release_id": "s6-first",
+    "reused": false,
+    "rows": 40,
+    "sha256": "40bf4c9bb252bf753d14a2f33767b0d3e2351b7215744a6d80bc618e647184ab"
+  },
+  {
+    "release_id": "s6-first",
+    "reused": true,
+    "rows": 40,
+    "sha256": "40bf4c9bb252bf753d14a2f33767b0d3e2351b7215744a6d80bc618e647184ab"
+  },
+  {
+    "release_id": "s6-failed-insert",
+    "reused": false,
+    "rows": 40,
+    "sha256": "40bf4c9bb252bf753d14a2f33767b0d3e2351b7215744a6d80bc618e647184ab"
+  },
+  {
+    "release_id": "s6-failed-commit",
+    "reused": false,
+    "rows": 40,
+    "sha256": "40bf4c9bb252bf753d14a2f33767b0d3e2351b7215744a6d80bc618e647184ab"
+  },
+  {
+    "release_id": "s6-failed-switch",
+    "reused": false,
+    "rows": 40,
+    "sha256": "40bf4c9bb252bf753d14a2f33767b0d3e2351b7215744a6d80bc618e647184ab"
+  }
+]

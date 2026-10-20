@@ -76,6 +76,9 @@ def snapshot(inputs, output, start, end):
                 if (json.loads(batch['manifest']) != source or batch['source_sha256'] != hashlib.sha256(canonical(source).encode()).hexdigest()
                         or report['source_sha256'] != batch['source_sha256'] or report['file_sha256'] != batch['file_sha256']):
                     raise ValueError('source or batch identity mismatch')
+                if any(batch[field] != source['configuration']['dataset'][field]
+                       for field in ('dataset_id', 'dataset_version', 'source_type')):
+                    raise ValueError('dataset registration changed since source admission')
                 cur.execute('SELECT o.*,r.region_id road_region_id FROM etl_batch_observation l '
                             'JOIN traffic_observation o ON o.id=l.observation_id '
                             'LEFT JOIN road_segment r ON r.id=o.road_segment_id AND r.city_id=o.city_id '

@@ -1,0 +1,49 @@
+{
+  "contract": "s6-v1",
+  "sql_sha256": "0d5e1689091d565c938d029a4b76780e0974cab77422192a9cf1265865a7c9cb",
+  "from": "2026-10-15T00:00:00.000Z",
+  "to": "2026-10-17T00:00:00.000Z",
+  "captured_at": "2026-10-20T06:10:47.964Z",
+  "ods_sha256": "fe98d80ba4bd9ebb899bb78b5c63f98ebdb8e4d915caec779573528a03ebc869",
+  "observations_sha256": "4207afe93b86f6d7c60b2cca9dfdc0467a5481342a662e2f39d4c054b7d7cae6",
+  "ods_count": 39,
+  "unique_count": 21,
+  "batches": [
+    {
+      "batch_id": "s6-csv",
+      "source_sha256": "fa9a67282b0b4e1a1087bdab3530dce189801367f64e977b9349ef9afcd8d453",
+      "file_sha256": "6603f22b99f2337ff93877fd7efe7621ba661302ac6d3de21dd0858053d6454e",
+      "dataset_id": "s5-synthetic-v1",
+      "dataset_version": "1",
+      "source_type": "synthetic_test",
+      "accepted_count": 9
+    },
+    {
+      "batch_id": "s6-json",
+      "source_sha256": "92d190e34daabcf5dbb93cbec7b64a1584bc4e907385f54f6814f9992b0ade79",
+      "file_sha256": "480063ddea08dbcb4f8eb1556753c4a54422f28ad33284a75408fecf1741cbdb",
+      "dataset_id": "s5-synthetic-v1",
+      "dataset_version": "1",
+      "source_type": "synthetic_test",
+      "accepted_count": 10
+    },
+    {
+      "batch_id": "s6-repeat",
+      "source_sha256": "fa9a67282b0b4e1a1087bdab3530dce189801367f64e977b9349ef9afcd8d453",
+      "file_sha256": "6603f22b99f2337ff93877fd7efe7621ba661302ac6d3de21dd0858053d6454e",
+      "dataset_id": "s5-synthetic-v1",
+      "dataset_version": "1",
+      "source_type": "synthetic_test",
+      "accepted_count": 9
+    },
+    {
+      "batch_id": "s6-edge",
+      "source_sha256": "b848a07eeafeb36eba054f3116fde0750b75f1021f2b6678244be992f5bebc73",
+      "file_sha256": "5e8425a8d81c2613dfc6465e374dd10dbb0d606115efe19e48099f2ca1c659cb",
+      "dataset_id": "s6-edge-v2",
+      "dataset_version": "2",
+      "source_type": "synthetic_test",
+      "accepted_count": 12
+    }
+  ]
+}

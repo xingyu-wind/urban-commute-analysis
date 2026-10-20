@@ -1,0 +1,11 @@
+{
+  "code": "BAD_REQUEST",
+  "message": "Invalid request",
+  "data": null,
+  "meta": {
+    "requestId": "81bb122e-feb1-4c63-a37e-d7d6aa1e5185",
+    "dataAsOf": null,
+    "sourceType": null,
+    "datasetId": null
+  }
+}

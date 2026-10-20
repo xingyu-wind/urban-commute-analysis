@@ -1,0 +1,7 @@
+<configuration>
+<property><name>tez.local.mode</name><value>true</value></property>
+<property><name>tez.runtime.optimize.local.fetch</name><value>true</value></property>
+<property><name>tez.am.resource.memory.mb</name><value>1024</value></property>
+<property><name>tez.lib.uris</name><value></value></property>
+<property><name>tez.ignore.lib.uris</name><value>true</value></property>
+</configuration>

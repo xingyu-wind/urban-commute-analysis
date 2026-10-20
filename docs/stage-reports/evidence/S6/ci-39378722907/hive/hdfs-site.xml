@@ -1,0 +1,9 @@
+<configuration>
+<property><name>dfs.namenode.name.dir</name><value>file:///tmp/s6-warehouse.DVwUM19w/name</value></property>
+<property><name>dfs.datanode.data.dir</name><value>file:///tmp/s6-warehouse.DVwUM19w/data</value></property>
+<property><name>dfs.replication</name><value>1</value></property>
+<property><name>dfs.namenode.http-address</name><value>127.0.0.1:9870</value></property>
+<property><name>dfs.datanode.address</name><value>127.0.0.1:9866</value></property>
+<property><name>dfs.datanode.http.address</name><value>127.0.0.1:9864</value></property>
+<property><name>dfs.datanode.ipc.address</name><value>127.0.0.1:9867</value></property>
+</configuration>

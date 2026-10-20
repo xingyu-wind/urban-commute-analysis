@@ -1,0 +1,932 @@
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.24.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/tez/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.24.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/tez/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+2026-10-20T06:16:46.734599357Z main WARN The use of package scanning to locate Log4j plugins is deprecated.
+Please remove the `packages` attribute from your configuration file.
+See https://logging.apache.org/log4j/2.x/faq.html#package-scanning for details.
+2026-10-20T06:16:46.875284329Z main INFO Starting configuration org.apache.logging.log4j.core.config.properties.PropertiesConfiguration@479460a6...
+2026-10-20T06:16:46.875540566Z main INFO Start watching for changes to jar:file:/opt/hive/lib/hive-beeline-4.1.0.jar!/beeline-log4j2.properties every 0 seconds
+2026-10-20T06:16:46.875756318Z main INFO Configuration org.apache.logging.log4j.core.config.properties.PropertiesConfiguration@479460a6 started.
+2026-10-20T06:16:46.878007980Z main INFO Stopping configuration org.apache.logging.log4j.core.config.DefaultConfiguration@1b2abca6...
+2026-10-20T06:16:46.878394469Z main INFO Configuration org.apache.logging.log4j.core.config.DefaultConfiguration@1b2abca6 stopped.
+Hive Session ID = f31a1abb-b50a-44e3-8424-09c2950a9323
+26/10/20 06:16:51 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:16:51 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:16:51 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:16:51 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:16:51 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:16:51 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:16:51 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:16:51 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:16:51 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:16:51 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:16:51 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:16:51 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:16:53 [main]: WARN session.SessionState: Configuration hive.reloadable.aux.jars.path not specified
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+26/10/20 06:16:55 [HiveServer2-Background-Pool: Thread-55]: WARN metastore.HMSHandler: Failed to create external path hdfs://127.0.0.1:9000/s6/warehouse for database commute_s6. This may result in access not being allowed if the StorageBasedAuthorizationProvider is enabled
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+26/10/20 06:16:58 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN calcite.RelOptHiveTable: No Stats for commute_s6@ods_observation, Columns: observed_at, road_segment_id, region_id, target_type, congestion_index, target_id, avg_speed_kmh, city_id, collected_at
+No Stats for commute_s6@ods_observation, Columns: observed_at, road_segment_id, region_id, target_type, congestion_index, target_id, avg_speed_kmh, city_id, collected_at
+Query ID = root_20261020061656_e6dc321e-c506-49f4-82d7-e834933bb746
+Total jobs = 1
+Launching Job 1 out of 1
+26/10/20 06:17:00 [DAGAppMaster Thread]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+26/10/20 06:17:01 [HiveServer2-Background-Pool: Thread-67]: WARN tez.TezConfigurationFactory: Skip adding 'tez.ignore.lib.uris' to dagConf, as it's an AM scoped property
+26/10/20 06:17:01 [HiveServer2-Background-Pool: Thread-67]: WARN tez.TezConfigurationFactory: Skip adding 'tez.local.mode' to dagConf, as it's an AM scoped property
+26/10/20 06:17:01 [HiveServer2-Background-Pool: Thread-67]: WARN tez.TezConfigurationFactory: Skip adding 'tez.application.tags' to dagConf, as it's an AM scoped property
+26/10/20 06:17:01 [HiveServer2-Background-Pool: Thread-67]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:01 [HiveServer2-Background-Pool: Thread-67]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:01 [HiveServer2-Background-Pool: Thread-67]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:01 Running Dag: dag_1792477020001_0001_1
+2026-10-20 06:17:01 Running Dag: dag_1792477020001_0001_1
+Status: Running (Executing on YARN cluster with App id application_1792477020001_0001)
+
+26/10/20 06:17:02 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:02 Starting to run new task attempt: attempt_1792477020001_0001_1_00_000000_0
+2026-10-20 06:17:02 Starting to run new task attempt: attempt_1792477020001_0001_1_00_000000_0
+26/10/20 06:17:02 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:02 Completed running task attempt: attempt_1792477020001_0001_1_00_000000_0
+2026-10-20 06:17:02 Completed running task attempt: attempt_1792477020001_0001_1_00_000000_0
+26/10/20 06:17:02 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:17:03 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:03 Starting to run new task attempt: attempt_1792477020001_0001_1_01_000000_0
+2026-10-20 06:17:03 Starting to run new task attempt: attempt_1792477020001_0001_1_01_000000_0
+26/10/20 06:17:03 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:03 Completed running task attempt: attempt_1792477020001_0001_1_01_000000_0
+2026-10-20 06:17:03 Completed running task attempt: attempt_1792477020001_0001_1_01_000000_0
+26/10/20 06:17:03 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:03 Completed Dag: dag_1792477020001_0001_1
+2026-10-20 06:17:03 Completed Dag: dag_1792477020001_0001_1
+26/10/20 06:17:03 [Dispatcher thread {Central}]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+NULL
+
+
+
+
+
+
+
+
+
+
+26/10/20 06:17:04 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN parse.BaseSemanticAnalyzer: Dynamic partitioning is used; only validating 1 columns
+26/10/20 06:17:04 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN calcite.RelOptHiveTable: No Stats for commute_s6@ods_observation, Columns: batch_id, dataset_id, target_type, target_id, source_type, avg_speed_kmh, collected_at, road_region_id, observed_at, observation_id, source_sha256, congestion_index, dataset_version, city_id
+No Stats for commute_s6@ods_observation, Columns: batch_id, dataset_id, target_type, target_id, source_type, avg_speed_kmh, collected_at, road_region_id, observed_at, observation_id, source_sha256, congestion_index, dataset_version, city_id
+26/10/20 06:17:04 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN parse.BaseSemanticAnalyzer: Dynamic partitioning is used; only validating 1 columns
+Query ID = root_20261020061704_24d113df-af0b-4878-8e3d-2158464b0b3d
+Total jobs = 1
+Launching Job 1 out of 1
+26/10/20 06:17:04 [HiveServer2-Background-Pool: Thread-172]: WARN tez.TezConfigurationFactory: Skip adding 'tez.ignore.lib.uris' to dagConf, as it's an AM scoped property
+26/10/20 06:17:04 [HiveServer2-Background-Pool: Thread-172]: WARN tez.TezConfigurationFactory: Skip adding 'tez.local.mode' to dagConf, as it's an AM scoped property
+26/10/20 06:17:04 [HiveServer2-Background-Pool: Thread-172]: WARN tez.TezConfigurationFactory: Skip adding 'tez.application.tags' to dagConf, as it's an AM scoped property
+26/10/20 06:17:04 [HiveServer2-Background-Pool: Thread-172]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:04 [HiveServer2-Background-Pool: Thread-172]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:04 [HiveServer2-Background-Pool: Thread-172]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:04 [HiveServer2-Background-Pool: Thread-172]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:04 Running Dag: dag_1792477020001_0001_2
+2026-10-20 06:17:04 Running Dag: dag_1792477020001_0001_2
+Status: Running (Executing on YARN cluster with App id application_1792477020001_0001)
+
+26/10/20 06:17:05 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:05 Starting to run new task attempt: attempt_1792477020001_0001_2_00_000000_0
+2026-10-20 06:17:05 Starting to run new task attempt: attempt_1792477020001_0001_2_00_000000_0
+26/10/20 06:17:05 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:05 Completed running task attempt: attempt_1792477020001_0001_2_00_000000_0
+2026-10-20 06:17:05 Completed running task attempt: attempt_1792477020001_0001_2_00_000000_0
+26/10/20 06:17:05 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:17:05 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:05 Starting to run new task attempt: attempt_1792477020001_0001_2_01_000000_0
+2026-10-20 06:17:05 Starting to run new task attempt: attempt_1792477020001_0001_2_01_000000_0
+26/10/20 06:17:05 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:06 Completed running task attempt: attempt_1792477020001_0001_2_01_000000_0
+2026-10-20 06:17:06 Completed running task attempt: attempt_1792477020001_0001_2_01_000000_0
+26/10/20 06:17:06 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:17:06 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:06 Starting to run new task attempt: attempt_1792477020001_0001_2_02_000000_0
+2026-10-20 06:17:06 Starting to run new task attempt: attempt_1792477020001_0001_2_02_000000_0
+26/10/20 06:17:06 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:07 Completed running task attempt: attempt_1792477020001_0001_2_02_000000_0
+2026-10-20 06:17:07 Completed running task attempt: attempt_1792477020001_0001_2_02_000000_0
+26/10/20 06:17:07 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:08 Completed Dag: dag_1792477020001_0001_2
+2026-10-20 06:17:08 Completed Dag: dag_1792477020001_0001_2
+26/10/20 06:17:08 [Dispatcher thread {Central}]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+Loading data to table commute_s6.dwd_observation partition (snapshot_id=run1, observed_date=null)
+
+
+Time taken to load dynamic partitions:	 0.287 seconds
+Time taken for adding to write entity:	 0.001 seconds
+Time taken to move files:	 0 ms
+StatsTask took 277
+
+
+26/10/20 06:17:08 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN calcite.RelOptHiveTable: No Stats for commute_s6@dwd_observation, Columns: observation_id
+No Stats for commute_s6@dwd_observation, Columns: observation_id
+Query ID = root_20261020061708_893db998-630c-477b-bb3c-1e29a460cbec
+Total jobs = 1
+Launching Job 1 out of 1
+26/10/20 06:17:08 [HiveServer2-Background-Pool: Thread-270]: WARN tez.TezConfigurationFactory: Skip adding 'tez.ignore.lib.uris' to dagConf, as it's an AM scoped property
+26/10/20 06:17:08 [HiveServer2-Background-Pool: Thread-270]: WARN tez.TezConfigurationFactory: Skip adding 'tez.local.mode' to dagConf, as it's an AM scoped property
+26/10/20 06:17:08 [HiveServer2-Background-Pool: Thread-270]: WARN tez.TezConfigurationFactory: Skip adding 'tez.application.tags' to dagConf, as it's an AM scoped property
+26/10/20 06:17:08 [HiveServer2-Background-Pool: Thread-270]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:08 [HiveServer2-Background-Pool: Thread-270]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:08 [HiveServer2-Background-Pool: Thread-270]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:09 [HiveServer2-Background-Pool: Thread-270]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:09 Running Dag: dag_1792477020001_0001_3
+2026-10-20 06:17:09 Running Dag: dag_1792477020001_0001_3
+Status: Running (Executing on YARN cluster with App id application_1792477020001_0001)
+
+26/10/20 06:17:09 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:09 Starting to run new task attempt: attempt_1792477020001_0001_3_00_000000_0
+2026-10-20 06:17:09 Starting to run new task attempt: attempt_1792477020001_0001_3_00_000000_0
+26/10/20 06:17:09 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:09 Completed running task attempt: attempt_1792477020001_0001_3_00_000000_0
+2026-10-20 06:17:09 Completed running task attempt: attempt_1792477020001_0001_3_00_000000_0
+26/10/20 06:17:09 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:17:09 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:09 Starting to run new task attempt: attempt_1792477020001_0001_3_01_000000_0
+2026-10-20 06:17:09 Starting to run new task attempt: attempt_1792477020001_0001_3_01_000000_0
+26/10/20 06:17:09 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:10 Completed running task attempt: attempt_1792477020001_0001_3_01_000000_0
+2026-10-20 06:17:10 Completed running task attempt: attempt_1792477020001_0001_3_01_000000_0
+26/10/20 06:17:10 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:17:10 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:10 Starting to run new task attempt: attempt_1792477020001_0001_3_02_000000_0
+2026-10-20 06:17:10 Starting to run new task attempt: attempt_1792477020001_0001_3_02_000000_0
+26/10/20 06:17:10 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:10 Completed running task attempt: attempt_1792477020001_0001_3_02_000000_0
+2026-10-20 06:17:10 Completed running task attempt: attempt_1792477020001_0001_3_02_000000_0
+26/10/20 06:17:10 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:10 Completed Dag: dag_1792477020001_0001_3
+2026-10-20 06:17:10 Completed Dag: dag_1792477020001_0001_3
+26/10/20 06:17:10 [Dispatcher thread {Central}]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+NULL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+26/10/20 06:17:10 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN parse.BaseSemanticAnalyzer: Dynamic partitioning is used; only validating 1 columns
+26/10/20 06:17:11 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN calcite.RelOptHiveTable: No Stats for commute_s6@dwd_observation, Columns: observed_at, dataset_id, target_type, congestion_index, target_id, source_type, avg_speed_kmh, dataset_version, city_id, road_region_id
+No Stats for commute_s6@dwd_observation, Columns: observed_at, dataset_id, target_type, congestion_index, target_id, source_type, avg_speed_kmh, dataset_version, city_id, road_region_id
+26/10/20 06:17:11 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN parse.BaseSemanticAnalyzer: Dynamic partitioning is used; only validating 1 columns
+26/10/20 06:17:11 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:11 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:11 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+Query ID = root_20261020061710_1b32eccf-b541-46d4-a4ed-cbe99c8a5175
+Total jobs = 1
+Launching Job 1 out of 1
+26/10/20 06:17:11 [HiveServer2-Background-Pool: Thread-349]: WARN tez.TezConfigurationFactory: Skip adding 'tez.ignore.lib.uris' to dagConf, as it's an AM scoped property
+26/10/20 06:17:11 [HiveServer2-Background-Pool: Thread-349]: WARN tez.TezConfigurationFactory: Skip adding 'tez.local.mode' to dagConf, as it's an AM scoped property
+26/10/20 06:17:11 [HiveServer2-Background-Pool: Thread-349]: WARN tez.TezConfigurationFactory: Skip adding 'tez.application.tags' to dagConf, as it's an AM scoped property
+26/10/20 06:17:11 [HiveServer2-Background-Pool: Thread-349]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:11 [HiveServer2-Background-Pool: Thread-349]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:11 [HiveServer2-Background-Pool: Thread-349]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:11 [HiveServer2-Background-Pool: Thread-349]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:11 Running Dag: dag_1792477020001_0001_4
+2026-10-20 06:17:11 Running Dag: dag_1792477020001_0001_4
+Status: Running (Executing on YARN cluster with App id application_1792477020001_0001)
+
+26/10/20 06:17:11 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:11 Starting to run new task attempt: attempt_1792477020001_0001_4_00_000000_0
+2026-10-20 06:17:11 Starting to run new task attempt: attempt_1792477020001_0001_4_00_000000_0
+26/10/20 06:17:11 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:12 Completed running task attempt: attempt_1792477020001_0001_4_00_000000_0
+2026-10-20 06:17:12 Completed running task attempt: attempt_1792477020001_0001_4_00_000000_0
+26/10/20 06:17:12 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:17:12 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:12 Starting to run new task attempt: attempt_1792477020001_0001_4_01_000000_0
+2026-10-20 06:17:12 Starting to run new task attempt: attempt_1792477020001_0001_4_01_000000_0
+26/10/20 06:17:12 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:13 Completed running task attempt: attempt_1792477020001_0001_4_01_000000_0
+2026-10-20 06:17:13 Completed running task attempt: attempt_1792477020001_0001_4_01_000000_0
+26/10/20 06:17:13 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:17:13 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:13 Starting to run new task attempt: attempt_1792477020001_0001_4_02_000000_0
+2026-10-20 06:17:13 Starting to run new task attempt: attempt_1792477020001_0001_4_02_000000_0
+26/10/20 06:17:13 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:13 Completed running task attempt: attempt_1792477020001_0001_4_02_000000_0
+2026-10-20 06:17:13 Completed running task attempt: attempt_1792477020001_0001_4_02_000000_0
+26/10/20 06:17:13 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:14 Completed Dag: dag_1792477020001_0001_4
+2026-10-20 06:17:14 Completed Dag: dag_1792477020001_0001_4
+26/10/20 06:17:14 [Dispatcher thread {Central}]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+Loading data to table commute_s6.dws_hourly partition (snapshot_id=run1, observed_date=null)
+
+
+Time taken to load dynamic partitions:	 0.105 seconds
+Time taken for adding to write entity:	 0.000 seconds
+Time taken to move files:	 0 ms
+StatsTask took 269
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:15 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+Query ID = root_20261020061715_5847175d-81c0-44bb-a568-ea924dc529af
+Total jobs = 1
+Launching Job 1 out of 1
+26/10/20 06:17:15 [HiveServer2-Background-Pool: Thread-454]: WARN tez.TezConfigurationFactory: Skip adding 'tez.ignore.lib.uris' to dagConf, as it's an AM scoped property
+26/10/20 06:17:15 [HiveServer2-Background-Pool: Thread-454]: WARN tez.TezConfigurationFactory: Skip adding 'tez.local.mode' to dagConf, as it's an AM scoped property
+26/10/20 06:17:15 [HiveServer2-Background-Pool: Thread-454]: WARN tez.TezConfigurationFactory: Skip adding 'tez.application.tags' to dagConf, as it's an AM scoped property
+26/10/20 06:17:15 [HiveServer2-Background-Pool: Thread-454]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:15 [HiveServer2-Background-Pool: Thread-454]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:15 [HiveServer2-Background-Pool: Thread-454]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:15 [HiveServer2-Background-Pool: Thread-454]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:15 [HiveServer2-Background-Pool: Thread-454]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:15 [HiveServer2-Background-Pool: Thread-454]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:15 Running Dag: dag_1792477020001_0001_5
+2026-10-20 06:17:15 Running Dag: dag_1792477020001_0001_5
+Status: Running (Executing on YARN cluster with App id application_1792477020001_0001)
+
+26/10/20 06:17:16 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:16 Starting to run new task attempt: attempt_1792477020001_0001_5_00_000000_0
+2026-10-20 06:17:16 Starting to run new task attempt: attempt_1792477020001_0001_5_00_000000_0
+26/10/20 06:17:16 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:16 Completed running task attempt: attempt_1792477020001_0001_5_00_000000_0
+2026-10-20 06:17:16 Completed running task attempt: attempt_1792477020001_0001_5_00_000000_0
+26/10/20 06:17:16 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:17:16 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:16 Starting to run new task attempt: attempt_1792477020001_0001_5_01_000000_0
+2026-10-20 06:17:16 Starting to run new task attempt: attempt_1792477020001_0001_5_01_000000_0
+26/10/20 06:17:16 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:16 Completed running task attempt: attempt_1792477020001_0001_5_01_000000_0
+2026-10-20 06:17:16 Completed running task attempt: attempt_1792477020001_0001_5_01_000000_0
+26/10/20 06:17:16 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:17:17 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:17 Starting to run new task attempt: attempt_1792477020001_0001_5_02_000000_0
+2026-10-20 06:17:17 Starting to run new task attempt: attempt_1792477020001_0001_5_02_000000_0
+26/10/20 06:17:17 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:17 Completed running task attempt: attempt_1792477020001_0001_5_02_000000_0
+2026-10-20 06:17:17 Completed running task attempt: attempt_1792477020001_0001_5_02_000000_0
+26/10/20 06:17:17 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:17:17 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:17 Starting to run new task attempt: attempt_1792477020001_0001_5_03_000000_0
+2026-10-20 06:17:17 Starting to run new task attempt: attempt_1792477020001_0001_5_03_000000_0
+26/10/20 06:17:17 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:18 Completed running task attempt: attempt_1792477020001_0001_5_03_000000_0
+2026-10-20 06:17:18 Completed running task attempt: attempt_1792477020001_0001_5_03_000000_0
+26/10/20 06:17:18 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:17:18 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:18 Starting to run new task attempt: attempt_1792477020001_0001_5_04_000000_0
+2026-10-20 06:17:18 Starting to run new task attempt: attempt_1792477020001_0001_5_04_000000_0
+26/10/20 06:17:18 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:18 Completed running task attempt: attempt_1792477020001_0001_5_04_000000_0
+2026-10-20 06:17:18 Completed running task attempt: attempt_1792477020001_0001_5_04_000000_0
+26/10/20 06:17:18 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:19 Completed Dag: dag_1792477020001_0001_5
+2026-10-20 06:17:19 Completed Dag: dag_1792477020001_0001_5
+26/10/20 06:17:19 [Dispatcher thread {Central}]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+Loading data to table commute_s6.ads_metric partition (snapshot_id=run1)
+Time taken to move files:	 0 ms
+StatsTask took 279
+
+
+snapshot_id=run1
+
+snapshot_id=run1/observed_date=2026-10-15
+snapshot_id=run1/observed_date=2026-10-16
+
+snapshot_id=run1/observed_date=2026-10-15
+snapshot_id=run1/observed_date=2026-10-16
+
+snapshot_id=run1
+
+26/10/20 06:17:19 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN calcite.RelOptHiveTable: No Stats for commute_s6@ods_observation, Columns: congestion_index, avg_speed_kmh
+No Stats for commute_s6@ods_observation, Columns: congestion_index, avg_speed_kmh
+Query ID = root_20261020061719_7770bb22-2bbb-43f9-b901-07bbf6ee21e7
+Total jobs = 1
+Launching Job 1 out of 1
+26/10/20 06:17:20 [HiveServer2-Background-Pool: Thread-610]: WARN tez.TezConfigurationFactory: Skip adding 'tez.ignore.lib.uris' to dagConf, as it's an AM scoped property
+26/10/20 06:17:20 [HiveServer2-Background-Pool: Thread-610]: WARN tez.TezConfigurationFactory: Skip adding 'tez.local.mode' to dagConf, as it's an AM scoped property
+26/10/20 06:17:20 [HiveServer2-Background-Pool: Thread-610]: WARN tez.TezConfigurationFactory: Skip adding 'tez.application.tags' to dagConf, as it's an AM scoped property
+26/10/20 06:17:20 [HiveServer2-Background-Pool: Thread-610]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:20 [HiveServer2-Background-Pool: Thread-610]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:20 [HiveServer2-Background-Pool: Thread-610]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:20 Running Dag: dag_1792477020001_0001_6
+2026-10-20 06:17:20 Running Dag: dag_1792477020001_0001_6
+Status: Running (Executing on YARN cluster with App id application_1792477020001_0001)
+
+26/10/20 06:17:20 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:20 Starting to run new task attempt: attempt_1792477020001_0001_6_00_000000_0
+2026-10-20 06:17:20 Starting to run new task attempt: attempt_1792477020001_0001_6_00_000000_0
+26/10/20 06:17:20 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:20 Completed running task attempt: attempt_1792477020001_0001_6_00_000000_0
+2026-10-20 06:17:20 Completed running task attempt: attempt_1792477020001_0001_6_00_000000_0
+26/10/20 06:17:20 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:17:20 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:20 Starting to run new task attempt: attempt_1792477020001_0001_6_01_000000_0
+2026-10-20 06:17:20 Starting to run new task attempt: attempt_1792477020001_0001_6_01_000000_0
+26/10/20 06:17:20 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:21 Completed running task attempt: attempt_1792477020001_0001_6_01_000000_0
+2026-10-20 06:17:21 Completed running task attempt: attempt_1792477020001_0001_6_01_000000_0
+26/10/20 06:17:21 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:21 Completed Dag: dag_1792477020001_0001_6
+2026-10-20 06:17:21 Completed Dag: dag_1792477020001_0001_6
+26/10/20 06:17:21 [Dispatcher thread {Central}]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+ODS	39	2214.01	168.00
+
+26/10/20 06:17:21 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN calcite.RelOptHiveTable: No Stats for commute_s6@dwd_observation, Columns: congestion_index, avg_speed_kmh
+No Stats for commute_s6@dwd_observation, Columns: congestion_index, avg_speed_kmh
+Query ID = root_20261020061721_5883eb98-8f78-460f-a1f8-bda1d5b5a994
+Total jobs = 1
+Launching Job 1 out of 1
+26/10/20 06:17:21 [HiveServer2-Background-Pool: Thread-660]: WARN tez.TezConfigurationFactory: Skip adding 'tez.ignore.lib.uris' to dagConf, as it's an AM scoped property
+26/10/20 06:17:21 [HiveServer2-Background-Pool: Thread-660]: WARN tez.TezConfigurationFactory: Skip adding 'tez.local.mode' to dagConf, as it's an AM scoped property
+26/10/20 06:17:21 [HiveServer2-Background-Pool: Thread-660]: WARN tez.TezConfigurationFactory: Skip adding 'tez.application.tags' to dagConf, as it's an AM scoped property
+26/10/20 06:17:21 [HiveServer2-Background-Pool: Thread-660]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:21 [HiveServer2-Background-Pool: Thread-660]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:21 [HiveServer2-Background-Pool: Thread-660]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:21 Running Dag: dag_1792477020001_0001_7
+2026-10-20 06:17:21 Running Dag: dag_1792477020001_0001_7
+Status: Running (Executing on YARN cluster with App id application_1792477020001_0001)
+
+26/10/20 06:17:22 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:22 Starting to run new task attempt: attempt_1792477020001_0001_7_00_000000_0
+2026-10-20 06:17:22 Starting to run new task attempt: attempt_1792477020001_0001_7_00_000000_0
+26/10/20 06:17:22 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:22 Completed running task attempt: attempt_1792477020001_0001_7_00_000000_0
+2026-10-20 06:17:22 Completed running task attempt: attempt_1792477020001_0001_7_00_000000_0
+26/10/20 06:17:22 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:17:22 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:22 Starting to run new task attempt: attempt_1792477020001_0001_7_01_000000_0
+2026-10-20 06:17:22 Starting to run new task attempt: attempt_1792477020001_0001_7_01_000000_0
+26/10/20 06:17:22 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:23 Completed running task attempt: attempt_1792477020001_0001_7_01_000000_0
+2026-10-20 06:17:23 Completed running task attempt: attempt_1792477020001_0001_7_01_000000_0
+26/10/20 06:17:23 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:23 Completed Dag: dag_1792477020001_0001_7
+2026-10-20 06:17:23 Completed Dag: dag_1792477020001_0001_7
+26/10/20 06:17:23 [Dispatcher thread {Central}]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+DWD	21	1134.01	84.00
+
+26/10/20 06:17:23 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:23 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:23 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:23 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:23 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:23 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:23 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+Query ID = root_20261020061723_12c24e05-07a0-47d8-a85b-daef75b8d5f3
+Total jobs = 1
+Launching Job 1 out of 1
+26/10/20 06:17:23 [HiveServer2-Background-Pool: Thread-710]: WARN tez.TezConfigurationFactory: Skip adding 'tez.ignore.lib.uris' to dagConf, as it's an AM scoped property
+26/10/20 06:17:23 [HiveServer2-Background-Pool: Thread-710]: WARN tez.TezConfigurationFactory: Skip adding 'tez.local.mode' to dagConf, as it's an AM scoped property
+26/10/20 06:17:23 [HiveServer2-Background-Pool: Thread-710]: WARN tez.TezConfigurationFactory: Skip adding 'tez.application.tags' to dagConf, as it's an AM scoped property
+26/10/20 06:17:23 [HiveServer2-Background-Pool: Thread-710]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:23 [HiveServer2-Background-Pool: Thread-710]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:23 [HiveServer2-Background-Pool: Thread-710]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:23 Running Dag: dag_1792477020001_0001_8
+2026-10-20 06:17:23 Running Dag: dag_1792477020001_0001_8
+Status: Running (Executing on YARN cluster with App id application_1792477020001_0001)
+
+26/10/20 06:17:23 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:23 Starting to run new task attempt: attempt_1792477020001_0001_8_00_000000_0
+2026-10-20 06:17:23 Starting to run new task attempt: attempt_1792477020001_0001_8_00_000000_0
+26/10/20 06:17:24 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:24 Completed running task attempt: attempt_1792477020001_0001_8_00_000000_0
+2026-10-20 06:17:24 Completed running task attempt: attempt_1792477020001_0001_8_00_000000_0
+26/10/20 06:17:24 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:17:24 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:24 Starting to run new task attempt: attempt_1792477020001_0001_8_01_000000_0
+2026-10-20 06:17:24 Starting to run new task attempt: attempt_1792477020001_0001_8_01_000000_0
+26/10/20 06:17:24 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:24 Completed running task attempt: attempt_1792477020001_0001_8_01_000000_0
+2026-10-20 06:17:24 Completed running task attempt: attempt_1792477020001_0001_8_01_000000_0
+26/10/20 06:17:24 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:24 Completed Dag: dag_1792477020001_0001_8
+2026-10-20 06:17:24 Completed Dag: dag_1792477020001_0001_8
+26/10/20 06:17:24 [Dispatcher thread {Central}]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+DWS	18	21	1134.01	84.00
+
+26/10/20 06:17:25 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:25 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:25 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:25 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:25 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:25 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:25 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:25 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:25 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:25 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:25 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+Query ID = root_20261020061724_ce8fa33c-b61f-4c81-a63c-bb4ff48abc25
+Total jobs = 1
+Launching Job 1 out of 1
+26/10/20 06:17:25 [HiveServer2-Background-Pool: Thread-760]: WARN tez.TezConfigurationFactory: Skip adding 'tez.ignore.lib.uris' to dagConf, as it's an AM scoped property
+26/10/20 06:17:25 [HiveServer2-Background-Pool: Thread-760]: WARN tez.TezConfigurationFactory: Skip adding 'tez.local.mode' to dagConf, as it's an AM scoped property
+26/10/20 06:17:25 [HiveServer2-Background-Pool: Thread-760]: WARN tez.TezConfigurationFactory: Skip adding 'tez.application.tags' to dagConf, as it's an AM scoped property
+26/10/20 06:17:25 [HiveServer2-Background-Pool: Thread-760]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:25 [HiveServer2-Background-Pool: Thread-760]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:25 [HiveServer2-Background-Pool: Thread-760]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:25 Running Dag: dag_1792477020001_0001_9
+2026-10-20 06:17:25 Running Dag: dag_1792477020001_0001_9
+Status: Running (Executing on YARN cluster with App id application_1792477020001_0001)
+
+26/10/20 06:17:25 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:25 Starting to run new task attempt: attempt_1792477020001_0001_9_00_000000_0
+2026-10-20 06:17:25 Starting to run new task attempt: attempt_1792477020001_0001_9_00_000000_0
+26/10/20 06:17:25 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:25 Completed running task attempt: attempt_1792477020001_0001_9_00_000000_0
+2026-10-20 06:17:25 Completed running task attempt: attempt_1792477020001_0001_9_00_000000_0
+26/10/20 06:17:25 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:17:25 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:25 Starting to run new task attempt: attempt_1792477020001_0001_9_01_000000_0
+2026-10-20 06:17:25 Starting to run new task attempt: attempt_1792477020001_0001_9_01_000000_0
+26/10/20 06:17:25 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:25 Completed running task attempt: attempt_1792477020001_0001_9_01_000000_0
+2026-10-20 06:17:25 Completed running task attempt: attempt_1792477020001_0001_9_01_000000_0
+26/10/20 06:17:25 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:26 Completed Dag: dag_1792477020001_0001_9
+2026-10-20 06:17:26 Completed Dag: dag_1792477020001_0001_9
+26/10/20 06:17:26 [Dispatcher thread {Central}]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+ADS	DAY	12	21	1134.01	84.00
+ADS	HOUR	18	21	1134.01	84.00
+ADS	WINDOW	10	21	1134.01	84.00
+
+
+
+
+
+
+26/10/20 06:17:26 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN calcite.RelOptHiveTable: No Stats for commute_s6@dwd_observation, Columns: congestion_index, avg_speed_kmh
+No Stats for commute_s6@dwd_observation, Columns: congestion_index, avg_speed_kmh
+26/10/20 06:17:26 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:26 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:26 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:26 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:26 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:26 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:26 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+Warning: Map Join MAPJOIN[21][bigTable=?] in task 'Reducer 2' is a cross product
+Query ID = root_20261020061726_27035c6a-a9be-4069-9e74-89e9efe3d238
+Total jobs = 1
+Launching Job 1 out of 1
+26/10/20 06:17:26 [HiveServer2-Background-Pool: Thread-814]: WARN tez.TezConfigurationFactory: Skip adding 'tez.ignore.lib.uris' to dagConf, as it's an AM scoped property
+26/10/20 06:17:26 [HiveServer2-Background-Pool: Thread-814]: WARN tez.TezConfigurationFactory: Skip adding 'tez.local.mode' to dagConf, as it's an AM scoped property
+26/10/20 06:17:26 [HiveServer2-Background-Pool: Thread-814]: WARN tez.TezConfigurationFactory: Skip adding 'tez.application.tags' to dagConf, as it's an AM scoped property
+26/10/20 06:17:26 [HiveServer2-Background-Pool: Thread-814]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:26 [HiveServer2-Background-Pool: Thread-814]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:26 [HiveServer2-Background-Pool: Thread-814]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:26 [HiveServer2-Background-Pool: Thread-814]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:26 [HiveServer2-Background-Pool: Thread-814]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:26 [HiveServer2-Background-Pool: Thread-814]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:26 Running Dag: dag_1792477020001_0001_10
+2026-10-20 06:17:26 Running Dag: dag_1792477020001_0001_10
+Status: Running (Executing on YARN cluster with App id application_1792477020001_0001)
+
+26/10/20 06:17:26 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:26 Starting to run new task attempt: attempt_1792477020001_0001_10_01_000000_0
+2026-10-20 06:17:26 Starting to run new task attempt: attempt_1792477020001_0001_10_01_000000_0
+26/10/20 06:17:26 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:26 Completed running task attempt: attempt_1792477020001_0001_10_01_000000_0
+2026-10-20 06:17:26 Completed running task attempt: attempt_1792477020001_0001_10_01_000000_0
+26/10/20 06:17:26 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:17:27 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:27 Starting to run new task attempt: attempt_1792477020001_0001_10_00_000000_0
+2026-10-20 06:17:27 Starting to run new task attempt: attempt_1792477020001_0001_10_00_000000_0
+26/10/20 06:17:27 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:27 Completed running task attempt: attempt_1792477020001_0001_10_00_000000_0
+2026-10-20 06:17:27 Completed running task attempt: attempt_1792477020001_0001_10_00_000000_0
+26/10/20 06:17:27 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:17:27 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:27 Starting to run new task attempt: attempt_1792477020001_0001_10_02_000000_0
+2026-10-20 06:17:27 Starting to run new task attempt: attempt_1792477020001_0001_10_02_000000_0
+26/10/20 06:17:27 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:27 Completed running task attempt: attempt_1792477020001_0001_10_02_000000_0
+2026-10-20 06:17:27 Completed running task attempt: attempt_1792477020001_0001_10_02_000000_0
+26/10/20 06:17:27 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:17:27 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:27 Starting to run new task attempt: attempt_1792477020001_0001_10_03_000000_0
+2026-10-20 06:17:27 Starting to run new task attempt: attempt_1792477020001_0001_10_03_000000_0
+26/10/20 06:17:28 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:28 Completed running task attempt: attempt_1792477020001_0001_10_03_000000_0
+2026-10-20 06:17:28 Completed running task attempt: attempt_1792477020001_0001_10_03_000000_0
+26/10/20 06:17:28 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:28 Completed Dag: dag_1792477020001_0001_10
+2026-10-20 06:17:28 Completed Dag: dag_1792477020001_0001_10
+26/10/20 06:17:28 [Dispatcher thread {Central}]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+NULL
+
+
+
+
+
+26/10/20 06:17:28 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN calcite.RelOptHiveTable: No Stats for commute_s6@dwd_observation, Columns: congestion_index, avg_speed_kmh
+No Stats for commute_s6@dwd_observation, Columns: congestion_index, avg_speed_kmh
+26/10/20 06:17:28 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:28 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:28 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:28 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:28 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:28 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:28 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:28 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:28 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:28 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:28 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+Warning: Map Join MAPJOIN[21][bigTable=?] in task 'Reducer 4' is a cross product
+Query ID = root_20261020061728_5ef1b567-1139-41c3-9da2-5abec2300bf9
+Total jobs = 1
+Launching Job 1 out of 1
+26/10/20 06:17:28 [HiveServer2-Background-Pool: Thread-905]: WARN tez.TezConfigurationFactory: Skip adding 'tez.ignore.lib.uris' to dagConf, as it's an AM scoped property
+26/10/20 06:17:28 [HiveServer2-Background-Pool: Thread-905]: WARN tez.TezConfigurationFactory: Skip adding 'tez.local.mode' to dagConf, as it's an AM scoped property
+26/10/20 06:17:28 [HiveServer2-Background-Pool: Thread-905]: WARN tez.TezConfigurationFactory: Skip adding 'tez.application.tags' to dagConf, as it's an AM scoped property
+26/10/20 06:17:28 [HiveServer2-Background-Pool: Thread-905]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:28 [HiveServer2-Background-Pool: Thread-905]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:28 [HiveServer2-Background-Pool: Thread-905]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:28 [HiveServer2-Background-Pool: Thread-905]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:28 [HiveServer2-Background-Pool: Thread-905]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:28 [HiveServer2-Background-Pool: Thread-905]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:28 Running Dag: dag_1792477020001_0001_11
+2026-10-20 06:17:28 Running Dag: dag_1792477020001_0001_11
+Status: Running (Executing on YARN cluster with App id application_1792477020001_0001)
+
+26/10/20 06:17:29 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:29 Starting to run new task attempt: attempt_1792477020001_0001_11_01_000000_0
+2026-10-20 06:17:29 Starting to run new task attempt: attempt_1792477020001_0001_11_01_000000_0
+26/10/20 06:17:29 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:29 Completed running task attempt: attempt_1792477020001_0001_11_01_000000_0
+2026-10-20 06:17:29 Completed running task attempt: attempt_1792477020001_0001_11_01_000000_0
+26/10/20 06:17:29 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:17:29 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:29 Starting to run new task attempt: attempt_1792477020001_0001_11_00_000000_0
+2026-10-20 06:17:29 Starting to run new task attempt: attempt_1792477020001_0001_11_00_000000_0
+26/10/20 06:17:29 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:29 Completed running task attempt: attempt_1792477020001_0001_11_00_000000_0
+2026-10-20 06:17:29 Completed running task attempt: attempt_1792477020001_0001_11_00_000000_0
+26/10/20 06:17:29 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:17:30 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:30 Starting to run new task attempt: attempt_1792477020001_0001_11_02_000000_0
+2026-10-20 06:17:30 Starting to run new task attempt: attempt_1792477020001_0001_11_02_000000_0
+26/10/20 06:17:30 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:30 Completed running task attempt: attempt_1792477020001_0001_11_02_000000_0
+2026-10-20 06:17:30 Completed running task attempt: attempt_1792477020001_0001_11_02_000000_0
+26/10/20 06:17:30 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+26/10/20 06:17:30 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:30 Starting to run new task attempt: attempt_1792477020001_0001_11_03_000000_0
+2026-10-20 06:17:30 Starting to run new task attempt: attempt_1792477020001_0001_11_03_000000_0
+26/10/20 06:17:30 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:30 Completed running task attempt: attempt_1792477020001_0001_11_03_000000_0
+2026-10-20 06:17:30 Completed running task attempt: attempt_1792477020001_0001_11_03_000000_0
+26/10/20 06:17:30 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:30 Completed Dag: dag_1792477020001_0001_11
+2026-10-20 06:17:30 Completed Dag: dag_1792477020001_0001_11
+26/10/20 06:17:30 [Dispatcher thread {Central}]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+NULL
+NULL
+NULL
+
+
+
+
+
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+26/10/20 06:17:30 [9f0b493f-8232-4f8c-abd9-3b38913219dd main]: WARN DataNucleus.Datastore: SQL Warning : Null values were eliminated from the argument of a column function.
+Query ID = root_20261020061730_55d1842f-741a-4323-be37-84dab48bd553
+Total jobs = 1
+Launching Job 1 out of 1
+26/10/20 06:17:30 [HiveServer2-Background-Pool: Thread-1000]: WARN tez.TezConfigurationFactory: Skip adding 'tez.ignore.lib.uris' to dagConf, as it's an AM scoped property
+26/10/20 06:17:30 [HiveServer2-Background-Pool: Thread-1000]: WARN tez.TezConfigurationFactory: Skip adding 'tez.local.mode' to dagConf, as it's an AM scoped property
+26/10/20 06:17:30 [HiveServer2-Background-Pool: Thread-1000]: WARN tez.TezConfigurationFactory: Skip adding 'tez.application.tags' to dagConf, as it's an AM scoped property
+26/10/20 06:17:30 [HiveServer2-Background-Pool: Thread-1000]: WARN tez.DagUtils: No Tez VCore size specified by hive.tez.cpu.vcores. Falling back to MapReduce container VCores mapreduce.map.cpu.vcores
+26/10/20 06:17:30 [HiveServer2-Background-Pool: Thread-1000]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:30 Running Dag: dag_1792477020001_0001_12
+2026-10-20 06:17:30 Running Dag: dag_1792477020001_0001_12
+Status: Running (Executing on YARN cluster with App id application_1792477020001_0001)
+
+26/10/20 06:17:31 [LocalContainerLauncher-SubTaskRunner]: WARN util.LoggingUtils: Cannot set log4j global MDC, mdcContext won't be applied to log4j's MDC class: tlm
+2026-10-20 06:17:31 Starting to run new task attempt: attempt_1792477020001_0001_12_00_000000_0
+2026-10-20 06:17:31 Starting to run new task attempt: attempt_1792477020001_0001_12_00_000000_0
+26/10/20 06:17:31 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:31 Completed running task attempt: attempt_1792477020001_0001_12_00_000000_0
+2026-10-20 06:17:31 Completed running task attempt: attempt_1792477020001_0001_12_00_000000_0
+26/10/20 06:17:31 [LocalTaskExecutionThread #0]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+2026-10-20 06:17:31 Completed Dag: dag_1792477020001_0001_12
+2026-10-20 06:17:31 Completed Dag: dag_1792477020001_0001_12
+26/10/20 06:17:31 [Dispatcher thread {Central}]: WARN common.TezUtilsInternal: Not configured with appender named: CLA. Cannot reconfigure logger output
+Moving data to directory /s6/export/run1
+Time taken to move files:	 4 ms
+
+26/10/20 06:17:31 [pool-358-thread-2]: WARN util.ShutdownHookManager: Shutdown in progress, cannot cancel a deleteOnExit
+26/10/20 06:17:31 [pool-358-thread-2]: WARN util.ShutdownHookManager: Shutdown in progress, cannot cancel a deleteOnExit
+26/10/20 06:17:32 [pool-358-thread-1]: WARN util.ShutdownHookManager: Shutdown in progress, cannot cancel a deleteOnExit
+26/10/20 06:17:32 [pool-358-thread-1]: WARN util.ShutdownHookManager: Shutdown in progress, cannot cancel a deleteOnExit
+26/10/20 06:17:32 [shutdown-hook-0]: WARN util.ShutdownHookManager: Shutdown in progress, cannot cancel a deleteOnExit
+26/10/20 06:17:32 [shutdown-hook-0]: WARN util.ShutdownHookManager: Shutdown in progress, cannot cancel a deleteOnExit

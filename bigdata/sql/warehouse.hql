@@ -33,6 +33,9 @@ CREATE EXTERNAL TABLE IF NOT EXISTS dwd_observation (
 ) PARTITIONED BY (snapshot_id STRING, observed_date STRING) STORED AS ORC LOCATION '/s6/dwd';
 
 SELECT assert_true(COUNT(*)=0) FROM ods_observation WHERE snapshot_id='${hivevar:snapshot}' AND (
+  observation_id IS NULL OR dataset_id IS NULL OR city_id IS NULL OR target_id IS NULL OR target_type IS NULL OR
+  dataset_version IS NULL OR source_sha256 IS NULL OR batch_id IS NULL OR source_type IS NULL OR
+  source_type NOT IN ('synthetic_test','historical_snapshot','authorized_live') OR
   observed_at IS NULL OR collected_at IS NULL OR
   CAST(regexp_replace(regexp_replace(observed_at,'T',' '),'Z','') AS TIMESTAMP) IS NULL OR
   CAST(regexp_replace(regexp_replace(collected_at,'T',' '),'Z','') AS TIMESTAMP) IS NULL OR
@@ -41,8 +44,8 @@ SELECT assert_true(COUNT(*)=0) FROM ods_observation WHERE snapshot_id='${hivevar
   congestion_index IS NULL OR congestion_index<0 OR congestion_index>10 OR
   target_type NOT IN ('CITY','REGION','ROAD') OR
   NOT ((target_type='CITY' AND target_id=city_id AND region_id IS NULL AND road_segment_id IS NULL)
-    OR (target_type='REGION' AND target_id=region_id AND road_segment_id IS NULL)
-    OR (target_type='ROAD' AND target_id=road_segment_id AND region_id IS NULL))
+    OR (target_type='REGION' AND region_id IS NOT NULL AND target_id=region_id AND road_segment_id IS NULL)
+    OR (target_type='ROAD' AND road_segment_id IS NOT NULL AND target_id=road_segment_id AND region_id IS NULL))
 );
 
 INSERT OVERWRITE TABLE dwd_observation PARTITION(snapshot_id='${hivevar:snapshot}',observed_date)
@@ -56,6 +59,10 @@ GROUP BY observation_id,dataset_id,city_id,target_type,target_id,road_region_id,
   avg_speed_kmh,congestion_index,dataset_version,source_type;
 SELECT assert_true(COUNT(*)=COUNT(DISTINCT observation_id))
 FROM dwd_observation WHERE snapshot_id='${hivevar:snapshot}';
+SELECT assert_true(COUNT(*)=0) FROM (
+  SELECT dataset_id,target_type,target_id,observed_at FROM dwd_observation WHERE snapshot_id='${hivevar:snapshot}'
+  GROUP BY dataset_id,target_type,target_id,observed_at HAVING COUNT(*)>1
+) conflicting_keys;
 
 CREATE EXTERNAL TABLE IF NOT EXISTS dws_hourly (
   dataset_id STRING,dataset_version STRING,source_type STRING,city_id STRING,
