@@ -182,5 +182,72 @@
     "status": 500,
     "valid": false,
     "expectedKeyword": "const"
+  },
+  {
+    "name": "traffic-summary",
+    "path": "/api/v1/traffic/summary",
+    "status": 200,
+    "file": "examples/traffic-summary.json",
+    "valid": true
+  },
+  {
+    "name": "traffic-series",
+    "path": "/api/v1/traffic/series",
+    "status": 200,
+    "file": "examples/traffic-series.json",
+    "valid": true
+  },
+  {
+    "name": "traffic-regions",
+    "path": "/api/v1/traffic/regions",
+    "status": 200,
+    "file": "examples/traffic-regions.json",
+    "valid": true
+  },
+  {
+    "name": "traffic-roads",
+    "path": "/api/v1/traffic/roads",
+    "status": 200,
+    "file": "examples/traffic-roads.json",
+    "valid": true
+  },
+  {
+    "name": "traffic-empty",
+    "path": "/api/v1/traffic/summary",
+    "status": 200,
+    "file": "examples/traffic-empty.json",
+    "valid": true
+  },
+  {
+    "name": "traffic-zero-as-missing",
+    "path": "/api/v1/traffic/summary",
+    "status": 200,
+    "file": "examples/invalid/traffic-zero-as-missing.json",
+    "valid": false,
+    "expectedKeyword": "type"
+  },
+  {
+    "name": "traffic-negative-count",
+    "path": "/api/v1/traffic/summary",
+    "status": 200,
+    "file": "examples/invalid/traffic-negative-count.json",
+    "valid": false,
+    "expectedKeyword": "minimum"
+  },
+  {
+    "name": "traffic-index-range",
+    "path": "/api/v1/traffic/summary",
+    "status": 200,
+    "file": "examples/invalid/traffic-index-range.json",
+    "valid": false,
+    "expectedKeyword": "maximum"
+  },
+  {
+    "name": "traffic-invalid-coordinate",
+    "path": "/api/v1/traffic/regions",
+    "status": 200,
+    "file": "examples/invalid/traffic-invalid-coordinate.json",
+    "valid": false,
+    "expectedKeyword": "enum"
   }
 ]

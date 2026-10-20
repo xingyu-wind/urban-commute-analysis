@@ -1,17 +1,17 @@
 openapi: 3.1.0
 jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
 info:
-  title: 城市通勤系统 S3 API 契约
-  version: 1.0.0
+  title: 城市通勤系统 S4 API 契约
+  version: 1.1.0
   description: |
-    本文件描述 S3 的两个接口；城市数据直接来自 MySQL，迁移不插入城市。
+    本文件保留 S2/S3 接口，并增加四个 S4 MySQL 交通统计接口。
     所有 examples 均为固定的契约示例，不是实时响应或真实交通采集结果。
     /health 是版本前缀与业务封套的明确例外；业务接口使用 /api/v1。
     HTTP 状态码表达协议结果，JSON code 是稳定的机器可读业务标识，两者不得混用。
     时间使用 RFC 3339（带时区的 ISO 8601），推荐 UTC Z；无时区本地时间不合法。
     所有 required 字段必须出现，null 不等于缺失；未声明字段不允许出现。
     S3 区分 dev_seed、synthetic_test、historical_snapshot、authorized_live 等来源；城市目录不等于道路观测。
-    不包含已核验真实交通统计、Hadoop/Hive 或机器学习接口。
+    统计值来源由 meta 明示；不包含 Hadoop/Hive 或机器学习接口。
 servers:
   - url: http://localhost:8080
     description: 本机开发服务约定地址
@@ -94,8 +94,615 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/ServiceUnavailable'
+  /api/v1/traffic/summary:
+    get:
+      operationId: trafficSummary
+      summary: Summary traffic analytics
+      description: 'Single dataset (defaults to city registration), allowed sources:
+        dev_seed/synthetic_test/historical_snapshot/authorized_live. No forecast/mock/simulation.
+        UTC [from,to), millisecond precision, years 2000–2099, max 366 days (31 for
+        hourly). Reject unknown/duplicate parameters, request bodies and invalid city/dataset/region.
+        CITY, REGION, ROAD never mixed. Speed km/h, congestion 0–10. N is observations;
+        arithmetic mean, no weighting. Series emits empty UTC buckets. Regions/roads
+        retain unobserved catalog entities with null metrics. Roads ordered congestion
+        DESC then id; literal substring search; total counts matching catalog roads.
+        meta.dataAsOf is MAX observed_at across all matching observations, including
+        roads outside the current page. Each response uses one repeatable-read snapshot;
+        separate endpoints may observe separate commits. Registration is not external
+        authorization verification.'
+      parameters:
+      - in: query
+        name: cityId
+        required: true
+        schema: &pathid001
+          type: string
+          minLength: 1
+          maxLength: 64
+          pattern: ^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$
+      - in: query
+        name: from
+        required: true
+        schema: &pathid002
+          $ref: '#/components/schemas/ZonedTimestamp'
+      - in: query
+        name: to
+        required: true
+        schema: &pathid003
+          $ref: '#/components/schemas/ZonedTimestamp'
+      - in: query
+        name: datasetId
+        required: false
+        schema: *pathid001
+      responses:
+        '200':
+          description: Sample arithmetic means from MySQL; nullable metrics when N=0.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SummaryResponse'
+              examples:
+                synthetic:
+                  externalValue: ./examples/traffic-summary.json
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '405':
+          $ref: '#/components/responses/MethodNotAllowed'
+        '406':
+          $ref: '#/components/responses/NotAcceptable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  /api/v1/traffic/series:
+    get:
+      operationId: trafficSeries
+      summary: Series traffic analytics
+      description: 'Single dataset (defaults to city registration), allowed sources:
+        dev_seed/synthetic_test/historical_snapshot/authorized_live. No forecast/mock/simulation.
+        UTC [from,to), millisecond precision, years 2000–2099, max 366 days (31 for
+        hourly). Reject unknown/duplicate parameters, request bodies and invalid city/dataset/region.
+        CITY, REGION, ROAD never mixed. Speed km/h, congestion 0–10. N is observations;
+        arithmetic mean, no weighting. Series emits empty UTC buckets. Regions/roads
+        retain unobserved catalog entities with null metrics. Roads ordered congestion
+        DESC then id; literal substring search; total counts matching catalog roads.
+        meta.dataAsOf is MAX observed_at across all matching observations, including
+        roads outside the current page. Each response uses one repeatable-read snapshot;
+        separate endpoints may observe separate commits. Registration is not external
+        authorization verification.'
+      parameters:
+      - in: query
+        name: cityId
+        required: true
+        schema: *pathid001
+      - in: query
+        name: from
+        required: true
+        schema: *pathid002
+      - in: query
+        name: to
+        required: true
+        schema: *pathid003
+      - in: query
+        name: datasetId
+        required: false
+        schema: *pathid001
+      - in: query
+        name: granularity
+        schema:
+          type: string
+          enum:
+          - hour
+          - day
+          default: day
+      responses:
+        '200':
+          description: Sample arithmetic means from MySQL; nullable metrics when N=0.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SeriesResponse'
+              examples:
+                synthetic:
+                  externalValue: ./examples/traffic-series.json
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '405':
+          $ref: '#/components/responses/MethodNotAllowed'
+        '406':
+          $ref: '#/components/responses/NotAcceptable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  /api/v1/traffic/regions:
+    get:
+      operationId: trafficRegions
+      summary: Regions traffic analytics
+      description: 'Single dataset (defaults to city registration), allowed sources:
+        dev_seed/synthetic_test/historical_snapshot/authorized_live. No forecast/mock/simulation.
+        UTC [from,to), millisecond precision, years 2000–2099, max 366 days (31 for
+        hourly). Reject unknown/duplicate parameters, request bodies and invalid city/dataset/region.
+        CITY, REGION, ROAD never mixed. Speed km/h, congestion 0–10. N is observations;
+        arithmetic mean, no weighting. Series emits empty UTC buckets. Regions/roads
+        retain unobserved catalog entities with null metrics. Roads ordered congestion
+        DESC then id; literal substring search; total counts matching catalog roads.
+        meta.dataAsOf is MAX observed_at across all matching observations, including
+        roads outside the current page. Each response uses one repeatable-read snapshot;
+        separate endpoints may observe separate commits. Registration is not external
+        authorization verification.'
+      parameters:
+      - in: query
+        name: cityId
+        required: true
+        schema: *pathid001
+      - in: query
+        name: from
+        required: true
+        schema: *pathid002
+      - in: query
+        name: to
+        required: true
+        schema: *pathid003
+      - in: query
+        name: datasetId
+        required: false
+        schema: *pathid001
+      responses:
+        '200':
+          description: Sample arithmetic means from MySQL; nullable metrics when N=0.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegionsResponse'
+              examples:
+                synthetic:
+                  externalValue: ./examples/traffic-regions.json
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '405':
+          $ref: '#/components/responses/MethodNotAllowed'
+        '406':
+          $ref: '#/components/responses/NotAcceptable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  /api/v1/traffic/roads:
+    get:
+      operationId: trafficRoads
+      summary: Roads traffic analytics
+      description: 'Single dataset (defaults to city registration), allowed sources:
+        dev_seed/synthetic_test/historical_snapshot/authorized_live. No forecast/mock/simulation.
+        UTC [from,to), millisecond precision, years 2000–2099, max 366 days (31 for
+        hourly). Reject unknown/duplicate parameters, request bodies and invalid city/dataset/region.
+        CITY, REGION, ROAD never mixed. Speed km/h, congestion 0–10. N is observations;
+        arithmetic mean, no weighting. Series emits empty UTC buckets. Regions/roads
+        retain unobserved catalog entities with null metrics. Roads ordered congestion
+        DESC then id; literal substring search; total counts matching catalog roads.
+        meta.dataAsOf is MAX observed_at across all matching observations, including
+        roads outside the current page. Each response uses one repeatable-read snapshot;
+        separate endpoints may observe separate commits. Registration is not external
+        authorization verification.'
+      parameters:
+      - in: query
+        name: cityId
+        required: true
+        schema: *pathid001
+      - in: query
+        name: from
+        required: true
+        schema: *pathid002
+      - in: query
+        name: to
+        required: true
+        schema: *pathid003
+      - in: query
+        name: datasetId
+        required: false
+        schema: *pathid001
+      - in: query
+        name: regionId
+        schema: *pathid001
+      - in: query
+        name: search
+        schema:
+          type: string
+          maxLength: 100
+      - in: query
+        name: page
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 10000
+          default: 1
+      - in: query
+        name: pageSize
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 10
+      responses:
+        '200':
+          description: Sample arithmetic means from MySQL; nullable metrics when N=0.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoadsResponse'
+              examples:
+                synthetic:
+                  externalValue: ./examples/traffic-roads.json
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '405':
+          $ref: '#/components/responses/MethodNotAllowed'
+        '406':
+          $ref: '#/components/responses/NotAcceptable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
 components:
   schemas:
+    TrafficMetrics:
+      type: object
+      additionalProperties: false
+      required:
+      - sampleCount
+      - avgSpeedKmh
+      - congestionIndex
+      - dataAsOf
+      properties:
+        sampleCount:
+          type: integer
+          minimum: 0
+        avgSpeedKmh:
+          type:
+          - number
+          - 'null'
+          minimum: 0
+          maximum: 250
+        congestionIndex:
+          type:
+          - number
+          - 'null'
+          minimum: 0
+          maximum: 10
+        dataAsOf: &id001
+          oneOf:
+          - $ref: '#/components/schemas/ZonedTimestamp'
+          - type: 'null'
+      allOf:
+      - if:
+          properties:
+            sampleCount:
+              const: 0
+        then:
+          properties:
+            avgSpeedKmh:
+              type: 'null'
+            congestionIndex:
+              type: 'null'
+            dataAsOf:
+              type: 'null'
+        else:
+          properties:
+            avgSpeedKmh:
+              type: number
+            congestionIndex:
+              type: number
+            dataAsOf:
+              $ref: '#/components/schemas/ZonedTimestamp'
+    TrafficMeta:
+      type: object
+      additionalProperties: false
+      required:
+      - requestId
+      - dataAsOf
+      - sourceType
+      - datasetId
+      properties:
+        requestId:
+          $ref: '#/components/schemas/RequestId'
+        dataAsOf: *id001
+        sourceType:
+          enum:
+          - dev_seed
+          - synthetic_test
+          - historical_snapshot
+          - authorized_live
+        datasetId: &id002
+          type: string
+          minLength: 1
+          maxLength: 64
+          pattern: ^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$
+    SummaryWindow:
+      type: object
+      additionalProperties: false
+      required:
+      - cityId
+      - from
+      - to
+      - level
+      properties:
+        cityId: *id002
+        from: &id003
+          $ref: '#/components/schemas/ZonedTimestamp'
+        to: &id004
+          $ref: '#/components/schemas/ZonedTimestamp'
+        level:
+          const: CITY
+    SeriesWindow:
+      type: object
+      additionalProperties: false
+      required:
+      - cityId
+      - from
+      - to
+      - level
+      properties:
+        cityId: *id002
+        from: *id003
+        to: *id004
+        level:
+          const: CITY
+    RegionsWindow:
+      type: object
+      additionalProperties: false
+      required:
+      - cityId
+      - from
+      - to
+      - level
+      properties:
+        cityId: *id002
+        from: *id003
+        to: *id004
+        level:
+          const: REGION
+    RoadsWindow:
+      type: object
+      additionalProperties: false
+      required:
+      - cityId
+      - from
+      - to
+      - level
+      properties:
+        cityId: *id002
+        from: *id003
+        to: *id004
+        level:
+          const: ROAD
+    TrafficBucket:
+      type: object
+      additionalProperties: false
+      required:
+      - bucket
+      - metrics
+      properties:
+        bucket:
+          $ref: '#/components/schemas/ZonedTimestamp'
+        metrics:
+          $ref: '#/components/schemas/TrafficMetrics'
+    TrafficRegion:
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - name
+      - latitude
+      - longitude
+      - coordinateSystem
+      - metrics
+      properties:
+        id: *id002
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        latitude:
+          type:
+          - number
+          - 'null'
+          minimum: -90
+          maximum: 90
+        longitude:
+          type:
+          - number
+          - 'null'
+          minimum: -180
+          maximum: 180
+        coordinateSystem:
+          enum:
+          - WGS84
+          - null
+        metrics:
+          $ref: '#/components/schemas/TrafficMetrics'
+      oneOf:
+      - properties:
+          latitude:
+            type: 'null'
+          longitude:
+            type: 'null'
+          coordinateSystem:
+            type: 'null'
+      - properties:
+          latitude:
+            type: number
+          longitude:
+            type: number
+          coordinateSystem:
+            const: WGS84
+    TrafficRoad:
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - name
+      - regionId
+      - metrics
+      properties:
+        id: *id002
+        name:
+          type: string
+          minLength: 1
+          maxLength: 160
+        regionId:
+          oneOf:
+          - *id002
+          - type: 'null'
+        metrics:
+          $ref: '#/components/schemas/TrafficMetrics'
+    SummaryData:
+      type: object
+      additionalProperties: false
+      required:
+      - window
+      - metrics
+      properties:
+        window:
+          $ref: '#/components/schemas/SummaryWindow'
+        metrics:
+          $ref: '#/components/schemas/TrafficMetrics'
+    SeriesData:
+      type: object
+      additionalProperties: false
+      required:
+      - window
+      - granularity
+      - items
+      properties:
+        window:
+          $ref: '#/components/schemas/SeriesWindow'
+        granularity:
+          enum:
+          - hour
+          - day
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrafficBucket'
+    RegionsData:
+      type: object
+      additionalProperties: false
+      required:
+      - window
+      - items
+      properties:
+        window:
+          $ref: '#/components/schemas/RegionsWindow'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrafficRegion'
+    RoadsData:
+      type: object
+      additionalProperties: false
+      required:
+      - window
+      - page
+      - pageSize
+      - total
+      - items
+      properties:
+        window:
+          $ref: '#/components/schemas/RoadsWindow'
+        page:
+          type: integer
+          minimum: 1
+          maximum: 10000
+        pageSize:
+          type: integer
+          minimum: 1
+          maximum: 100
+        total:
+          type: integer
+          minimum: 0
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrafficRoad'
+    SummaryResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - code
+      - message
+      - data
+      - meta
+      properties:
+        code:
+          const: OK
+        message:
+          type: string
+          minLength: 1
+        data:
+          $ref: '#/components/schemas/SummaryData'
+        meta:
+          $ref: '#/components/schemas/TrafficMeta'
+    SeriesResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - code
+      - message
+      - data
+      - meta
+      properties:
+        code:
+          const: OK
+        message:
+          type: string
+          minLength: 1
+        data:
+          $ref: '#/components/schemas/SeriesData'
+        meta:
+          $ref: '#/components/schemas/TrafficMeta'
+    RegionsResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - code
+      - message
+      - data
+      - meta
+      properties:
+        code:
+          const: OK
+        message:
+          type: string
+          minLength: 1
+        data:
+          $ref: '#/components/schemas/RegionsData'
+        meta:
+          $ref: '#/components/schemas/TrafficMeta'
+    RoadsResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - code
+      - message
+      - data
+      - meta
+      properties:
+        code:
+          const: OK
+        message:
+          type: string
+          minLength: 1
+        data:
+          $ref: '#/components/schemas/RoadsData'
+        meta:
+          $ref: '#/components/schemas/TrafficMeta'
     ZonedTimestamp:
       type: string
       format: date-time

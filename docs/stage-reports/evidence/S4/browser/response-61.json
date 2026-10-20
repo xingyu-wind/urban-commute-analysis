@@ -1,0 +1,1 @@
+{"code":"OK","message":"Success","data":{"window":{"cityId":"sample-beijing","from":"2026-10-15T00:00:00Z","to":"2026-10-17T00:00:00Z","level":"CITY"},"metrics":{"sampleCount":0,"avgSpeedKmh":null,"congestionIndex":null,"dataAsOf":null}},"meta":{"requestId":"763022c7-c62b-4043-8932-f8474b7cbbdd","dataAsOf":null,"sourceType":"synthetic_test","datasetId":"s3-synthetic-cities-v1"}}

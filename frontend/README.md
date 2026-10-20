@@ -1,10 +1,10 @@
 # 前端模块
 
-S3 前端：显示真实后端健康状态、选择 MySQL 城市目录、处理加载/空列表/失败与重试。没有交通统计、地图、登录、预测数值或默认 Mock。
+S4 前端：保留健康状态与城市目录，新增 MySQL API 驱动的 KPI、趋势、区域对比、路段分页、WGS84 区域点位视图与比赛大屏。包含空数据、错误、稀疏数据和请求竞争保护；没有登录、预测或默认 Mock。启动、演示和完整回归见 [S4 指南](../docs/guides/s4-dashboard.md)。
 
 ## 依赖与命令
 
-Node.js 24.19.0 LTS、npm 11.17.0；Vue 3.5.44、TypeScript 5.9.3、Vite 8.3.4、vue-tsc 3.3.13、Vitest 5.0.5。版本固定在 package.json 和 package-lock.json。TypeScript 7 的编译器导出与当前 vue-tsc 不兼容，因此使用经过本项目真实类型检查的稳定 5.9.3；没有修改全局 TypeScript。
+Node.js 24.19.0 LTS、npm 11.17.0；Vue 3.5.44、Apache ECharts 6.1.0、TypeScript 5.9.3、Vite 8.3.4、vue-tsc 3.3.13、Vitest 5.0.5。版本固定在 package.json 和 package-lock.json。TypeScript 7 的编译器导出与当前 vue-tsc 不兼容，因此使用经过本项目真实类型检查的稳定 5.9.3；没有修改全局 TypeScript。
 
 在 `frontend` 目录执行：
 

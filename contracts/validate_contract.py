@@ -19,6 +19,7 @@ from referencing.jsonschema import DRAFT202012
 
 ROOT = Path(__file__).resolve().parent
 SPEC_PATH = ROOT / "openapi.yaml"
+PATHS = {"/health", "/api/v1/cities"} | {"/api/v1/traffic/" + endpoint for endpoint in ("summary", "series", "regions", "roads")}
 
 
 def unique_pairs(pairs):
@@ -84,8 +85,8 @@ def load_contract():
     spec = yaml.load(SPEC_PATH.read_text(encoding="utf-8"), Loader=UniqueLoader)
     if spec["openapi"] != "3.1.0":
         raise ValueError("This suite requires OpenAPI 3.1.0")
-    if set(spec["paths"]) != {"/health", "/api/v1/cities"}:
-        raise ValueError("S2 WP2 permits exactly /health and /api/v1/cities")
+    if set(spec["paths"]) != PATHS:
+        raise ValueError("Expected the six released S4 GET endpoints")
     for path, item in spec["paths"].items():
         if set(item) != {"get"}:
             raise ValueError(f"Only GET is allowed for {path}")
@@ -166,7 +167,7 @@ def run_suite(spec, registry, checker):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--instance", type=Path, help="Validate one JSON response; invalid returns exit 1")
-    parser.add_argument("--path", choices=["/health", "/api/v1/cities"], default="/api/v1/cities")
+    parser.add_argument("--path", choices=sorted(PATHS), default="/api/v1/cities")
     parser.add_argument("--status", choices=["200", "400", "404", "405", "406", "500", "503"], default="200")
     args = parser.parse_args()
     try:

@@ -1,0 +1,342 @@
+{
+  "codeSha": "76fa63aaf397630ebeeee687253189b987b45588",
+  "observedAtUtc": "2026-10-20 00:30:53 UTC",
+  "jobs": [
+    {
+      "runId": 39347534078,
+      "id": 118383645368,
+      "name": "regression",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 39347534078,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Initialize containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Check out source without persisted credentials",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Set isolated browser download directory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Set up Java 21",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Set up Node 24",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Set up Python 3.11",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Install locked contract validators",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Validate CI policy and OpenAPI specification and fixtures",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "MySQL 8.4 Flyway and backend integration regression",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Repeat complete backend suite in a new schema without cleaning prior data",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Standalone Java HTTP and actual response Schema checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Type check, unit tests and production build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Install isolated Playwright Chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Real browser proxy, stop and restore regression",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Ensure broken captures and Java startup really fail",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "S4 independent SQL, actual API mutation and Chromium dashboard regression",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Retain test diagnostics on success or failure",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        },
+        {
+          "name": "Post Set up Python 3.11",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 34
+        },
+        {
+          "name": "Post Set up Node 24",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 35
+        },
+        {
+          "name": "Post Set up Java 21",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 36
+        },
+        {
+          "name": "Post Check out source without persisted credentials",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 37
+        },
+        {
+          "name": "Stop containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 38
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39
+        }
+      ],
+      "logExcerpts": [
+        "2026-10-20T00:27:41.5772245Z [INFO] Tests run: 82, Failures: 0, Errors: 0, Skipped: 0",
+        "2026-10-20T00:28:04.8562585Z [INFO] Tests run: 82, Failures: 0, Errors: 0, Skipped: 0",
+        "2026-10-20T00:29:04.7928019Z PASS responsive-layout-no-horizontal-overflow",
+        "2026-10-20T00:29:30.7831154Z CAPTURED_OPENAPI_VALIDATION=PASS; JAVA_RESPONSES=8; PROXY_FAILURES=2; JAVA_LOG_CORRELATION=PASS",
+        "2026-10-20T00:29:30.8236871Z BROWSER_INTEGRATION_EXIT=0; EVIDENCE=/home/runner/work/urban-commute-analysis/urban-commute-analysis/frontend/outputs/ci-browser"
+      ]
+    },
+    {
+      "runId": 39347529103,
+      "id": 118383629323,
+      "name": "regression",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 39347529103,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Initialize containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Check out source without persisted credentials",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Set isolated browser download directory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Set up Java 21",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Set up Node 24",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Set up Python 3.11",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Install locked contract validators",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Validate CI policy and OpenAPI specification and fixtures",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "MySQL 8.4 Flyway and backend integration regression",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Repeat complete backend suite in a new schema without cleaning prior data",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Standalone Java HTTP and actual response Schema checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Install locked frontend dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Type check, unit tests and production build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Install isolated Playwright Chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Real browser proxy, stop and restore regression",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Ensure broken captures and Java startup really fail",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "S4 independent SQL, actual API mutation and Chromium dashboard regression",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Retain test diagnostics on success or failure",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        },
+        {
+          "name": "Post Set up Python 3.11",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 34
+        },
+        {
+          "name": "Post Set up Node 24",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 35
+        },
+        {
+          "name": "Post Set up Java 21",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 36
+        },
+        {
+          "name": "Post Check out source without persisted credentials",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 37
+        },
+        {
+          "name": "Stop containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 38
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39
+        }
+      ],
+      "logExcerpts": [
+        "2026-10-20T00:27:27.0718899Z [INFO] Tests run: 82, Failures: 0, Errors: 0, Skipped: 0",
+        "2026-10-20T00:27:47.5630483Z [INFO] Tests run: 82, Failures: 0, Errors: 0, Skipped: 0",
+        "2026-10-20T00:28:33.0009759Z PASS responsive-layout-no-horizontal-overflow",
+        "2026-10-20T00:28:56.6426474Z CAPTURED_OPENAPI_VALIDATION=PASS; JAVA_RESPONSES=8; PROXY_FAILURES=2; JAVA_LOG_CORRELATION=PASS",
+        "2026-10-20T00:28:56.6750989Z BROWSER_INTEGRATION_EXIT=0; EVIDENCE=/home/runner/work/urban-commute-analysis/urban-commute-analysis/frontend/outputs/ci-browser"
+      ]
+    }
+  ]
+}

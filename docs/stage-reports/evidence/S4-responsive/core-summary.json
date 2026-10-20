@@ -1,0 +1,125 @@
+{
+  "backend": {
+    "tests": 82,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "frontend": {
+    "numTotalTests": 63,
+    "numPassedTests": 63,
+    "numFailedTests": 0
+  },
+  "mysql": "8.4.11",
+  "commands": [
+    {
+      "name": "backend",
+      "command": [
+        "cmd",
+        "/c",
+        "backend\\mvnw.cmd",
+        "-f",
+        "backend/pom.xml",
+        "-B",
+        "-ntp",
+        "verify"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "ci-policy",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\contracts\\.venv\\Scripts\\python.exe",
+        "scripts/check_ci.py"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "openapi",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\contracts\\.venv\\Scripts\\python.exe",
+        "-m",
+        "openapi_spec_validator",
+        "contracts/openapi.yaml"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "contract",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\contracts\\.venv\\Scripts\\python.exe",
+        "contracts/validate_contract.py"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "http",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\contracts\\.venv\\Scripts\\python.exe",
+        "backend/scripts/verify_http.py",
+        "--output",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s4-responsive-fixed\\core\\http"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "types",
+      "command": [
+        "cmd",
+        "/c",
+        "npm",
+        "run",
+        "type-check"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "frontend-unit",
+      "command": [
+        "cmd",
+        "/c",
+        "npm",
+        "test",
+        "--",
+        "--reporter=json",
+        "--outputFile=D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s4-responsive-fixed\\core\\frontend-unit.json"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "build",
+      "command": [
+        "cmd",
+        "/c",
+        "npm",
+        "run",
+        "build"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "browser",
+      "command": [
+        "cmd",
+        "/c",
+        "npm",
+        "run",
+        "test:e2e",
+        "--",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s4-responsive-fixed\\core\\browser"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "negative-driver",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\contracts\\.venv\\Scripts\\python.exe",
+        "scripts/check-regression-failures.py",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s4-responsive-fixed\\core\\browser",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s4-responsive-fixed\\core\\negative"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "exitCode": 0
+}

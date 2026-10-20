@@ -1,0 +1,39 @@
+{
+  "head": "0d0202df1cb25077032cc68bdba60fcc74373849",
+  "jobs": [
+    {
+      "runId": 39281005692,
+      "jobId": 118154929380,
+      "conclusion": "failure",
+      "failure": "390px document.documentElement.scrollWidth <= innerWidth returned false",
+      "excerpts": [
+        "2026-10-19T15:54:23.1797007Z Downloading Chrome for Testing 156.0.8078.4 (playwright chromium v1248) from https://cdn.playwright.dev/builds/cft/156.0.8078.4/linux64/chrome-linux64.zip",
+        "2026-10-19T15:54:40.4591768Z PASS real-beijing-selection",
+        "2026-10-19T15:54:40.8863070Z PASS real-shanghai-selection-and-source",
+        "2026-10-19T15:54:41.2236216Z Expected: true",
+        "2026-10-19T15:54:41.2236782Z Received: false",
+        "2026-10-19T15:54:41.2244052Z     at /home/runner/work/urban-commute-analysis/urban-commute-analysis/frontend/scripts/verify-integration.mjs:169:89 {",
+        "2026-10-19T15:54:41.2245619Z     actual: false,",
+        "2026-10-19T15:54:41.2247796Z       'Expected: true\\n' +",
+        "2026-10-19T15:54:41.2248260Z       'Received: false',"
+      ]
+    },
+    {
+      "runId": 39281000175,
+      "jobId": 118154906012,
+      "conclusion": "failure",
+      "failure": "390px document.documentElement.scrollWidth <= innerWidth returned false",
+      "excerpts": [
+        "2026-10-19T15:54:07.2529856Z Downloading Chrome for Testing 156.0.8078.4 (playwright chromium v1248) from https://cdn.playwright.dev/builds/cft/156.0.8078.4/linux64/chrome-linux64.zip",
+        "2026-10-19T15:54:27.5646582Z PASS real-beijing-selection",
+        "2026-10-19T15:54:28.2372664Z PASS real-shanghai-selection-and-source",
+        "2026-10-19T15:54:28.5994791Z Expected: true",
+        "2026-10-19T15:54:28.5995276Z Received: false",
+        "2026-10-19T15:54:28.6012408Z     at /home/runner/work/urban-commute-analysis/urban-commute-analysis/frontend/scripts/verify-integration.mjs:169:89 {",
+        "2026-10-19T15:54:28.6014818Z     actual: false,",
+        "2026-10-19T15:54:28.6018121Z       'Expected: true\\n' +",
+        "2026-10-19T15:54:28.6018857Z       'Received: false',"
+      ]
+    }
+  ]
+}

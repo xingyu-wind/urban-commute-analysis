@@ -1,0 +1,1 @@
+{"code":"OK","message":"Success","data":{"window":{"cityId":"s4-demo-city","from":"2026-10-15T00:00:00Z","to":"2026-10-17T00:00:00Z","level":"ROAD"},"page":1,"pageSize":1,"total":0,"items":[]},"meta":{"requestId":"6a0b4d24-dba9-4942-8e00-4a2150403d75","dataAsOf":null,"sourceType":"synthetic_test","datasetId":"s4-synthetic-v1"}}

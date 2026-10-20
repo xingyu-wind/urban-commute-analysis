@@ -1,0 +1,641 @@
+{
+  "startedAt": "2026-10-19T15:29:31.568Z",
+  "noRequestMocking": true,
+  "steps": [
+    {
+      "name": "actual-api-kpi-charts-and-wgs84-map",
+      "at": "2026-10-19T15:29:41.780Z",
+      "citySamples": 3,
+      "speed": 36,
+      "congestion": 5,
+      "noRoadGeometry": true
+    },
+    {
+      "name": "actual-map-point-click-linked-to-road-query",
+      "at": "2026-10-19T15:29:42.106Z"
+    },
+    {
+      "name": "literal-search-empty-results-and-pagination",
+      "at": "2026-10-19T15:29:42.657Z"
+    },
+    {
+      "name": "hourly-sparse-buckets-and-interactive-svg-charts",
+      "at": "2026-10-19T15:29:43.058Z"
+    },
+    {
+      "name": "database-mutate",
+      "at": "2026-10-19T15:29:43.661Z",
+      "result": {
+        "action": "mutate",
+        "affectedRows": 1,
+        "before": 42,
+        "after": 60
+      }
+    },
+    {
+      "name": "mysql-mutation-reflected-through-java-api-in-browser",
+      "at": "2026-10-19T15:29:44.116Z",
+      "speed": 42,
+      "count": 3
+    },
+    {
+      "name": "database-restore",
+      "at": "2026-10-19T15:29:44.780Z",
+      "result": {
+        "action": "restore",
+        "affectedRows": 1,
+        "before": 60,
+        "after": 42
+      }
+    },
+    {
+      "name": "controlled-observation-restored-and-ui-refreshed",
+      "at": "2026-10-19T15:29:44.882Z"
+    },
+    {
+      "name": "competition-presentation-and-responsive-390-1024",
+      "at": "2026-10-19T15:29:46.104Z"
+    },
+    {
+      "name": "empty-null-metrics-and-city-selection-without-stale-overwrite",
+      "at": "2026-10-19T15:29:47.019Z"
+    },
+    {
+      "name": "actual-http-all-four-endpoints-and-invalid-parameters",
+      "at": "2026-10-19T15:29:47.145Z"
+    },
+    {
+      "name": "actual-database-unavailable-safe-503-and-stale-dashboard-removed",
+      "at": "2026-10-19T15:29:58.206Z"
+    }
+  ],
+  "responses": [
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200,
+      "requestId": "4fd83167-6260-415b-b6d0-f2abbbe2d3c3",
+      "file": "response-0.json"
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200,
+      "requestId": "4bd62f7a-52b1-4851-8922-6c0e6df2d36d",
+      "file": "response-1.json"
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200,
+      "requestId": "7fe65a60-a789-4ae9-a189-593e7e900045",
+      "file": "response-2.json"
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200,
+      "requestId": "e0aaffe9-ef75-4e7a-bbaf-1ba26ebfd0dc",
+      "file": "response-3.json"
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200,
+      "requestId": "9ade25c9-d919-458d-bd07-4877fd04b9f5",
+      "file": "response-4.json"
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200,
+      "requestId": "cb24ed63-6fac-4136-85df-b454b0989cbf",
+      "file": "response-5.json"
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200,
+      "requestId": "629d9b93-0349-4a87-a1d0-ca7a794afa58",
+      "file": "response-6.json"
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200,
+      "requestId": "7d301430-395b-4e4f-8c40-bb093cdd9e66",
+      "file": "response-7.json"
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200,
+      "requestId": "fd60b501-dc46-4b5c-8385-04154b515f48",
+      "file": "response-8.json"
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200,
+      "requestId": "e3a448ca-6d3f-4377-965e-ae321dcd27dd",
+      "file": "response-9.json"
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200,
+      "requestId": "af8d4342-34a7-4e72-9a01-22e05e1cfdf4",
+      "file": "response-10.json"
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200,
+      "requestId": "5fb6b195-9286-4ec6-8a23-251093abb47c",
+      "file": "response-11.json"
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200,
+      "requestId": "e1563678-0ac2-416b-bb66-a6faa41d9f2e",
+      "file": "response-12.json"
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200,
+      "requestId": "707a054d-903c-47c7-a9ea-902dab609466",
+      "file": "response-13.json"
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200,
+      "requestId": "4e5e322d-78f2-4d76-874a-0402e7fb72a4",
+      "file": "response-14.json"
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200,
+      "requestId": "40ea2e78-ee24-4b43-904e-f98c7502f4fd",
+      "file": "response-15.json"
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200,
+      "requestId": "3f528420-6d07-46f9-a4cb-84608db0c0e6",
+      "file": "response-16.json"
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200,
+      "requestId": "9e63c445-c23a-4fae-a704-c474f16cc071",
+      "file": "response-17.json"
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200,
+      "requestId": "b13a9e94-3114-49ab-8ebe-eb646fa6b478",
+      "file": "response-18.json"
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200,
+      "requestId": "5f0100b9-e5a1-4458-b496-371d41a2fae3",
+      "file": "response-19.json"
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200,
+      "requestId": "d38c173b-fd5d-44f9-8b3d-b7df85b4ab1c",
+      "file": "response-20.json"
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200,
+      "requestId": "e5869b3c-4e4d-4a92-9472-30050719cff8",
+      "file": "response-21.json"
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200,
+      "requestId": "48aa7f47-2bc0-4a82-9cfd-ff5c0451a423",
+      "file": "response-22.json"
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200,
+      "requestId": "4b453385-547f-4b89-8d5d-6ede79caebb2",
+      "file": "response-23.json"
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200,
+      "requestId": "c18b359a-7daa-4106-89f0-c5310585e7cf",
+      "file": "response-24.json"
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200,
+      "requestId": "6848ec7a-0600-4dc3-8f26-c177155ada56",
+      "file": "response-25.json"
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200,
+      "requestId": "b097f0eb-2920-4f7d-a654-17cfdd9b0359",
+      "file": "response-26.json"
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200,
+      "requestId": "6a0b4d24-dba9-4942-8e00-4a2150403d75",
+      "file": "response-27.json"
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200,
+      "requestId": "46fe10b2-cec2-4018-bfaf-a44f8f0ff83e",
+      "file": "response-28.json"
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200,
+      "requestId": "52daecb1-f448-4694-b884-b65e57183df1",
+      "file": "response-29.json"
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200,
+      "requestId": "85171462-a014-47ca-82cd-54f42749d3ee",
+      "file": "response-30.json"
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200,
+      "requestId": "14262e6a-bd3e-4617-9a37-5b16ea666e69",
+      "file": "response-31.json"
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200,
+      "requestId": "b209a0fe-bf1f-4ce1-b677-953c6519341e",
+      "file": "response-32.json"
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200,
+      "requestId": "0092ebc7-477c-4b7d-80a7-ee3339831177",
+      "file": "response-33.json"
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200,
+      "requestId": "619d51a4-221e-48fa-83e8-99aff45ef2fd",
+      "file": "response-34.json"
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200,
+      "requestId": "0b94d062-9421-4553-8cf5-b65ad9cbf164",
+      "file": "response-35.json"
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200,
+      "requestId": "4a501e79-4a3d-4d0d-b906-2caf2abf93c8",
+      "file": "response-36.json"
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200,
+      "requestId": "6f4eb5bd-f318-498f-b1b0-a830315e0c2f",
+      "file": "response-37.json"
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200,
+      "requestId": "2a4c5e9b-6414-4481-ad6b-4c52a1a114f2",
+      "file": "response-38.json"
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200,
+      "requestId": "eb722dbb-789b-44b2-b619-49d8d48c2606",
+      "file": "response-39.json"
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200,
+      "requestId": "ea313ecd-f088-4d45-864e-d744c0b2334d",
+      "file": "response-40.json"
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200,
+      "requestId": "770076e6-fd3b-4ac0-bb83-8bf86dbff10b",
+      "file": "response-41.json"
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200,
+      "requestId": "679b5ac4-d84f-4414-9924-1c999d68807b",
+      "file": "response-42.json"
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200,
+      "requestId": "ab876ea2-0dcc-4c7b-a27b-76ab46ff6712",
+      "file": "response-43.json"
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200,
+      "requestId": "2102a9f1-a846-4730-8a9c-8c0e21275acd",
+      "file": "response-44.json"
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200,
+      "requestId": "47031b2b-e90d-4931-8caa-24281d4846cf",
+      "file": "response-45.json"
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200,
+      "requestId": "26996994-7dbb-4e9c-936d-5cc5dbd94372",
+      "file": "response-46.json"
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200,
+      "requestId": "cbe77017-6783-490e-9e4e-3f693528e45e",
+      "file": "response-47.json"
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200,
+      "requestId": "e0c144f9-ddbb-4c99-af28-f6afce88a36f",
+      "file": "response-48.json"
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200,
+      "requestId": "d119c292-bdb0-4d22-bf70-8a288fb8cfd4",
+      "file": "response-49.json"
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200,
+      "requestId": "34a74204-be08-40dc-baf1-8e553a9b6fe7",
+      "file": "response-50.json"
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200,
+      "requestId": "aed35932-f7cd-45f9-998c-504c73abc9e6",
+      "file": "response-51.json"
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200,
+      "requestId": "8ab038eb-efe1-46bb-a09f-44ecaf5b585a",
+      "file": "response-52.json"
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200,
+      "requestId": "45feffa0-9f4d-47a2-a814-28e3c4bca06c",
+      "file": "response-53.json"
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200,
+      "requestId": "97e577b0-15c5-45da-845a-62bfd60eb505",
+      "file": "response-54.json"
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200,
+      "requestId": "4ac83fe7-627c-4c92-83a1-502fbe216165",
+      "file": "response-55.json"
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200,
+      "requestId": "6753672a-8da7-4e44-af41-6b3f4fd774ae",
+      "file": "response-56.json"
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200,
+      "requestId": "6da01844-1404-4e02-8483-c05a1b3e4525",
+      "file": "response-57.json"
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200,
+      "requestId": "f0b24264-a38f-4d45-a37a-7cd57507909d",
+      "file": "response-58.json"
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200,
+      "requestId": "adabbf6d-24f3-411a-b241-73b6165cf225",
+      "file": "response-59.json"
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200,
+      "requestId": "307f2ce5-1f70-4cf2-90ca-13ba0f960800",
+      "file": "response-60.json"
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200,
+      "requestId": "763022c7-c62b-4043-8932-f8474b7cbbdd",
+      "file": "response-61.json"
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200,
+      "requestId": "0fc86056-8452-4164-b274-a2ef250f1c8d",
+      "file": "response-62.json"
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200,
+      "requestId": "1c36665e-1e58-465a-ad9f-bcc782a373d9",
+      "file": "response-63.json"
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200,
+      "requestId": "544817ac-3415-4a74-a267-24adf384d406",
+      "file": "response-64.json"
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200,
+      "requestId": "828659b3-e726-4891-a922-ebf767cc33b6",
+      "file": "response-65.json"
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200,
+      "requestId": "2826f0bc-e360-4ef3-8573-86d026207f22",
+      "file": "response-66.json"
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200,
+      "requestId": "231013b7-b596-4382-9546-d122578df5a0",
+      "file": "response-67.json"
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200,
+      "requestId": "67524653-eb99-4a42-8507-18294cdda0ac",
+      "file": "response-68.json"
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200,
+      "requestId": "ca0f5492-6b62-4da8-8b61-8df628bf955c",
+      "file": "response-69.json"
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200,
+      "requestId": "24394c4b-92d0-40aa-bf7e-8ccc60b9d9e9",
+      "file": "response-70.json"
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200,
+      "requestId": "9bec81ac-e68e-4477-ab8b-74d497f58d8e",
+      "file": "response-71.json"
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200,
+      "requestId": "5367e6b9-c413-46cd-81d6-9e9ad8daaebd",
+      "file": "response-72.json"
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200,
+      "requestId": "bc50f364-3812-451e-b629-2668adc5fee4",
+      "file": "response-73.json"
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200,
+      "requestId": "aa3402cb-5879-491c-8cd3-66144abb1c07",
+      "file": "response-74.json"
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200,
+      "requestId": "7361d72b-7e3f-445f-a839-5599e1f3aa77",
+      "file": "response-75.json"
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 400,
+      "requestId": "9551ae2e-6f04-490e-8887-5c9f1f7c794e",
+      "file": "response-76.json"
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 400,
+      "requestId": "632bd6e3-1921-453c-9adf-82bea4f85f7f",
+      "file": "response-77.json"
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 400,
+      "requestId": "276f7357-38b4-4085-9d02-3b5cb44669b9",
+      "file": "response-78.json"
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 503,
+      "requestId": "794fc7f6-b478-4383-8eeb-4239f8e91246",
+      "file": "response-79.json"
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 503,
+      "requestId": "ff1e972c-c647-4cbc-96c5-759f2656c789",
+      "file": "response-80.json"
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 503,
+      "requestId": "fc94ad21-2997-4437-8636-9cb5a1efd191",
+      "file": "response-81.json"
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 503,
+      "requestId": "e56aade7-8058-43da-afc6-acf7e17f156a",
+      "file": "response-82.json"
+    }
+  ],
+  "processes": [
+    {
+      "name": "java-s4",
+      "pid": 13316,
+      "command": [
+        "D:\\WindXingyu\\Apps\\Java\\jdk-21.0.12.1+1\\bin\\java.exe",
+        "-jar",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\urban-commute-backend-0.1.0-SNAPSHOT.jar",
+        "--server.address=127.0.0.1",
+        "--server.port=8080"
+      ],
+      "startedAt": "2026-10-19T15:29:31.598Z",
+      "exitCode": null,
+      "signal": "SIGTERM",
+      "stoppedAt": "2026-10-19T15:29:47.182Z",
+      "stopped": true
+    },
+    {
+      "name": "vite-s4",
+      "pid": 51396,
+      "command": [
+        "D:\\WindXingyu\\Apps\\Nodejs\\node-v24.19.0-win-x64\\node.exe",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\frontend\\node_modules\\vite\\bin\\vite.js",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "5173",
+        "--strictPort"
+      ],
+      "startedAt": "2026-10-19T15:29:38.216Z",
+      "exitCode": null,
+      "signal": "SIGTERM",
+      "stoppedAt": "2026-10-19T15:29:59.111Z",
+      "stopped": true
+    },
+    {
+      "name": "java-outage",
+      "pid": 21736,
+      "command": [
+        "D:\\WindXingyu\\Apps\\Java\\jdk-21.0.12.1+1\\bin\\java.exe",
+        "-jar",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\urban-commute-backend-0.1.0-SNAPSHOT.jar",
+        "--server.address=127.0.0.1",
+        "--server.port=8080",
+        "--spring.flyway.enabled=false",
+        "--spring.datasource.hikari.initialization-fail-timeout=-1",
+        "--spring.datasource.hikari.connection-timeout=1000",
+        "--spring.datasource.url=jdbc:mysql://127.0.0.1:33191/unavailable?connectTimeout=200&socketTimeout=200",
+        "--spring.datasource.username=outage-test",
+        "--spring.datasource.password=not-a-real-password"
+      ],
+      "startedAt": "2026-10-19T15:29:47.227Z",
+      "exitCode": null,
+      "signal": "SIGTERM",
+      "stoppedAt": "2026-10-19T15:29:59.151Z",
+      "stopped": true
+    }
+  ],
+  "portDiagnostics": [],
+  "pageErrors": [],
+  "browserChannel": "chrome",
+  "browserVersion": "155.0.8059.80",
+  "cleanup": {
+    "remainingOwnedChildren": 0,
+    "javaPortAvailable": true,
+    "vitePortAvailable": true
+  },
+  "exitCode": 0,
+  "finishedAt": "2026-10-19T15:29:59.154Z"
+}

@@ -44,7 +44,7 @@ commands = '\n'.join(step.get('run', '') for step in steps)
 require('s3_database.py --probe-isolation' in commands, 'Missing pre-migration isolation rejection evidence')
 require('s3-repeat.json' in commands, 'Missing repeated suite with a fresh schema')
 for command in ('bash backend/mvnw', 'npm ci', 'npm run type-check', 'npm test', 'npm run build',
-                'contracts/validate_contract.py', 'backend/scripts/verify_http.py', 'test:e2e', 'check-regression-failures.py'):
+                'contracts/validate_contract.py', 'backend/scripts/verify_http.py', 'test:e2e', 'check-regression-failures.py', 'scripts/s4_checks.py'):
     require(command in commands, 'Missing regression command: ' + command)
 require('mvnw.cmd' not in commands and 'powershell.exe' not in commands, 'Windows-only entry in Linux CI')
 require(not re.search(r'\|\|\s*true|continue-on-error|secrets\.|pull_request_target|write-all', path.read_text(encoding='utf-8')), 'Unsafe failure handling or credentials')

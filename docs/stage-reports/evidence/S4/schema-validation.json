@@ -1,0 +1,41 @@
+{
+  "actualResponsesValidated": 83,
+  "endpointStatusCoverage": [
+    [
+      "/api/v1/traffic/regions",
+      200
+    ],
+    [
+      "/api/v1/traffic/regions",
+      503
+    ],
+    [
+      "/api/v1/traffic/roads",
+      200
+    ],
+    [
+      "/api/v1/traffic/roads",
+      400
+    ],
+    [
+      "/api/v1/traffic/roads",
+      503
+    ],
+    [
+      "/api/v1/traffic/series",
+      200
+    ],
+    [
+      "/api/v1/traffic/series",
+      503
+    ],
+    [
+      "/api/v1/traffic/summary",
+      200
+    ],
+    [
+      "/api/v1/traffic/summary",
+      503
+    ]
+  ]
+}

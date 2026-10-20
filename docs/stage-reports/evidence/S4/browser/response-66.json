@@ -1,0 +1,1 @@
+{"code":"OK","message":"Success","data":{"window":{"cityId":"sample-shanghai","from":"2026-10-15T00:00:00Z","to":"2026-10-17T00:00:00Z","level":"ROAD"},"page":1,"pageSize":10,"total":0,"items":[]},"meta":{"requestId":"2826f0bc-e360-4ef3-8573-86d026207f22","dataAsOf":null,"sourceType":"synthetic_test","datasetId":"s3-synthetic-cities-v1"}}
