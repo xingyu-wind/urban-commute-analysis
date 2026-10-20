@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "D:\WindXingyu\Code\urban-commute-analysis\ml\forecast.py", line 245, in publish
+    raise ValueError('stale prediction cannot replace newer publication')
+ValueError: stale prediction cannot replace newer publication

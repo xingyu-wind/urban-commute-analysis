@@ -1,0 +1,20 @@
+{
+  "batch_id": "s7-history",
+  "source_sha256": "e9ab45d52e8f02247f3656ec082cbed8896c95f947cb8f047422bf2ec1070434",
+  "file_sha256": "ce2e892a55f2fd17ddda14eba3ab96cc4126f31b414bd7b5bceefc8bbbfba7f1",
+  "file_name": "traffic.json",
+  "status": "SUCCEEDED",
+  "attempts": 1,
+  "input_count": 4368,
+  "accepted_count": 4368,
+  "rejected_count": 0,
+  "duplicate_count": 0,
+  "written_count": 4368,
+  "existing_count": 0,
+  "conflict_count": 0,
+  "conflict_details": null,
+  "started_at": "2026-10-20T07:29:22.650000Z",
+  "finished_at": "2026-10-20T07:29:24.124000Z",
+  "error_code": null,
+  "reused": false
+}

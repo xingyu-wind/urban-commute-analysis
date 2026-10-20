@@ -1,0 +1,16 @@
+{
+  "code": "OK",
+  "message": "Success",
+  "data": {
+    "release": null,
+    "history": [],
+    "predictions": [],
+    "evaluations": []
+  },
+  "meta": {
+    "requestId": "137e53c9-bec2-417a-91d1-5b55ce5ced73",
+    "dataAsOf": null,
+    "sourceType": "synthetic_test",
+    "datasetId": "s7-synthetic-v1"
+  }
+}
