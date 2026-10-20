@@ -32,4 +32,4 @@
 - [Hive非法输入原始日志](ci-39379190899/hive/hive-invalid.txt)：真实999.00 km/h输入触发ASSERT_TRUE失败；脚本同时核对错误类型，避免把任意启动失败当成合法拒绝。
 - [增强对账](ci-39379190899/hive-reconciliation.json)、[MySQL对账](ci-39379190899/mysql-reconciliation.json)、[实际HTTP/浏览器](ci-39379190899/browser/manifest.json)。
 
-最终HEAD对应Checks/Run由正式PR正文和最终交付消息记录，上述成功Run不冒充不同HEAD的结果。
+同提交核心回归 [Run39379190936 / Job118484201894](https://github.com/xingyu-wind/urban-commute-analysis/actions/runs/39379190936/job/118484201894) SUCCESS。最终HEAD对应Checks/Run由[正式PR #7](https://github.com/xingyu-wind/urban-commute-analysis/pull/7)、[实时Checks](https://github.com/xingyu-wind/urban-commute-analysis/pull/7/checks)和最终交付消息记录，上述成功Run不冒充不同HEAD的结果。

@@ -1,7 +1,7 @@
 name: S6 real HDFS Hive warehouse
 on:
   push:
-    branches: ['feat/s6-hadoop-hive-warehouse']
+    branches: [main]
   pull_request:
     branches: [main]
   workflow_dispatch:
