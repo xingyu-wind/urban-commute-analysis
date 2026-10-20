@@ -1,0 +1,11 @@
+dataset_id,city_id,region_id,road_segment_id,target_type,target_id,observed_at,collected_at,avg_speed_kmh,congestion_index
+s5-synthetic-v1,s5-city,,,CITY,s5-city,2026-10-15T00:00:00.000Z,2026-10-15T00:05:00.000Z,36.00,2.00
+s5-synthetic-v1,s5-city,,,CITY,s5-city,2026-10-15T01:00:00.000Z,2026-10-15T01:05:00.000Z,72.00,4.00
+s5-synthetic-v1,s5-city,s5-east,,REGION,s5-east,2026-10-15T00:00:00.000Z,2026-10-15T00:05:00.000Z,18.00,2.00
+s5-synthetic-v1,s5-city,s5-east,,REGION,s5-east,2026-10-15T01:00:00.000Z,2026-10-15T01:05:00.000Z,54.00,4.00
+s5-synthetic-v1,s5-city,,s5-road,ROAD,s5-road,2026-10-15T00:00:00.000Z,2026-10-15T00:05:00.000Z,7.20,2.00
+s5-synthetic-v1,s5-city,,s5-road,ROAD,s5-road,2026-10-15T01:00:00.000Z,2026-10-15T01:05:00.000Z,28.80,4.00
+s5-synthetic-v1,s5-other,,,CITY,s5-other,2026-10-15T00:00:00.000Z,2026-10-15T00:05:00.000Z,108.00,8.00
+s5-synthetic-v1,s5-other,s5-other-region,,REGION,s5-other-region,2026-10-15T00:00:00.000Z,2026-10-15T00:05:00.000Z,108.00,8.00
+s5-synthetic-v1,s5-other,,s5-other-road,ROAD,s5-other-road,2026-10-15T00:00:00.000Z,2026-10-15T00:05:00.000Z,108.00,8.00
+s5-synthetic-v1,s5-city,,,CITY,s5-city,2026-10-16T06:00:00.000Z,2026-10-16T06:05:00.000Z,12.00,9.00

@@ -1,0 +1,35 @@
+{
+  "checked_at": "2026-10-20",
+  "notice": "Project audit records are not external authorization proof. No third-party raw data is included.",
+  "sources": [
+    {
+      "id": "s5-synthetic-v1", "admission": "synthetic_test", "license_status": "not_applicable",
+      "basis": "Original deterministic data from examples/generate.py; invented metrics and geographic centers.",
+      "used_in_s5": true, "version": "1",
+      "file_identity": "quality.json and etl_batch.file_sha256 (SHA-256 of original bytes)",
+      "metadata": "examples/csv-config.json and examples/json-config.json"
+    },
+    {
+      "id": "dft-road-counts-candidate", "admission": "unverified", "license_status": "unverified",
+      "verification_scope": "Official dataset catalogue explicitly identifies UK Open Government Licence; full licence URL returned HTTP403. No file downloaded or complete licence review claimed.",
+      "source_url": "https://www.data.gov.uk/dataset/208c0e7b-353f-4e2d-8b7a-1a7118467acc/gb-road-traffic-counts",
+      "license_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "license_conditions_to_verify": "Attribution and licence exclusions before any actual redistribution.",
+      "version": "catalogue updated 2025-06-15; no raw file", "file_sha256": null, "used_in_s5": false,
+      "reason": "Traffic volumes/counts lack paired speed and 0-10 congestion observations; counts cannot be converted into these metrics."
+    },
+    {
+      "id": "nyc-dot-speed-candidate", "admission": "unverified", "license_status": "unverified",
+      "source_url": "https://www.nyc.gov/html/dot/html/about/datafeeds.shtml",
+      "metadata_url": "https://www.nyc.gov/html/dot/downloads/pdf/metadata-trafficspeeds.pdf",
+      "basis": "Official metadata describes public free speed feeds; DOT page requires attribution/disclaimer and links Open Data terms. Full redistribution conditions and current raw-unit semantics not fully verified.",
+      "version": "metadata last modified 2010-07-20; no raw file", "file_sha256": null, "used_in_s5": false,
+      "reason": "Speed/travel time metadata does not define this project's congestion index; missing congestion cannot be invented or filled with zero."
+    }
+  ],
+  "admission_states": {
+    "verified_authorized": "External applicable licence reviewed with evidence and scope; no currently imported third-party dataset has this status.",
+    "unverified": "Not eligible for import, including partial licence reviews.",
+    "synthetic_test": "Original generated test data; never a claim of real traffic collection."
+  }
+}

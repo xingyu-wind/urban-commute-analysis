@@ -1,0 +1,758 @@
+[
+  {
+    "phase": "before",
+    "api": {
+      "summary": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "window": {
+            "cityId": "s5-city-ui",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "level": "CITY"
+          },
+          "metrics": {
+            "sampleCount": 0,
+            "avgSpeedKmh": null,
+            "congestionIndex": null,
+            "dataAsOf": null
+          }
+        },
+        "meta": {
+          "requestId": "1059a04b-dd13-4489-8f6d-2f76a91cf749",
+          "dataAsOf": null,
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1-ui"
+        }
+      },
+      "series": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "window": {
+            "cityId": "s5-city-ui",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "level": "CITY"
+          },
+          "granularity": "day",
+          "items": [
+            {
+              "bucket": "2026-10-15T00:00:00Z",
+              "metrics": {
+                "sampleCount": 0,
+                "avgSpeedKmh": null,
+                "congestionIndex": null,
+                "dataAsOf": null
+              }
+            },
+            {
+              "bucket": "2026-10-16T00:00:00Z",
+              "metrics": {
+                "sampleCount": 0,
+                "avgSpeedKmh": null,
+                "congestionIndex": null,
+                "dataAsOf": null
+              }
+            }
+          ]
+        },
+        "meta": {
+          "requestId": "27cdc7ee-98ca-4bd0-8e86-cfdaed3246d6",
+          "dataAsOf": null,
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1-ui"
+        }
+      },
+      "regions": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "window": {
+            "cityId": "s5-city-ui",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "level": "REGION"
+          },
+          "items": [
+            {
+              "id": "s5-east-ui",
+              "name": "S5 合成东区",
+              "latitude": 30.1,
+              "longitude": 120.1,
+              "coordinateSystem": "WGS84",
+              "metrics": {
+                "sampleCount": 0,
+                "avgSpeedKmh": null,
+                "congestionIndex": null,
+                "dataAsOf": null
+              }
+            }
+          ]
+        },
+        "meta": {
+          "requestId": "de34d8a4-8db5-4608-be38-4f51e0279e8e",
+          "dataAsOf": null,
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1-ui"
+        }
+      },
+      "roads": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "window": {
+            "cityId": "s5-city-ui",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "level": "ROAD"
+          },
+          "page": 1,
+          "pageSize": 10,
+          "total": 1,
+          "items": [
+            {
+              "id": "s5-road-ui",
+              "name": "S5 合成路段",
+              "regionId": "s5-east-ui",
+              "metrics": {
+                "sampleCount": 0,
+                "avgSpeedKmh": null,
+                "congestionIndex": null,
+                "dataAsOf": null
+              }
+            }
+          ]
+        },
+        "meta": {
+          "requestId": "c19192db-2721-44f4-a2f8-247ae7ce5d73",
+          "dataAsOf": null,
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1-ui"
+        }
+      }
+    },
+    "independentSql": []
+  },
+  {
+    "phase": "csv",
+    "api": {
+      "summary": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "window": {
+            "cityId": "s5-city-ui",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "level": "CITY"
+          },
+          "metrics": {
+            "sampleCount": 2,
+            "avgSpeedKmh": 54,
+            "congestionIndex": 3,
+            "dataAsOf": "2026-10-15T01:00:00Z"
+          }
+        },
+        "meta": {
+          "requestId": "ca983714-6957-47fd-9185-ef2e9e03be17",
+          "dataAsOf": "2026-10-15T01:00:00Z",
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1-ui"
+        }
+      },
+      "series": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "window": {
+            "cityId": "s5-city-ui",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "level": "CITY"
+          },
+          "granularity": "day",
+          "items": [
+            {
+              "bucket": "2026-10-15T00:00:00Z",
+              "metrics": {
+                "sampleCount": 2,
+                "avgSpeedKmh": 54,
+                "congestionIndex": 3,
+                "dataAsOf": "2026-10-15T01:00:00Z"
+              }
+            },
+            {
+              "bucket": "2026-10-16T00:00:00Z",
+              "metrics": {
+                "sampleCount": 0,
+                "avgSpeedKmh": null,
+                "congestionIndex": null,
+                "dataAsOf": null
+              }
+            }
+          ]
+        },
+        "meta": {
+          "requestId": "8380ebc6-1916-45cc-8fa6-8402f98a59a0",
+          "dataAsOf": "2026-10-15T01:00:00Z",
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1-ui"
+        }
+      },
+      "regions": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "window": {
+            "cityId": "s5-city-ui",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "level": "REGION"
+          },
+          "items": [
+            {
+              "id": "s5-east-ui",
+              "name": "S5 合成东区",
+              "latitude": 30.1,
+              "longitude": 120.1,
+              "coordinateSystem": "WGS84",
+              "metrics": {
+                "sampleCount": 2,
+                "avgSpeedKmh": 36,
+                "congestionIndex": 3,
+                "dataAsOf": "2026-10-15T01:00:00Z"
+              }
+            }
+          ]
+        },
+        "meta": {
+          "requestId": "38e1ad83-097d-401c-83f6-cf9b4f2c174c",
+          "dataAsOf": "2026-10-15T01:00:00Z",
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1-ui"
+        }
+      },
+      "roads": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "window": {
+            "cityId": "s5-city-ui",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "level": "ROAD"
+          },
+          "page": 1,
+          "pageSize": 10,
+          "total": 1,
+          "items": [
+            {
+              "id": "s5-road-ui",
+              "name": "S5 合成路段",
+              "regionId": "s5-east-ui",
+              "metrics": {
+                "sampleCount": 2,
+                "avgSpeedKmh": 18,
+                "congestionIndex": 3,
+                "dataAsOf": "2026-10-15T01:00:00Z"
+              }
+            }
+          ]
+        },
+        "meta": {
+          "requestId": "2e563cee-ae7a-48c8-ac01-c2ba39cf73f8",
+          "dataAsOf": "2026-10-15T01:00:00Z",
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1-ui"
+        }
+      }
+    },
+    "independentSql": [
+      {
+        "target_type": "CITY",
+        "n": 2,
+        "speed": "54.000000",
+        "congestion": "3.000000"
+      },
+      {
+        "target_type": "REGION",
+        "n": 2,
+        "speed": "36.000000",
+        "congestion": "3.000000"
+      },
+      {
+        "target_type": "ROAD",
+        "n": 2,
+        "speed": "18.000000",
+        "congestion": "3.000000"
+      }
+    ]
+  },
+  {
+    "phase": "json",
+    "api": {
+      "summary": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "window": {
+            "cityId": "s5-city-ui",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "level": "CITY"
+          },
+          "metrics": {
+            "sampleCount": 3,
+            "avgSpeedKmh": 40,
+            "congestionIndex": 5,
+            "dataAsOf": "2026-10-16T06:00:00Z"
+          }
+        },
+        "meta": {
+          "requestId": "d12ced30-2a40-4d02-9139-835b75a02a54",
+          "dataAsOf": "2026-10-16T06:00:00Z",
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1-ui"
+        }
+      },
+      "series": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "window": {
+            "cityId": "s5-city-ui",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "level": "CITY"
+          },
+          "granularity": "day",
+          "items": [
+            {
+              "bucket": "2026-10-15T00:00:00Z",
+              "metrics": {
+                "sampleCount": 2,
+                "avgSpeedKmh": 54,
+                "congestionIndex": 3,
+                "dataAsOf": "2026-10-15T01:00:00Z"
+              }
+            },
+            {
+              "bucket": "2026-10-16T00:00:00Z",
+              "metrics": {
+                "sampleCount": 1,
+                "avgSpeedKmh": 12,
+                "congestionIndex": 9,
+                "dataAsOf": "2026-10-16T06:00:00Z"
+              }
+            }
+          ]
+        },
+        "meta": {
+          "requestId": "e356a041-b152-4937-950d-7528a1841859",
+          "dataAsOf": "2026-10-16T06:00:00Z",
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1-ui"
+        }
+      },
+      "regions": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "window": {
+            "cityId": "s5-city-ui",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "level": "REGION"
+          },
+          "items": [
+            {
+              "id": "s5-east-ui",
+              "name": "S5 合成东区",
+              "latitude": 30.1,
+              "longitude": 120.1,
+              "coordinateSystem": "WGS84",
+              "metrics": {
+                "sampleCount": 2,
+                "avgSpeedKmh": 36,
+                "congestionIndex": 3,
+                "dataAsOf": "2026-10-15T01:00:00Z"
+              }
+            }
+          ]
+        },
+        "meta": {
+          "requestId": "80b62c5f-7649-4072-8ad1-917a7acc39d0",
+          "dataAsOf": "2026-10-15T01:00:00Z",
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1-ui"
+        }
+      },
+      "roads": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "window": {
+            "cityId": "s5-city-ui",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "level": "ROAD"
+          },
+          "page": 1,
+          "pageSize": 10,
+          "total": 1,
+          "items": [
+            {
+              "id": "s5-road-ui",
+              "name": "S5 合成路段",
+              "regionId": "s5-east-ui",
+              "metrics": {
+                "sampleCount": 2,
+                "avgSpeedKmh": 18,
+                "congestionIndex": 3,
+                "dataAsOf": "2026-10-15T01:00:00Z"
+              }
+            }
+          ]
+        },
+        "meta": {
+          "requestId": "2de13507-c1fe-42c9-a145-d25e5cf574ef",
+          "dataAsOf": "2026-10-15T01:00:00Z",
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1-ui"
+        }
+      }
+    },
+    "independentSql": [
+      {
+        "target_type": "CITY",
+        "n": 3,
+        "speed": "40.000000",
+        "congestion": "5.000000"
+      },
+      {
+        "target_type": "REGION",
+        "n": 2,
+        "speed": "36.000000",
+        "congestion": "3.000000"
+      },
+      {
+        "target_type": "ROAD",
+        "n": 2,
+        "speed": "18.000000",
+        "congestion": "3.000000"
+      }
+    ]
+  },
+  {
+    "phase": "repeat",
+    "api": {
+      "summary": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "window": {
+            "cityId": "s5-city-ui",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "level": "CITY"
+          },
+          "metrics": {
+            "sampleCount": 3,
+            "avgSpeedKmh": 40,
+            "congestionIndex": 5,
+            "dataAsOf": "2026-10-16T06:00:00Z"
+          }
+        },
+        "meta": {
+          "requestId": "4f1d8559-51ca-4792-9dbd-172321895f0c",
+          "dataAsOf": "2026-10-16T06:00:00Z",
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1-ui"
+        }
+      },
+      "series": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "window": {
+            "cityId": "s5-city-ui",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "level": "CITY"
+          },
+          "granularity": "day",
+          "items": [
+            {
+              "bucket": "2026-10-15T00:00:00Z",
+              "metrics": {
+                "sampleCount": 2,
+                "avgSpeedKmh": 54,
+                "congestionIndex": 3,
+                "dataAsOf": "2026-10-15T01:00:00Z"
+              }
+            },
+            {
+              "bucket": "2026-10-16T00:00:00Z",
+              "metrics": {
+                "sampleCount": 1,
+                "avgSpeedKmh": 12,
+                "congestionIndex": 9,
+                "dataAsOf": "2026-10-16T06:00:00Z"
+              }
+            }
+          ]
+        },
+        "meta": {
+          "requestId": "08a7f7e1-c0e7-4e66-a328-40e3d5409ac6",
+          "dataAsOf": "2026-10-16T06:00:00Z",
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1-ui"
+        }
+      },
+      "regions": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "window": {
+            "cityId": "s5-city-ui",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "level": "REGION"
+          },
+          "items": [
+            {
+              "id": "s5-east-ui",
+              "name": "S5 合成东区",
+              "latitude": 30.1,
+              "longitude": 120.1,
+              "coordinateSystem": "WGS84",
+              "metrics": {
+                "sampleCount": 2,
+                "avgSpeedKmh": 36,
+                "congestionIndex": 3,
+                "dataAsOf": "2026-10-15T01:00:00Z"
+              }
+            }
+          ]
+        },
+        "meta": {
+          "requestId": "4b56b87c-1a54-4f9c-a8da-0409c31e6a7f",
+          "dataAsOf": "2026-10-15T01:00:00Z",
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1-ui"
+        }
+      },
+      "roads": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "window": {
+            "cityId": "s5-city-ui",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "level": "ROAD"
+          },
+          "page": 1,
+          "pageSize": 10,
+          "total": 1,
+          "items": [
+            {
+              "id": "s5-road-ui",
+              "name": "S5 合成路段",
+              "regionId": "s5-east-ui",
+              "metrics": {
+                "sampleCount": 2,
+                "avgSpeedKmh": 18,
+                "congestionIndex": 3,
+                "dataAsOf": "2026-10-15T01:00:00Z"
+              }
+            }
+          ]
+        },
+        "meta": {
+          "requestId": "804cecc2-a1fc-4381-b0eb-2e253c2b3ecf",
+          "dataAsOf": "2026-10-15T01:00:00Z",
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1-ui"
+        }
+      }
+    },
+    "independentSql": [
+      {
+        "target_type": "CITY",
+        "n": 3,
+        "speed": "40.000000",
+        "congestion": "5.000000"
+      },
+      {
+        "target_type": "REGION",
+        "n": 2,
+        "speed": "36.000000",
+        "congestion": "3.000000"
+      },
+      {
+        "target_type": "ROAD",
+        "n": 2,
+        "speed": "18.000000",
+        "congestion": "3.000000"
+      }
+    ]
+  },
+  {
+    "phase": "separate-dataset-default-unchanged",
+    "api": {
+      "summary": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "window": {
+            "cityId": "s5-city-ui",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "level": "CITY"
+          },
+          "metrics": {
+            "sampleCount": 3,
+            "avgSpeedKmh": 40,
+            "congestionIndex": 5,
+            "dataAsOf": "2026-10-16T06:00:00Z"
+          }
+        },
+        "meta": {
+          "requestId": "6cec19df-d798-4f7d-8504-745e6d8b834a",
+          "dataAsOf": "2026-10-16T06:00:00Z",
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1-ui"
+        }
+      },
+      "series": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "window": {
+            "cityId": "s5-city-ui",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "level": "CITY"
+          },
+          "granularity": "day",
+          "items": [
+            {
+              "bucket": "2026-10-15T00:00:00Z",
+              "metrics": {
+                "sampleCount": 2,
+                "avgSpeedKmh": 54,
+                "congestionIndex": 3,
+                "dataAsOf": "2026-10-15T01:00:00Z"
+              }
+            },
+            {
+              "bucket": "2026-10-16T00:00:00Z",
+              "metrics": {
+                "sampleCount": 1,
+                "avgSpeedKmh": 12,
+                "congestionIndex": 9,
+                "dataAsOf": "2026-10-16T06:00:00Z"
+              }
+            }
+          ]
+        },
+        "meta": {
+          "requestId": "9b2b7700-57e6-4b12-abc0-aca5126f2c88",
+          "dataAsOf": "2026-10-16T06:00:00Z",
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1-ui"
+        }
+      },
+      "regions": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "window": {
+            "cityId": "s5-city-ui",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "level": "REGION"
+          },
+          "items": [
+            {
+              "id": "s5-east-ui",
+              "name": "S5 合成东区",
+              "latitude": 30.1,
+              "longitude": 120.1,
+              "coordinateSystem": "WGS84",
+              "metrics": {
+                "sampleCount": 2,
+                "avgSpeedKmh": 36,
+                "congestionIndex": 3,
+                "dataAsOf": "2026-10-15T01:00:00Z"
+              }
+            }
+          ]
+        },
+        "meta": {
+          "requestId": "a7db8bda-8b39-4112-af2a-99e9f34be63a",
+          "dataAsOf": "2026-10-15T01:00:00Z",
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1-ui"
+        }
+      },
+      "roads": {
+        "code": "OK",
+        "message": "Success",
+        "data": {
+          "window": {
+            "cityId": "s5-city-ui",
+            "from": "2026-10-15T00:00:00Z",
+            "to": "2026-10-17T00:00:00Z",
+            "level": "ROAD"
+          },
+          "page": 1,
+          "pageSize": 10,
+          "total": 1,
+          "items": [
+            {
+              "id": "s5-road-ui",
+              "name": "S5 合成路段",
+              "regionId": "s5-east-ui",
+              "metrics": {
+                "sampleCount": 2,
+                "avgSpeedKmh": 18,
+                "congestionIndex": 3,
+                "dataAsOf": "2026-10-15T01:00:00Z"
+              }
+            }
+          ]
+        },
+        "meta": {
+          "requestId": "05be2657-2999-4e99-9bf2-f7fa69908fc7",
+          "dataAsOf": "2026-10-15T01:00:00Z",
+          "sourceType": "synthetic_test",
+          "datasetId": "s5-synthetic-v1-ui"
+        }
+      }
+    },
+    "independentSql": [
+      {
+        "target_type": "CITY",
+        "n": 3,
+        "speed": "40.000000",
+        "congestion": "5.000000"
+      },
+      {
+        "target_type": "REGION",
+        "n": 2,
+        "speed": "36.000000",
+        "congestion": "3.000000"
+      },
+      {
+        "target_type": "ROAD",
+        "n": 2,
+        "speed": "18.000000",
+        "congestion": "3.000000"
+      }
+    ]
+  }
+]

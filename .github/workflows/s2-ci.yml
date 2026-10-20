@@ -1,4 +1,4 @@
-name: S4 traffic analytics and S2-S3 regression
+name: S5 data ETL and S2-S4 regression
 
 on:
   pull_request:
@@ -61,6 +61,8 @@ jobs:
           cache-dependency-path: contracts/requirements.lock.txt
       - name: Install locked contract validators
         run: python -m pip install -r contracts/requirements.lock.txt
+      - name: Install locked Python ETL and pytest dependencies
+        run: python -m pip install -r data-pipeline/requirements.lock.txt
       - name: Validate CI policy and OpenAPI specification and fixtures
         run: |
           python scripts/check_ci.py
@@ -95,12 +97,16 @@ jobs:
         run: python scripts/check-regression-failures.py outputs/ci-browser outputs/ci-negative
       - name: S4 independent SQL, actual API mutation and Chromium dashboard regression
         run: python scripts/s4_checks.py --output backend/target/ci-s4
+      - name: S5 new isolated database, pytest, crash recovery and Python to ECharts chain
+        run: python scripts/s3_database.py --output backend/target/s5-db.json -- python scripts/s5_checks.py --output backend/target/ci-s5
       - name: Retain test diagnostics on success or failure
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: s3-regression-${{ github.run_id }}
           path: |
+            backend/target/ci-s5/
+            backend/target/s5-db.json
             backend/target/ci-s4/
             backend/target/s4-http/
             backend/target/surefire-reports/

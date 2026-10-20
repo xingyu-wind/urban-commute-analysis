@@ -1,0 +1,122 @@
+[
+  {
+    "dataset_id": "s5-synthetic-v1",
+    "city_id": "s5-city",
+    "region_id": null,
+    "road_segment_id": null,
+    "target_type": "CITY",
+    "target_id": "s5-city",
+    "observed_at": "2026-10-15T00:00:00.000Z",
+    "collected_at": "2026-10-15T00:05:00.000Z",
+    "avg_speed_kmh": "36.00",
+    "congestion_index": "2.00"
+  },
+  {
+    "dataset_id": "s5-synthetic-v1",
+    "city_id": "s5-city",
+    "region_id": null,
+    "road_segment_id": null,
+    "target_type": "CITY",
+    "target_id": "s5-city",
+    "observed_at": "2026-10-15T01:00:00.000Z",
+    "collected_at": "2026-10-15T01:05:00.000Z",
+    "avg_speed_kmh": "72.00",
+    "congestion_index": "4.00"
+  },
+  {
+    "dataset_id": "s5-synthetic-v1",
+    "city_id": "s5-city",
+    "region_id": "s5-east",
+    "road_segment_id": null,
+    "target_type": "REGION",
+    "target_id": "s5-east",
+    "observed_at": "2026-10-15T00:00:00.000Z",
+    "collected_at": "2026-10-15T00:05:00.000Z",
+    "avg_speed_kmh": "18.00",
+    "congestion_index": "2.00"
+  },
+  {
+    "dataset_id": "s5-synthetic-v1",
+    "city_id": "s5-city",
+    "region_id": "s5-east",
+    "road_segment_id": null,
+    "target_type": "REGION",
+    "target_id": "s5-east",
+    "observed_at": "2026-10-15T01:00:00.000Z",
+    "collected_at": "2026-10-15T01:05:00.000Z",
+    "avg_speed_kmh": "54.00",
+    "congestion_index": "4.00"
+  },
+  {
+    "dataset_id": "s5-synthetic-v1",
+    "city_id": "s5-city",
+    "region_id": null,
+    "road_segment_id": "s5-road",
+    "target_type": "ROAD",
+    "target_id": "s5-road",
+    "observed_at": "2026-10-15T00:00:00.000Z",
+    "collected_at": "2026-10-15T00:05:00.000Z",
+    "avg_speed_kmh": "7.20",
+    "congestion_index": "2.00"
+  },
+  {
+    "dataset_id": "s5-synthetic-v1",
+    "city_id": "s5-city",
+    "region_id": null,
+    "road_segment_id": "s5-road",
+    "target_type": "ROAD",
+    "target_id": "s5-road",
+    "observed_at": "2026-10-15T01:00:00.000Z",
+    "collected_at": "2026-10-15T01:05:00.000Z",
+    "avg_speed_kmh": "28.80",
+    "congestion_index": "4.00"
+  },
+  {
+    "dataset_id": "s5-synthetic-v1",
+    "city_id": "s5-other",
+    "region_id": null,
+    "road_segment_id": null,
+    "target_type": "CITY",
+    "target_id": "s5-other",
+    "observed_at": "2026-10-15T00:00:00.000Z",
+    "collected_at": "2026-10-15T00:05:00.000Z",
+    "avg_speed_kmh": "108.00",
+    "congestion_index": "8.00"
+  },
+  {
+    "dataset_id": "s5-synthetic-v1",
+    "city_id": "s5-other",
+    "region_id": "s5-other-region",
+    "road_segment_id": null,
+    "target_type": "REGION",
+    "target_id": "s5-other-region",
+    "observed_at": "2026-10-15T00:00:00.000Z",
+    "collected_at": "2026-10-15T00:05:00.000Z",
+    "avg_speed_kmh": "108.00",
+    "congestion_index": "8.00"
+  },
+  {
+    "dataset_id": "s5-synthetic-v1",
+    "city_id": "s5-other",
+    "region_id": null,
+    "road_segment_id": "s5-other-road",
+    "target_type": "ROAD",
+    "target_id": "s5-other-road",
+    "observed_at": "2026-10-15T00:00:00.000Z",
+    "collected_at": "2026-10-15T00:05:00.000Z",
+    "avg_speed_kmh": "108.00",
+    "congestion_index": "8.00"
+  },
+  {
+    "dataset_id": "s5-synthetic-v1",
+    "city_id": "s5-city",
+    "region_id": null,
+    "road_segment_id": null,
+    "target_type": "CITY",
+    "target_id": "s5-city",
+    "observed_at": "2026-10-16T06:00:00.000Z",
+    "collected_at": "2026-10-16T06:05:00.000Z",
+    "avg_speed_kmh": "12.00",
+    "congestion_index": "9.00"
+  }
+]
