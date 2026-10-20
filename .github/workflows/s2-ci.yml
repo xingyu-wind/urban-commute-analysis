@@ -121,4 +121,4 @@ jobs:
             backend/target/s3-*.log
             frontend/outputs/
           if-no-files-found: warn
-          retention-days: 7
+          retention-days: 14
