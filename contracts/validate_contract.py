@@ -67,9 +67,9 @@ def pointer_get(spec, ref):
     return value
 
 
-def response_media(spec, path, status):
+def response_media(spec, path, status, method='get'):
     escaped = path.replace("~", "~0").replace("/", "~1")
-    pointer = f"#/paths/{escaped}/get/responses/{status}"
+    pointer = f"#/paths/{escaped}/{method}/responses/{status}"
     response = pointer_get(spec, pointer)
     visited = set()
     while "$ref" in response:
@@ -85,9 +85,11 @@ def load_contract():
     spec = yaml.load(SPEC_PATH.read_text(encoding="utf-8"), Loader=UniqueLoader)
     if spec["openapi"] != "3.1.0":
         raise ValueError("This suite requires OpenAPI 3.1.0")
-    if set(spec["paths"]) != PATHS:
-        raise ValueError("Expected the eight released S7 GET endpoints")
-    for path, item in spec["paths"].items():
+    security_paths = {'/api/v1/auth/' + name for name in ('csrf','me','login','logout')} | {'/api/v1/operations/tasks','/api/v1/operations/uploads'} | {'/api/v1/operations/imports/{id}/' + name for name in ('confirm','execute','retry')}
+    if set(spec["paths"]) != PATHS | security_paths:
+        raise ValueError("Expected released analytics and S8 security endpoints")
+    for path in PATHS:
+        item = spec['paths'][path]
         if set(item) != {"get"}:
             raise ValueError(f"Only GET is allowed for {path}")
         if set(item["get"]["responses"]) != {"200", "400", "404", "405", "406", "500", "503"}:
@@ -107,8 +109,8 @@ def load_contract():
     return spec, registry, checker
 
 
-def body_errors(spec, registry, checker, path, status, body):
-    _, pointer = response_media(spec, path, status)
+def body_errors(spec, registry, checker, path, status, body, method='get'):
+    _, pointer = response_media(spec, path, status, method)
     validator = Draft202012Validator(
         {"$ref": SPEC_PATH.as_uri() + pointer + "/content/application~1json/schema"},
         registry=registry,
@@ -150,7 +152,8 @@ def run_suite(spec, registry, checker):
 
     # Every OpenAPI external example is loaded and checked against its own HTTP schema.
     examples_checked = 0
-    for path, item in spec["paths"].items():
+    for path in PATHS:
+        item = spec['paths'][path]
         for status in item["get"]["responses"]:
             media, _ = response_media(spec, path, status)
             for name, example in media.get("examples", {}).items():

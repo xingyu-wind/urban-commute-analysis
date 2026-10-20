@@ -105,12 +105,16 @@ jobs:
         run: python scripts/s3_database.py --output backend/target/s7-db.json -- python scripts/s7_checks.py --output backend/target/ci-s7
       - name: S7 V3.2 synthetic CSV and JSON confirmation, domain evaluation and transfer
         run: python scripts/s7_data_checks.py --output backend/target/ci-s7-data
+      - name: S8 real MySQL HTTP filesystem and Chromium security boundaries
+        run: python scripts/s3_database.py --output backend/target/s8-db.json -- python scripts/s8_checks.py --output backend/target/ci-s8
       - name: Retain test diagnostics on success or failure
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: s3-regression-${{ github.run_id }}
           path: |
+            backend/target/ci-s8/
+            backend/target/s8-db.json
             backend/target/ci-s7/
             backend/target/ci-s7-data/
             backend/target/s7-db.json

@@ -5,6 +5,7 @@ import CitySelector from './components/CitySelector.vue'
 import TrafficDashboard from './components/TrafficDashboard.vue'
 import WarehousePanel from './components/WarehousePanel.vue'
 import PredictionPanel from './components/PredictionPanel.vue'
+import OperationsPanel from './components/OperationsPanel.vue'
 import type { CitiesResponse, HealthResponse } from './types/api'
 
 const health = ref<HealthResponse | null>(null)
@@ -15,6 +16,7 @@ const loading = ref(true)
 const selectedId = ref('')
 const offlineVisible = ref(false)
 const predictionVisible = ref(false)
+const operationsVisible = ref(false)
 const sourceLabels = {
   database_catalog: '空数据库目录', mixed_catalog: '混合来源目录', dev_seed: '开发样例',
   synthetic_test: '合成测试', historical_snapshot: '历史快照登记',
@@ -90,6 +92,8 @@ onUnmounted(() => { disposed = true; clearInterval(interval) })
         <button class="refresh-button" :disabled="loading" @click="refresh"><svg :class="{ spinning: loading }" viewBox="0 0 20 20" aria-hidden="true"><path d="M16 8a6.3 6.3 0 1 0 .1 4M16 3v5h-5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>{{ loading ? '正在请求…' : '重新请求' }}</button>
       </section>
 
+      <button class="refresh-button" @click="operationsVisible = !operationsVisible">{{ operationsVisible ? '收起运行管理' : '权限与运行管理' }}</button>
+      <OperationsPanel v-if="operationsVisible" />
       <div class="workspace-grid">
         <section class="panel service-panel" aria-labelledby="service-title" :aria-busy="loading">
           <div class="panel-heading"><span class="panel-number">01</span><h2 id="service-title">后端服务</h2></div>
