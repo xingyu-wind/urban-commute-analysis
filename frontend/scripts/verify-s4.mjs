@@ -1,6 +1,7 @@
 // Real Java -> Vite proxy -> isolated real Chromium browser. No request mocking.
 import { chromium, expect as baseExpect } from '@playwright/test'
 import { checkResponsiveMatrix, checkDeferredChartResize, installResizeProbe } from './responsive-layout.mjs'
+import { checkEtl } from './s5-etl-check.mjs'
 import { browserChannels, contractPython, javaExecutable } from '../config/runtime.ts'
 import { spawn, spawnSync } from 'node:child_process'
 import { createServer } from 'node:net'
@@ -135,7 +136,7 @@ try {
   const context = await browser.newContext({ viewport: { width: 1500, height: 1080 }, locale: 'zh-CN', timezoneId: 'Asia/Shanghai' })
   await installResizeProbe(context)
   page = await context.newPage()
-  page.on('pageerror', error => manifest.pageErrors.push(error.message))
+  page.on('pageerror', error => manifest.pageErrors.push(error.stack || error.message))
   // Capture all Java traffic responses, including negative HTTP cases. No route interception.
   context.on('response', response => {
     const uri = new URL(response.url())
@@ -156,6 +157,9 @@ try {
   }
   await page.goto(base)
   await expect(page.locator('#city-select')).toBeVisible()
+  if (process.env.S5_FIXTURE_OUTPUT) {
+    await checkEtl({ page, expect, context, backend, output, root, python: contractPython(root), step, directGet })
+  } else {
   await page.locator('#city-select').selectOption('s4-demo-city')
   await page.getByRole('button', { name: '合成样本时段', exact: true }).click()
   await expect(page.getByTestId('kpi-speed')).toContainText('36.00')
@@ -279,6 +283,7 @@ try {
   await expect(page.getByTestId('traffic-dashboard')).toHaveCount(0)
   await page.screenshot({ path: path.join(output, 'database-outage.png'), fullPage: true })
   step('actual-database-unavailable-safe-503-and-stale-dashboard-removed')
+  }
   expect(manifest.pageErrors).toEqual([])
 } catch (error) {
   exitCode = 1; manifest.failure = error.stack; console.error(error)

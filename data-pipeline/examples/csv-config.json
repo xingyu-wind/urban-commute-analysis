@@ -1,0 +1,87 @@
+{
+  "format": "csv",
+  "fields": {
+    "city_id": "city_id",
+    "target_type": "target_type",
+    "target_id": "target_id",
+    "observed_at": "observed_at",
+    "collected_at": "collected_at",
+    "speed": "speed",
+    "congestion": "congestion"
+  },
+  "speed_unit": "m/s",
+  "congestion_unit": "0-100",
+  "dataset": {
+    "dataset_id": "s5-synthetic-v1",
+    "source_name": "S5 reproducible synthetic traffic",
+    "source_type": "synthetic_test",
+    "license_status": "not_applicable",
+    "license_url": null,
+    "dataset_version": "1",
+    "description": "Generated test observations; no real traffic collection."
+  },
+  "source": {
+    "admission": "synthetic_test",
+    "name": "Repository-owned synthetic fixture generator",
+    "url": "data-pipeline/examples/generate.py",
+    "license_evidence": "Original deterministic test data; external authorization not applicable.",
+    "checked_at": "2026-10-20",
+    "time_coverage": [
+      "2026-10-15T00:00:00Z",
+      "2026-10-17T00:00:00Z"
+    ],
+    "granularity": "CITY / REGION / ROAD; irregular samples, not vehicle counts",
+    "field_dictionary": {
+      "city_id": "city_id",
+      "target_type": "target_type",
+      "target_id": "target_id",
+      "observed_at": "observed_at",
+      "collected_at": "collected_at",
+      "speed": "speed",
+      "congestion": "congestion"
+    },
+    "time_information": "Explicit ISO8601 offsets; UTC millisecond storage",
+    "coordinate_system": "WGS84 synthetic region centers; no road geometry"
+  },
+  "catalog": {
+    "cities": [
+      {
+        "id": "s5-city",
+        "name": "S5 合成城市"
+      },
+      {
+        "id": "s5-other",
+        "name": "S5 另一合成城市"
+      }
+    ],
+    "regions": [
+      {
+        "id": "s5-east",
+        "city_id": "s5-city",
+        "name": "S5 合成东区",
+        "center_lat": 30.1,
+        "center_lon": 120.1,
+        "coordinate_system": "WGS84"
+      },
+      {
+        "id": "s5-other-region",
+        "city_id": "s5-other",
+        "name": "S5 另一合成区域"
+      }
+    ],
+    "roads": [
+      {
+        "id": "s5-road",
+        "city_id": "s5-city",
+        "region_id": "s5-east",
+        "name": "S5 合成路段"
+      },
+      {
+        "id": "s5-other-road",
+        "city_id": "s5-other",
+        "region_id": "s5-other-region",
+        "name": "S5 另一合成路段"
+      }
+    ]
+  }
+}

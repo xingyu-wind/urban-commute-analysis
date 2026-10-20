@@ -79,7 +79,8 @@ class ApiIntegrationTest {
         // Fail closed: CI and local testing must use a dedicated throwaway schema.
         assertThat(datasourceUrl).contains("/" + IsolatedMySql.required("TEST_DB_SCHEMA") + "?");
         assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM city", Integer.class)).isZero();
-        assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM flyway_schema_history WHERE success=1", Integer.class)).isEqualTo(2);
+        assertThat(jdbc.queryForList("SELECT version FROM flyway_schema_history WHERE success=1 ORDER BY installed_rank", String.class))
+                .containsExactly("1", "2", "3");
         jdbc.update("""
                 INSERT INTO dataset_registry(dataset_id,source_name,source_type,license_status,dataset_version,description)
                 VALUES ('s3-synthetic-cities-v1','S3 generated catalog fixture','synthetic_test',
@@ -171,7 +172,8 @@ class ApiIntegrationTest {
     @Test void repeatMigrationIsIdempotentAndDataRetained() {
         assertThat(flyway.validateWithResult().validationSuccessful).isTrue();
         assertThat(flyway.migrate().migrationsExecuted).isZero();
-        assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM flyway_schema_history WHERE success=1", Integer.class)).isEqualTo(2);
+        assertThat(jdbc.queryForList("SELECT version FROM flyway_schema_history WHERE success=1 ORDER BY installed_rank", String.class))
+                .containsExactly("1", "2", "3");
         assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM city", Integer.class)).isEqualTo(2);
     }
 
