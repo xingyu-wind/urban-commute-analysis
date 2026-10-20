@@ -3,6 +3,7 @@ import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { ApiClientError, getCities, getHealth } from './api/client'
 import CitySelector from './components/CitySelector.vue'
 import TrafficDashboard from './components/TrafficDashboard.vue'
+import WarehousePanel from './components/WarehousePanel.vue'
 import type { CitiesResponse, HealthResponse } from './types/api'
 
 const health = ref<HealthResponse | null>(null)
@@ -11,6 +12,7 @@ const healthError = ref('')
 const citiesError = ref('')
 const loading = ref(true)
 const selectedId = ref('')
+const offlineVisible = ref(false)
 const sourceLabels = {
   database_catalog: '空数据库目录', mixed_catalog: '混合来源目录', dev_seed: '开发样例',
   synthetic_test: '合成测试', historical_snapshot: '历史快照登记',
@@ -112,6 +114,8 @@ onUnmounted(() => { disposed = true; clearInterval(interval) })
       </div>
 
       <TrafficDashboard v-if="selectedId" :city-id="selectedId" :city-name="selectedCity?.name ?? selectedId" />
+      <div v-if="selectedId" style="margin-top: 20px"><button class="refresh-button" @click="offlineVisible = !offlineVisible">{{ offlineVisible ? '收起 Hive 离线分析' : '打开 Hive 离线分析' }}</button></div>
+      <WarehousePanel v-if="selectedId && offlineVisible" :city-id="selectedId" />
 
       <aside class="data-notice"><span class="notice-icon" aria-hidden="true">i</span><div><strong>数据来源说明</strong><p>{{ sourceDescription }}</p></div></aside>
       <footer><span>城市通勤 · 以明确的数据来源为基础</span><span>健康状态与城市列表均来自后端请求</span></footer>

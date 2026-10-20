@@ -19,7 +19,7 @@ from referencing.jsonschema import DRAFT202012
 
 ROOT = Path(__file__).resolve().parent
 SPEC_PATH = ROOT / "openapi.yaml"
-PATHS = {"/health", "/api/v1/cities"} | {"/api/v1/traffic/" + endpoint for endpoint in ("summary", "series", "regions", "roads")}
+PATHS = {"/health", "/api/v1/cities", "/api/v1/warehouse/metrics"} | {"/api/v1/traffic/" + endpoint for endpoint in ("summary", "series", "regions", "roads")}
 
 
 def unique_pairs(pairs):
@@ -86,7 +86,7 @@ def load_contract():
     if spec["openapi"] != "3.1.0":
         raise ValueError("This suite requires OpenAPI 3.1.0")
     if set(spec["paths"]) != PATHS:
-        raise ValueError("Expected the six released S4 GET endpoints")
+        raise ValueError("Expected the seven released S6 GET endpoints")
     for path, item in spec["paths"].items():
         if set(item) != {"get"}:
             raise ValueError(f"Only GET is allowed for {path}")
