@@ -30,8 +30,9 @@ public class SecurityConfig {
     }
     public static void error(ObjectMapper mapper, HttpServletRequest req, HttpServletResponse res, int status) throws IOException {
         res.setStatus(status); res.setContentType("application/json");
-        mapper.writeValue(res.getOutputStream(), new ApiResponse<>(status == 401 ? "UNAUTHORIZED" : "FORBIDDEN",
-                status == 401 ? "Authentication required" : "Access denied", null,
+        String code = switch(status) { case 401 -> "UNAUTHORIZED"; case 503 -> "SERVICE_UNAVAILABLE"; default -> "FORBIDDEN"; };
+        mapper.writeValue(res.getOutputStream(), new ApiResponse<>(code,
+                status == 401 ? "Authentication required" : status == 503 ? "Service unavailable" : "Access denied", null,
                 ResponseMeta.error(RequestIdFilter.requestId(req))));
     }
     @Bean SecurityFilterChain security(HttpSecurity http, ObjectMapper mapper, Audit audit) throws Exception {
@@ -58,7 +59,11 @@ public class SecurityConfig {
                 && !java.util.Set.of("GET", "HEAD", "OPTIONS", "TRACE").contains(req.getMethod())))
             .formLogin(form -> form.loginPage("/api/v1/auth/me").loginProcessingUrl("/api/v1/auth/login")
                 .successHandler((req, res, auth) -> {
-                    audit.record(auth.getName(), "LOGIN", null, "SUCCESS", req);
+                    try { audit.record(auth.getName(), "LOGIN", null, "SUCCESS", req); }
+                    catch (org.springframework.dao.DataAccessException e) {
+                        new org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler().logout(req,res,auth);
+                        error(mapper,req,res,503); return;
+                    }
                     res.setContentType("application/json"); mapper.writeValue(res.getOutputStream(), java.util.Map.of("authenticated", true));
                 })
                 .failureHandler((req, res, ex) -> {
@@ -66,7 +71,12 @@ public class SecurityConfig {
                     audit.rejection("anonymous", "LOGIN_FAILED", req); error(mapper, req, res, 401);
                 }))
             .logout(logout -> logout.logoutUrl("/api/v1/auth/logout").deleteCookies("JSESSIONID")
-                .addLogoutHandler((req, res, auth) -> { if (auth != null) audit.record(auth.getName(), "LOGOUT", null, "SUCCESS", req); })
+                .addLogoutHandler((req, res, auth) -> {
+                    if (auth != null) try { audit.record(auth.getName(), "LOGOUT", null, "SUCCESS", req); }
+                    catch (org.springframework.dao.DataAccessException e) {
+                        org.slf4j.LoggerFactory.getLogger(SecurityConfig.class).warn("Logout audit unavailable; session invalidation continues");
+                    }
+                })
                 .logoutSuccessHandler((req, res, auth) -> { res.setContentType("application/json"); res.getWriter().write("{\"authenticated\":false}"); }));
         return http.build();
     }

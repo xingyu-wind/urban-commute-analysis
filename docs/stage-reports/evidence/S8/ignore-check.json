@@ -1,0 +1,8 @@
+{
+  "command": "git check-ignore --no-index data/private/s8/input.csv backend/data/private/s8/input.csv",
+  "exitCode": 0,
+  "ignoredPaths": [
+    "data/private/s8/input.csv",
+    "backend/data/private/s8/input.csv"
+  ]
+}

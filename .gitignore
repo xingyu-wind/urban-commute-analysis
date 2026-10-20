@@ -70,6 +70,8 @@ id_ed25519
 # Raw / unauthorized datasets: use explicit locations, not all CSV/JSON
 /data/raw/
 /data/private/
+# S8 default private storage stays ignored even if the JAR starts from backend/.
+**/data/private/
 /data/external/
 /data/unauthorized/
 /data-pipeline/data/raw/

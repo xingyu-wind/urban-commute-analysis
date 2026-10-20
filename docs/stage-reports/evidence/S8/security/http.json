@@ -1,5 +1,58 @@
 [
   {
+    "case": "obtain-csrf",
+    "method": "GET",
+    "path": "/api/v1/auth/csrf",
+    "status": 200,
+    "requestContentType": null,
+    "responseContentType": "application/json",
+    "response": {},
+    "responseCode": null,
+    "requestId": "7b143e90-4158-4787-bd15-530c2302248e"
+  },
+  {
+    "case": "login-audit-storage-failure",
+    "method": "POST",
+    "path": "/api/v1/auth/login",
+    "status": 503,
+    "requestContentType": "application/x-www-form-urlencoded",
+    "responseContentType": "application/json",
+    "response": {
+      "code": "SERVICE_UNAVAILABLE",
+      "message": "Service unavailable",
+      "data": null,
+      "meta": {
+        "requestId": "c9e69774-f43f-46fe-a719-4a9e34a71563",
+        "dataAsOf": null,
+        "sourceType": null,
+        "datasetId": null
+      }
+    },
+    "responseCode": "SERVICE_UNAVAILABLE",
+    "requestId": "c9e69774-f43f-46fe-a719-4a9e34a71563"
+  },
+  {
+    "case": "failed-login-audit-left-no-session",
+    "method": "GET",
+    "path": "/api/v1/auth/me",
+    "status": 401,
+    "requestContentType": null,
+    "responseContentType": "application/json",
+    "response": {
+      "code": "UNAUTHORIZED",
+      "message": "Authentication required",
+      "data": null,
+      "meta": {
+        "requestId": "56f4e987-51ee-4b81-aad8-aab75e14afb1",
+        "dataAsOf": null,
+        "sourceType": null,
+        "datasetId": null
+      }
+    },
+    "responseCode": "UNAUTHORIZED",
+    "requestId": "56f4e987-51ee-4b81-aad8-aab75e14afb1"
+  },
+  {
     "case": "/api/v1/operations/tasks",
     "method": "GET",
     "path": "/api/v1/operations/tasks",
@@ -11,14 +64,14 @@
       "message": "Authentication required",
       "data": null,
       "meta": {
-        "requestId": "e7e5f77b-3d51-4e60-8903-499eda139865",
+        "requestId": "c1ee326c-cb81-4867-8be2-924f58bb0ec6",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "UNAUTHORIZED",
-    "requestId": "e7e5f77b-3d51-4e60-8903-499eda139865"
+    "requestId": "c1ee326c-cb81-4867-8be2-924f58bb0ec6"
   },
   {
     "case": "/api/v1/auth/me",
@@ -32,14 +85,14 @@
       "message": "Authentication required",
       "data": null,
       "meta": {
-        "requestId": "02df46a4-f412-4a28-9e4f-9909fd7fc1e8",
+        "requestId": "7898cd12-7b6c-41c8-985b-49edc3df4bf0",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "UNAUTHORIZED",
-    "requestId": "02df46a4-f412-4a28-9e4f-9909fd7fc1e8"
+    "requestId": "7898cd12-7b6c-41c8-985b-49edc3df4bf0"
   },
   {
     "case": "obtain-csrf",
@@ -50,28 +103,28 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "5f52c9de-1e10-4a8b-8d07-e7bc9bb6f809"
+    "requestId": "f95ff7db-02d4-42b8-991e-fbc3aefdff3f"
   },
   {
     "case": "upload-anonymous.csv",
     "method": "POST",
     "path": "/api/v1/operations/uploads",
     "status": 401,
-    "requestContentType": "multipart/form-data; boundary=S8f86c279f098f20028f1dea71",
+    "requestContentType": "multipart/form-data; boundary=S8e8d044063b592161ec53c4bb",
     "responseContentType": "application/json",
     "response": {
       "code": "UNAUTHORIZED",
       "message": "Authentication required",
       "data": null,
       "meta": {
-        "requestId": "5a7424b1-aa0e-415f-b680-8dc27e934c81",
+        "requestId": "559d93ba-1dde-4e5e-9cb9-04e5b4311338",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "UNAUTHORIZED",
-    "requestId": "5a7424b1-aa0e-415f-b680-8dc27e934c81"
+    "requestId": "559d93ba-1dde-4e5e-9cb9-04e5b4311338"
   },
   {
     "case": "obtain-csrf",
@@ -82,7 +135,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "83f39d44-385f-4d5a-b4b8-f82349ed2651"
+    "requestId": "bc80c54d-b4ac-434c-b49c-7e3fa73605d1"
   },
   {
     "case": "invalid-login",
@@ -96,14 +149,14 @@
       "message": "Authentication required",
       "data": null,
       "meta": {
-        "requestId": "1665fa5f-57c5-4f70-b7b7-30cca565615a",
+        "requestId": "35f4ccc2-2097-40fb-b847-2cc116565a1b",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "UNAUTHORIZED",
-    "requestId": "1665fa5f-57c5-4f70-b7b7-30cca565615a"
+    "requestId": "35f4ccc2-2097-40fb-b847-2cc116565a1b"
   },
   {
     "case": "/api/v1/auth/csrf",
@@ -114,7 +167,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "98029b59-554e-474d-a298-37481d5fdc06"
+    "requestId": "b07af159-2c07-4178-aaca-272451c4b3bf"
   },
   {
     "case": "obtain-csrf",
@@ -125,7 +178,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "33d9db5d-a78f-4d82-be1d-fdca3968e7a7"
+    "requestId": "9fcea6a1-b145-4451-93aa-a4fae5dfb0b1"
   },
   {
     "case": "login-admin",
@@ -138,7 +191,7 @@
       "authenticated": true
     },
     "responseCode": null,
-    "requestId": "a5b883b2-84fe-4f34-a2cf-12cfb13bf609"
+    "requestId": "87377728-cbf2-4a63-b24b-c3c23a827ede"
   },
   {
     "case": "obtain-csrf",
@@ -149,7 +202,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "a7549faf-cc91-403b-991c-4e1aae7a7012"
+    "requestId": "441da0a5-81f4-4566-8a0c-67f09410eca2"
   },
   {
     "case": "login-reader",
@@ -162,7 +215,7 @@
       "authenticated": true
     },
     "responseCode": null,
-    "requestId": "e24ca6f5-411f-48e9-a374-b5e0d9936169"
+    "requestId": "ef0f1e11-9147-4f8f-8c5f-1c1845ec4222"
   },
   {
     "case": "pre-login-csrf-invalidated",
@@ -176,14 +229,14 @@
       "message": "Access denied",
       "data": null,
       "meta": {
-        "requestId": "343df191-d3e6-4733-a8e5-5a135d598161",
+        "requestId": "b2cb3610-e8d2-4adc-9d47-90f8db285ae2",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "FORBIDDEN",
-    "requestId": "343df191-d3e6-4733-a8e5-5a135d598161"
+    "requestId": "b2cb3610-e8d2-4adc-9d47-90f8db285ae2"
   },
   {
     "case": "/api/v1/operations/tasks",
@@ -194,7 +247,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "421d36dd-e236-4db5-abb4-5effe6a79bb4"
+    "requestId": "3035a1fb-d4bb-4672-b78d-800ab37601ee"
   },
   {
     "case": "obtain-csrf",
@@ -205,28 +258,28 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "129ce40e-48f5-42de-94fa-594b4cfee308"
+    "requestId": "7762a879-c41a-49ce-92b1-919f6c340bd8"
   },
   {
     "case": "upload-reader.csv",
     "method": "POST",
     "path": "/api/v1/operations/uploads",
     "status": 403,
-    "requestContentType": "multipart/form-data; boundary=S86f9daf5bb9cafdc1ad21a2bf",
+    "requestContentType": "multipart/form-data; boundary=S81a034f34a505db19839bf825",
     "responseContentType": "application/json",
     "response": {
       "code": "FORBIDDEN",
       "message": "Access denied",
       "data": null,
       "meta": {
-        "requestId": "4357fe91-3fbf-4172-a245-2e7384ef35e8",
+        "requestId": "08eba66f-285a-4c3c-957c-b18a5b4ed04b",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "FORBIDDEN",
-    "requestId": "4357fe91-3fbf-4172-a245-2e7384ef35e8"
+    "requestId": "08eba66f-285a-4c3c-957c-b18a5b4ed04b"
   },
   {
     "case": "obtain-csrf",
@@ -237,7 +290,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "5a80eb9b-f480-4128-b5fd-45f62f1a6ab4"
+    "requestId": "e94fade3-1de3-4182-932a-36ddde2a869f"
   },
   {
     "case": "/api/v1/operations/imports/00000000-0000-0000-0000-000000000000/confirm",
@@ -251,14 +304,14 @@
       "message": "Access denied",
       "data": null,
       "meta": {
-        "requestId": "e2306734-1c43-4f2c-8a94-c728c0681fae",
+        "requestId": "459f759f-1fdb-4513-9679-5385bd84e739",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "FORBIDDEN",
-    "requestId": "e2306734-1c43-4f2c-8a94-c728c0681fae"
+    "requestId": "459f759f-1fdb-4513-9679-5385bd84e739"
   },
   {
     "case": "obtain-csrf",
@@ -269,7 +322,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "fff72821-803d-46c6-9440-e99b8737701b"
+    "requestId": "5473f81e-a781-4f09-9ff2-165a73d9689b"
   },
   {
     "case": "/api/v1/operations/imports/00000000-0000-0000-0000-000000000000/execute",
@@ -283,14 +336,14 @@
       "message": "Access denied",
       "data": null,
       "meta": {
-        "requestId": "0c0ee8d6-51d8-4816-bd82-e40785a9ba75",
+        "requestId": "2d23ea3d-a0fc-422b-b919-73a8effc3d79",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "FORBIDDEN",
-    "requestId": "0c0ee8d6-51d8-4816-bd82-e40785a9ba75"
+    "requestId": "2d23ea3d-a0fc-422b-b919-73a8effc3d79"
   },
   {
     "case": "obtain-csrf",
@@ -301,7 +354,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "e428da3c-7af5-4e7e-9732-1c41ff5842e4"
+    "requestId": "711d2fb9-c95d-4b4a-b35a-571bd4b4d937"
   },
   {
     "case": "/api/v1/operations/imports/00000000-0000-0000-0000-000000000000/retry",
@@ -315,14 +368,14 @@
       "message": "Access denied",
       "data": null,
       "meta": {
-        "requestId": "6f16a43d-fd6f-4199-ad41-43e4fbdf559e",
+        "requestId": "46b7680d-27b8-4292-8be9-ef107fd37531",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "FORBIDDEN",
-    "requestId": "6f16a43d-fd6f-4199-ad41-43e4fbdf559e"
+    "requestId": "46b7680d-27b8-4292-8be9-ef107fd37531"
   },
   {
     "case": "missing-csrf-admin",
@@ -336,14 +389,14 @@
       "message": "Access denied",
       "data": null,
       "meta": {
-        "requestId": "89572e90-9302-4639-8788-0445cca52774",
+        "requestId": "119634dc-941e-4a9e-8a5d-f4dc7916c9fb",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "FORBIDDEN",
-    "requestId": "89572e90-9302-4639-8788-0445cca52774"
+    "requestId": "119634dc-941e-4a9e-8a5d-f4dc7916c9fb"
   },
   {
     "case": "obtain-csrf",
@@ -354,7 +407,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "4c1494ca-fe19-4db4-9158-38a76ccd3914"
+    "requestId": "0d7e0a7b-75be-4ff1-a5b4-b2329ffa8560"
   },
   {
     "case": "malformed-uuid",
@@ -368,14 +421,14 @@
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "f58965fc-cdb5-402c-b0ad-c04afd5bdaff",
+        "requestId": "dd479b9a-28f6-4869-ac93-93d15f655bfe",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "INVALID_ID",
-    "requestId": "f58965fc-cdb5-402c-b0ad-c04afd5bdaff"
+    "requestId": "dd479b9a-28f6-4869-ac93-93d15f655bfe"
   },
   {
     "case": "obtain-csrf",
@@ -386,7 +439,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "012f811c-7f13-4d6f-b9ed-545bb90c055d"
+    "requestId": "d23a6955-3ab8-4196-b2dd-86e018afec63"
   },
   {
     "case": "unknown-import",
@@ -400,14 +453,14 @@
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "94a458fa-6ce4-429a-bd0d-2e6f7513d63e",
+        "requestId": "01383c8d-7387-4824-887f-191432e044a2",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "IMPORT_NOT_FOUND",
-    "requestId": "94a458fa-6ce4-429a-bd0d-2e6f7513d63e"
+    "requestId": "01383c8d-7387-4824-887f-191432e044a2"
   },
   {
     "case": "obtain-csrf",
@@ -418,28 +471,28 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "6b205f3e-7938-4d7a-8749-e419cb169c92"
+    "requestId": "7aa70c11-8064-4f0d-b993-c1c5109901af"
   },
   {
     "case": "upload-../escape.csv",
     "method": "POST",
     "path": "/api/v1/operations/uploads",
     "status": 400,
-    "requestContentType": "multipart/form-data; boundary=S8bee945e729d765ce6a3bd609",
+    "requestContentType": "multipart/form-data; boundary=S81cc11735bd08af5e9187e6c4",
     "responseContentType": "application/json",
     "response": {
       "code": "INVALID_FILENAME",
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "0728aec5-dae4-42f0-b5e6-1a4d73077140",
+        "requestId": "ffcc6780-398c-4a1e-bf0d-7724e1348729",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "INVALID_FILENAME",
-    "requestId": "0728aec5-dae4-42f0-b5e6-1a4d73077140"
+    "requestId": "ffcc6780-398c-4a1e-bf0d-7724e1348729"
   },
   {
     "case": "obtain-csrf",
@@ -450,28 +503,28 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "e887be6e-25af-4c62-adf1-18a7a1670f40"
+    "requestId": "a56ec500-db06-4f8e-8b0c-c06075e45019"
   },
   {
     "case": "upload-..\\escape.csv",
     "method": "POST",
     "path": "/api/v1/operations/uploads",
     "status": 400,
-    "requestContentType": "multipart/form-data; boundary=S810bdcf4ebe395e90ecfab766",
+    "requestContentType": "multipart/form-data; boundary=S8d6bc157fe05fe572f3b6e9b0",
     "responseContentType": "application/json",
     "response": {
       "code": "INVALID_FILENAME",
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "f689edb0-2b17-44c9-93c2-f9c68895342d",
+        "requestId": "2be395a2-5bb5-4a0c-b9fd-e58c0b3241ee",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "INVALID_FILENAME",
-    "requestId": "f689edb0-2b17-44c9-93c2-f9c68895342d"
+    "requestId": "2be395a2-5bb5-4a0c-b9fd-e58c0b3241ee"
   },
   {
     "case": "obtain-csrf",
@@ -482,28 +535,28 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "6908e90d-d062-44ee-a214-3c7aa006c675"
+    "requestId": "3bdbff62-a5b5-467b-ab00-758bf4b177d3"
   },
   {
     "case": "upload-payload.exe",
     "method": "POST",
     "path": "/api/v1/operations/uploads",
     "status": 400,
-    "requestContentType": "multipart/form-data; boundary=S8a7028e700892249301a753e3",
+    "requestContentType": "multipart/form-data; boundary=S84b3b45d2cc496e2a6f412e8d",
     "responseContentType": "application/json",
     "response": {
       "code": "INVALID_FILENAME",
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "0650d979-a5d6-4411-87b4-a95b901ba8df",
+        "requestId": "a101ca28-b147-4186-a768-e5941012dae3",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "INVALID_FILENAME",
-    "requestId": "0650d979-a5d6-4411-87b4-a95b901ba8df"
+    "requestId": "a101ca28-b147-4186-a768-e5941012dae3"
   },
   {
     "case": "obtain-csrf",
@@ -514,28 +567,28 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "bbde159a-0977-4009-a094-d1103ea1ed47"
+    "requestId": "7878ffb1-b7d5-4e50-a654-cf689e0a3138"
   },
   {
     "case": "upload-fake.csv",
     "method": "POST",
     "path": "/api/v1/operations/uploads",
     "status": 422,
-    "requestContentType": "multipart/form-data; boundary=S8f8b9420c787b4d71b4eaf440",
+    "requestContentType": "multipart/form-data; boundary=S86e3317487b816ed848a90e13",
     "responseContentType": "application/json",
     "response": {
       "code": "ADAPTER_REJECTED",
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "0810eccf-4bb0-4c75-91ae-74425bf3bf3c",
+        "requestId": "c2b818a1-a882-4672-9cab-915b2cd0954d",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "ADAPTER_REJECTED",
-    "requestId": "0810eccf-4bb0-4c75-91ae-74425bf3bf3c"
+    "requestId": "c2b818a1-a882-4672-9cab-915b2cd0954d"
   },
   {
     "case": "obtain-csrf",
@@ -546,28 +599,28 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "8866df08-f9e4-4017-a912-460a7e2cea4b"
+    "requestId": "2a55507d-abf0-41fb-b18b-09b392617650"
   },
   {
     "case": "upload-fake.json",
     "method": "POST",
     "path": "/api/v1/operations/uploads",
     "status": 422,
-    "requestContentType": "multipart/form-data; boundary=S84282a0d53925ec655fe4a907",
+    "requestContentType": "multipart/form-data; boundary=S8da038031ef68e0da860ec762",
     "responseContentType": "application/json",
     "response": {
       "code": "ADAPTER_REJECTED",
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "bff8764e-794d-4bee-a750-4dd71b710966",
+        "requestId": "36d8f4ae-4195-491f-92b8-f1535d5afdd1",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "ADAPTER_REJECTED",
-    "requestId": "bff8764e-794d-4bee-a750-4dd71b710966"
+    "requestId": "36d8f4ae-4195-491f-92b8-f1535d5afdd1"
   },
   {
     "case": "obtain-csrf",
@@ -578,28 +631,28 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "bbc82dbc-01b6-4b85-8b2f-1c7d0f7cf3a3"
+    "requestId": "677e6ea5-2108-4d11-88a6-dad3a107a113"
   },
   {
     "case": "upload-wrong.csv",
     "method": "POST",
     "path": "/api/v1/operations/uploads",
     "status": 415,
-    "requestContentType": "multipart/form-data; boundary=S851fe2d2d154f3db59460e184",
+    "requestContentType": "multipart/form-data; boundary=S8d3dd467ff667fe2283f47f75",
     "responseContentType": "application/json",
     "response": {
       "code": "FILE_TYPE",
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "0d15733f-07f2-478b-ace1-88b15d0ddcfb",
+        "requestId": "e1128082-3733-4f97-8bec-b2f7b797c2b1",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "FILE_TYPE",
-    "requestId": "0d15733f-07f2-478b-ace1-88b15d0ddcfb"
+    "requestId": "e1128082-3733-4f97-8bec-b2f7b797c2b1"
   },
   {
     "case": "obtain-csrf",
@@ -610,28 +663,28 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "207aa575-200a-4653-83eb-517d5fee0158"
+    "requestId": "0098c51b-2b78-4d56-8310-3ce26f704129"
   },
   {
     "case": "upload-malformed.csv",
     "method": "POST",
     "path": "/api/v1/operations/uploads",
     "status": 422,
-    "requestContentType": "multipart/form-data; boundary=S8527c61bd17e6959570f8c12f",
+    "requestContentType": "multipart/form-data; boundary=S80e2ceb84fd7525c3ffe04eb6",
     "responseContentType": "application/json",
     "response": {
       "code": "ADAPTER_REJECTED",
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "b807e5e1-150f-4aea-af40-dd07ba7fc7a7",
+        "requestId": "84d53c7c-5220-45c3-bf10-74c533339737",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "ADAPTER_REJECTED",
-    "requestId": "b807e5e1-150f-4aea-af40-dd07ba7fc7a7"
+    "requestId": "84d53c7c-5220-45c3-bf10-74c533339737"
   },
   {
     "case": "obtain-csrf",
@@ -642,28 +695,28 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "28e9a301-3930-4be6-8bc6-d12fa167e17d"
+    "requestId": "f07f2711-1d48-47c9-b93d-6b1e7b7905b1"
   },
   {
     "case": "upload-quotes.csv",
     "method": "POST",
     "path": "/api/v1/operations/uploads",
     "status": 422,
-    "requestContentType": "multipart/form-data; boundary=S8d5efe84e7c28a34be4969f6f",
+    "requestContentType": "multipart/form-data; boundary=S8d459caadffc97437aca84eb3",
     "responseContentType": "application/json",
     "response": {
       "code": "ADAPTER_REJECTED",
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "91fc14d6-af25-43f6-b0a7-43eae97a31e4",
+        "requestId": "bdda835c-248c-4fc4-867a-3deff137cd07",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "ADAPTER_REJECTED",
-    "requestId": "91fc14d6-af25-43f6-b0a7-43eae97a31e4"
+    "requestId": "bdda835c-248c-4fc4-867a-3deff137cd07"
   },
   {
     "case": "obtain-csrf",
@@ -674,28 +727,28 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "fb0fb35b-6aca-4d37-8153-70196253cd7b"
+    "requestId": "406c497c-a09e-42cc-a5d5-47c35934bbea"
   },
   {
     "case": "upload-nested.json",
     "method": "POST",
     "path": "/api/v1/operations/uploads",
     "status": 422,
-    "requestContentType": "multipart/form-data; boundary=S8be9f65ad5b8b8a9ef1765f52",
+    "requestContentType": "multipart/form-data; boundary=S894b9139e877b00a3fe1419c5",
     "responseContentType": "application/json",
     "response": {
       "code": "ADAPTER_REJECTED",
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "725ca58e-8308-44f4-ba6a-f3568bad0662",
+        "requestId": "46ba265a-6584-4ea3-93cd-b3e41c070b34",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "ADAPTER_REJECTED",
-    "requestId": "725ca58e-8308-44f4-ba6a-f3568bad0662"
+    "requestId": "46ba265a-6584-4ea3-93cd-b3e41c070b34"
   },
   {
     "case": "obtain-csrf",
@@ -706,28 +759,28 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "a4530bd5-5a9a-41f0-9cb9-aaf4a85a0cc4"
+    "requestId": "2f70706d-fa21-460d-ac9b-64f95a4a9bc2"
   },
   {
     "case": "upload-duplicate.json",
     "method": "POST",
     "path": "/api/v1/operations/uploads",
     "status": 422,
-    "requestContentType": "multipart/form-data; boundary=S8e4875e153d9c3d77f2b0e9b2",
+    "requestContentType": "multipart/form-data; boundary=S8d5082621f4ec8d04a0e9abc2",
     "responseContentType": "application/json",
     "response": {
       "code": "ADAPTER_REJECTED",
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "b70e6bd4-9c77-49ef-86b2-39efac30bd7a",
+        "requestId": "2cb138b9-845c-4dc7-9191-3d63424bfb2a",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "ADAPTER_REJECTED",
-    "requestId": "b70e6bd4-9c77-49ef-86b2-39efac30bd7a"
+    "requestId": "2cb138b9-845c-4dc7-9191-3d63424bfb2a"
   },
   {
     "case": "obtain-csrf",
@@ -738,28 +791,28 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "606d8eaa-7adf-46ea-a80f-74cac74648e9"
+    "requestId": "3bb88ac3-7c63-4c71-a79a-642ba2af42ba"
   },
   {
     "case": "upload-large.csv",
     "method": "POST",
     "path": "/api/v1/operations/uploads",
     "status": 413,
-    "requestContentType": "multipart/form-data; boundary=S8f9b92b974ac00e9357c2303d",
+    "requestContentType": "multipart/form-data; boundary=S8ef36830f1384636f7b397156",
     "responseContentType": "application/json",
     "response": {
       "code": "FILE_SIZE",
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "56bf81f2-827d-4e44-8590-29c902e8d494",
+        "requestId": "e1dea650-80f4-45e4-9cdc-ca854cf2d15a",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "FILE_SIZE",
-    "requestId": "56bf81f2-827d-4e44-8590-29c902e8d494"
+    "requestId": "e1dea650-80f4-45e4-9cdc-ca854cf2d15a"
   },
   {
     "case": "obtain-csrf",
@@ -770,18 +823,18 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "1e7bb34b-91a0-477a-ae92-51eec7e14490"
+    "requestId": "7d8f141c-b536-4d18-b109-96c28e71edd9"
   },
   {
     "case": "upload-traffic.csv",
     "method": "POST",
     "path": "/api/v1/operations/uploads",
     "status": 200,
-    "requestContentType": "multipart/form-data; boundary=S8b08484a42f322334b5d8b3bc",
+    "requestContentType": "multipart/form-data; boundary=S8b80f297aa5c9dacbc8bf5400",
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "79d3802d-98d6-4b59-9fae-99ba744d1dd8"
+    "requestId": "668701da-2ec0-40ce-95e8-ac8a75cc638c"
   },
   {
     "case": "obtain-csrf",
@@ -792,7 +845,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "789ed1da-3ce0-453e-9036-2db10321eb70"
+    "requestId": "dfd2c96a-8172-4102-bc7c-3b839ac0b21d"
   },
   {
     "case": "execute",
@@ -806,14 +859,14 @@
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "4ba4058c-2415-43a1-bde0-ad6109d3ccee",
+        "requestId": "c734c2f0-58b0-46d6-9feb-01df6c9378f8",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "UNCONFIRMED",
-    "requestId": "4ba4058c-2415-43a1-bde0-ad6109d3ccee"
+    "requestId": "c734c2f0-58b0-46d6-9feb-01df6c9378f8"
   },
   {
     "case": "obtain-csrf",
@@ -824,7 +877,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "5da0b081-64b0-4522-a00e-a5dbf2e224e2"
+    "requestId": "bdeb8133-6efa-4a86-9cda-16cc9db37f88"
   },
   {
     "case": "confirm-mapping",
@@ -838,14 +891,14 @@
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "b79ca4ea-1012-4ad7-8e2f-6cca66387004",
+        "requestId": "3bcf989f-cc68-499b-bbb2-e8adb0ec4f50",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "ADAPTER_REJECTED",
-    "requestId": "b79ca4ea-1012-4ad7-8e2f-6cca66387004"
+    "requestId": "3bcf989f-cc68-499b-bbb2-e8adb0ec4f50"
   },
   {
     "case": "obtain-csrf",
@@ -856,7 +909,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "120bcf7d-f20a-4612-b09b-b93d3afb1137"
+    "requestId": "8f12efa8-6ce6-479d-ba9c-66b7c91c20e6"
   },
   {
     "case": "confirm-mapping",
@@ -867,7 +920,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "e28b29b3-03aa-4efd-982e-dc01802c2cb5"
+    "requestId": "e0c9bdaf-f4d4-42f3-9b2b-610b1296f8e0"
   },
   {
     "case": "obtain-csrf",
@@ -878,7 +931,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "5dbd9f9e-adf8-40c8-bc9c-41a9d8f1cc37"
+    "requestId": "8508beab-9ebb-45a1-a510-926a05269979"
   },
   {
     "case": "confirm-mapping",
@@ -892,14 +945,14 @@
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "3ead828a-3562-4173-9d73-21a33fbf05fb",
+        "requestId": "eed87f40-b7b9-4f32-9601-dbb7092fe8f0",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "ALREADY_CONFIRMED",
-    "requestId": "3ead828a-3562-4173-9d73-21a33fbf05fb"
+    "requestId": "eed87f40-b7b9-4f32-9601-dbb7092fe8f0"
   },
   {
     "case": "/api/v1/auth/csrf",
@@ -910,7 +963,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "16145d5e-0e0b-4414-b903-53fb7497297f"
+    "requestId": "3041c290-0c6e-4102-8ff3-20615ecac02d"
   },
   {
     "case": "concurrent-import",
@@ -929,7 +982,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "a0607468-f8d1-4889-89fa-ee5be9f756f3"
+    "requestId": "11f6932a-15ee-4276-907f-a89b50043a16"
   },
   {
     "case": "execute",
@@ -943,14 +996,14 @@
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "9daede27-e238-4f99-85cf-7a7fe3622639",
+        "requestId": "ce99d881-190a-4c4b-9a95-d0c959d56d36",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "ALREADY_STARTED",
-    "requestId": "9daede27-e238-4f99-85cf-7a7fe3622639"
+    "requestId": "ce99d881-190a-4c4b-9a95-d0c959d56d36"
   },
   {
     "case": "obtain-csrf",
@@ -961,7 +1014,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "57c07a9c-9093-4a35-bb8c-1724fc5379d4"
+    "requestId": "430a7bfb-98d9-41a9-a2a2-70f40a7bfa6a"
   },
   {
     "case": "retry",
@@ -975,14 +1028,14 @@
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "2fdb91bc-55df-47e0-a454-c1ca8f2fc4c1",
+        "requestId": "330a6995-c921-4529-8dd5-086d39d0bcba",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "NOT_RETRYABLE",
-    "requestId": "2fdb91bc-55df-47e0-a454-c1ca8f2fc4c1"
+    "requestId": "330a6995-c921-4529-8dd5-086d39d0bcba"
   },
   {
     "case": "obtain-csrf",
@@ -993,18 +1046,18 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "78f53c24-fd5b-4ed9-bd63-0e72c7a14301"
+    "requestId": "3d809522-24fb-4fa7-9e88-56a3b3cdd513"
   },
   {
     "case": "upload-traffic.json",
     "method": "POST",
     "path": "/api/v1/operations/uploads",
     "status": 200,
-    "requestContentType": "multipart/form-data; boundary=S839e95bd89fb0cbfcf04e6481",
+    "requestContentType": "multipart/form-data; boundary=S8df0101d18e3719425a946fcd",
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "54ae6aec-9b9a-4700-a358-7346364478a0"
+    "requestId": "13ef545d-8d11-40a8-a656-be1d92aa4fb4"
   },
   {
     "case": "obtain-csrf",
@@ -1015,7 +1068,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "f1633c98-3ccf-447c-a957-73fd3e2d9aac"
+    "requestId": "66096541-a3a4-475e-b967-87f39a01cde3"
   },
   {
     "case": "confirm-mapping",
@@ -1026,7 +1079,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "b2d727b2-f572-4b3e-ad68-f8aa053f0071"
+    "requestId": "ebc2d673-f935-42a6-9314-517f4731f182"
   },
   {
     "case": "obtain-csrf",
@@ -1037,7 +1090,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "fc67cfb6-fdac-4024-81f8-b83560b605b4"
+    "requestId": "fc6bdd7a-0b04-42a6-a0ad-6cb59ead0dfd"
   },
   {
     "case": "execute",
@@ -1047,12 +1100,12 @@
     "requestContentType": null,
     "responseContentType": "application/json",
     "response": {
-      "jobId": "3445d10b-b8e8-4bc7-8fcc-b334b6e0d852",
+      "jobId": "ebaadafa-e515-4d60-bbf0-430cb03a36ce",
       "status": "SUCCEEDED",
       "outputSha256": "29ca55622503de7fe8ae1b23126eac05b21960f99d595c527846d9a9c57360fb"
     },
     "responseCode": null,
-    "requestId": "e0a36ab9-d8d3-41ae-ad46-a20f82fc5700"
+    "requestId": "f56d59ba-7f66-432e-8222-3f317d360364"
   },
   {
     "case": "obtain-csrf",
@@ -1063,18 +1116,18 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "6ab46704-475c-49b1-affb-9b2a82b267fd"
+    "requestId": "71a670a2-16de-4490-97f2-2b5e01ea6226"
   },
   {
     "case": "upload-retry.csv",
     "method": "POST",
     "path": "/api/v1/operations/uploads",
     "status": 200,
-    "requestContentType": "multipart/form-data; boundary=S8c498810a57282e32748ba29a",
+    "requestContentType": "multipart/form-data; boundary=S86dcc6600e58acc416929fc87",
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "f30aea80-ff34-49c3-aa8a-3b76550600ee"
+    "requestId": "d1be4fbe-9419-499b-8fb9-de72aefba788"
   },
   {
     "case": "obtain-csrf",
@@ -1085,7 +1138,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "c9c1e1ec-8341-4733-a55f-9016f7874069"
+    "requestId": "2451020d-7a39-4537-a32e-c5cfc5e11b85"
   },
   {
     "case": "confirm-mapping",
@@ -1096,7 +1149,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "9f45713f-4ed5-49c3-9015-41c57d1bef16"
+    "requestId": "4e79af4e-bd04-4502-a397-8642d7e215fa"
   },
   {
     "case": "obtain-csrf",
@@ -1107,7 +1160,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "056a58f3-1c7d-4389-b187-d7e1b6aeb4b3"
+    "requestId": "c1d0616e-2fab-479b-a84e-3c87b5cde1a0"
   },
   {
     "case": "execute",
@@ -1121,14 +1174,14 @@
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "ce1c2a41-05d6-4d0b-a55b-856239c15567",
+        "requestId": "06cc09e7-e5ca-456c-8356-3468a4d32e3b",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "ADAPTER_REJECTED",
-    "requestId": "ce1c2a41-05d6-4d0b-a55b-856239c15567"
+    "requestId": "06cc09e7-e5ca-456c-8356-3468a4d32e3b"
   },
   {
     "case": "obtain-csrf",
@@ -1139,7 +1192,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "da6ae5ea-6492-42f3-abaa-6f695571404a"
+    "requestId": "72fc3607-8ecc-4450-8405-0a120907ccb9"
   },
   {
     "case": "retry",
@@ -1149,12 +1202,12 @@
     "requestContentType": null,
     "responseContentType": "application/json",
     "response": {
-      "jobId": "a47ecc52-5b01-4cad-8969-7467f880fddf",
+      "jobId": "32d3a1da-b6f9-41c6-abba-4ca3eef71b5b",
       "status": "SUCCEEDED",
       "outputSha256": "29ca55622503de7fe8ae1b23126eac05b21960f99d595c527846d9a9c57360fb"
     },
     "responseCode": null,
-    "requestId": "1d1dab66-ac09-46ef-bd5c-a2610bad1e9e"
+    "requestId": "00d203dc-9cfd-4916-8a00-217d20edd59c"
   },
   {
     "case": "obtain-csrf",
@@ -1165,18 +1218,18 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "046f21e2-5a80-4370-8cdc-02ab006f99a6"
+    "requestId": "eb21900b-8cce-434f-8c16-32e3fd86b099"
   },
   {
     "case": "upload-unlicensed.csv",
     "method": "POST",
     "path": "/api/v1/operations/uploads",
     "status": 200,
-    "requestContentType": "multipart/form-data; boundary=S8ad934b3986a56a8311868482",
+    "requestContentType": "multipart/form-data; boundary=S8d5fa4efd1d4251bbf27877ad",
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "6672d838-bc9d-4506-a99b-50b7eea4f012"
+    "requestId": "3b527059-0562-4171-bd38-1e9e5bace71a"
   },
   {
     "case": "obtain-csrf",
@@ -1187,7 +1240,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "4b2bd805-673a-4f38-bd9b-e9be24cd80ed"
+    "requestId": "76df2681-bcf8-424d-8d02-86cc52c722b3"
   },
   {
     "case": "confirm-mapping",
@@ -1198,7 +1251,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "b5cefe86-36ea-4ffc-b06f-380b7459cb83"
+    "requestId": "b5014461-9778-4c70-8661-314ee0d6ae04"
   },
   {
     "case": "obtain-csrf",
@@ -1209,7 +1262,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "05d16b51-ba32-47ec-b612-ff5e13821817"
+    "requestId": "6a65ca21-4e8d-44db-80f5-118a86a8acbc"
   },
   {
     "case": "execute",
@@ -1223,14 +1276,14 @@
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "398f93ff-da7a-4beb-82b2-2cb6f0bfb697",
+        "requestId": "6d76b023-377e-4ae5-b86e-bfc0e10f48bf",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "ADAPTER_REJECTED",
-    "requestId": "398f93ff-da7a-4beb-82b2-2cb6f0bfb697"
+    "requestId": "6d76b023-377e-4ae5-b86e-bfc0e10f48bf"
   },
   {
     "case": "obtain-csrf",
@@ -1241,18 +1294,18 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "040f07d1-1a49-4bd9-b5dc-b7ca1be8f695"
+    "requestId": "ff3292f0-62c9-436e-b760-92b666815121"
   },
   {
     "case": "upload-short.csv",
     "method": "POST",
     "path": "/api/v1/operations/uploads",
     "status": 200,
-    "requestContentType": "multipart/form-data; boundary=S8dd98b269fbbcadd4d882707f",
+    "requestContentType": "multipart/form-data; boundary=S8b8eef4fbfde17e471eacf5aa",
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "6bbe4b62-56bf-4570-8d54-7459e589bfff"
+    "requestId": "62053fba-452f-4e34-a55d-44fd9468dafe"
   },
   {
     "case": "obtain-csrf",
@@ -1263,7 +1316,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "bc39b74d-4bd0-46dd-a9ee-8e02f87b19f6"
+    "requestId": "48e3dc87-4fba-4adb-b595-0e978ea17935"
   },
   {
     "case": "confirm-mapping",
@@ -1274,7 +1327,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "85c11633-bd17-4246-8570-6fe529a955a0"
+    "requestId": "30eb8735-97dc-4f70-8ee8-bc483a0ee4fe"
   },
   {
     "case": "obtain-csrf",
@@ -1285,7 +1338,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "eaecc9e4-ba82-4dde-a651-8d9c19d5799b"
+    "requestId": "2529e64b-faba-4071-af85-d18e5483527f"
   },
   {
     "case": "execute",
@@ -1299,14 +1352,14 @@
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "b40b029e-9dee-47d0-b129-652482733b1b",
+        "requestId": "d9264155-7df7-4cae-8846-ed7de31fa7ed",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "ADAPTER_REJECTED",
-    "requestId": "b40b029e-9dee-47d0-b129-652482733b1b"
+    "requestId": "d9264155-7df7-4cae-8846-ed7de31fa7ed"
   },
   {
     "case": "obtain-csrf",
@@ -1317,7 +1370,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "248b16d9-a9db-4286-b1de-d98f841e016c"
+    "requestId": "7d92842b-1d90-447e-b6fb-b4edd61034c1"
   },
   {
     "case": "retry",
@@ -1331,14 +1384,14 @@
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "78b11a31-351a-4804-a8bc-a52b80fa1aa6",
+        "requestId": "cb23d87b-7742-477b-8231-5c435d723030",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "ADAPTER_REJECTED",
-    "requestId": "78b11a31-351a-4804-a8bc-a52b80fa1aa6"
+    "requestId": "cb23d87b-7742-477b-8231-5c435d723030"
   },
   {
     "case": "obtain-csrf",
@@ -1349,7 +1402,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "7417dba9-395f-4c09-a204-8d235a5e073b"
+    "requestId": "9c93d201-723a-46b2-8d7b-95fab26c1c6d"
   },
   {
     "case": "retry",
@@ -1363,14 +1416,14 @@
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "c14ef265-3e0a-4a8c-99f4-0b726a85e254",
+        "requestId": "0c6ad066-7491-4dd3-abce-425ccc55b2ff",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "ADAPTER_REJECTED",
-    "requestId": "c14ef265-3e0a-4a8c-99f4-0b726a85e254"
+    "requestId": "0c6ad066-7491-4dd3-abce-425ccc55b2ff"
   },
   {
     "case": "obtain-csrf",
@@ -1381,7 +1434,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "75d24591-94d3-4ca5-9ea2-3a419471746a"
+    "requestId": "ca792d5d-d1aa-4c9f-b2a8-7dfd47aa06aa"
   },
   {
     "case": "retry",
@@ -1395,14 +1448,14 @@
       "message": "Operation rejected",
       "data": null,
       "meta": {
-        "requestId": "447567e2-22a3-479b-b1c4-6ef0b8b396df",
+        "requestId": "fc4b6e2f-b863-4ac9-aaf2-f1cc8cc53a77",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "NOT_RETRYABLE",
-    "requestId": "447567e2-22a3-479b-b1c4-6ef0b8b396df"
+    "requestId": "fc4b6e2f-b863-4ac9-aaf2-f1cc8cc53a77"
   },
   {
     "case": "obtain-csrf",
@@ -1413,7 +1466,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "68a7744c-b699-424d-bcaa-1343f1640f7e"
+    "requestId": "14c2d1ed-0de7-4bd1-82f0-b8e281d30bff"
   },
   {
     "case": "/api/v1/auth/logout",
@@ -1426,7 +1479,7 @@
       "authenticated": false
     },
     "responseCode": null,
-    "requestId": "053cd809-153c-41a0-9c64-81601ca4fec6"
+    "requestId": "c446a25b-fe51-46e8-965a-5998858aa957"
   },
   {
     "case": "logged-out-session-replay",
@@ -1440,14 +1493,14 @@
       "message": "Authentication required",
       "data": null,
       "meta": {
-        "requestId": "a660e103-1308-4b36-ad97-ec651048bd1b",
+        "requestId": "2e5d0864-4373-4085-8c62-896823d6c3a5",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "UNAUTHORIZED",
-    "requestId": "a660e103-1308-4b36-ad97-ec651048bd1b"
+    "requestId": "2e5d0864-4373-4085-8c62-896823d6c3a5"
   },
   {
     "case": "/api/v1/auth/me",
@@ -1461,14 +1514,14 @@
       "message": "Authentication required",
       "data": null,
       "meta": {
-        "requestId": "c3812397-44a9-4f24-b414-fc1f36cdb14d",
+        "requestId": "7fee5624-b01d-41ec-917b-0f5b536b0f24",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "UNAUTHORIZED",
-    "requestId": "c3812397-44a9-4f24-b414-fc1f36cdb14d"
+    "requestId": "7fee5624-b01d-41ec-917b-0f5b536b0f24"
   },
   {
     "case": "/api/v1/operations/uploads",
@@ -1482,14 +1535,14 @@
       "message": "Authentication required",
       "data": null,
       "meta": {
-        "requestId": "6b3158b9-0666-491e-87e2-ab204ccd6035",
+        "requestId": "760022a9-19a1-4ed5-9582-e6980a0dc8c2",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "UNAUTHORIZED",
-    "requestId": "6b3158b9-0666-491e-87e2-ab204ccd6035"
+    "requestId": "760022a9-19a1-4ed5-9582-e6980a0dc8c2"
   },
   {
     "case": "obtain-csrf",
@@ -1500,7 +1553,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "dd97737d-4b09-44d6-a6e2-c709d591e421"
+    "requestId": "bcf5877f-f4ac-443e-9cc3-90d5d5ae79d0"
   },
   {
     "case": "login-admin",
@@ -1513,7 +1566,7 @@
       "authenticated": true
     },
     "responseCode": null,
-    "requestId": "e4197fbe-2e09-48da-bc88-6a7427d4acdd"
+    "requestId": "aad9573b-8d09-4cfe-b3ed-0918c1b88bfc"
   },
   {
     "case": "/api/v1/operations/tasks",
@@ -1524,7 +1577,7 @@
     "responseContentType": "application/json",
     "response": {},
     "responseCode": null,
-    "requestId": "cae7951e-808e-439a-adb8-7ff3e04be109"
+    "requestId": "7e5a526f-6578-4249-af31-883801fe226c"
   },
   {
     "case": "idle-session-expired",
@@ -1538,13 +1591,13 @@
       "message": "Authentication required",
       "data": null,
       "meta": {
-        "requestId": "8291123e-6fea-4f53-8f50-c9613f2100a1",
+        "requestId": "2a2ccbbf-bb39-4ef8-a6da-581ed6770c90",
         "dataAsOf": null,
         "sourceType": null,
         "datasetId": null
       }
     },
     "responseCode": "UNAUTHORIZED",
-    "requestId": "8291123e-6fea-4f53-8f50-c9613f2100a1"
+    "requestId": "2a2ccbbf-bb39-4ef8-a6da-581ed6770c90"
   }
 ]

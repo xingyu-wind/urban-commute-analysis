@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "httpCases": 105,
+  "httpCases": 108,
   "concurrentStatuses": [
     200,
     409

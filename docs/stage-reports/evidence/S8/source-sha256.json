@@ -25,7 +25,7 @@
   },
   {
     "path": "backend/src/main/java/com/urbancommute/security/SecurityConfig.java",
-    "sha256": "25cafe01bc4a315f25baa7e21258f65a80cb3a35da7e6b131371092a958829a3"
+    "sha256": "2649c3b0e369741fb6674226f3aaebab01a98296b7b3645097bdd33592ebdfad"
   },
   {
     "path": "backend/src/main/java/com/urbancommute/security/UserProvisioning.java",
@@ -33,7 +33,7 @@
   },
   {
     "path": "scripts/s8_checks.py",
-    "sha256": "505c8e95266644b0d30bf7cb6aa19464d934c7eb004b1866af4bd9916c46227e"
+    "sha256": "3f4e2d27fbc4ca0957fe187485b98ccde210c223e265a6125edbfb96b8a69145"
   },
   {
     "path": "scripts/s8_adapter_bridge.py",

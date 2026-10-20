@@ -110,6 +110,21 @@ def main():
         # Gate actual new schema identity before test writes, never a persistent app DB.
         assert db('SELECT DATABASE() d, CURRENT_USER() u, @@server_uuid s')[0] == dict(d=match[2],u=os.environ['TEST_DB_USER']+'@%',s=os.environ['TEST_DB_SERVER_UUID'])
         assert count('managed_import')==count('managed_job')==0
+        for _ in range(100):
+            if db("SELECT COUNT(*) n FROM app_user WHERE username IN ('s8-admin','s8-reader')")[0]['n']==2: break
+            if process.poll() is not None: raise RuntimeError('owned bootstrap failed')
+            time.sleep(.1)
+        else: raise RuntimeError('explicit test identities not ready')
+        # Real MySQL constraint failures, restricted to two synthetic test identities:
+        # failed login auditing must undo authentication; failed logout auditing must
+        # never prevent framework session invalidation. No table/data is dropped.
+        db("INSERT INTO app_user(username,password_hash,role) SELECT 'audit-blocked',password_hash,'READER' FROM app_user WHERE username='s8-admin'")
+        db("ALTER TABLE security_audit ADD CONSTRAINT ck_s8_audit_fault CHECK (NOT(actor='audit-blocked' AND action='LOGIN') AND NOT(actor='s8-admin' AND action='LOGOUT'))")
+        blocked=client()
+        request(blocked,'POST','/api/v1/auth/login',503,
+            urllib.parse.urlencode({'username':'audit-blocked','password':passwords['ADMIN']}).encode(),
+            {'Content-Type':'application/x-www-form-urlencoded'},label='login-audit-storage-failure')
+        request(blocked,'GET','/api/v1/auth/me',401,label='failed-login-audit-left-no-session')
         request(anonymous,'GET','/api/v1/operations/tasks',401)
         request(anonymous,'GET','/api/v1/auth/me',401)
         upload(anonymous,'anonymous.csv',b'a,b,c\n1,2,3',401)
