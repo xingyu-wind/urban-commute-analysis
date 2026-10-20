@@ -12,4 +12,4 @@ local-summary.json / core-summary.json：scripts/s4_checks.py --with-core完整�
 
 s4-*.png和presentation-*.png为本次真实浏览器截图；完整响应/日志/其余截图在gitignored backend/target/s4-responsive-fixed，云端相同驱动产物由Actions保存。新增探针和矩阵没有删除、跳过或放宽原390px断言。
 
-云端结果在实际完成后补记；不能把上述本机成功替代当前HEAD的CI成功。
+cloud-fix-success.json记录修复提交76fa63a的真实云端PR/Push完整Job均SUCCESS及日志摘录；原390px检查、全部新增检查均执行通过。最后的证据/报告补记HEAD还需单独检查，最终状态见PR正文。
