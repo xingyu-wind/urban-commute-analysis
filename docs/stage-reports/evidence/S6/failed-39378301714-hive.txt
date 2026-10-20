@@ -1,0 +1,328 @@
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.24.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/tez/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.24.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/tez/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+2026-10-20T06:07:43.093327044Z main WARN The use of package scanning to locate Log4j plugins is deprecated.
+Please remove the `packages` attribute from your configuration file.
+See https://logging.apache.org/log4j/2.x/faq.html#package-scanning for details.
+2026-10-20T06:07:43.183882256Z main INFO Starting configuration org.apache.logging.log4j.core.config.properties.PropertiesConfiguration@479460a6...
+2026-10-20T06:07:43.184043829Z main INFO Start watching for changes to jar:file:/opt/hive/lib/hive-beeline-4.1.0.jar!/beeline-log4j2.properties every 0 seconds
+2026-10-20T06:07:43.184228426Z main INFO Configuration org.apache.logging.log4j.core.config.properties.PropertiesConfiguration@479460a6 started.
+2026-10-20T06:07:43.185837280Z main INFO Stopping configuration org.apache.logging.log4j.core.config.DefaultConfiguration@1b2abca6...
+2026-10-20T06:07:43.186089870Z main INFO Configuration org.apache.logging.log4j.core.config.DefaultConfiguration@1b2abca6 stopped.
+Hive Session ID = 6be4a65f-58a0-464b-946f-3a8d694f8b94
+26/10/20 06:07:45 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:07:45 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:07:45 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:07:45 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:07:45 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:07:45 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:07:46 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:07:46 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:07:46 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:07:46 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:07:46 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:07:46 [main]: WARN DataNucleus.MetaData: Metadata has jdbc-type of 'string' yet this is not valid. Ignored
+26/10/20 06:07:47 [main]: WARN session.SessionState: Configuration hive.reloadable.aux.jars.path not specified
+
+
+
+
+
+
+
+26/10/20 06:07:48 [HiveServer2-Background-Pool: Thread-55]: WARN metastore.HMSHandler: Failed to create external path hdfs://127.0.0.1:9000/s6/warehouse for database commute_s6. This may result in access not being allowed if the StorageBasedAuthorizationProvider is enabled
+
+
+
+
+
+
+
+
+
+
+
+
+
+26/10/20 06:07:49 [HiveServer2-Background-Pool: Thread-61]: ERROR metastore.RetryingHMSHandler: MetaException(message:java.lang.IllegalArgumentException: Pathname /s6/ods/snapshot_id=${hivevar:snapshot} from hdfs://127.0.0.1:9000/s6/ods/snapshot_id=${hivevar:snapshot} is not a valid DFS filename.)
+	at org.apache.hadoop.hive.metastore.HMSHandler.createPartitionFolders(HMSHandler.java:4567)
+	at org.apache.hadoop.hive.metastore.HMSHandler.add_partitions_core(HMSHandler.java:4335)
+	at org.apache.hadoop.hive.metastore.HMSHandler.add_partitions_req(HMSHandler.java:4595)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.hadoop.hive.metastore.RetryingHMSHandler.invokeInternal(RetryingHMSHandler.java:91)
+	at org.apache.hadoop.hive.metastore.AbstractHMSHandlerProxy.invoke(AbstractHMSHandlerProxy.java:82)
+	at jdk.proxy2/jdk.proxy2.$Proxy36.add_partitions_req(Unknown Source)
+	at org.apache.hadoop.hive.metastore.HiveMetaStoreClient.add_partitions(HiveMetaStoreClient.java:1196)
+	at org.apache.hadoop.hive.ql.metadata.SessionHiveMetaStoreClient.add_partitions(SessionHiveMetaStoreClient.java:1093)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.hadoop.hive.metastore.RetryingMetaStoreClient.invoke(RetryingMetaStoreClient.java:213)
+	at jdk.proxy2/jdk.proxy2.$Proxy37.add_partitions(Unknown Source)
+	at org.apache.hadoop.hive.ql.metadata.Hive.addPartitions(Hive.java:3661)
+	at org.apache.hadoop.hive.ql.ddl.table.partition.add.AlterTableAddPartitionOperation.addPartitionsNoReplication(AlterTableAddPartitionOperation.java:161)
+	at org.apache.hadoop.hive.ql.ddl.table.partition.add.AlterTableAddPartitionOperation.addPartitions(AlterTableAddPartitionOperation.java:147)
+	at org.apache.hadoop.hive.ql.ddl.table.partition.add.AlterTableAddPartitionOperation.execute(AlterTableAddPartitionOperation.java:62)
+	at org.apache.hadoop.hive.ql.ddl.DDLTask.execute(DDLTask.java:84)
+	at org.apache.hadoop.hive.ql.exec.Task.executeTask(Task.java:214)
+	at org.apache.hadoop.hive.ql.exec.TaskRunner.runSequential(TaskRunner.java:105)
+	at org.apache.hadoop.hive.ql.Executor.launchTask(Executor.java:354)
+	at org.apache.hadoop.hive.ql.Executor.launchTasks(Executor.java:327)
+	at org.apache.hadoop.hive.ql.Executor.runTasks(Executor.java:244)
+	at org.apache.hadoop.hive.ql.Executor.execute(Executor.java:105)
+	at org.apache.hadoop.hive.ql.Driver.execute(Driver.java:345)
+	at org.apache.hadoop.hive.ql.Driver.runInternal(Driver.java:189)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:142)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:137)
+	at org.apache.hadoop.hive.ql.reexec.ReExecDriver.run(ReExecDriver.java:190)
+	at org.apache.hive.service.cli.operation.SQLOperation.runQuery(SQLOperation.java:234)
+	at org.apache.hive.service.cli.operation.SQLOperation$BackgroundWork$1.run(SQLOperation.java:334)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953)
+	at org.apache.hive.service.cli.operation.SQLOperation$BackgroundWork.run(SQLOperation.java:354)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+
+26/10/20 06:07:49 [HiveServer2-Background-Pool: Thread-61]: ERROR metadata.Hive: Failed addPartitions
+org.apache.hadoop.hive.metastore.api.MetaException: java.lang.IllegalArgumentException: Pathname /s6/ods/snapshot_id=${hivevar:snapshot} from hdfs://127.0.0.1:9000/s6/ods/snapshot_id=${hivevar:snapshot} is not a valid DFS filename.
+	at org.apache.hadoop.hive.metastore.HMSHandler.createPartitionFolders(HMSHandler.java:4567) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.metastore.HMSHandler.add_partitions_core(HMSHandler.java:4335) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.metastore.HMSHandler.add_partitions_req(HMSHandler.java:4595) ~[hive-exec-4.1.0.jar:4.1.0]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source) ~[?:?]
+	at org.apache.hadoop.hive.metastore.RetryingHMSHandler.invokeInternal(RetryingHMSHandler.java:91) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.metastore.AbstractHMSHandlerProxy.invoke(AbstractHMSHandlerProxy.java:82) ~[hive-exec-4.1.0.jar:4.1.0]
+	at jdk.proxy2/jdk.proxy2.$Proxy36.add_partitions_req(Unknown Source) ~[?:?]
+	at org.apache.hadoop.hive.metastore.HiveMetaStoreClient.add_partitions(HiveMetaStoreClient.java:1196) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.metadata.SessionHiveMetaStoreClient.add_partitions(SessionHiveMetaStoreClient.java:1093) ~[hive-exec-4.1.0.jar:4.1.0]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source) ~[?:?]
+	at org.apache.hadoop.hive.metastore.RetryingMetaStoreClient.invoke(RetryingMetaStoreClient.java:213) ~[hive-exec-4.1.0.jar:4.1.0]
+	at jdk.proxy2/jdk.proxy2.$Proxy37.add_partitions(Unknown Source) ~[?:?]
+	at org.apache.hadoop.hive.ql.metadata.Hive.addPartitions(Hive.java:3661) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.ddl.table.partition.add.AlterTableAddPartitionOperation.addPartitionsNoReplication(AlterTableAddPartitionOperation.java:161) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.ddl.table.partition.add.AlterTableAddPartitionOperation.addPartitions(AlterTableAddPartitionOperation.java:147) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.ddl.table.partition.add.AlterTableAddPartitionOperation.execute(AlterTableAddPartitionOperation.java:62) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.ddl.DDLTask.execute(DDLTask.java:84) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.Task.executeTask(Task.java:214) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.TaskRunner.runSequential(TaskRunner.java:105) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.launchTask(Executor.java:354) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.launchTasks(Executor.java:327) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.runTasks(Executor.java:244) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.execute(Executor.java:105) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.execute(Driver.java:345) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.runInternal(Driver.java:189) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:142) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:137) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.reexec.ReExecDriver.run(ReExecDriver.java:190) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hive.service.cli.operation.SQLOperation.runQuery(SQLOperation.java:234) ~[hive-service-4.1.0.jar:4.1.0]
+	at org.apache.hive.service.cli.operation.SQLOperation$BackgroundWork$1.run(SQLOperation.java:334) ~[hive-service-4.1.0.jar:4.1.0]
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source) [?:?]
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source) [?:?]
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953) [hadoop-common-3.4.1.jar:?]
+	at org.apache.hive.service.cli.operation.SQLOperation$BackgroundWork.run(SQLOperation.java:354) [hive-service-4.1.0.jar:4.1.0]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source) [?:?]
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source) [?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) [?:?]
+26/10/20 06:07:49 [HiveServer2-Background-Pool: Thread-61]: ERROR exec.Task: Failed
+org.apache.hadoop.hive.ql.metadata.HiveException: MetaException(message:java.lang.IllegalArgumentException: Pathname /s6/ods/snapshot_id=${hivevar:snapshot} from hdfs://127.0.0.1:9000/s6/ods/snapshot_id=${hivevar:snapshot} is not a valid DFS filename.)
+	at org.apache.hadoop.hive.ql.metadata.Hive.addPartitions(Hive.java:3664) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.ddl.table.partition.add.AlterTableAddPartitionOperation.addPartitionsNoReplication(AlterTableAddPartitionOperation.java:161) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.ddl.table.partition.add.AlterTableAddPartitionOperation.addPartitions(AlterTableAddPartitionOperation.java:147) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.ddl.table.partition.add.AlterTableAddPartitionOperation.execute(AlterTableAddPartitionOperation.java:62) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.ddl.DDLTask.execute(DDLTask.java:84) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.Task.executeTask(Task.java:214) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.TaskRunner.runSequential(TaskRunner.java:105) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.launchTask(Executor.java:354) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.launchTasks(Executor.java:327) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.runTasks(Executor.java:244) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.execute(Executor.java:105) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.execute(Driver.java:345) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.runInternal(Driver.java:189) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:142) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:137) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.reexec.ReExecDriver.run(ReExecDriver.java:190) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hive.service.cli.operation.SQLOperation.runQuery(SQLOperation.java:234) ~[hive-service-4.1.0.jar:4.1.0]
+	at org.apache.hive.service.cli.operation.SQLOperation$BackgroundWork$1.run(SQLOperation.java:334) ~[hive-service-4.1.0.jar:4.1.0]
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source) [?:?]
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source) [?:?]
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953) [hadoop-common-3.4.1.jar:?]
+	at org.apache.hive.service.cli.operation.SQLOperation$BackgroundWork.run(SQLOperation.java:354) [hive-service-4.1.0.jar:4.1.0]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source) [?:?]
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source) [?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) [?:?]
+Caused by: org.apache.hadoop.hive.metastore.api.MetaException: java.lang.IllegalArgumentException: Pathname /s6/ods/snapshot_id=${hivevar:snapshot} from hdfs://127.0.0.1:9000/s6/ods/snapshot_id=${hivevar:snapshot} is not a valid DFS filename.
+	at org.apache.hadoop.hive.metastore.HMSHandler.createPartitionFolders(HMSHandler.java:4567) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.metastore.HMSHandler.add_partitions_core(HMSHandler.java:4335) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.metastore.HMSHandler.add_partitions_req(HMSHandler.java:4595) ~[hive-exec-4.1.0.jar:4.1.0]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source) ~[?:?]
+	at org.apache.hadoop.hive.metastore.RetryingHMSHandler.invokeInternal(RetryingHMSHandler.java:91) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.metastore.AbstractHMSHandlerProxy.invoke(AbstractHMSHandlerProxy.java:82) ~[hive-exec-4.1.0.jar:4.1.0]
+	at jdk.proxy2/jdk.proxy2.$Proxy36.add_partitions_req(Unknown Source) ~[?:?]
+	at org.apache.hadoop.hive.metastore.HiveMetaStoreClient.add_partitions(HiveMetaStoreClient.java:1196) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.metadata.SessionHiveMetaStoreClient.add_partitions(SessionHiveMetaStoreClient.java:1093) ~[hive-exec-4.1.0.jar:4.1.0]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source) ~[?:?]
+	at org.apache.hadoop.hive.metastore.RetryingMetaStoreClient.invoke(RetryingMetaStoreClient.java:213) ~[hive-exec-4.1.0.jar:4.1.0]
+	at jdk.proxy2/jdk.proxy2.$Proxy37.add_partitions(Unknown Source) ~[?:?]
+	at org.apache.hadoop.hive.ql.metadata.Hive.addPartitions(Hive.java:3661) ~[hive-exec-4.1.0.jar:4.1.0]
+	... 26 more
+26/10/20 06:07:49 [HiveServer2-Background-Pool: Thread-61]: ERROR exec.Task: DDLTask failed, DDL Operation: class org.apache.hadoop.hive.ql.ddl.table.partition.add.AlterTableAddPartitionOperation
+org.apache.hadoop.hive.ql.metadata.HiveException: MetaException(message:java.lang.IllegalArgumentException: Pathname /s6/ods/snapshot_id=${hivevar:snapshot} from hdfs://127.0.0.1:9000/s6/ods/snapshot_id=${hivevar:snapshot} is not a valid DFS filename.)
+	at org.apache.hadoop.hive.ql.metadata.Hive.addPartitions(Hive.java:3664) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.ddl.table.partition.add.AlterTableAddPartitionOperation.addPartitionsNoReplication(AlterTableAddPartitionOperation.java:161) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.ddl.table.partition.add.AlterTableAddPartitionOperation.addPartitions(AlterTableAddPartitionOperation.java:147) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.ddl.table.partition.add.AlterTableAddPartitionOperation.execute(AlterTableAddPartitionOperation.java:62) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.ddl.DDLTask.execute(DDLTask.java:84) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.Task.executeTask(Task.java:214) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.TaskRunner.runSequential(TaskRunner.java:105) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.launchTask(Executor.java:354) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.launchTasks(Executor.java:327) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.runTasks(Executor.java:244) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.execute(Executor.java:105) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.execute(Driver.java:345) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.runInternal(Driver.java:189) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:142) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:137) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.reexec.ReExecDriver.run(ReExecDriver.java:190) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hive.service.cli.operation.SQLOperation.runQuery(SQLOperation.java:234) ~[hive-service-4.1.0.jar:4.1.0]
+	at org.apache.hive.service.cli.operation.SQLOperation$BackgroundWork$1.run(SQLOperation.java:334) ~[hive-service-4.1.0.jar:4.1.0]
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source) [?:?]
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source) [?:?]
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953) [hadoop-common-3.4.1.jar:?]
+	at org.apache.hive.service.cli.operation.SQLOperation$BackgroundWork.run(SQLOperation.java:354) [hive-service-4.1.0.jar:4.1.0]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source) [?:?]
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source) [?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) [?:?]
+Caused by: org.apache.hadoop.hive.metastore.api.MetaException: java.lang.IllegalArgumentException: Pathname /s6/ods/snapshot_id=${hivevar:snapshot} from hdfs://127.0.0.1:9000/s6/ods/snapshot_id=${hivevar:snapshot} is not a valid DFS filename.
+	at org.apache.hadoop.hive.metastore.HMSHandler.createPartitionFolders(HMSHandler.java:4567) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.metastore.HMSHandler.add_partitions_core(HMSHandler.java:4335) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.metastore.HMSHandler.add_partitions_req(HMSHandler.java:4595) ~[hive-exec-4.1.0.jar:4.1.0]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source) ~[?:?]
+	at org.apache.hadoop.hive.metastore.RetryingHMSHandler.invokeInternal(RetryingHMSHandler.java:91) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.metastore.AbstractHMSHandlerProxy.invoke(AbstractHMSHandlerProxy.java:82) ~[hive-exec-4.1.0.jar:4.1.0]
+	at jdk.proxy2/jdk.proxy2.$Proxy36.add_partitions_req(Unknown Source) ~[?:?]
+	at org.apache.hadoop.hive.metastore.HiveMetaStoreClient.add_partitions(HiveMetaStoreClient.java:1196) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.metadata.SessionHiveMetaStoreClient.add_partitions(SessionHiveMetaStoreClient.java:1093) ~[hive-exec-4.1.0.jar:4.1.0]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source) ~[?:?]
+	at org.apache.hadoop.hive.metastore.RetryingMetaStoreClient.invoke(RetryingMetaStoreClient.java:213) ~[hive-exec-4.1.0.jar:4.1.0]
+	at jdk.proxy2/jdk.proxy2.$Proxy37.add_partitions(Unknown Source) ~[?:?]
+	at org.apache.hadoop.hive.ql.metadata.Hive.addPartitions(Hive.java:3661) ~[hive-exec-4.1.0.jar:4.1.0]
+	... 26 more
+FAILED: Execution Error, return code 40000 from org.apache.hadoop.hive.ql.ddl.DDLTask. MetaException(message:java.lang.IllegalArgumentException: Pathname /s6/ods/snapshot_id=${hivevar:snapshot} from hdfs://127.0.0.1:9000/s6/ods/snapshot_id=${hivevar:snapshot} is not a valid DFS filename.)
+26/10/20 06:07:49 [HiveServer2-Background-Pool: Thread-61]: ERROR ql.Driver: FAILED: Execution Error, return code 40000 from org.apache.hadoop.hive.ql.ddl.DDLTask. MetaException(message:java.lang.IllegalArgumentException: Pathname /s6/ods/snapshot_id=${hivevar:snapshot} from hdfs://127.0.0.1:9000/s6/ods/snapshot_id=${hivevar:snapshot} is not a valid DFS filename.)
+26/10/20 06:07:49 [HiveServer2-Background-Pool: Thread-61]: ERROR operation.SQLOperation: Error running hive query
+org.apache.hive.service.cli.HiveSQLException: Error while compiling statement: FAILED: Execution Error, return code 40000 from org.apache.hadoop.hive.ql.ddl.DDLTask. MetaException(message:java.lang.IllegalArgumentException: Pathname /s6/ods/snapshot_id=${hivevar:snapshot} from hdfs://127.0.0.1:9000/s6/ods/snapshot_id=${hivevar:snapshot} is not a valid DFS filename.); Query ID: root_20261020060748_8260eb63-8e4e-4cc6-bd64-12740e7b913c
+	at org.apache.hive.service.cli.operation.Operation.toSQLException(Operation.java:376) ~[hive-service-4.1.0.jar:4.1.0]
+	at org.apache.hive.service.cli.operation.SQLOperation.runQuery(SQLOperation.java:247) ~[hive-service-4.1.0.jar:4.1.0]
+	at org.apache.hive.service.cli.operation.SQLOperation$BackgroundWork$1.run(SQLOperation.java:334) ~[hive-service-4.1.0.jar:4.1.0]
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source) [?:?]
+	at java.base/javax.security.auth.Subject.doAs(Unknown Source) [?:?]
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1953) [hadoop-common-3.4.1.jar:?]
+	at org.apache.hive.service.cli.operation.SQLOperation$BackgroundWork.run(SQLOperation.java:354) [hive-service-4.1.0.jar:4.1.0]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source) [?:?]
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source) [?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) [?:?]
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: MetaException(message:java.lang.IllegalArgumentException: Pathname /s6/ods/snapshot_id=${hivevar:snapshot} from hdfs://127.0.0.1:9000/s6/ods/snapshot_id=${hivevar:snapshot} is not a valid DFS filename.)
+	at org.apache.hadoop.hive.ql.metadata.Hive.addPartitions(Hive.java:3664) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.ddl.table.partition.add.AlterTableAddPartitionOperation.addPartitionsNoReplication(AlterTableAddPartitionOperation.java:161) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.ddl.table.partition.add.AlterTableAddPartitionOperation.addPartitions(AlterTableAddPartitionOperation.java:147) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.ddl.table.partition.add.AlterTableAddPartitionOperation.execute(AlterTableAddPartitionOperation.java:62) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.ddl.DDLTask.execute(DDLTask.java:84) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.Task.executeTask(Task.java:214) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.TaskRunner.runSequential(TaskRunner.java:105) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.launchTask(Executor.java:354) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.launchTasks(Executor.java:327) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.runTasks(Executor.java:244) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.execute(Executor.java:105) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.execute(Driver.java:345) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.runInternal(Driver.java:189) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:142) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:137) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.reexec.ReExecDriver.run(ReExecDriver.java:190) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hive.service.cli.operation.SQLOperation.runQuery(SQLOperation.java:234) ~[hive-service-4.1.0.jar:4.1.0]
+	... 10 more
+Caused by: org.apache.hadoop.hive.metastore.api.MetaException: java.lang.IllegalArgumentException: Pathname /s6/ods/snapshot_id=${hivevar:snapshot} from hdfs://127.0.0.1:9000/s6/ods/snapshot_id=${hivevar:snapshot} is not a valid DFS filename.
+	at org.apache.hadoop.hive.metastore.HMSHandler.createPartitionFolders(HMSHandler.java:4567) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.metastore.HMSHandler.add_partitions_core(HMSHandler.java:4335) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.metastore.HMSHandler.add_partitions_req(HMSHandler.java:4595) ~[hive-exec-4.1.0.jar:4.1.0]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source) ~[?:?]
+	at org.apache.hadoop.hive.metastore.RetryingHMSHandler.invokeInternal(RetryingHMSHandler.java:91) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.metastore.AbstractHMSHandlerProxy.invoke(AbstractHMSHandlerProxy.java:82) ~[hive-exec-4.1.0.jar:4.1.0]
+	at jdk.proxy2/jdk.proxy2.$Proxy36.add_partitions_req(Unknown Source) ~[?:?]
+	at org.apache.hadoop.hive.metastore.HiveMetaStoreClient.add_partitions(HiveMetaStoreClient.java:1196) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.metadata.SessionHiveMetaStoreClient.add_partitions(SessionHiveMetaStoreClient.java:1093) ~[hive-exec-4.1.0.jar:4.1.0]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source) ~[?:?]
+	at org.apache.hadoop.hive.metastore.RetryingMetaStoreClient.invoke(RetryingMetaStoreClient.java:213) ~[hive-exec-4.1.0.jar:4.1.0]
+	at jdk.proxy2/jdk.proxy2.$Proxy37.add_partitions(Unknown Source) ~[?:?]
+	at org.apache.hadoop.hive.ql.metadata.Hive.addPartitions(Hive.java:3661) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.ddl.table.partition.add.AlterTableAddPartitionOperation.addPartitionsNoReplication(AlterTableAddPartitionOperation.java:161) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.ddl.table.partition.add.AlterTableAddPartitionOperation.addPartitions(AlterTableAddPartitionOperation.java:147) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.ddl.table.partition.add.AlterTableAddPartitionOperation.execute(AlterTableAddPartitionOperation.java:62) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.ddl.DDLTask.execute(DDLTask.java:84) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.Task.executeTask(Task.java:214) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.exec.TaskRunner.runSequential(TaskRunner.java:105) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.launchTask(Executor.java:354) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.launchTasks(Executor.java:327) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.runTasks(Executor.java:244) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Executor.execute(Executor.java:105) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.execute(Driver.java:345) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.runInternal(Driver.java:189) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:142) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:137) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hadoop.hive.ql.reexec.ReExecDriver.run(ReExecDriver.java:190) ~[hive-exec-4.1.0.jar:4.1.0]
+	at org.apache.hive.service.cli.operation.SQLOperation.runQuery(SQLOperation.java:234) ~[hive-service-4.1.0.jar:4.1.0]
+	... 10 more
+Error: Error while compiling statement: FAILED: Execution Error, return code 40000 from org.apache.hadoop.hive.ql.ddl.DDLTask. MetaException(message:java.lang.IllegalArgumentException: Pathname /s6/ods/snapshot_id=${hivevar:snapshot} from hdfs://127.0.0.1:9000/s6/ods/snapshot_id=${hivevar:snapshot} is not a valid DFS filename.); Query ID: root_20261020060748_8260eb63-8e4e-4cc6-bd64-12740e7b913c (state=08S01,code=40000)
+26/10/20 06:07:49 [pool-11-thread-1]: WARN util.ShutdownHookManager: Shutdown in progress, cannot cancel a deleteOnExit
+26/10/20 06:07:49 [pool-11-thread-1]: WARN util.ShutdownHookManager: Shutdown in progress, cannot cancel a deleteOnExit
+26/10/20 06:07:49 [pool-11-thread-2]: WARN util.ShutdownHookManager: Shutdown in progress, cannot cancel a deleteOnExit
+26/10/20 06:07:49 [pool-11-thread-2]: WARN util.ShutdownHookManager: Shutdown in progress, cannot cancel a deleteOnExit
+26/10/20 06:07:49 [shutdown-hook-0]: WARN util.ShutdownHookManager: Shutdown in progress, cannot cancel a deleteOnExit
+26/10/20 06:07:49 [shutdown-hook-0]: WARN util.ShutdownHookManager: Shutdown in progress, cannot cancel a deleteOnExit

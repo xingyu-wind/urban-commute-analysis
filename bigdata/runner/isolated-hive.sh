@@ -74,12 +74,23 @@ printf 'SET hivevar:snapshot=run1;\nSET hivevar:from=%s;\nSET hivevar:to=%s;\n' 
 cat /source/bigdata/sql/warehouse.hql >> "$run_dir/job.hql"
 cp "$run_dir/job.hql" /evidence/executed.hql
 for iteration in first repeat; do
-  beeline -u 'jdbc:hive2://' -n root --silent=true --showHeader=false --outputformat=tsv2 \
+  timeout 300 beeline -u 'jdbc:hive2://' -n root --silent=true --showHeader=false --outputformat=tsv2 \
     -f "$run_dir/job.hql" > "/evidence/hive-$iteration.log" 2>&1
   hdfs dfs -getmerge /s6/export/run1 "/evidence/ads-$iteration.tsv"
 done
 sort /evidence/ads-first.tsv > /evidence/ads-first.sorted
 sort /evidence/ads-repeat.tsv > /evidence/ads-repeat.sorted
 cmp /evidence/ads-first.sorted /evidence/ads-repeat.sorted
+# A real Hive query must reject an invalid metric, not merely a host-side parser.
+awk 'BEGIN {FS=OFS="\t"} NR==1 {$10="999.00"} {print}' /bundle/ods.tsv > "$run_dir/invalid.tsv"
+hdfs dfs -mkdir -p /s6/ods/snapshot_id=invalid
+hdfs dfs -put "$run_dir/invalid.tsv" /s6/ods/snapshot_id=invalid/observations.tsv
+printf 'SET hivevar:snapshot=invalid;\nSET hivevar:from=%s;\nSET hivevar:to=%s;\n' "$S6_FROM" "$S6_TO" > "$run_dir/invalid.hql"
+cat /source/bigdata/sql/warehouse.hql >> "$run_dir/invalid.hql"
+if timeout 180 beeline -u 'jdbc:hive2://' -n root --silent=true --showHeader=false --outputformat=tsv2 \
+  -f "$run_dir/invalid.hql" > /evidence/hive-invalid.log 2>&1; then
+  echo 'Invalid Hive input unexpectedly succeeded'; exit 1
+fi
+grep -Ei 'assert_true.*assertion failed|ASSERTION_FAILED' /evidence/hive-invalid.log
 hdfs fsck /s6 -files -blocks > /evidence/hdfs-fsck.log
 echo S6_REAL_HDFS_HIVE_PASS

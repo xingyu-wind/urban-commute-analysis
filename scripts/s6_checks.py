@@ -44,6 +44,8 @@ def main():
         edge = generate(ROOT, output / 'edge-fixture')
         run('etl-edge', [sys.executable, '-m', 'commute_etl', '--config', str(edge / 'config.json'), '--input', str(edge / 'traffic.json'), '--batch', 's6-edge', '--load', '--output', str(output / 'edge')], ROOT / 'data-pipeline')
         batches.append(output / 'edge')
+        edge_batch = json.loads((output / 'edge/batch.json').read_text(encoding='utf-8'))
+        assert edge_batch['accepted_count'] == 12 and edge_batch['rejected_count'] == 2
         bundle = output / 'bundle'
         manifest = snapshot(batches, bundle, START, END)
         expected = oracle(bundle)

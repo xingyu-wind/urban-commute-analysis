@@ -1,5 +1,9 @@
 -- All four layers are calculated by Hive, never populated with Python aggregates.
 SET hive.local.time.zone=UTC;
+SET hive.execution.engine=tez;
+SET tez.local.mode=true;
+SET tez.ignore.lib.uris=true;
+SET tez.runtime.optimize.local.fetch=true;
 SET hive.exec.dynamic.partition=true;
 SET hive.exec.dynamic.partition.mode=nonstrict;
 SET hive.exec.max.dynamic.partitions=1000;
@@ -21,12 +25,12 @@ LOCATION '/s6/ods/snapshot_id=${hivevar:snapshot}';
 
 -- The admission gate checked catalogs and full row content against committed MySQL.
 -- DWD additionally rejects bad types/times/metric ranges via an assert query below.
-CREATE TABLE IF NOT EXISTS dwd_observation (
+CREATE EXTERNAL TABLE IF NOT EXISTS dwd_observation (
   observation_id BIGINT, dataset_id STRING, city_id STRING, target_type STRING,
   target_id STRING, road_region_id STRING, observed_at TIMESTAMP, collected_at TIMESTAMP,
   avg_speed_kmh DECIMAL(6,2), congestion_index DECIMAL(4,2), dataset_version STRING,
   source_type STRING, batch_ids ARRAY<STRING>, source_hashes ARRAY<STRING>
-) PARTITIONED BY (snapshot_id STRING, observed_date STRING) STORED AS ORC;
+) PARTITIONED BY (snapshot_id STRING, observed_date STRING) STORED AS ORC LOCATION '/s6/dwd';
 
 SELECT assert_true(COUNT(*)=0) FROM ods_observation WHERE snapshot_id='${hivevar:snapshot}' AND (
   observed_at IS NULL OR collected_at IS NULL OR
@@ -50,13 +54,15 @@ SELECT observation_id,dataset_id,city_id,target_type,target_id,road_region_id,
 FROM ods_observation WHERE snapshot_id='${hivevar:snapshot}'
 GROUP BY observation_id,dataset_id,city_id,target_type,target_id,road_region_id,observed_at,collected_at,
   avg_speed_kmh,congestion_index,dataset_version,source_type;
+SELECT assert_true(COUNT(*)=COUNT(DISTINCT observation_id))
+FROM dwd_observation WHERE snapshot_id='${hivevar:snapshot}';
 
-CREATE TABLE IF NOT EXISTS dws_hourly (
+CREATE EXTERNAL TABLE IF NOT EXISTS dws_hourly (
   dataset_id STRING,dataset_version STRING,source_type STRING,city_id STRING,
   target_type STRING,target_id STRING,road_region_id STRING,bucket_start STRING,
   sample_count BIGINT,speed_sum DECIMAL(24,2),congestion_sum DECIMAL(24,2),
   observed_from STRING,observed_to STRING
-) PARTITIONED BY(snapshot_id STRING,observed_date STRING) STORED AS ORC;
+) PARTITIONED BY(snapshot_id STRING,observed_date STRING) STORED AS ORC LOCATION '/s6/dws';
 INSERT OVERWRITE TABLE dws_hourly PARTITION(snapshot_id='${hivevar:snapshot}',observed_date)
 SELECT dataset_id,dataset_version,source_type,city_id,target_type,target_id,road_region_id,
   date_format(observed_at,"yyyy-MM-dd'T'HH':00:00.000Z'"),COUNT(*),
@@ -67,12 +73,12 @@ FROM dwd_observation WHERE snapshot_id='${hivevar:snapshot}'
 GROUP BY dataset_id,dataset_version,source_type,city_id,target_type,target_id,road_region_id,
   date_format(observed_at,"yyyy-MM-dd'T'HH':00:00.000Z'"),observed_date;
 
-CREATE TABLE IF NOT EXISTS ads_metric (
+CREATE EXTERNAL TABLE IF NOT EXISTS ads_metric (
   dataset_id STRING,dataset_version STRING,source_type STRING,city_id STRING,
   target_type STRING,target_id STRING,road_region_id STRING,grain STRING,bucket_start STRING,
   sample_count BIGINT,speed_sum DECIMAL(24,2),congestion_sum DECIMAL(24,2),
   avg_speed_kmh DECIMAL(6,2),congestion_index DECIMAL(4,2),observed_from STRING,observed_to STRING
-) PARTITIONED BY(snapshot_id STRING) STORED AS ORC;
+) PARTITIONED BY(snapshot_id STRING) STORED AS ORC LOCATION '/s6/ads';
 -- Reaggregate sums/counts. Hive ROUND on DECIMAL uses HALF_UP; only final means round.
 INSERT OVERWRITE TABLE ads_metric PARTITION(snapshot_id='${hivevar:snapshot}')
 SELECT dataset_id,dataset_version,source_type,city_id,target_type,target_id,road_region_id,grain,bucket_start,
@@ -101,6 +107,17 @@ SELECT 'ODS',COUNT(*),SUM(avg_speed_kmh),SUM(congestion_index) FROM ods_observat
 SELECT 'DWD',COUNT(*),SUM(avg_speed_kmh),SUM(congestion_index) FROM dwd_observation WHERE snapshot_id='${hivevar:snapshot}';
 SELECT 'DWS',COUNT(*),SUM(sample_count),SUM(speed_sum),SUM(congestion_sum) FROM dws_hourly WHERE snapshot_id='${hivevar:snapshot}';
 SELECT 'ADS',grain,COUNT(*),SUM(sample_count),SUM(speed_sum),SUM(congestion_sum) FROM ads_metric WHERE snapshot_id='${hivevar:snapshot}' GROUP BY grain;
+-- Layer reconciliation is executed by Hive as well as the independent host oracle.
+SELECT assert_true(d.n=s.n AND d.speed=s.speed AND d.congestion=s.congestion)
+FROM (SELECT COUNT(*) n,SUM(avg_speed_kmh) speed,SUM(congestion_index) congestion
+      FROM dwd_observation WHERE snapshot_id='${hivevar:snapshot}') d
+CROSS JOIN (SELECT SUM(sample_count) n,SUM(speed_sum) speed,SUM(congestion_sum) congestion
+      FROM dws_hourly WHERE snapshot_id='${hivevar:snapshot}') s;
+SELECT assert_true(d.n=a.n AND d.speed=a.speed AND d.congestion=a.congestion)
+FROM (SELECT COUNT(*) n,SUM(avg_speed_kmh) speed,SUM(congestion_index) congestion
+      FROM dwd_observation WHERE snapshot_id='${hivevar:snapshot}') d
+CROSS JOIN (SELECT grain,SUM(sample_count) n,SUM(speed_sum) speed,SUM(congestion_sum) congestion
+      FROM ads_metric WHERE snapshot_id='${hivevar:snapshot}' GROUP BY grain) a;
 INSERT OVERWRITE DIRECTORY '/s6/export/${hivevar:snapshot}'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
 SELECT dataset_id,dataset_version,source_type,city_id,target_type,target_id,road_region_id,grain,bucket_start,
