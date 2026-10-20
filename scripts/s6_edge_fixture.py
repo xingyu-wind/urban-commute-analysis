@@ -9,6 +9,7 @@ def generate(root, output):
     config = json.loads((root / 'data-pipeline/examples/json-config.json').read_text(encoding='utf-8'))
     config['dataset']['dataset_id'] = 's6-edge-v2'
     config['dataset']['dataset_version'] = '2'
+    config['source']['time_coverage'][1] = '2026-10-18T00:00:00Z'
     rows = []
     def row(time, speed, index='3.00', city='s5-city', level='CITY', target=None):
         rows.append({'city_id': city, 'target_type': level, 'target_id': target or city,

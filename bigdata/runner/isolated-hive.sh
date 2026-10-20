@@ -10,7 +10,7 @@ mkdir "$run_dir/name" "$run_dir/data" "$run_dir/conf" "$run_dir/logs"
 export HADOOP_CONF_DIR="$run_dir/conf" HIVE_CONF_DIR="$run_dir/conf" TEZ_CONF_DIR="$run_dir/conf"
 export HADOOP_LOG_DIR="$run_dir/logs" HADOOP_PID_DIR="$run_dir"
 export HADOOP_CLASSPATH="/opt/tez/*:/opt/tez/lib/*"
-export HADOOP_HEAPSIZE=512
+export HADOOP_HEAPSIZE=1024
 cp /opt/hadoop/etc/hadoop/log4j.properties "$run_dir/conf/"
 cat > "$run_dir/conf/core-site.xml" <<EOF
 <configuration><property><name>fs.defaultFS</name><value>hdfs://127.0.0.1:9000</value></property><property><name>hadoop.tmp.dir</name><value>$run_dir/tmp</value></property></configuration>
@@ -60,16 +60,22 @@ trap 'cp -r "$run_dir/logs" /evidence/daemon-logs; hdfs --daemon stop datanode; 
 hdfs dfsadmin -safemode wait
 hdfs dfsadmin -report
 hdfs dfs -mkdir -p /s6/ods/snapshot_id=run1
+hdfs dfs -mkdir -p /s6/manifests/run1
+hdfs dfs -put /bundle/manifest.json /s6/manifests/run1/manifest.json
 hdfs dfs -put /bundle/ods.tsv /s6/ods/snapshot_id=run1/observations.tsv
 hdfs dfs -ls -R /s6/ods
 hdfs dfs -get /s6/ods/snapshot_id=run1/observations.tsv /evidence/download.tsv
 sha256sum /bundle/ods.tsv /evidence/download.tsv
 cmp /bundle/ods.tsv /evidence/download.tsv
 schematool -dbType derby -initSchema > /evidence/schematool.log 2>&1
+# Embedded JDBC does not propagate Beeline --hivevar into its server session.
+# Explicit SET statements run in that same session and keep the SQL reusable.
+printf 'SET hivevar:snapshot=run1;\nSET hivevar:from=%s;\nSET hivevar:to=%s;\n' "$S6_FROM" "$S6_TO" > "$run_dir/job.hql"
+cat /source/bigdata/sql/warehouse.hql >> "$run_dir/job.hql"
+cp "$run_dir/job.hql" /evidence/executed.hql
 for iteration in first repeat; do
-  beeline -u 'jdbc:hive2://' -n hive --silent=true --showHeader=false --outputformat=tsv2 \
-    --hivevar snapshot=run1 --hivevar from="$S6_FROM" --hivevar to="$S6_TO" \
-    -f /source/bigdata/sql/warehouse.hql > "/evidence/hive-$iteration.log" 2>&1
+  beeline -u 'jdbc:hive2://' -n root --silent=true --showHeader=false --outputformat=tsv2 \
+    -f "$run_dir/job.hql" > "/evidence/hive-$iteration.log" 2>&1
   hdfs dfs -getmerge /s6/export/run1 "/evidence/ads-$iteration.tsv"
 done
 sort /evidence/ads-first.tsv > /evidence/ads-first.sorted

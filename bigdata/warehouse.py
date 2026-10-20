@@ -114,7 +114,8 @@ def snapshot(inputs, output, start, end):
         for row in records:
             writer.writerow(['\\N' if row[f] is None else row[f] for f in FIELDS])
     write_json(output / 'observations.json', records)
-    manifest = {'contract': 's6-v1', 'from': start, 'to': end, 'captured_at': stamp(datetime.now(timezone.utc)),
+    manifest = {'contract': 's6-v1', 'sql_sha256': sha(ROOT / 'bigdata/sql/warehouse.hql'),
+                'from': start, 'to': end, 'captured_at': stamp(datetime.now(timezone.utc)),
                 'ods_sha256': sha(output / 'ods.tsv'), 'observations_sha256': sha(output / 'observations.json'),
                 'ods_count': len(records), 'unique_count': len({r['observation_id'] for r in records}), 'batches': batches}
     write_json(output / 'manifest.json', manifest)
@@ -161,7 +162,10 @@ def read_ads(path):
     for row in rows:
         item = dict(zip(ADS_FIELDS, [None if v == '\\N' else v for v in row]))
         for f in ('speed_sum', 'congestion_sum', 'avg_speed_kmh', 'congestion_index'):
-            item[f] = format(Decimal(item[f]), '.2f')
+            value = Decimal(item[f])
+            if not value.is_finite() or value.as_tuple().exponent < -2:
+                raise ValueError('invalid ADS decimal precision')
+            item[f] = format(value, '.2f')
         result.append(item)
     return sorted(result, key=lambda r: tuple('' if r[f] is None else r[f] for f in ADS_FIELDS[:9]))
 
@@ -179,7 +183,10 @@ def publish(bundle, export, release_id, fail_at=None):
     rows = reconcile(bundle, export)
     bundle = Path(bundle)
     manifest = json.loads((bundle / 'manifest.json').read_text(encoding='utf-8'))
-    identity = hashlib.sha256((sha(bundle / 'manifest.json') + sha(export)).encode()).hexdigest()
+    # Hive output file ordering is not stable across physical executions. Bind the
+    # release to sorted, typed row content, while retaining original TSV in evidence.
+    ads_hash = hashlib.sha256(canonical(rows).encode()).hexdigest()
+    identity = hashlib.sha256((sha(bundle / 'manifest.json') + ads_hash).encode()).hexdigest()
     connection = connect()
     locked = False
     try:
@@ -208,7 +215,7 @@ def publish(bundle, export, release_id, fail_at=None):
             if not prior:
                 cur.execute('INSERT INTO warehouse_release (release_id,status,content_sha256,ads_sha256,window_from,window_to,captured_at,manifest,row_count) '
                     "VALUES (%s,'STAGING',%s,%s,%s,%s,%s,%s,%s)",
-                    (release_id, identity, sha(export), timestamp(manifest['from']), timestamp(manifest['to']), timestamp(manifest['captured_at']), canonical(manifest), len(rows)))
+                    (release_id, identity, ads_hash, timestamp(manifest['from']), timestamp(manifest['to']), timestamp(manifest['captured_at']), canonical(manifest), len(rows)))
             else:
                 cur.execute("UPDATE warehouse_release SET status='STAGING',error_code=NULL WHERE release_id=%s", (release_id,))
             connection.commit()
@@ -233,6 +240,8 @@ def publish(bundle, export, release_id, fail_at=None):
                 raise RuntimeError('injected pointer failure')
             cur.execute("UPDATE warehouse_release SET status='PUBLISHED',published_at=UTC_TIMESTAMP(3) WHERE release_id=%s", (release_id,))
             cur.execute('INSERT INTO warehouse_current (singleton,release_id) VALUES (1,%s) ON DUPLICATE KEY UPDATE release_id=%s', (release_id, release_id))
+            if fail_at == 'commit':
+                raise RuntimeError('injected pre-commit failure')
             connection.commit()
         return {'release_id': release_id, 'reused': False, 'rows': len(rows), 'sha256': identity}
     except BaseException:
