@@ -1,0 +1,1 @@
+{"modelVersion": "fccd905b7b9b860336b09e739776aee05dfe3ce21dc31afe4387f5406587b58a", "modelName": "random_forest", "metrics": {"mae": 0.10751493045839496, "rmse": 0.13047303076755112}}

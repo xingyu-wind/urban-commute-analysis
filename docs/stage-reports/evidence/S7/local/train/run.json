@@ -1,0 +1,244 @@
+{
+  "modelVersion": "fccd905b7b9b860336b09e739776aee05dfe3ce21dc31afe4387f5406587b58a",
+  "modelName": "random_forest",
+  "trainedAt": "2026-10-20T07:29:27.734Z",
+  "generatedAt": "2026-10-20T07:29:27.734Z",
+  "dataCutoff": "2026-10-19T00:00:00.000Z",
+  "dataAsOf": "2026-10-18T18:04:00.000Z",
+  "datasetVersion": "1",
+  "cityId": "s7-city",
+  "datasetId": "s7-synthetic-v1",
+  "sourceType": "synthetic_test",
+  "inputSha256": "f16c59557271ffcf6965883bdf0624674f199efb6a542b727174a8b52be651ea",
+  "config": {
+    "seed": 20261020,
+    "strategy": "recursive-refit-each-origin",
+    "horizon": 7,
+    "min_days": 365,
+    "validation_days": 28,
+    "test_days": 28,
+    "origin_stride": 7,
+    "lags": [
+      1,
+      7,
+      14,
+      28
+    ],
+    "daily_policy": "UTC; >=4 samples and all four 6h slots; no missing days; no imputation; same-day collection",
+    "selection": "validation MAE, RMSE, fixed candidate order; ML must improve best baseline MAE by >=1%",
+    "random_forest": {
+      "n_estimators": 60,
+      "max_depth": 9,
+      "min_samples_leaf": 3,
+      "n_jobs": 1
+    },
+    "xgboost": {
+      "n_estimators": 80,
+      "max_depth": 3,
+      "learning_rate": 0.06,
+      "subsample": 1.0,
+      "colsample_bytree": 1.0,
+      "n_jobs": 1,
+      "tree_method": "hist",
+      "objective": "reg:squarederror"
+    },
+    "packages": {
+      "numpy": "2.2.6",
+      "scipy": "1.15.3",
+      "scikit-learn": "1.7.2",
+      "xgboost": "3.0.5",
+      "joblib": "1.5.2",
+      "threadpoolctl": "3.6.0"
+    },
+    "code_sha256": "ca6fc3087c5f9bff7e583f20f98616a9e210b1d527475681af480157bb20fbfa",
+    "python": "3.11"
+  },
+  "batchIds": [
+    "s7-history"
+  ],
+  "sourceHashes": [
+    "e9ab45d52e8f02247f3656ec082cbed8896c95f947cb8f047422bf2ec1070434"
+  ],
+  "limitation": "合成演示：回测误差不代表真实交通预测准确率。",
+  "history": [
+    {
+      "date": "2026-09-21",
+      "value": 4.995,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-09-22",
+      "value": 5.07,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-09-23",
+      "value": 5.0675,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-09-24",
+      "value": 4.96,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-09-25",
+      "value": 5.12,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-09-26",
+      "value": 3.225,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-09-27",
+      "value": 3.295,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-09-28",
+      "value": 5.1825,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-09-29",
+      "value": 5.08,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-09-30",
+      "value": 5.1025,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-10-01",
+      "value": 5.2975,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-10-02",
+      "value": 5.065,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-10-03",
+      "value": 3.2175,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-10-04",
+      "value": 3.23,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-10-05",
+      "value": 5.0475,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-10-06",
+      "value": 4.875,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-10-07",
+      "value": 4.905,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-10-08",
+      "value": 5.0025,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-10-09",
+      "value": 4.96,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-10-10",
+      "value": 3.1825,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-10-11",
+      "value": 3.1825,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-10-12",
+      "value": 5.11,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-10-13",
+      "value": 5.125,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-10-14",
+      "value": 5.0525,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-10-15",
+      "value": 4.855,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-10-16",
+      "value": 5.1225,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-10-17",
+      "value": 3.2225,
+      "sampleCount": 4
+    },
+    {
+      "date": "2026-10-18",
+      "value": 3.1475,
+      "sampleCount": 4
+    }
+  ],
+  "predictions": [
+    {
+      "date": "2026-10-19",
+      "value": 5.054962
+    },
+    {
+      "date": "2026-10-20",
+      "value": 5.126502
+    },
+    {
+      "date": "2026-10-21",
+      "value": 5.143543
+    },
+    {
+      "date": "2026-10-22",
+      "value": 5.166635
+    },
+    {
+      "date": "2026-10-23",
+      "value": 5.258167
+    },
+    {
+      "date": "2026-10-24",
+      "value": 3.355459
+    },
+    {
+      "date": "2026-10-25",
+      "value": 3.313862
+    }
+  ],
+  "metrics": {
+    "mae": 0.10751493045839496,
+    "rmse": 0.13047303076755112
+  },
+  "artifacts": {
+    "model.joblib": "cb86b269c4ecd4965a2a4309061929b0cbd0239953da33080be65261bfc6390e",
+    "evaluation.json": "c278f13562c37628612d53061604a00e8e1aeee61ff2efe561ab810789e85520",
+    "training-input.json": "5f6842761d66276665eb750b378fbc36227eed88000cbdfd3510d84e0df3af16"
+  }
+}

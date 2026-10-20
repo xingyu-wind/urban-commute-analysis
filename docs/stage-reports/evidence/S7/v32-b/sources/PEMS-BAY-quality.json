@@ -1,0 +1,35 @@
+{
+  "adapter": "zenodo-5724362-csv-v6",
+  "distributionFile": "PEMS-BAY.csv",
+  "record": "5724362",
+  "version": "v6",
+  "file": {
+    "sha256": "1fe1d5893c4922d164e3bf5831ebf6f0e85c51f11a506024e346e87c073c3d97",
+    "md5": "0a8f27498b3dedeefdabd455bac40991",
+    "bytes": 2604200
+  },
+  "expected": {
+    "bytes": 85718439,
+    "md5": "c8dea58987a5882e946217c22fdb8256"
+  },
+  "integrity": "FAILED",
+  "sensorColumns": 325,
+  "observedRows": 1582,
+  "invalidRowsOrValues": 1,
+  "missingCells": 0,
+  "zeroCells": 0,
+  "observedNaiveFrom": "2017-01-01 00:00:00",
+  "observedNaiveTo": "2017-01-06 11:45:00",
+  "irregularIntervals": 0,
+  "observedFrequencySeconds": 300,
+  "timezone": null,
+  "unit": null,
+  "target": "speed_candidate_unconfirmed",
+  "fullDistributionCoverageVerified": false,
+  "status": "NOT_EVALUABLE",
+  "reasons": [
+    "user has not approved real training",
+    "unit/timezone/zero semantics and upstream rights not confirmed",
+    "transfer incomplete or differs from distribution size/MD5; no full-series claim"
+  ]
+}

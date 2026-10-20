@@ -1,0 +1,28 @@
+{
+  "mapping_version": "1",
+  "preprocessing_version": "1",
+  "adapter": "long-json-v1",
+  "mapping": {
+    "timestamp": "measured_at",
+    "entity": "sensor",
+    "value": "velocity"
+  },
+  "dataset_id": "beta-synthetic-v1",
+  "dataset_version": "1",
+  "domain_id": "beta",
+  "city_id": "beta",
+  "source_type": "synthetic_test",
+  "source_url": "generated-fixture://ml/examples/fixtures.py",
+  "license_status": "not_applicable",
+  "license_evidence": "original deterministic synthetic test observations; no real traffic",
+  "allowed_uses": [
+    "analysis"
+  ],
+  "timezone": "Asia/Shanghai",
+  "time_format": null,
+  "target": "speed",
+  "unit": "km/h",
+  "frequency_seconds": 3600,
+  "spatial_grain": "SENSOR",
+  "zero_policy": "valid"
+}

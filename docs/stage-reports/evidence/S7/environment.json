@@ -1,0 +1,22 @@
+{
+  "platform": "Windows-10-10.0.26200-SP0",
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "java": "NOTE: Picked up JDK_JAVA_OPTIONS: -Djdk.net.unixdomain.tmpdir=D:\\WindXingyu\\Temp\\java-unixdomain\nopenjdk version \"21.0.12.1\" 2026-08-18 LTS\nOpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)\nOpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode, sharing)\n",
+  "node": "v24.19.0",
+  "mysql": "8.4.11",
+  "scientificPackages": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "scikit-learn": "1.7.2",
+    "xgboost": "3.0.5",
+    "joblib": "1.5.2",
+    "threadpoolctl": "3.6.0"
+  },
+  "sourceCodeSha256": "ca6fc3087c5f9bff7e583f20f98616a9e210b1d527475681af480157bb20fbfa",
+  "formalPlan": {
+    "title": "项目总规划V3.0",
+    "fileName": "城市通勤总规划-加速.md",
+    "sha256": "4b29067f4a3bcbf3262e767cc4b098eb225c4b5413755d8d07ab43ce52c45f67",
+    "v31Found": false
+  }
+}

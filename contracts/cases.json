@@ -249,5 +249,43 @@
     "file": "examples/invalid/traffic-invalid-coordinate.json",
     "valid": false,
     "expectedKeyword": "enum"
+  },
+  {
+    "name": "predictions-success",
+    "file": "examples/predictions-success.json",
+    "path": "/api/v1/predictions",
+    "status": 200,
+    "valid": true
+  },
+  {
+    "name": "predictions-empty",
+    "file": "examples/predictions-empty.json",
+    "path": "/api/v1/predictions",
+    "status": 200,
+    "valid": true
+  },
+  {
+    "name": "predictions-missing-day",
+    "file": "examples/invalid/predictions-missing-day.json",
+    "path": "/api/v1/predictions",
+    "status": 200,
+    "valid": false,
+    "expectedKeyword": "oneOf"
+  },
+  {
+    "name": "predictions-range",
+    "file": "examples/invalid/predictions-range.json",
+    "path": "/api/v1/predictions",
+    "status": 200,
+    "valid": false,
+    "expectedKeyword": "oneOf"
+  },
+  {
+    "name": "predictions-extra",
+    "file": "examples/invalid/predictions-extra.json",
+    "path": "/api/v1/predictions",
+    "status": 200,
+    "valid": false,
+    "expectedKeyword": "oneOf"
   }
 ]

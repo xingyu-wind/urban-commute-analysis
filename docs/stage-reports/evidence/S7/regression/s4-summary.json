@@ -1,0 +1,60 @@
+{
+  "commands": [
+    {
+      "name": "core",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "scripts/s3_checks.py",
+        "--output",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-regression\\core\\core"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "fixture",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "scripts/s4_database.py",
+        "fixture"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "oracle",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "scripts/s4_database.py",
+        "oracle"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "browser",
+      "command": [
+        "node",
+        "frontend/scripts/verify-s4.mjs",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-regression\\core\\browser"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "schemas",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "scripts/s4_validate_captures.py",
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\s7-regression\\core\\browser"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "oracle-restored",
+      "command": [
+        "D:\\WindXingyu\\Code\\urban-commute-analysis\\ml\\.venv\\Scripts\\python.exe",
+        "scripts/s4_database.py",
+        "oracle"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "passed": true
+}

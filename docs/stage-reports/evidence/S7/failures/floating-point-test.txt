@@ -1,0 +1,103 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+ExpectError: expect(received).toEqual(expected) // deep equality
+
+- Expected  - 5
++ Received  + 5
+
+@@ -1,24 +1,24 @@
+  Array [
+    Object {
+-     "mae": 1.9143750000000002,
+-     "rmse": 1.9158447059978534,
++     "mae": 1.914375,
++     "rmse": 1.9158447059978536,
+      "step": 1,
+    },
+    Object {
+      "mae": 1.868125,
+      "rmse": 1.875870214727021,
+      "step": 2,
+    },
+    Object {
+      "mae": 1.8625,
+-     "rmse": 1.8687621237064926,
++     "rmse": 1.8687621237064929,
+      "step": 3,
+    },
+    Object {
+-     "mae": 1.8593750000000002,
+-     "rmse": 1.8647465477914154,
++     "mae": 1.859375,
++     "rmse": 1.8647465477914151,
+      "step": 4,
+    },
+    Object {
+      "mae": 1.8975,
+      "rmse": 1.9047243895115116,
+    at captureRawStack (D:\WindXingyu\Code\urban-commute-analysis\frontend\node_modules\playwright-core\lib\coreBundle.js:9282:17)
+    at callMatcherAsStep (D:\WindXingyu\Code\urban-commute-analysis\frontend\node_modules\playwright\lib\matchers\expect.js:13316:57)
+    at Object.toEqual (D:\WindXingyu\Code\urban-commute-analysis\frontend\node_modules\playwright\lib\matchers\expect.js:13308:23)
+    at D:\WindXingyu\Code\urban-commute-analysis\frontend\scripts\verify-s7.mjs:78:34 {
+  matcherResult: {
+    actual: [
+      { step: 1, mae: 1.914375, rmse: 1.9158447059978536 },
+      { step: 2, mae: 1.868125, rmse: 1.875870214727021 },
+      { step: 3, mae: 1.8625, rmse: 1.8687621237064929 },
+      { step: 4, mae: 1.859375, rmse: 1.8647465477914151 },
+      { step: 5, mae: 1.8975, rmse: 1.9047243895115116 },
+      { step: 6, mae: 0.10499999999999998, rmse: 0.13682790285610602 },
+      { step: 7, mae: 0.11812499999999992, rmse: 0.16832353519338866 }
+    ],
+    expected: [
+      { step: 1, mae: 1.9143750000000002, rmse: 1.9158447059978534 },
+      { step: 2, mae: 1.868125, rmse: 1.875870214727021 },
+      { step: 3, mae: 1.8625, rmse: 1.8687621237064926 },
+      { step: 4, mae: 1.8593750000000002, rmse: 1.8647465477914154 },
+      { step: 5, mae: 1.8975, rmse: 1.9047243895115116 },
+      { step: 6, mae: 0.10499999999999998, rmse: 0.13682790285610602 },
+      { step: 7, mae: 0.11812499999999992, rmse: 0.16832353519338866 }
+    ],
+    message: 'expect(received).toEqual(expected) // deep equality\n' +
+      '\n' +
+      '- Expected  - 5\n' +
+      '+ Received  + 5\n' +
+      '\n' +
+      '@@ -1,24 +1,24 @@\n' +
+      '  Array [\n' +
+      '    Object {\n' +
+      '-     "mae": 1.9143750000000002,\n' +
+      '-     "rmse": 1.9158447059978534,\n' +
+      '+     "mae": 1.914375,\n' +
+      '+     "rmse": 1.9158447059978536,\n' +
+      '      "step": 1,\n' +
+      '    },\n' +
+      '    Object {\n' +
+      '      "mae": 1.868125,\n' +
+      '      "rmse": 1.875870214727021,\n' +
+      '      "step": 2,\n' +
+      '    },\n' +
+      '    Object {\n' +
+      '      "mae": 1.8625,\n' +
+      '-     "rmse": 1.8687621237064926,\n' +
+      '+     "rmse": 1.8687621237064929,\n' +
+      '      "step": 3,\n' +
+      '    },\n' +
+      '    Object {\n' +
+      '-     "mae": 1.8593750000000002,\n' +
+      '-     "rmse": 1.8647465477914154,\n' +
+      '+     "mae": 1.859375,\n' +
+      '+     "rmse": 1.8647465477914151,\n' +
+      '      "step": 4,\n' +
+      '    },\n' +
+      '    Object {\n' +
+      '      "mae": 1.8975,\n' +
+      '      "rmse": 1.9047243895115116,',
+    name: 'toEqual',
+    pass: false
+  }
+}
+
+Node.js v24.19.0

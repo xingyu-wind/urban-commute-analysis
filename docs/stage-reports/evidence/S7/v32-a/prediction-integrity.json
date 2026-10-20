@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "mutatedStep": 4,
+  "originalValue": 5.166635,
+  "tamperedValue": 5.291635,
+  "sameInput": true,
+  "legalDatesAndRange": true,
+  "rejected": true,
+  "pointerUnchanged": "efbb1bf8a1abb6532f8a3bdc608dc822",
+  "erroneousJobRows": 0,
+  "verification": {
+    "method": "fresh deterministic replay; no deserialization",
+    "verifiedPredictionCount": 7,
+    "modelVersion": "cc42b0fbd0ea157a9100180d84afc9e6da228a1d329021801904bceef23b9fe7",
+    "inputSha256": "f16c59557271ffcf6965883bdf0624674f199efb6a542b727174a8b52be651ea"
+  }
+}

@@ -1,0 +1,406 @@
+NOTE: Picked up JDK_JAVA_OPTIONS: -Djdk.net.unixdomain.tmpdir=D:\WindXingyu\Temp\java-unixdomain
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< com.urbancommute:urban-commute-backend >---------------
+[INFO] Building urban-commute-backend 0.1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ urban-commute-backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 5 resources from ..\database\migrations to target\classes\db\migration
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ urban-commute-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ urban-commute-backend ---
+[INFO] skip non existing resourceDirectory D:\WindXingyu\Code\urban-commute-analysis\backend\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ urban-commute-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ urban-commute-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+NOTE: Picked up JDK_JAVA_OPTIONS: -Djdk.net.unixdomain.tmpdir=D:\WindXingyu\Temp\java-unixdomain
+[INFO] Running com.urbancommute.ApiIntegrationTest
+22:24:15.900 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.urbancommute.ApiIntegrationTest]: ApiIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+22:24:16.149 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.urbancommute.UrbanCommuteApplication for test class com.urbancommute.ApiIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-10-20T22:24:17.039+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.ApiIntegrationTest      : Starting ApiIntegrationTest using Java 21.0.12.1 with PID 55240 (started by WindXingyu in D:\WindXingyu\Code\urban-commute-analysis\backend)
+2026-10-20T22:24:17.042+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.ApiIntegrationTest      : No active profile set, falling back to 1 default profile: "default"
+2026-10-20T22:24:19.039+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-10-20T22:24:19.077+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-20T22:24:19.082+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-10-20T22:24:19.207+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-10-20T22:24:19.208+08:00  INFO 55240 --- [urban-commute-backend] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2137 ms
+2026-10-20T22:24:19.738+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-20T22:24:20.254+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@44084713
+2026-10-20T22:24:20.257+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-20T22:24:20.340+08:00  INFO 55240 --- [urban-commute-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://127.0.0.1:33067/s3test_51f3ed03e56c45feb024d23b0a443515?connectionTimeZone=UTC (MySQL 8.4)
+2026-10-20T22:24:20.557+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table `s3test_51f3ed03e56c45feb024d23b0a443515`.`flyway_schema_history` does not exist yet
+2026-10-20T22:24:20.565+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 5 migrations (execution time 00:00.048s)
+2026-10-20T22:24:20.597+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table `s3test_51f3ed03e56c45feb024d23b0a443515`.`flyway_schema_history` ...
+2026-10-20T22:24:20.721+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema `s3test_51f3ed03e56c45feb024d23b0a443515`: << Empty Schema >>
+2026-10-20T22:24:20.779+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema `s3test_51f3ed03e56c45feb024d23b0a443515` to version "1 - commute core"
+2026-10-20T22:24:20.963+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema `s3test_51f3ed03e56c45feb024d23b0a443515`, now at version v1 (execution time 00:00.153s)
+2026-10-20T22:24:20.972+08:00  INFO 55240 --- [urban-commute-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://127.0.0.1:33067/s3test_51f3ed03e56c45feb024d23b0a443515?connectionTimeZone=UTC (MySQL 8.4)
+2026-10-20T22:24:21.013+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 5 migrations (execution time 00:00.015s)
+2026-10-20T22:24:21.025+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema `s3test_51f3ed03e56c45feb024d23b0a443515`: 1
+2026-10-20T22:24:21.031+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema `s3test_51f3ed03e56c45feb024d23b0a443515` to version "2 - strengthen core constraints"
+2026-10-20T22:24:21.186+08:00  WARN 55240 --- [urban-commute-backend] [           main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: 'BINARY expr' is deprecated and will be removed in a future release. Please use CAST instead (SQL State: HY000 - Error Code: 1287)
+2026-10-20T22:24:21.186+08:00  WARN 55240 --- [urban-commute-backend] [           main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: 'BINARY expr' is deprecated and will be removed in a future release. Please use CAST instead (SQL State: HY000 - Error Code: 1287)
+2026-10-20T22:24:21.293+08:00  WARN 55240 --- [urban-commute-backend] [           main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: 'BINARY expr' is deprecated and will be removed in a future release. Please use CAST instead (SQL State: HY000 - Error Code: 1287)
+2026-10-20T22:24:21.348+08:00  WARN 55240 --- [urban-commute-backend] [           main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: 'BINARY expr' is deprecated and will be removed in a future release. Please use CAST instead (SQL State: HY000 - Error Code: 1287)
+2026-10-20T22:24:21.348+08:00  WARN 55240 --- [urban-commute-backend] [           main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: 'BINARY expr' is deprecated and will be removed in a future release. Please use CAST instead (SQL State: HY000 - Error Code: 1287)
+2026-10-20T22:24:21.368+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema `s3test_51f3ed03e56c45feb024d23b0a443515` to version "3 - etl audit"
+2026-10-20T22:24:21.487+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema `s3test_51f3ed03e56c45feb024d23b0a443515` to version "4 - warehouse publication"
+2026-10-20T22:24:21.565+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema `s3test_51f3ed03e56c45feb024d23b0a443515` to version "5 - prediction publication"
+2026-10-20T22:24:21.676+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 4 migrations to schema `s3test_51f3ed03e56c45feb024d23b0a443515`, now at version v5 (execution time 00:00.567s)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (C:\Users\WindXingyu\.m2\repository\net\bytebuddy\byte-buddy-agent\1.17.8\byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-10-20T22:24:24.457+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-20T22:24:24.459+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-20T22:24:24.463+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 3 ms
+2026-10-20T22:24:24.792+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 60108 (http) with context path '/'
+2026-10-20T22:24:24.807+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.ApiIntegrationTest      : Started ApiIntegrationTest in 8.422 seconds (process running for 10.116)
+2026-10-20T22:24:25.512+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=25c2613b-50b2-488e-9e6d-0f8b6f82714b method=GET path=/not-a-route status=404
+2026-10-20T22:24:25.761+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=64a5170b-5bca-4dce-a9ae-591dc54cf499 method=GET path=/api/v1/cities status=200
+2026-10-20T22:24:25.862+08:00  INFO 55240 --- [urban-commute-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://127.0.0.1:33067/s3test_51f3ed03e56c45feb024d23b0a443515?connectionTimeZone=UTC (MySQL 8.4)
+2026-10-20T22:24:25.935+08:00  INFO 55240 --- [urban-commute-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://127.0.0.1:33067/s3test_51f3ed03e56c45feb024d23b0a443515?connectionTimeZone=UTC (MySQL 8.4)
+2026-10-20T22:24:25.985+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 5 migrations (execution time 00:00.020s)
+2026-10-20T22:24:26.266+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-20T22:24:26.267+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-20T22:24:26.270+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-10-20T22:24:26.295+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-1-exec-1] com.urbancommute.web.RequestIdFilter     : requestId=09aabbc9-0dce-4f6f-aad7-4022f52fdabd method=GET path=/api/v1/cities status=200
+2026-10-20T22:24:26.358+08:00  WARN 55240 --- [urban-commute-backend] [           main] o.s.web.servlet.PageNotFound             : Request method 'POST' is not supported
+2026-10-20T22:24:26.360+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=a3c5a3eb-6cbe-435f-b5c0-9ea7c5bc0d3f method=POST path=/api/v1/cities status=405
+2026-10-20T22:24:26.386+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=278aa918-5383-498c-93c5-26bd7cf535d7 method=GET path=/health status=200
+2026-10-20T22:24:26.400+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=85cd3408-8127-48c9-a92e-dddb55bb6fe3 method=GET path=/health status=200
+2026-10-20T22:24:26.547+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=695e71ca-84bd-41d1-9d84-c34454446bcf method=GET path=/api/v1/cities status=400
+2026-10-20T22:24:26.553+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=924c6a54-74b0-4bf4-ac3a-d17ab24fa034 method=GET path=/health status=400
+2026-10-20T22:24:26.745+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=459454c6-6a4a-4dc0-a237-46f3c01bfcce method=GET path=/health status=406
+2026-10-20T22:24:26.751+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=e9657563-bd60-4c70-90b0-b1c14d53f296 method=GET path=/api/v1/cities status=406
+2026-10-20T22:24:26.799+08:00 ERROR 55240 --- [urban-commute-backend] [1-auto-1-exec-2] c.urbancommute.web.ApiExceptionHandler   : requestId=99039ee8-483b-4696-83b6-1820d1964dbc unexpected server exception
+
+java.lang.IllegalStateException: private-path-and-secret-example
+	at com.urbancommute.service.CityService.listCities(CityService.java:16) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:360) ~[spring-aop-6.2.19.jar:6.2.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.19.jar:6.2.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.19.jar:6.2.19]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380) ~[spring-tx-6.2.19.jar:6.2.19]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.2.19.jar:6.2.19]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.19.jar:6.2.19]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728) ~[spring-aop-6.2.19.jar:6.2.19]
+	at com.urbancommute.service.CityService$$SpringCGLIB$$0.listCities(<generated>) ~[classes/:na]
+	at com.urbancommute.web.ApiController.cities(ApiController.java:30) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.19.jar:6.2.19]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:991) ~[spring-webmvc-6.2.19.jar:6.2.19]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:896) ~[spring-webmvc-6.2.19.jar:6.2.19]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.19.jar:6.2.19]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.2.19.jar:6.2.19]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.2.19.jar:6.2.19]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.19.jar:6.2.19]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.2.19.jar:6.2.19]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.55.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.19.jar:6.2.19]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.55.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.55.jar:10.1.55]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at com.urbancommute.web.RequestIdFilter.doFilterInternal(RequestIdFilter.java:32) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.19.jar:6.2.19]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1272) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1797) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.55.jar:10.1.55]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2026-10-20T22:24:26.809+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-1-exec-2] com.urbancommute.web.RequestIdFilter     : requestId=99039ee8-483b-4696-83b6-1820d1964dbc method=GET path=/api/v1/cities status=500
+2026-10-20T22:24:27.043+08:00  INFO 55240 --- [urban-commute-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://127.0.0.1:33067/s3test_51f3ed03e56c45feb024d23b0a443515?connectionTimeZone=UTC (MySQL 8.4)
+2026-10-20T22:24:27.090+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 5 migrations (execution time 00:00.019s)
+2026-10-20T22:24:27.096+08:00  INFO 55240 --- [urban-commute-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://127.0.0.1:33067/s3test_51f3ed03e56c45feb024d23b0a443515?connectionTimeZone=UTC (MySQL 8.4)
+2026-10-20T22:24:27.135+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 5 migrations (execution time 00:00.013s)
+2026-10-20T22:24:27.151+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema `s3test_51f3ed03e56c45feb024d23b0a443515`: 5
+2026-10-20T22:24:27.151+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema `s3test_51f3ed03e56c45feb024d23b0a443515` is up to date. No migration necessary.
+2026-10-20T22:24:27.174+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-1-exec-3] com.urbancommute.web.RequestIdFilter     : requestId=7503d2bf-a573-4f0d-a7f2-dc2509b72c25 method=GET path=/api/v1/cities status=503
+2026-10-20T22:24:27.260+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-1-exec-4] com.urbancommute.web.RequestIdFilter     : requestId=c6b19fc8-34c6-43c6-b138-68f7cb1af882 method=GET path=/health status=200
+2026-10-20T22:24:27.278+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-1-exec-5] com.urbancommute.web.RequestIdFilter     : requestId=74b56caa-6efa-4b74-872c-128205432806 method=GET path=/api/v1/cities status=200
+2026-10-20T22:24:27.334+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=4ec003b4-f1bc-4658-aab6-19715274883a method=GET path=/api/v1/cities status=200
+[INFO] Tests run: 59, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.77 s -- in com.urbancommute.ApiIntegrationTest
+[INFO] Running com.urbancommute.DatabaseOutageIntegrationTest
+2026-10-20T22:24:27.438+08:00  INFO 55240 --- [urban-commute-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.urbancommute.DatabaseOutageIntegrationTest]: DatabaseOutageIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-20T22:24:27.449+08:00  INFO 55240 --- [urban-commute-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.urbancommute.UrbanCommuteApplication for test class com.urbancommute.DatabaseOutageIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-10-20T22:24:27.589+08:00  INFO 55240 --- [urban-commute-backend] [           main] c.u.DatabaseOutageIntegrationTest        : Starting DatabaseOutageIntegrationTest using Java 21.0.12.1 with PID 55240 (started by WindXingyu in D:\WindXingyu\Code\urban-commute-analysis\backend)
+2026-10-20T22:24:27.589+08:00  INFO 55240 --- [urban-commute-backend] [           main] c.u.DatabaseOutageIntegrationTest        : No active profile set, falling back to 1 default profile: "default"
+2026-10-20T22:24:28.095+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-10-20T22:24:28.098+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-20T22:24:28.099+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-10-20T22:24:28.197+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2026-10-20T22:24:28.197+08:00  INFO 55240 --- [urban-commute-backend] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 602 ms
+2026-10-20T22:24:28.485+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 60116 (http) with context path '/'
+2026-10-20T22:24:28.489+08:00  INFO 55240 --- [urban-commute-backend] [           main] c.u.DatabaseOutageIntegrationTest        : Started DatabaseOutageIntegrationTest in 1.026 seconds (process running for 13.798)
+2026-10-20T22:24:28.520+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-2-exec-2] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-20T22:24:28.520+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-2-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-20T22:24:28.521+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-2-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-10-20T22:24:28.527+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-2-exec-2] com.urbancommute.web.RequestIdFilter     : requestId=171d890b-ce47-45d3-b86a-861f9f906e67 method=GET path=/health status=200
+2026-10-20T22:24:28.541+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-2-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-10-20T22:24:28.544+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-2-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-10-20T22:24:29.573+08:00  WARN 55240 --- [urban-commute-backend] [1-auto-2-exec-1] c.urbancommute.web.ApiExceptionHandler   : requestId=73e808e9-7e84-45f8-8fba-b90079656366 database unavailable
+2026-10-20T22:24:29.584+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-2-exec-1] com.urbancommute.web.RequestIdFilter     : requestId=73e808e9-7e84-45f8-8fba-b90079656366 method=GET path=/api/v1/cities status=503
+2026-10-20T22:24:29.603+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-2-exec-3] com.urbancommute.web.RequestIdFilter     : requestId=83012795-86a1-4cdb-8078-9507d4d16fa1 method=GET path=/health status=200
+2026-10-20T22:24:30.641+08:00  WARN 55240 --- [urban-commute-backend] [1-auto-2-exec-4] c.urbancommute.web.ApiExceptionHandler   : requestId=b8aa4741-41f3-4a2a-9487-c5ef6f2395ec database unavailable
+2026-10-20T22:24:30.645+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-2-exec-4] com.urbancommute.web.RequestIdFilter     : requestId=b8aa4741-41f3-4a2a-9487-c5ef6f2395ec method=GET path=/api/v1/traffic/summary status=503
+2026-10-20T22:24:30.656+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-2-exec-5] com.urbancommute.web.RequestIdFilter     : requestId=27223715-b0bd-458e-9499-f9411043d26d method=GET path=/health status=200
+2026-10-20T22:24:31.679+08:00  WARN 55240 --- [urban-commute-backend] [1-auto-2-exec-6] c.urbancommute.web.ApiExceptionHandler   : requestId=643e6d6c-801c-49bd-b695-8353b55fc9d0 database unavailable
+2026-10-20T22:24:31.683+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-2-exec-6] com.urbancommute.web.RequestIdFilter     : requestId=643e6d6c-801c-49bd-b695-8353b55fc9d0 method=GET path=/api/v1/traffic/series status=503
+2026-10-20T22:24:31.693+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-2-exec-7] com.urbancommute.web.RequestIdFilter     : requestId=bfd52173-2ef4-47c7-80ae-ce57dfeaebcf method=GET path=/health status=200
+2026-10-20T22:24:32.722+08:00  WARN 55240 --- [urban-commute-backend] [1-auto-2-exec-8] c.urbancommute.web.ApiExceptionHandler   : requestId=0a5334cd-5ee3-48e3-b3be-e3ac28865dbb database unavailable
+2026-10-20T22:24:32.726+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-2-exec-8] com.urbancommute.web.RequestIdFilter     : requestId=0a5334cd-5ee3-48e3-b3be-e3ac28865dbb method=GET path=/api/v1/traffic/regions status=503
+2026-10-20T22:24:32.737+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-2-exec-9] com.urbancommute.web.RequestIdFilter     : requestId=504f2b2e-a7aa-456d-b8c9-b727b01e3962 method=GET path=/health status=200
+2026-10-20T22:24:33.775+08:00  WARN 55240 --- [urban-commute-backend] [-auto-2-exec-10] c.urbancommute.web.ApiExceptionHandler   : requestId=14c14e85-baf0-4ab9-9836-28055f90967e database unavailable
+2026-10-20T22:24:33.778+08:00  INFO 55240 --- [urban-commute-backend] [-auto-2-exec-10] com.urbancommute.web.RequestIdFilter     : requestId=14c14e85-baf0-4ab9-9836-28055f90967e method=GET path=/api/v1/traffic/roads status=503
+2026-10-20T22:24:33.797+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-2-exec-2] com.urbancommute.web.RequestIdFilter     : requestId=fb1d3ef3-7b82-4547-9ee4-a6d6418725e4 method=GET path=/health status=200
+2026-10-20T22:24:34.821+08:00  WARN 55240 --- [urban-commute-backend] [1-auto-2-exec-1] c.urbancommute.web.ApiExceptionHandler   : requestId=5c179f5a-51eb-4e53-bfe4-04d9dde7bb19 database unavailable
+2026-10-20T22:24:34.828+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-2-exec-1] com.urbancommute.web.RequestIdFilter     : requestId=5c179f5a-51eb-4e53-bfe4-04d9dde7bb19 method=GET path=/api/v1/predictions status=503
+2026-10-20T22:24:34.855+08:00  INFO 55240 --- [urban-commute-backend] [1-auto-2-exec-3] com.urbancommute.web.RequestIdFilter     : requestId=0d1c43c9-a729-416b-9a30-6ed92a72ebb1 method=GET path=/health status=200
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.442 s -- in com.urbancommute.DatabaseOutageIntegrationTest
+[INFO] Running com.urbancommute.PredictionIntegrationTest
+2026-10-20T22:24:34.890+08:00  INFO 55240 --- [urban-commute-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.urbancommute.PredictionIntegrationTest]: PredictionIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-20T22:24:34.903+08:00  INFO 55240 --- [urban-commute-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.urbancommute.UrbanCommuteApplication for test class com.urbancommute.PredictionIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-10-20T22:24:34.984+08:00  INFO 55240 --- [urban-commute-backend] [           main] c.u.PredictionIntegrationTest            : Starting PredictionIntegrationTest using Java 21.0.12.1 with PID 55240 (started by WindXingyu in D:\WindXingyu\Code\urban-commute-analysis\backend)
+2026-10-20T22:24:34.984+08:00  INFO 55240 --- [urban-commute-backend] [           main] c.u.PredictionIntegrationTest            : No active profile set, falling back to 1 default profile: "default"
+2026-10-20T22:24:35.359+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2026-10-20T22:24:35.436+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7712c315
+2026-10-20T22:24:35.436+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2026-10-20T22:24:35.461+08:00  INFO 55240 --- [urban-commute-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://127.0.0.1:33067/s3test_51f3ed03e56c45feb024d23b0a443515?connectionTimeZone=UTC (MySQL 8.4)
+2026-10-20T22:24:35.504+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 5 migrations (execution time 00:00.014s)
+2026-10-20T22:24:35.519+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema `s3test_51f3ed03e56c45feb024d23b0a443515`: 5
+2026-10-20T22:24:35.520+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema `s3test_51f3ed03e56c45feb024d23b0a443515` is up to date. No migration necessary.
+2026-10-20T22:24:35.525+08:00  INFO 55240 --- [urban-commute-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://127.0.0.1:33067/s3test_51f3ed03e56c45feb024d23b0a443515?connectionTimeZone=UTC (MySQL 8.4)
+2026-10-20T22:24:35.563+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 5 migrations (execution time 00:00.017s)
+2026-10-20T22:24:35.578+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema `s3test_51f3ed03e56c45feb024d23b0a443515`: 5
+2026-10-20T22:24:35.581+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema `s3test_51f3ed03e56c45feb024d23b0a443515` is up to date. No migration necessary.
+2026-10-20T22:24:35.768+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-20T22:24:35.768+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-20T22:24:35.769+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-20T22:24:35.779+08:00  INFO 55240 --- [urban-commute-backend] [           main] c.u.PredictionIntegrationTest            : Started PredictionIntegrationTest in 0.852 seconds (process running for 21.087)
+2026-10-20T22:24:35.843+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=0eabacd4-58a0-432e-9da5-2d57d9fb4551 method=GET path=/api/v1/predictions status=200
+2026-10-20T22:24:35.869+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=26479f01-c969-4846-a3e7-0a8a90946e7d method=GET path=/api/v1/predictions status=200
+2026-10-20T22:24:35.891+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=dba04a5b-527e-4686-a633-8b616eec55bd method=GET path=/api/v1/predictions status=400
+2026-10-20T22:24:35.916+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=e1808e56-2d51-4bd7-9264-a0fc60f5842f method=GET path=/api/v1/predictions status=400
+2026-10-20T22:24:35.934+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=1cafb685-62f6-42fe-b688-dc69e224eb04 method=GET path=/api/v1/predictions status=400
+2026-10-20T22:24:35.950+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=4eb15ee3-c7a5-47bf-b4b1-ac5003a0cf9e method=GET path=/api/v1/predictions status=400
+2026-10-20T22:24:35.968+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=fe47e5e7-2d6d-441a-8703-7a9865cc9cf9 method=GET path=/api/v1/predictions status=400
+2026-10-20T22:24:35.988+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=b87adfe3-f8e7-4d86-8b1e-6622cec7e566 method=GET path=/api/v1/predictions status=400
+2026-10-20T22:24:36.006+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=8c9d67f8-db9a-40d0-8b62-b3dd6bddc4bb method=GET path=/api/v1/predictions status=400
+2026-10-20T22:24:36.009+08:00  WARN 55240 --- [urban-commute-backend] [           main] o.s.web.servlet.PageNotFound             : Request method 'POST' is not supported
+2026-10-20T22:24:36.010+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=890b35cb-a9cd-4966-80b1-40af602b1875 method=POST path=/api/v1/predictions status=405
+2026-10-20T22:24:36.054+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=6b5df91a-4169-4d9a-8eaf-f6ef64f89a60 method=GET path=/api/v1/predictions status=400
+2026-10-20T22:24:36.102+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=acc260ec-9be3-44dd-af47-30c9582de7e5 method=GET path=/api/v1/predictions status=200
+2026-10-20T22:24:36.127+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=950a04b1-23a3-4b25-8e26-1457422a676c method=GET path=/api/v1/predictions status=200
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.246 s -- in com.urbancommute.PredictionIntegrationTest
+[INFO] Running com.urbancommute.TrafficIntegrationTest
+2026-10-20T22:24:36.137+08:00  INFO 55240 --- [urban-commute-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.urbancommute.TrafficIntegrationTest]: TrafficIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-20T22:24:36.143+08:00  INFO 55240 --- [urban-commute-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.urbancommute.UrbanCommuteApplication for test class com.urbancommute.TrafficIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-10-20T22:24:36.199+08:00  INFO 55240 --- [urban-commute-backend] [           main] c.urbancommute.TrafficIntegrationTest    : Starting TrafficIntegrationTest using Java 21.0.12.1 with PID 55240 (started by WindXingyu in D:\WindXingyu\Code\urban-commute-analysis\backend)
+2026-10-20T22:24:36.199+08:00  INFO 55240 --- [urban-commute-backend] [           main] c.urbancommute.TrafficIntegrationTest    : No active profile set, falling back to 1 default profile: "default"
+2026-10-20T22:24:36.514+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2026-10-20T22:24:36.532+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5ce593bc
+2026-10-20T22:24:36.533+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2026-10-20T22:24:36.551+08:00  INFO 55240 --- [urban-commute-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://127.0.0.1:33067/s3test_51f3ed03e56c45feb024d23b0a443515?connectionTimeZone=UTC (MySQL 8.4)
+2026-10-20T22:24:36.593+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 5 migrations (execution time 00:00.016s)
+2026-10-20T22:24:36.604+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema `s3test_51f3ed03e56c45feb024d23b0a443515`: 5
+2026-10-20T22:24:36.604+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema `s3test_51f3ed03e56c45feb024d23b0a443515` is up to date. No migration necessary.
+2026-10-20T22:24:36.607+08:00  INFO 55240 --- [urban-commute-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://127.0.0.1:33067/s3test_51f3ed03e56c45feb024d23b0a443515?connectionTimeZone=UTC (MySQL 8.4)
+2026-10-20T22:24:36.644+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 5 migrations (execution time 00:00.015s)
+2026-10-20T22:24:36.656+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema `s3test_51f3ed03e56c45feb024d23b0a443515`: 5
+2026-10-20T22:24:36.657+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema `s3test_51f3ed03e56c45feb024d23b0a443515` is up to date. No migration necessary.
+2026-10-20T22:24:36.809+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-20T22:24:36.810+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-20T22:24:36.810+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-20T22:24:36.816+08:00  INFO 55240 --- [urban-commute-backend] [           main] c.urbancommute.TrafficIntegrationTest    : Started TrafficIntegrationTest in 0.667 seconds (process running for 22.125)
+2026-10-20T22:24:36.885+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=76fcd754-3008-4e77-9818-6c0eb76949d6 method=GET path=/api/v1/traffic/summary status=200
+2026-10-20T22:24:36.903+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=c7784bee-d720-49e4-89ae-2dca3f2595b2 method=GET path=/api/v1/traffic/summary status=200
+2026-10-20T22:24:36.918+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=b0833c7a-d2df-4a97-8ee3-064b591226d4 method=GET path=/api/v1/traffic/summary status=200
+2026-10-20T22:24:36.946+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=181b1977-82bf-4f24-984e-b3101c7f28b9 method=GET path=/api/v1/traffic/roads status=400
+2026-10-20T22:24:36.971+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=784c4fa2-33e0-4f8d-8574-a04ccec7d90a method=GET path=/api/v1/traffic/roads status=400
+2026-10-20T22:24:36.998+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=5cef3743-2b64-465e-b4e1-8aaa2f7cb676 method=GET path=/api/v1/traffic/roads status=400
+2026-10-20T22:24:37.022+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=b66d9c6b-5f45-4809-9e53-4a426d03249a method=GET path=/api/v1/traffic/roads status=400
+2026-10-20T22:24:37.044+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=7056c7be-7f8f-4bb8-87ae-9b298b837b9b method=GET path=/api/v1/traffic/roads status=400
+2026-10-20T22:24:37.065+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=ad3797c6-05cf-4a99-969d-7e5c9f60d2e3 method=GET path=/api/v1/traffic/roads status=400
+2026-10-20T22:24:37.088+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=5c134086-86f7-4600-b28a-1d4902067636 method=GET path=/api/v1/traffic/roads status=400
+2026-10-20T22:24:37.110+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=717731eb-5f3c-4ab3-9c65-c654863f1d60 method=GET path=/api/v1/traffic/roads status=400
+2026-10-20T22:24:37.130+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=91d71902-c9d1-4b99-87e0-6f1a34212aee method=GET path=/api/v1/traffic/roads status=400
+2026-10-20T22:24:37.155+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=e45995fa-2997-4761-95ee-7f5a0f44d47e method=GET path=/api/v1/traffic/summary status=200
+2026-10-20T22:24:37.178+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=be55d6d7-ce6d-4ae7-8811-e6355a99b009 method=GET path=/api/v1/traffic/regions status=200
+2026-10-20T22:24:37.199+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=845d6ac3-40e7-4f4b-9fe1-dd05195bff0e method=GET path=/api/v1/traffic/roads status=200
+2026-10-20T22:24:37.225+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=05251584-43c8-43f5-9cb8-7d545cd524b7 method=GET path=/api/v1/traffic/summary status=400
+2026-10-20T22:24:37.244+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=c16808b4-0c00-4f61-8b2f-c29b2a950a7a method=GET path=/api/v1/traffic/summary status=400
+2026-10-20T22:24:37.263+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=f4eacc17-1b76-485d-aa56-799a88e80eb0 method=GET path=/api/v1/traffic/summary status=400
+2026-10-20T22:24:37.283+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=9d832752-b131-4225-83b4-b7d56cae03cf method=GET path=/api/v1/traffic/summary status=400
+2026-10-20T22:24:37.308+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=91e91624-617a-4184-89b1-4d73431e29d5 method=GET path=/api/v1/traffic/summary status=400
+2026-10-20T22:24:37.329+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=121dfc05-ecf7-40a7-abec-05a8eb9316f1 method=GET path=/api/v1/traffic/summary status=400
+2026-10-20T22:24:37.361+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=8f52af4f-6168-4f55-bff1-9c5a2124b15c method=GET path=/api/v1/traffic/roads status=200
+2026-10-20T22:24:37.377+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=ed56d22b-5d0f-452b-ace9-785c2d3833d8 method=GET path=/api/v1/traffic/roads status=200
+2026-10-20T22:24:37.396+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=a38f3023-8533-4e29-b648-eacc5fd21c1a method=GET path=/api/v1/traffic/roads status=200
+2026-10-20T22:24:37.409+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=b8666407-6165-45f2-98df-ed7945190788 method=GET path=/api/v1/traffic/roads status=200
+2026-10-20T22:24:37.422+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=4e32d09a-6992-421d-925b-c3211474bd5a method=GET path=/api/v1/traffic/roads status=200
+2026-10-20T22:24:37.455+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=461049be-115d-4ac7-a55b-9fbd61b825b6 method=GET path=/api/v1/traffic/summary status=200
+2026-10-20T22:24:37.470+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=83b9d866-40c5-4fa3-b219-2a52cea2045a method=GET path=/api/v1/traffic/series status=200
+2026-10-20T22:24:37.481+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=7189cb16-2a1c-4804-8663-4750457f34f4 method=GET path=/api/v1/traffic/regions status=200
+2026-10-20T22:24:37.493+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=9e88b5fb-f274-40d4-9932-037b6d4550e3 method=GET path=/api/v1/traffic/roads status=200
+2026-10-20T22:24:37.518+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=6942be27-043f-4395-9ee6-14d05090a958 method=GET path=/api/v1/traffic/summary status=200
+2026-10-20T22:24:37.529+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=846e1083-802a-451d-afe0-50d0771959d8 method=GET path=/api/v1/traffic/summary status=200
+2026-10-20T22:24:37.539+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=89a22bfd-14d5-4e3c-88a9-57af14012ebe method=GET path=/api/v1/traffic/summary status=400
+2026-10-20T22:24:37.546+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=d4848daf-accd-4321-b9e8-592ceb184b09 method=GET path=/api/v1/traffic/summary status=400
+2026-10-20T22:24:37.552+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=901e79e3-b733-47c3-a250-543f4df2e8bd method=GET path=/api/v1/traffic/summary status=400
+2026-10-20T22:24:37.575+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=c59bd94c-e0a3-4454-a315-24911f3aecb0 method=GET path=/api/v1/traffic/series status=200
+2026-10-20T22:24:37.587+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=c91d3675-e038-407a-8ae0-3d10d52947b4 method=GET path=/api/v1/traffic/series status=200
+2026-10-20T22:24:37.600+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=b6b4cd10-2993-4bd9-9494-f8fe15527aff method=GET path=/api/v1/traffic/summary status=200
+2026-10-20T22:24:37.620+08:00  WARN 55240 --- [urban-commute-backend] [           main] o.s.web.servlet.PageNotFound             : Request method 'POST' is not supported
+2026-10-20T22:24:37.622+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=1976ca3d-e5eb-4e38-9a70-6816ff8f5ae1 method=POST path=/api/v1/traffic/summary status=405
+2026-10-20T22:24:37.624+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=3d59b96a-05bf-4409-ac8b-e7a6a134c9f1 method=GET path=/api/v1/traffic/summary status=406
+2026-10-20T22:24:37.626+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=04164449-8849-41fe-b517-5ec0d561c0a3 method=GET path=/api/v1/traffic/summary status=400
+2026-10-20T22:24:37.629+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=02387c11-8206-4b52-b2a2-b9faef3b1fd7 method=GET path=/api/v1/traffic/series status=400
+2026-10-20T22:24:37.630+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=eb67846e-3d9e-4f53-9cf7-cc4816d538fc method=GET path=/api/v1/traffic/series status=400
+[INFO] Tests run: 22, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.502 s -- in com.urbancommute.TrafficIntegrationTest
+[INFO] Running com.urbancommute.WarehouseIntegrationTest
+2026-10-20T22:24:37.642+08:00  INFO 55240 --- [urban-commute-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.urbancommute.WarehouseIntegrationTest]: WarehouseIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-20T22:24:37.646+08:00  INFO 55240 --- [urban-commute-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.urbancommute.UrbanCommuteApplication for test class com.urbancommute.WarehouseIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-10-20T22:24:37.702+08:00  INFO 55240 --- [urban-commute-backend] [           main] c.urbancommute.WarehouseIntegrationTest  : Starting WarehouseIntegrationTest using Java 21.0.12.1 with PID 55240 (started by WindXingyu in D:\WindXingyu\Code\urban-commute-analysis\backend)
+2026-10-20T22:24:37.702+08:00  INFO 55240 --- [urban-commute-backend] [           main] c.urbancommute.WarehouseIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+2026-10-20T22:24:37.935+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2026-10-20T22:24:37.949+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1db4ea47
+2026-10-20T22:24:37.949+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2026-10-20T22:24:37.962+08:00  INFO 55240 --- [urban-commute-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://127.0.0.1:33067/s3test_51f3ed03e56c45feb024d23b0a443515?connectionTimeZone=UTC (MySQL 8.4)
+2026-10-20T22:24:37.987+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 5 migrations (execution time 00:00.009s)
+2026-10-20T22:24:37.992+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema `s3test_51f3ed03e56c45feb024d23b0a443515`: 5
+2026-10-20T22:24:37.993+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema `s3test_51f3ed03e56c45feb024d23b0a443515` is up to date. No migration necessary.
+2026-10-20T22:24:37.994+08:00  INFO 55240 --- [urban-commute-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://127.0.0.1:33067/s3test_51f3ed03e56c45feb024d23b0a443515?connectionTimeZone=UTC (MySQL 8.4)
+2026-10-20T22:24:38.032+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 5 migrations (execution time 00:00.014s)
+2026-10-20T22:24:38.043+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema `s3test_51f3ed03e56c45feb024d23b0a443515`: 5
+2026-10-20T22:24:38.043+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema `s3test_51f3ed03e56c45feb024d23b0a443515` is up to date. No migration necessary.
+2026-10-20T22:24:38.172+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-20T22:24:38.173+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-20T22:24:38.173+08:00  INFO 55240 --- [urban-commute-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-20T22:24:38.180+08:00  INFO 55240 --- [urban-commute-backend] [           main] c.urbancommute.WarehouseIntegrationTest  : Started WarehouseIntegrationTest in 0.525 seconds (process running for 23.488)
+2026-10-20T22:24:38.208+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=ba762d93-1f09-4663-a216-df5f49ecf8a0 method=GET path=/api/v1/warehouse/metrics status=200
+2026-10-20T22:24:38.216+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=7acfc959-6784-4ad1-9d18-c4f1c5048946 method=GET path=/api/v1/warehouse/metrics status=200
+2026-10-20T22:24:38.235+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=ce67b6eb-d30a-432f-a159-237bc87bd395 method=GET path=/api/v1/warehouse/metrics status=200
+2026-10-20T22:24:38.240+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=1ef37636-0d5c-410b-b987-ca21d6dcf85b method=GET path=/api/v1/warehouse/metrics status=200
+2026-10-20T22:24:38.264+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=a04f3757-953a-40f1-9457-044184ff61f1 method=GET path=/api/v1/warehouse/metrics status=200
+2026-10-20T22:24:38.284+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=5e80ff05-691a-4810-9137-b799a1ccd26e method=GET path=/api/v1/warehouse/metrics status=200
+2026-10-20T22:24:38.304+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=1b52069d-33d1-418f-b3f0-7f6ab9bafb9e method=GET path=/api/v1/warehouse/metrics status=400
+2026-10-20T22:24:38.321+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=7659c14e-8e39-492a-baf3-20c24a2cb5be method=GET path=/api/v1/warehouse/metrics status=400
+2026-10-20T22:24:38.335+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=40724fd5-1528-4d3f-b88e-60f21bb009f6 method=GET path=/api/v1/warehouse/metrics status=400
+2026-10-20T22:24:38.349+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=90d7b0ea-cd8e-4743-b567-2bc09a0ba701 method=GET path=/api/v1/warehouse/metrics status=400
+2026-10-20T22:24:38.360+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=a4c65056-7b7e-4626-bb57-c80e77a22830 method=GET path=/api/v1/warehouse/metrics status=400
+2026-10-20T22:24:38.375+08:00  INFO 55240 --- [urban-commute-backend] [           main] com.urbancommute.web.RequestIdFilter     : requestId=76e4d7a8-f68f-430c-8bf8-83fd2cc84a9e method=GET path=/api/v1/warehouse/metrics status=400
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.746 s -- in com.urbancommute.WarehouseIntegrationTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 104, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ urban-commute-backend ---
+[INFO] 
+[INFO] --- spring-boot:3.5.16:repackage (repackage) @ urban-commute-backend ---
+[INFO] Replacing main artifact D:\WindXingyu\Code\urban-commute-analysis\backend\target\urban-commute-backend-0.1.0-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to D:\WindXingyu\Code\urban-commute-analysis\backend\target\urban-commute-backend-0.1.0-SNAPSHOT.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  29.344 s
+[INFO] Finished at: 2026-10-20T22:24:40+08:00
+[INFO] ------------------------------------------------------------------------

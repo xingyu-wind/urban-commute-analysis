@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "commands": [
+    {
+      "name": "core",
+      "exitCode": 0
+    },
+    {
+      "name": "pytest",
+      "exitCode": 0
+    },
+    {
+      "name": "prepare",
+      "exitCode": 0
+    },
+    {
+      "name": "browser",
+      "exitCode": 0
+    },
+    {
+      "name": "schemas",
+      "exitCode": 0
+    }
+  ]
+}

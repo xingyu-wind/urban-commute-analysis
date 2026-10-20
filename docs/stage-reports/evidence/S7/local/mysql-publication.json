@@ -1,0 +1,127 @@
+{
+  "passed": true,
+  "visible": "84609b5d8988c44b1ac950806816fe04",
+  "jobs": [
+    {
+      "job_id": "ea4e1a75b465aaa3726e4a5525305fd3",
+      "status": "PUBLISHED",
+      "attempts": 1,
+      "model_version": "fccd905b7b9b860336b09e739776aee05dfe3ce21dc31afe4387f5406587b58a",
+      "data_cutoff": "2026-10-19 00:00:00",
+      "generated_at": "2026-10-20 07:29:27.734000",
+      "published_at": "2026-10-20 07:29:31.994000"
+    },
+    {
+      "job_id": "70f6dbeb563b4a16c868d54d78a855b6",
+      "status": "PUBLISHED",
+      "attempts": 2,
+      "model_version": "fccd905b7b9b860336b09e739776aee05dfe3ce21dc31afe4387f5406587b58a",
+      "data_cutoff": "2026-10-19 00:00:00",
+      "generated_at": "2026-10-20 07:29:32.603000",
+      "published_at": "2026-10-20 07:29:33.254000"
+    },
+    {
+      "job_id": "b4679a3ad8e9ce3de700254a3b1f1e35",
+      "status": "PUBLISHED",
+      "attempts": 2,
+      "model_version": "fccd905b7b9b860336b09e739776aee05dfe3ce21dc31afe4387f5406587b58a",
+      "data_cutoff": "2026-10-19 00:00:00",
+      "generated_at": "2026-10-20 07:29:33.259000",
+      "published_at": "2026-10-20 07:29:33.934000"
+    },
+    {
+      "job_id": "1bd9b27f5e890c4732ac30c5eaf5ca2b",
+      "status": "PUBLISHED",
+      "attempts": 2,
+      "model_version": "fccd905b7b9b860336b09e739776aee05dfe3ce21dc31afe4387f5406587b58a",
+      "data_cutoff": "2026-10-19 00:00:00",
+      "generated_at": "2026-10-20 07:29:33.949000",
+      "published_at": "2026-10-20 07:29:34.623000"
+    },
+    {
+      "job_id": "17dccdd9c3139a6e6b3a711dbfa9f29f",
+      "status": "PUBLISHED",
+      "attempts": 2,
+      "model_version": "fccd905b7b9b860336b09e739776aee05dfe3ce21dc31afe4387f5406587b58a",
+      "data_cutoff": "2026-10-19 00:00:00",
+      "generated_at": "2026-10-20 07:29:34.644000",
+      "published_at": "2026-10-20 07:29:36.229000"
+    },
+    {
+      "job_id": "84609b5d8988c44b1ac950806816fe04",
+      "status": "PUBLISHED",
+      "attempts": 1,
+      "model_version": "fccd905b7b9b860336b09e739776aee05dfe3ce21dc31afe4387f5406587b58a",
+      "data_cutoff": "2026-10-19 00:00:00",
+      "generated_at": "2026-10-20 07:29:36.230000",
+      "published_at": "2026-10-20 07:29:36.521000"
+    },
+    {
+      "job_id": "6efd089287ad83e20fb2e8b0c0f9bcaf",
+      "status": "FAILED",
+      "attempts": 1,
+      "model_version": "fccd905b7b9b860336b09e739776aee05dfe3ce21dc31afe4387f5406587b58a",
+      "data_cutoff": "2026-10-19 00:00:00",
+      "generated_at": "2026-10-20 07:29:37.166000",
+      "published_at": null
+    }
+  ],
+  "points": [
+    {
+      "job_id": "84609b5d8988c44b1ac950806816fe04",
+      "step": 1,
+      "forecast_date": "2026-10-19",
+      "value": "5.054962"
+    },
+    {
+      "job_id": "84609b5d8988c44b1ac950806816fe04",
+      "step": 2,
+      "forecast_date": "2026-10-20",
+      "value": "5.126502"
+    },
+    {
+      "job_id": "84609b5d8988c44b1ac950806816fe04",
+      "step": 3,
+      "forecast_date": "2026-10-21",
+      "value": "5.143543"
+    },
+    {
+      "job_id": "84609b5d8988c44b1ac950806816fe04",
+      "step": 4,
+      "forecast_date": "2026-10-22",
+      "value": "5.166635"
+    },
+    {
+      "job_id": "84609b5d8988c44b1ac950806816fe04",
+      "step": 5,
+      "forecast_date": "2026-10-23",
+      "value": "5.258167"
+    },
+    {
+      "job_id": "84609b5d8988c44b1ac950806816fe04",
+      "step": 6,
+      "forecast_date": "2026-10-24",
+      "value": "3.355459"
+    },
+    {
+      "job_id": "84609b5d8988c44b1ac950806816fe04",
+      "step": 7,
+      "forecast_date": "2026-10-25",
+      "value": "3.313862"
+    }
+  ],
+  "negativeCases": [
+    "insert-rollback-retry",
+    "commit-rollback-retry",
+    "switch-rollback-retry",
+    "hard-crash-rollback-safe-recovery",
+    "stale-generation",
+    "same-generation-cannot-overwrite",
+    "noncontinuous-prediction",
+    "artifact-checksum",
+    "duplicate-batch-input",
+    "changed-committed-input",
+    "failed-batch-input",
+    "changed-dataset-version"
+  ]
+}

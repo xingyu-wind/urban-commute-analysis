@@ -13,3 +13,5 @@ S4 当前入口：[阶段报告](stage-reports/S4.md)、[运行与演示](guides
 S5 当前入口：[阶段报告](stage-reports/S5.md)、[Python ETL与恢复操作](../data-pipeline/README.md)、[S6输入字典](../data-pipeline/DATA_DICTIONARY.md)、[知识关联与项目实现说明](learning/S5-知识关联与项目实现说明.md)。S4/S5 已正式 ACCEPTED，阶段报告保留当时提交事实。
 
 S6 当前入口：[阶段报告](stage-reports/S6.md)、[真实数仓与发布运行说明](../bigdata/README.md)、[知识关联与项目实现说明](learning/S6-知识关联与项目实现说明.md)。单人执行，采用 SOLO_OWNER_REVIEW，提交独立验收，不自行 ACCEPTED 或合并。
+
+S7 当前入口：[阶段报告](stage-reports/S7.md)、[离线训练与发布](../ml/README.md)、[知识关联与项目实现说明](learning/S7-知识关联与项目实现说明.md)。采用 SOLO_OWNER_REVIEW，状态 SUBMITTED_FOR_INDEPENDENT_REVIEW；合成演示不代表真实交通预测准确率。
