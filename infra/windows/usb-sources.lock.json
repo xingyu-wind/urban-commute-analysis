@@ -1,0 +1,796 @@
+{
+  "files": [
+    {
+      "filename": "mysql-8.4.11.tar.gz",
+      "url": "https://cdn.mysql.com/archives/mysql-8.4/mysql-8.4.11.tar.gz",
+      "kind": "source",
+      "license": "GPL-2.0; matching MySQL 8.4.11 source",
+      "bytes": 479170675,
+      "sha256": "eb3051164d625dd346a8203f76e0d5d5d9aec51dbe9d51788e39ec6b3f1394c2",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "Python-3.11.9.tar.xz",
+      "url": "https://www.python.org/ftp/python/3.11.9/Python-3.11.9.tar.xz",
+      "kind": "source",
+      "license": "PSF-2.0",
+      "bytes": 20175816,
+      "sha256": "9b1e896523fc510691126c864406d9360a3d1e986acbda59cda57b5abda45b87",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-boot-3.5.16-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot/3.5.16/spring-boot-3.5.16-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 1251938,
+      "sha256": "252e2d42bb55f0dba3694bf22d777ced16a73c501b5eac7e762df6d8fc5c0196",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-boot-3.5.16.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot/3.5.16/spring-boot-3.5.16.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 2198,
+      "sha256": "c9a0e75f1c06467fb6932ba2f3e8724d0d6db57aaae8305d7d86274795d74e53",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-boot-autoconfigure-3.5.16-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-autoconfigure/3.5.16/spring-boot-autoconfigure-3.5.16-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 1191938,
+      "sha256": "577c8541d2c4dc32285a26bc618afbea646f4f0c8563e1c2bb308346c37f57c7",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-boot-autoconfigure-3.5.16.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-autoconfigure/3.5.16/spring-boot-autoconfigure-3.5.16.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 2062,
+      "sha256": "dfba627e9b59000f5b60eddc9d3d289adca4fec203c5f57427b9d8deb2abbd84",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "logback-classic-1.5.34-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/ch/qos/logback/logback-classic/1.5.34/logback-classic-1.5.34-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 251129,
+      "sha256": "c2e39cb4d6d9b8c2343c6da2469e21e1d6aef2dde16c2227762c084d549ad0a0",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "logback-classic-1.5.34.pom",
+      "url": "https://repo.maven.apache.org/maven2/ch/qos/logback/logback-classic/1.5.34/logback-classic-1.5.34.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 15877,
+      "sha256": "66303dea733ea9f2e70d1b7687f36f954ac03bac6ee047396f760fa4e059f611",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "logback-core-1.5.34-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/ch/qos/logback/logback-core/1.5.34/logback-core-1.5.34-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 533231,
+      "sha256": "6a9f217ef206caf2880810c505e057fd2bb90a6024013906815e9513c6e488c5",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "logback-core-1.5.34.pom",
+      "url": "https://repo.maven.apache.org/maven2/ch/qos/logback/logback-core/1.5.34/logback-core-1.5.34.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 9424,
+      "sha256": "5230a2f36dcfe19d310351c7c372edf57cdfde78527fa39ac45f6e7aa8602f95",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "log4j-to-slf4j-2.24.3-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-to-slf4j/2.24.3/log4j-to-slf4j-2.24.3-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 18313,
+      "sha256": "fd107f5fe863d1f6535c5a465f2ae13109620b8049e8faf17368e0f795281c67",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "log4j-to-slf4j-2.24.3.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-to-slf4j/2.24.3/log4j-to-slf4j-2.24.3.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 5033,
+      "sha256": "635e52e3474e7f4dc30d2ccbcb68a163888395e3c252961275d04e3db5f6e230",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "log4j-api-2.24.3-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.24.3/log4j-api-2.24.3-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 291554,
+      "sha256": "a7e2290fd22242d85d8423efb8eff5fd7e14f80fed94bc959415d61cb8aa0d11",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "log4j-api-2.24.3.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.24.3/log4j-api-2.24.3.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 4407,
+      "sha256": "bc05de33533a1259adbacbfcc826cd66376a2d9c4ee53fb836009f44a45b8239",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "jul-to-slf4j-2.0.18-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/slf4j/jul-to-slf4j/2.0.18/jul-to-slf4j-2.0.18-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 7069,
+      "sha256": "b6dd2138f3e83d876bf07206d09f2b48ca655bc36a8e80b0c2a32ad19ab8f1d5",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "jul-to-slf4j-2.0.18.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/slf4j/jul-to-slf4j/2.0.18/jul-to-slf4j-2.0.18.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 1097,
+      "sha256": "eae8e0ffbd8b31fa8f8a610d62d387b4e10295ba74d0e14d66404560b74d8295",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "jakarta.annotation-api-2.1.1-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 37373,
+      "sha256": "4b8abc5d33e33ad0cc53588532dafece90135cc83629429534af1c0900747094",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "jakarta.annotation-api-2.1.1.pom",
+      "url": "https://repo.maven.apache.org/maven2/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 15802,
+      "sha256": "af650eca1de1b98741006acd82507e4408cffedd2fee33a0ea463d61508db7ec",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "snakeyaml-2.4-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/yaml/snakeyaml/2.4/snakeyaml-2.4-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 209871,
+      "sha256": "0a3c537e86cbb13a9a31ab138c13cee0b2c2cedc17dba38e0dc1f24a2053d8af",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "snakeyaml-2.4.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/yaml/snakeyaml/2.4/snakeyaml-2.4.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 22161,
+      "sha256": "e154a3231cd6cde68aabf274fd18964d49a9c1a5f5e9ed3bf471e9ae7bdf08e6",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-aop-6.2.19-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/spring-aop/6.2.19/spring-aop-6.2.19-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 373358,
+      "sha256": "271da649df272b707659437264a4597956ec1014966c25ee5bec29c4b27d5caa",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-aop-6.2.19.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/spring-aop/6.2.19/spring-aop-6.2.19.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 2209,
+      "sha256": "c27a6385a8ba4f01f226bee38d6c97ac6b697e06e59bd6f38a3538218848ac98",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-beans-6.2.19-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/spring-beans/6.2.19/spring-beans-6.2.19-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 741969,
+      "sha256": "2de8e35cd48e42c11e58816b53fa709bbe72d58f3bddf1c791fca652d48cc2be",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-beans-6.2.19.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/spring-beans/6.2.19/spring-beans-6.2.19.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 2030,
+      "sha256": "bd2c451646f1e2cb0df22485aff498f5cde979aedb117f9bb54f01100e9bdb43",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-security-config-6.5.11-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-config/6.5.11/spring-security-config-6.5.11-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 1449549,
+      "sha256": "488af8cdf5f76ad0802466ef4dc33232d33fe3dab096a31d0fa83eb2fd336dde",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-security-config-6.5.11.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-config/6.5.11/spring-security-config-6.5.11.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 2841,
+      "sha256": "da9f710053c8575eddfc036410812eaafdde863a9760f19a98d3b84b56be6c7b",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-security-core-6.5.11-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-core/6.5.11/spring-security-core-6.5.11-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 589596,
+      "sha256": "6bcb7f675b2ad35211e7708f114537fb3c0f55e240e7541f8c2314855ce75f31",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-security-core-6.5.11.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-core/6.5.11/spring-security-core-6.5.11.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 3219,
+      "sha256": "0574e823b5f84ca6c111dd6e0abd9941a3da2193590256f37b39a8095cd52a7a",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-security-crypto-6.5.11-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-crypto/6.5.11/spring-security-crypto-6.5.11-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 90852,
+      "sha256": "1c860e5fac89dce8129b0c67e0eb37d17087347bb485c6adc44aee590bc1989a",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-security-crypto-6.5.11.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-crypto/6.5.11/spring-security-crypto-6.5.11.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 2113,
+      "sha256": "3769add868d55ecb936138ea5a398b4c036880d17acb80456d4d97ca90d04a28",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-context-6.2.19-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/spring-context/6.2.19/spring-context-6.2.19-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 1109479,
+      "sha256": "d0af048842b1ded26b584808441e910a412b6f3b52bc4d1f1d242bc0ccd3a1f0",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-context-6.2.19.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/spring-context/6.2.19/spring-context-6.2.19.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 2784,
+      "sha256": "9ffe29ed9203202a564114a6b4d86d7b88914ab4c97ed2c162844892e921503b",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-security-web-6.5.11-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-web/6.5.11/spring-security-web-6.5.11-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 872922,
+      "sha256": "0b87c16b44855968600d8460500dd201bcae178d41a895192c30403ff8571c35",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-security-web-6.5.11.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-web/6.5.11/spring-security-web-6.5.11.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 3212,
+      "sha256": "d0ff3f67692d7e0009efb3eb787bc5000b6dc269e773e3585a3554c1ad524d37",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-expression-6.2.19-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/spring-expression/6.2.19/spring-expression-6.2.19-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 239798,
+      "sha256": "f8cf9ed05a7edc2b3642a60b737a49e96362312b93531b8151ff57afc6466b19",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-expression-6.2.19.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/spring-expression/6.2.19/spring-expression-6.2.19.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 2077,
+      "sha256": "f3f99dfcd0b1229a15faaeda0fba11e3a25f85d01aa11737271a2bce854ef42a",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "jackson-datatype-jdk8-2.21.4-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.21.4/jackson-datatype-jdk8-2.21.4-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 24003,
+      "sha256": "9bf668a180d7b749e3d6f8b03357c390b116716f7051e26a986a08d8ee526b15",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "jackson-datatype-jdk8-2.21.4.pom",
+      "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.21.4/jackson-datatype-jdk8-2.21.4.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 2765,
+      "sha256": "f3c4367e2e17b97d49260edb730b00cc5567b066f7218c9d7545f450530d0ab6",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "jackson-datatype-jsr310-2.21.4-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.21.4/jackson-datatype-jsr310-2.21.4-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 93386,
+      "sha256": "884a8812af289bb56f38f09a4b3b7b73b4a16dbc184ae735fbe6c4aa1089161f",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "jackson-datatype-jsr310-2.21.4.pom",
+      "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.21.4/jackson-datatype-jsr310-2.21.4.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 5350,
+      "sha256": "2ac48defe3501a077a1d9dc5515ddc39a6791ca0f5bb43983ba814524881c28c",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "jackson-module-parameter-names-2.21.4-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-parameter-names/2.21.4/jackson-module-parameter-names-2.21.4-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 7888,
+      "sha256": "e4dd3ca21b04c3e7abe0732a1ed159703a404f1308a65f9ba8fe3b9394857d34",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "jackson-module-parameter-names-2.21.4.pom",
+      "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-parameter-names/2.21.4/jackson-module-parameter-names-2.21.4.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 4188,
+      "sha256": "ce815aaa51cb1b1387764b13c68d35faa46b64bf53fce321fc91fd4bc602c0c8",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "tomcat-embed-core-10.1.55-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-core/10.1.55/tomcat-embed-core-10.1.55-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 3781349,
+      "sha256": "7820710c0ecc68e81c07ab8922e14ebba9abc56ee797da233bb244bc1572dcc3",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "tomcat-embed-core-10.1.55.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-core/10.1.55/tomcat-embed-core-10.1.55.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 1737,
+      "sha256": "231081c2f8f02478cb1eacae9f5db0e78948cd7fff9444fcfa0f5a5307e3bd29",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "tomcat-embed-websocket-10.1.55-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.55/tomcat-embed-websocket-10.1.55-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 249801,
+      "sha256": "ce1aeded003fb9f57e69f242ae0f83a8c022028581a183afe068fe99e1a47072",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "tomcat-embed-websocket-10.1.55.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.55/tomcat-embed-websocket-10.1.55.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 1743,
+      "sha256": "b8d23e4fee98927b4c18c441f4868adb1884a555e56c038f7920a6f4665e73bc",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-web-6.2.19-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/spring-web/6.2.19/spring-web-6.2.19-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 1422473,
+      "sha256": "40b02dbbcbfd7bdbe03f934dc8f173f37e3cc578f2c79974a59342ebf4818fad",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-web-6.2.19.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/spring-web/6.2.19/spring-web-6.2.19.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 2399,
+      "sha256": "db4b8eaa596332f537a2b5d1cc5a31f50b2b7b7b448490acc7893ea0f9525966",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "micrometer-observation-1.15.12-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.15.12/micrometer-observation-1.15.12-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 54591,
+      "sha256": "36514345052174ba739b70846bb85ba441624844434873ecc5560bb81efe2fa4",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "micrometer-observation-1.15.12.pom",
+      "url": "https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.15.12/micrometer-observation-1.15.12.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 3844,
+      "sha256": "7bc391b32ca147fd5df32f425f4ea91f153ee04afe808c4676c039f4b1340f48",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "micrometer-commons-1.15.12-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.15.12/micrometer-commons-1.15.12-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 47167,
+      "sha256": "c8ad6212413976ef327dd29e67a65f99c4ad623a0a8eec78d1ba0373c58452b7",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "micrometer-commons-1.15.12.pom",
+      "url": "https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.15.12/micrometer-commons-1.15.12.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 3412,
+      "sha256": "cd1c64187bdf9b851d1900de45918978416df79abab66859be51cd6f7c89e651",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-webmvc-6.2.19-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/spring-webmvc/6.2.19/spring-webmvc-6.2.19-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 856241,
+      "sha256": "20cea1d2aaa322b7429ea7b85d63bcac7c8ef2520c582dc0f9296d953f08a274",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-webmvc-6.2.19.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/spring-webmvc/6.2.19/spring-webmvc-6.2.19.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 2963,
+      "sha256": "7ef11f14cf0d365c38b1b866359e506c7c93f993aa512ed6db656129bc992822",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "tomcat-embed-el-10.1.55-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-el/10.1.55/tomcat-embed-el-10.1.55-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 230742,
+      "sha256": "a0cf0765f1a65f925150a6e530dabdd5dbab76173bcfb54c6b1eb8f296fa4c1a",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "tomcat-embed-el-10.1.55.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-el/10.1.55/tomcat-embed-el-10.1.55.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 1506,
+      "sha256": "b1da977b652d7b4f5138e820426c2e2cdf0e69c8307e3a3de0b47a7b2c52c473",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "hibernate-validator-8.0.3.Final-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/hibernate/validator/hibernate-validator/8.0.3.Final/hibernate-validator-8.0.3.Final-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 950225,
+      "sha256": "5505b435dfc8887ebe2d272831bd77a7e984061e477182932fef897cdc3e197d",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "hibernate-validator-8.0.3.Final.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/hibernate/validator/hibernate-validator/8.0.3.Final/hibernate-validator-8.0.3.Final.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 5321,
+      "sha256": "b8f6fd01f3c861d63a55a9cb726cb1776917aa37c58fedf7aca2ed692f4f739d",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "jakarta.validation-api-3.0.2-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/jakarta/validation/jakarta.validation-api/3.0.2/jakarta.validation-api-3.0.2-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 97946,
+      "sha256": "77df917738f0f91718dfc5456d1f2b5aaa6326f3bf3bdf5606cf64f6c0512689",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "jakarta.validation-api-3.0.2.pom",
+      "url": "https://repo.maven.apache.org/maven2/jakarta/validation/jakarta.validation-api/3.0.2/jakarta.validation-api-3.0.2.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 10987,
+      "sha256": "0a7b9c6327968afe0d82f7cf4facbda7e157968c5808d69bcb8019863b298dc4",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "jboss-logging-3.6.3.Final-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.6.3.Final/jboss-logging-3.6.3.Final-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 47059,
+      "sha256": "e8a2b9aaac82b0082aa040e6bdf6cd7f225cdbc75d2bd1a79fa7b17007ec1b15",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "jboss-logging-3.6.3.Final.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.6.3.Final/jboss-logging-3.6.3.Final.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 22654,
+      "sha256": "e673490683b352b79e85c22df13b396e4b39e5f25cfef9c1b9e835ed123c0ca4",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "classmate-1.7.3-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.3/classmate-1.7.3-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 53604,
+      "sha256": "b0690a771dc54865c3d0ad9ab6abb319633b6b88849900a28f719e792c15fc68",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "classmate-1.7.3.pom",
+      "url": "https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.3/classmate-1.7.3.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 6504,
+      "sha256": "ba4b3c0bbc05e9069fca3469750d0e222a56c487be715af2edb43218faefdb70",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "HikariCP-6.3.3-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/com/zaxxer/HikariCP/6.3.3/HikariCP-6.3.3-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 102075,
+      "sha256": "65a247c9ddb809885696ad2dbb1e77e923debc82c94972ca4c48f40a83c0e0a5",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "HikariCP-6.3.3.pom",
+      "url": "https://repo.maven.apache.org/maven2/com/zaxxer/HikariCP/6.3.3/HikariCP-6.3.3.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 28592,
+      "sha256": "244efe009ef5300bad308de418cb29083de278c10bae816c59daaa281981fce5",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "slf4j-api-2.0.18-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.18/slf4j-api-2.0.18-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 77045,
+      "sha256": "192e007cf7f2be41d40574e44521fc0b7ce55e01f13dbe0fa8707c8ae3329075",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "slf4j-api-2.0.18.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.18/slf4j-api-2.0.18.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 2826,
+      "sha256": "6c2c7f2c02774cc2b7b619fbd2df7873cdad29718926e44754b87f70d1eb43cb",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-jdbc-6.2.19-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/spring-jdbc/6.2.19/spring-jdbc-6.2.19-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 460212,
+      "sha256": "41fbc1371d47bda9d7adae686d51e1b655c35b54aab3ce0160c27925dcf1e3a9",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-jdbc-6.2.19.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/spring-jdbc/6.2.19/spring-jdbc-6.2.19.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 2394,
+      "sha256": "bb7fb057dbeb2e44bedc78c4abb27594f579c3f430c1c31ea87261dc3f66d8d9",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-tx-6.2.19-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/spring-tx/6.2.19/spring-tx-6.2.19-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 298715,
+      "sha256": "3538e296a292841d096118aead0c610d51efbe6170099308807d1061735143c0",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-tx-6.2.19.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/spring-tx/6.2.19/spring-tx-6.2.19.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 2224,
+      "sha256": "17fff13681d40905632d6d0187542ed5744daab09c64f5493002351848294f67",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "mysql-connector-j-9.7.0-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/com/mysql/mysql-connector-j/9.7.0/mysql-connector-j-9.7.0-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 1784133,
+      "sha256": "163697c229756136569fab66ac5fe05b85134b05b674bd2bc507656015a987f7",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "mysql-connector-j-9.7.0.pom",
+      "url": "https://repo.maven.apache.org/maven2/com/mysql/mysql-connector-j/9.7.0/mysql-connector-j-9.7.0.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 3169,
+      "sha256": "aa6a26e1327f24a4d012a02e7849bf1832fb8bbd041bd0b8031156fd328fe4fe",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "flyway-core-11.20.3-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/flywaydb/flyway-core/11.20.3/flyway-core-11.20.3-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 595093,
+      "sha256": "c2bdf7f7a05328aa427065a854bb0326fcac763d45a21fafd6a36a39c967f11f",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "flyway-core-11.20.3.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/flywaydb/flyway-core/11.20.3/flyway-core-11.20.3.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 4774,
+      "sha256": "354ede3552d2ee716607f373f095a88d9dd16bd505420032019e98a08fb25e15",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "jackson-databind-2.21.4-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.21.4/jackson-databind-2.21.4-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 1254938,
+      "sha256": "23188e78e912c9866367bf038fb7f729e79f1c2724174ca66e0a00915de70e61",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "jackson-databind-2.21.4.pom",
+      "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.21.4/jackson-databind-2.21.4.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 23024,
+      "sha256": "58c9c87c3d46ec8fb57d855fc675185e01147f3a9a415a92a2e464a5c02b9cec",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "jackson-annotations-2.21-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.21/jackson-annotations-2.21-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 89547,
+      "sha256": "71fe6323d91b16d5d1007fd1e1533fa06bb369abde74f68a42a68c0f8f061a8b",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "jackson-annotations-2.21.pom",
+      "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.21/jackson-annotations-2.21.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 7390,
+      "sha256": "71cac5392151e2a528cc9a09179f0a334179f05c52f8e596cf58ddf12bb27f2b",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "jackson-core-2.21.4-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.21.4/jackson-core-2.21.4-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 503211,
+      "sha256": "90ccada55626ce4f00a81bde235af0a942ec2bc4c701fcc86a93af1be9b3e08d",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "jackson-core-2.21.4.pom",
+      "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.21.4/jackson-core-2.21.4.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 9704,
+      "sha256": "e74ac8ef4ae9d5e504ab7fbda5f61a39645b7a3e662246d5d090a9c0b22e7fdf",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "flyway-mysql-11.20.3-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/flywaydb/flyway-mysql/11.20.3/flyway-mysql-11.20.3-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 23287,
+      "sha256": "4c92856b04570c7a27ac6f011fba4757a303296e938dc8a92546a3a4dc8417eb",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "flyway-mysql-11.20.3.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/flywaydb/flyway-mysql/11.20.3/flyway-mysql-11.20.3.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 1910,
+      "sha256": "319527fc2f456c7b45a649be03edca9b4c7fd164a483b4798a6ea03cc6bd8e0d",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-core-6.2.19-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/spring-core/6.2.19/spring-core-6.2.19-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 1478340,
+      "sha256": "92c917c8a7aabb6cc3295fbb07cbb8dbb754bccceadd10838b24c7f99ba14835",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-core-6.2.19.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/spring-core/6.2.19/spring-core-6.2.19.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 2026,
+      "sha256": "e7dffe4f61be06ed3b4e811fc587a2e47bc59c4ba55563a2916d94de1dabcbc4",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-jcl-6.2.19-sources.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/spring-jcl/6.2.19/spring-jcl-6.2.19-sources.jar",
+      "kind": "source",
+      "license": "Upstream source license; see accompanying binary notices",
+      "bytes": 12883,
+      "sha256": "7a2ca51a16622ac79a7f491f516e837ec7502cad43f0d9dbb1710c1ff9ef2297",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    },
+    {
+      "filename": "spring-jcl-6.2.19.pom",
+      "url": "https://repo.maven.apache.org/maven2/org/springframework/spring-jcl/6.2.19/spring-jcl-6.2.19.pom",
+      "kind": "metadata",
+      "license": "Upstream Maven publication metadata",
+      "bytes": 1847,
+      "sha256": "cc00211d807821dae35df9dd361a08f9988db588eef76f07369e524e2032636e",
+      "provenance": "Direct official HTTPS; SHA256 pinned on acquisition; not an independent signature assertion"
+    }
+  ]
+}

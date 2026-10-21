@@ -1,0 +1,55 @@
+USB offline acquisition, notices and source delivery
+
+Scope: owner-controlled, noncommercial academic demonstration/transfer. No public
+binary upload, commercial license grant, project relicensing, or permission for
+unrestricted third-party redistribution is asserted. The project remains private.
+Use by another owner/organization and any onward distribution require review of
+the actual applicable upstream terms and the project's own licensing rights.
+
+All 58 unmodified upstream runtime/dependency archives are included under
+vendor/components, fixed by config/components.lock.json (official URLs, versions,
+sizes, SHA256). Original licenses remain inside every archive; extracted notices
+are indexed in licenses/NOTICE-INDEX.json. They remain in extracted runtimes.
+The offline installer only verifies and unpacks these files; it never downloads.
+
+- Azul Zulu JRE21.0.12.1: GPLv2 with Classpath Exception, included legal notices.
+  The original vendor readme.txt contains Azul's three-year physical-source offer,
+  email azul_openjdk@azul.com and exact build identity. It is preserved verbatim
+  both in the unmodified binary ZIP and extracted notices. Noncommercial onward
+  GPLv2 section 3(c) source-offer information is passed through; this is not our
+  own promise to supply unavailable vendor source, nor a commercial grant.
+  Official terms: https://www.azul.com/products/core/openjdk-terms-of-use/
+- MySQL Community 8.4.11: GPLv2 and included third-party notices; full matching
+  official mysql-8.4.11.tar.gz source (including build scripts) is provided under
+  vendor/sources. Binary docs/INFO_SRC identifies the upstream release commit.
+- Connector/J9.7.0: GPLv2 with Universal FOSS Exception; matching sources JAR and
+  upstream POM accompany the binary. Exception applicability is not inferred for
+  an arbitrary proprietary third-party redistribution.
+- CPython3.11.9: PSF-2.0 and bundled notices; official source tarball provided.
+- All 43 Java JARs have matching official sources JARs and POMs supplied. These
+  preserve source/license access for Logback (EPL/LGPL choices), Jakarta and other
+  upstream components. No dependency license is replaced by the project's notice.
+- Python wheels: numpy/scipy/scikit-learn, joblib/threadpoolctl (BSD families),
+  XGBoost (Apache-2.0), tzdata (Apache and database notices), packaging (Apache/BSD),
+  PyMySQL (MIT), cryptography (Apache/BSD), cffi/pycparser (MIT/BSD). Their original
+  .dist-info/licenses and native-library notices/exceptions are retained in full.
+  Sources/provenance and additional upstream obligations remain those named in
+  each original wheel; no commercial redistribution certification is claimed.
+
+Supplementary official source acquisitions have a separate
+config/usb-sources.lock.json, with direct HTTPS origin, acquired byte size/SHA256.
+These are source documents, not runtime requirements. Installation does not
+execute or build them and does not need Internet, Git, Maven, Node or an IDE.
+
+Microsoft VC++ prerequisite: not bundled in this candidate ZIP. Microsoft permits
+redistribution by licensed Visual Studio users under their applicable terms;
+that entitlement is not assumed. A separately acquired, Microsoft-signed offline
+installer and acquisition receipt are provided to the owner outside this ZIP for
+personal controlled installation. Carry it separately; do not publish it or treat
+this notice as granting redistribution rights. Interactive installation may need
+administrator permissions and acceptance of Microsoft's own license.
+https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist
+https://aka.ms/vc14/vc_redist.x64.exe
+
+No modified vendor binaries, installed databases, DPAPI, personal credentials,
+private dumps, external raw traffic data or pretrained weights are included.

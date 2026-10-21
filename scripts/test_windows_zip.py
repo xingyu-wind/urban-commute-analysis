@@ -24,6 +24,7 @@ def main():
     parser.add_argument('--output',required=True,type=Path)
     parser.add_argument('--browser',action='store_true',help='Reuse existing S9 Chromium driver against the installed package URL')
     parser.add_argument('--demo-browser',action='store_true',help='Also perform real ADMIN upload/review/import and READER browser actions')
+    parser.add_argument('--offline',action='store_true',help='Validate the new USB offline path and reuse prior abrupt-supervisor regression evidence')
     args=parser.parse_args();root=args.root.resolve();output=args.output.resolve();output.mkdir(parents=True,exist_ok=False)
     env=dict(os.environ,URBAN_COMMUTE_NO_PAUSE='1',DB_URL='invalid-inherited-project-database',DB_USER='invalid',DB_PASSWORD='invalid',
              JDK_JAVA_OPTIONS='--invalid-inherited-option',PYTHONPATH='invalid-inherited-python-path')
@@ -61,6 +62,11 @@ def main():
     # Load the installed copy, not the source module, solely to decrypt local credentials in memory.
     spec=importlib.util.spec_from_file_location('installed_launcher',root/'launcher/portable.py')
     module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+    if args.offline:
+        assert module.OFFLINE and not (root/'runtime/downloads').exists()
+        env.update(HTTP_PROXY='http://127.0.0.1:9',HTTPS_PROXY='http://127.0.0.1:9')
+        results.append(dict(check='offline-package-mode',passed=True,vendorFilesIncluded=True,
+            runtimeDownloadCachePresent=False,physicalNetworkDisconnected=False))
     try:
         batch('CHECK-ENV')
         batch('FIRST-SETUP','-AcceptLicenses') # Also verifies repeat setup is non-destructive.
@@ -133,23 +139,27 @@ def main():
         kernel=ctypes.windll.kernel32;kernel.OpenProcess.restype=ctypes.c_void_p
         kernel.TerminateProcess.argtypes=[ctypes.c_void_p,ctypes.c_uint]
         kernel.CloseHandle.argtypes=[ctypes.c_void_p]
-        handle=kernel.OpenProcess(0x0001|0x00100000,False,live['pid']);assert handle
-        try:assert kernel.TerminateProcess(handle,91)
-        finally:kernel.CloseHandle(handle)
-        for _ in range(100):
-            try:
-                module.ports_available(config);break
-            except RuntimeError:time.sleep(.2)
-        else:raise AssertionError('Job Object did not close owned listening services')
-        results.append(dict(check='abrupt-supervisor-exit',passed=True,allOwnedPortsReleased=True))
-        batch('START') # Normal MySQL crash recovery, same initialized directory.
-        request(anonymous,'GET','/api/v1/predictions?cityId=s7-city',200)
+        if not args.offline:
+            handle=kernel.OpenProcess(0x0001|0x00100000,False,live['pid']);assert handle
+            try:assert kernel.TerminateProcess(handle,91)
+            finally:kernel.CloseHandle(handle)
+            for _ in range(100):
+                try:
+                    module.ports_available(config);break
+                except RuntimeError:time.sleep(.2)
+            else:raise AssertionError('Job Object did not close owned listening services')
+            results.append(dict(check='abrupt-supervisor-exit',passed=True,allOwnedPortsReleased=True))
+            batch('START') # Normal MySQL crash recovery, same initialized directory.
+            request(anonymous,'GET','/api/v1/predictions?cityId=s7-city',200)
         batch('STOP');batch('START-WAREHOUSE')
         warehouse=request(client(),'GET','/api/v1/warehouse/metrics?cityId=s5-city&datasetId=s5-synthetic-v1&grain=WINDOW',200)
         assert warehouse['data']['release'] and warehouse['data']['items']
         browser('warehouse','s5-city','warehouse',warehouse['data']['release']['id'])
         results.append(dict(check='prepublished-hive-query',passed=True,items=len(warehouse['data']['items']),localHiveExecution=False))
         batch('STOP')
+        if args.offline:
+            assert not (root/'runtime/downloads').exists()
+            results.append(dict(check='offline-no-download-cache-created',passed=True))
         (output/'summary.json').write_text(json.dumps(dict(passed=True,root=str(root),sameWindowsHost=True,
             cleanMachineTest=False,developerExecutablesRemovedFromPath=True,checks=results),ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
         print('WINDOWS_PACKAGE_ACCEPTANCE=PASS')

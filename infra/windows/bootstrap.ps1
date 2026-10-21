@@ -3,6 +3,7 @@ param([ValidateSet('setup','start','stop','check','credentials')][string]$Action
 $ErrorActionPreference='Stop'
 $ProgressPreference='SilentlyContinue'
 $root = Split-Path -Parent $PSScriptRoot
+$offline=Test-Path -LiteralPath (Join-Path $root 'config/offline.json')
 function File-Sha256([string]$Path) {
     $stream=[IO.File]::OpenRead($Path)
     $hasher=[Security.Cryptography.SHA256]::Create()
@@ -18,8 +19,16 @@ try {
     }
     if ($env:PROCESSOR_ARCHITECTURE -eq 'ARM64' -or $env:PROCESSOR_ARCHITEW6432 -eq 'ARM64') { throw 'Windows ARM is not supported.' }
     if ($root.Length -gt 100) { throw 'Extract to a shorter writable path (under 100 characters). Chinese characters and spaces are supported.' }
+    if ($offline -and $Action -in @('check','setup','start')) {
+        foreach ($dll in @('vcruntime140.dll','vcruntime140_1.dll','msvcp140.dll')) {
+            if (-not [IO.File]::Exists((Join-Path $env:SystemRoot ('System32/'+$dll)))) {
+                throw ('Microsoft VC++ x64 runtime required: missing '+$dll+'. Before the event obtain VC_redist.x64.exe from https://aka.ms/vc14/vc_redist.x64.exe and carry it separately. Run the official installer interactively (administrator may be required), then retry. No install or elevation was attempted.')
+            }
+        }
+    }
     if ($Action -in @('check','setup')) {
         $drive=[IO.DriveInfo]::new([IO.Path]::GetPathRoot($root))
+        if ($offline -and ($drive.DriveType -ne 'Fixed' -or $drive.DriveFormat -ne 'NTFS')) { throw 'Use RUN-FROM-USB.bat to deploy to a writable local fixed NTFS drive first.' }
         if ($drive.AvailableFreeSpace -lt 3GB) { throw 'At least 3 GiB free space is required.' }
         $probe=Join-Path $root ('.write-probe-'+[Guid]::NewGuid().ToString('N'))
         try { [IO.File]::WriteAllText($probe,'probe') }
@@ -28,6 +37,7 @@ try {
     }
     foreach ($line in [IO.File]::ReadAllLines((Join-Path $root 'MANIFEST.sha256'))) {
         $parts=$line -split '  ',2
+        if (-not [IO.File]::Exists((Join-Path $root $parts[1]))) { throw ('Package file missing: '+$parts[1]+'. Restore the complete ZIP; no download attempted.') }
         $actual=File-Sha256 (Join-Path $root $parts[1])
         if ($actual -ne $parts[0]) { throw "Package integrity failed: $($parts[1]). Extract a fresh ZIP." }
     }
@@ -35,7 +45,8 @@ try {
     if ($Action -eq 'setup') {
         if (-not $AcceptLicenses) {
             Write-Host 'Read README-FIRST.txt and licenses/DEPENDENCIES.txt before continuing.'
-            Write-Host 'Setup downloads official portable Java, CPython, MySQL and locked dependencies into this folder.'
+            if ($offline) { Write-Host 'OFFLINE setup uses only included verified components. No vendor download is permitted.' }
+            else { Write-Host 'Setup downloads official portable Java, CPython, MySQL and locked dependencies into this folder.' }
             Write-Host 'No Windows service, PATH, firewall, or global execution policy is changed.'
             if ((Read-Host 'Type ACCEPT to continue') -cne 'ACCEPT') { throw 'Setup cancelled; no vendor download or database initialization performed.' }
         }
@@ -44,8 +55,12 @@ try {
         $lock=Get-Content -LiteralPath (Join-Path $root 'config/components.lock.json') -Raw -Encoding UTF8 | ConvertFrom-Json
         $component=$lock.components | Where-Object kind -eq 'python'
         $cache=Join-Path $root 'runtime/downloads'
-        [IO.Directory]::CreateDirectory($cache) | Out-Null
+        if ($offline) { $cache=Join-Path $root 'vendor/components' }
+        else { [IO.Directory]::CreateDirectory($cache) | Out-Null }
         $archive=Join-Path $cache $component.filename
+        if ($offline -and (-not [IO.File]::Exists($archive) -or (File-Sha256 $archive) -ne $component.sha256 -or (Get-Item -LiteralPath $archive).Length -ne $component.bytes)) {
+            throw ('Offline Python archive missing or corrupt: '+$component.filename+'. Restore the complete USB ZIP; no download attempted.')
+        }
         if ((Test-Path -LiteralPath $archive) -and ((File-Sha256 $archive) -ne $component.sha256 -or (Get-Item -LiteralPath $archive).Length -ne $component.bytes)) {
             Move-Item -LiteralPath $archive -Destination ($archive+'.failed-'+[Guid]::NewGuid().ToString('N'))
             Write-Host 'Invalid Python cache retained for diagnosis; acquiring verified official bytes.'
@@ -82,7 +97,8 @@ try {
         if ($Action -eq 'check') {
             $drive=[IO.DriveInfo]::new([IO.Path]::GetPathRoot($root))
             if ($drive.AvailableFreeSpace -lt 3GB) { throw 'At least 3 GiB free space is required.' }
-            Write-Host 'Platform/path/package integrity/disk checks passed. Run FIRST-SETUP.bat to acquire portable runtimes.'
+            if ($offline) { Write-Host 'OFFLINE platform/path/disk/VC++ and complete package integrity passed. Run FIRST-SETUP.bat; all runtimes are included.' }
+            else { Write-Host 'Platform/path/package integrity/disk checks passed. Run FIRST-SETUP.bat to acquire portable runtimes.' }
             exit 0
         }
         throw 'Run FIRST-SETUP.bat first. No global Python is used.'

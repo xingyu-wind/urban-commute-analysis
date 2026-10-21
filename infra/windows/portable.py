@@ -27,6 +27,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 STATE = ROOT / 'state'
+OFFLINE = (ROOT/'config/offline.json').is_file()
 CREATE = subprocess.CREATE_NO_WINDOW
 TABLES = ('dataset_registry','city','region','road_segment','traffic_observation',
           'etl_source','etl_batch','etl_rejection','etl_batch_observation',
@@ -144,7 +145,7 @@ def clean_env():
     # Never inherit another project's database, JVM agents, Python paths or bootstrap.
     env = {k:v for k,v in os.environ.items() if not k.upper().startswith(
         ('DB_', 'TEST_DB_', 'COMMUTE_', 'PYTHON', 'JAVA_', 'JDK_', '_JAVA_', 'MYSQL_', 'S3_', 'S9_'))}
-    env.update(PYTHONUTF8='1', PYTHONNOUSERSITE='1')
+    env.update(PYTHONUTF8='1', PYTHONNOUSERSITE='1',NO_PROXY='127.0.0.1,::1,localhost')
     return env
 
 
@@ -176,6 +177,14 @@ def runtime(kind):
 
 def download_component(item, cache):
     """Only promote complete pinned bytes; preserve failures without poisoning retries."""
+    if OFFLINE:
+        file=ROOT/'vendor/components'/item['filename']
+        if not file.is_file():
+            raise RuntimeError('Offline component missing: '+item['filename']+'. Restore the complete USB ZIP; no download attempted.')
+        if file.stat().st_size!=item['bytes'] or sha(file)!=item['sha256']:
+            raise RuntimeError('Offline component size/SHA256 mismatch: '+item['filename']+'. Restore the complete USB ZIP; no download attempted.')
+        print('Verified offline component: '+item['filename'],flush=True)
+        return file
     file = cache/item['filename']
     def valid(path):
         return path.stat().st_size == item['bytes'] and sha(path) == item['sha256']
@@ -210,7 +219,8 @@ def download_component(item, cache):
 
 def install_components():
     lock = read(ROOT/'config/components.lock.json')
-    cache = ROOT/'runtime/downloads'; cache.mkdir(parents=True,exist_ok=True)
+    cache = ROOT/'runtime/downloads'
+    if not OFFLINE:cache.mkdir(parents=True,exist_ok=True)
     for item in lock['components']:
         file = download_component(item,cache)
         if item['kind']=='jar':
@@ -392,10 +402,12 @@ def setup():
         (STATE/'secrets.dpapi').write_bytes(protect(json.dumps(secret).encode()))
         for name in ('uploads','multipart'): (STATE/name).mkdir()
         ports_available(config);mysql_config(config)
-        with (STATE/'initialize.log').open('xb') as log:
-            result=subprocess.run([runtime('mysql'),'--defaults-file='+str(mysql_home()/'my.ini'),'--initialize'],
-                env=clean_env(),stdout=log,stderr=subprocess.STDOUT,creationflags=CREATE)
-        if result.returncode:raise RuntimeError('MySQL initialization failed; see '+str(mysql_home()/'mysql.log')+' and state/initialize.log; check Microsoft VC++ x64 runtime. No old directory was overwritten.')
+        initialize_job=Job()
+        try:
+            initializer=initialize_job.launch([runtime('mysql'),'--defaults-file='+str(mysql_home()/'my.ini'),'--initialize'],'initialize')
+            initialize_code=initializer.wait(timeout=180)
+        finally:initialize_job.close()
+        if initialize_code:raise RuntimeError('MySQL initialization failed; see '+str(mysql_home()/'mysql.log')+' and state/initialize.log; check Microsoft VC++ x64 runtime. No old directory was overwritten.')
         import re
         match=re.search(r'A temporary password is generated for root@localhost: (\S+)',(mysql_home()/'mysql.log').read_text(encoding='utf-8',errors='replace'))
         if not match:raise RuntimeError('Cannot locate initial MySQL credential in private log')
@@ -548,7 +560,7 @@ def check():
     if free<3*1024**3:raise RuntimeError('Need at least 3 GiB free space for first setup.')
     print(json.dumps(dict(platform=sys.getwindowsversion().build,architecture='x64',freeGiB=round(free/1024**3,2),
         pathLength=len(str(ROOT)),configured=(STATE/'instance.json').exists(),globalInstallsRequired=False,
-        firstSetupNetwork=True),indent=2))
+        firstSetupNetwork=not OFFLINE),indent=2))
     if len(str(ROOT))>100:raise RuntimeError('Extract under a shorter writable path (under 100 characters); do not change global long-path policy.')
 
 
@@ -558,6 +570,17 @@ def main():
     parser.add_argument('--scenario',choices=['model','warehouse'],default='model')
     args=parser.parse_args()
     try:
+        if OFFLINE:
+            # Process-local guard: offline package code cannot open a remote
+            # connection even if a future component path accidentally requests it.
+            def offline_guard(event,arguments):
+                if event=='socket.connect':
+                    address=arguments[1]
+                    if not isinstance(address,tuple) or address[0] not in ('127.0.0.1','::1'):
+                        raise RuntimeError('Offline mode forbids non-loopback network connections')
+                if event=='socket.getaddrinfo' and arguments[0] not in ('127.0.0.1','::1',None):
+                    raise RuntimeError('Offline mode forbids external DNS resolution')
+            sys.addaudithook(offline_guard)
         if args.action=='credentials':
             s=credentials()
             for role in ('ADMIN','READER'):print(role+': '+s[role]['username']+' / '+s[role]['password'])

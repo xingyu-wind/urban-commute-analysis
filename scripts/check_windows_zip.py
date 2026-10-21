@@ -37,17 +37,33 @@ def main():
         prefix='UrbanCommute-Demo/'
         names=archive.namelist()
         build=json.loads(archive.read(prefix+'BUILD.json'))
+        offline=build.get('offline',False)
+        components=json.loads(archive.read(prefix+'config/components.lock.json'))['components']
+        sources=json.loads(archive.read(prefix+'config/usb-sources.lock.json'))['files'] if offline else []
+        allowed_vendor={prefix+'vendor/components/'+x['filename']:x for x in components} if offline else {}
+        allowed_vendor.update({prefix+'vendor/sources/'+x['filename']:x for x in sources})
+        actual_hashes={}
         for name in names:
             assert name.startswith(prefix) and '..' not in Path(name).parts
             assert not any(x in name for x in ('/state/','/runtime/','/node_modules/','/data/raw/','/data/private/','/.env','synthetic.sql'))
             assert not name.endswith(('.exe','.dll','.pyd','.joblib','.pkl','.pem','.key','.log'))
-            raw=archive.read(name)
-            assert not any(value in raw for value in private),'Private value detected; withheld'
+            if '/vendor/' in name and name.startswith(prefix+'vendor/'):
+                assert name in allowed_vendor,'Unreviewed binary/source archive'
+            digest=hashlib.sha256();tail=b'';count=0
+            with archive.open(name) as stream:
+                while chunk:=stream.read(1024*1024):
+                    count+=len(chunk);digest.update(chunk)
+                    assert not any(value in tail+chunk for value in private),'Private value detected; withheld'
+                    tail=chunk[-max([len(x) for x in private]+[1]):]
+            actual_hashes[name]=digest.hexdigest()
+            if name in allowed_vendor:
+                item=allowed_vendor[name];assert count==item['bytes'] and actual_hashes[name]==item['sha256']
+        assert set(allowed_vendor)<=set(names)
         manifest_names=[]
         for line in archive.read(prefix+'MANIFEST.sha256').decode().splitlines():
             expected,name=line.split('  ',1)
             manifest_names.append(prefix+name)
-            assert hashlib.sha256(archive.read(prefix+name)).hexdigest()==expected
+            assert actual_hashes[prefix+name]==expected
         assert len(names)==len(set(names)) and len(manifest_names)==len(set(manifest_names))
         assert set(names)==set(manifest_names)|{prefix+'MANIFEST.sha256'},'Manifest must cover every distributed file'
         for name,expected in build['frontendFiles'].items():
@@ -69,10 +85,12 @@ def main():
             assert not set(seed['tables']) & {'app_user','managed_job','managed_import','security_audit','flyway_schema_history'}
             assert not re.search(r'password_hash|[A-Za-z]:[\\/]',json.dumps(seed))
             seeds[scenario]={t:len(d['rows']) for t,d in seed['tables'].items()}
+        with args.zip.open('rb') as stream:zip_digest=hashlib.file_digest(stream,'sha256').hexdigest()
         result=dict(passed=True,zip=str(args.zip.resolve()),bytes=args.zip.stat().st_size,
-            sha256=hashlib.sha256(args.zip.read_bytes()).hexdigest(),fileCount=len(names),files=names,
-            manifestVerified=True,manifestCoversEveryFile=True,applicationClassesVerified=True,vendorBinaryArchivesBundled=False,
-            fileSha256={name:hashlib.sha256(archive.read(name)).hexdigest() for name in names},
+            sha256=zip_digest,fileCount=len(names),files=names,
+            manifestVerified=True,manifestCoversEveryFile=True,applicationClassesVerified=True,vendorBinaryArchivesBundled=offline,
+            offline=offline,lockedComponentsVerified=len(components) if offline else 0,lockedSourcesVerified=len(sources),
+            fileSha256=actual_hashes,
             privateCredentialValuesChecked=len(private),privateValueMatches=0,privateDataPaths=0,
             thinJarContainsVendorDependencies=False,seedTables=seeds,applicationSource=build['applicationSource'],
             packagingGitHead=build['packagingGitHead'],workingTreeDirty=build['workingTreeDirty'])
