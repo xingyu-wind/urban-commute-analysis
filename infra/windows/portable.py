@@ -22,6 +22,7 @@ import sys
 import threading
 import time
 import urllib.request
+import urllib.error
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -173,21 +174,45 @@ def runtime(kind):
     return matches[0]
 
 
+def download_component(item, cache):
+    """Only promote complete pinned bytes; preserve failures without poisoning retries."""
+    file = cache/item['filename']
+    def valid(path):
+        return path.stat().st_size == item['bytes'] and sha(path) == item['sha256']
+    def retain(path):
+        if path.exists():
+            os.replace(path, path.with_name(path.name+'.failed-'+str(time.time_ns())))
+    if file.exists():
+        if valid(file):
+            print('Verified cache: '+file.name,flush=True)
+            return file
+        retain(file)
+        print('Invalid cache retained for diagnosis: '+file.name,flush=True)
+    temporary = file.with_name(file.name+'.partial')
+    retain(temporary)
+    for attempt in range(1,4):
+        print(f'Downloading {file.name} (attempt {attempt}/3) from {item["url"]}',flush=True)
+        try:
+            with urllib.request.urlopen(item['url'],timeout=90) as response, temporary.open('wb') as target:
+                shutil.copyfileobj(response,target)
+            if not valid(temporary):
+                raise ValueError('size/SHA256 mismatch; verification was not bypassed')
+            os.replace(temporary,file)
+            return file
+        except (OSError,urllib.error.URLError,http.client.HTTPException,ValueError) as error:
+            retain(temporary)
+            reason=f'{type(error).__name__}: {error}'
+            print(f'Download failed: {file.name}; {reason}',flush=True)
+            if attempt==3:
+                raise RuntimeError(f'Download failed after 3 attempts: {file.name}; source={item["url"]}; {reason}. Completed verified files retained. Run FIRST-SETUP again.') from error
+            time.sleep(attempt)
+
+
 def install_components():
     lock = read(ROOT/'config/components.lock.json')
     cache = ROOT/'runtime/downloads'; cache.mkdir(parents=True,exist_ok=True)
     for item in lock['components']:
-        file = cache/item['filename']
-        if not file.exists() or sha(file) != item['sha256']:
-            if file.exists():
-                raise RuntimeError('Cached download checksum mismatch: '+file.name+'; retain it for diagnosis and use a fresh ZIP.')
-            temporary = file.with_suffix(file.suffix+'.partial')
-            print('Downloading '+item['filename'],flush=True)
-            with urllib.request.urlopen(item['url'],timeout=90) as response, temporary.open('wb') as target:
-                shutil.copyfileobj(response,target)
-            if sha(temporary) != item['sha256']:
-                raise RuntimeError('Official download incomplete or checksum mismatch: '+file.name+'. Retry with a fresh ZIP; do not bypass verification.')
-            os.replace(temporary,file)
+        file = download_component(item,cache)
         if item['kind']=='jar':
             destination=ROOT/'runtime/backend-libs'/item['filename']
             destination.parent.mkdir(parents=True,exist_ok=True)
@@ -196,7 +221,7 @@ def install_components():
         destination=mysql_home()/'runtime' if item['kind']=='mysql' else ROOT/'runtime'/('python/Lib/site-packages' if item['kind']=='wheel' else item['kind'])
         destination.mkdir(parents=True,exist_ok=True)
         marker=destination/('.'+item['filename']+'.verified')
-        if not marker.exists():
+        if not marker.exists() or marker.read_text(encoding='ascii') != item['sha256']:
             with zipfile.ZipFile(file) as archive:
                 for name in archive.namelist():
                     if not (destination/name).resolve().is_relative_to(destination.resolve()):
@@ -284,7 +309,7 @@ def start_mysql(job,config,secret,initial=False):
     mysql_config(config)
     child=job.launch([runtime('mysql'),'--defaults-file='+str(mysql_home()/'my.ini')],'mysql-console')
     for _ in range(180):
-        if child.poll() is not None:raise RuntimeError('Owned MySQL failed; inspect state/mysql.log. Do not remove data or reuse another server.')
+        if child.poll() is not None:raise RuntimeError('Owned MySQL failed; inspect '+str(mysql_home()/'mysql.log')+' and state/mysql-console.log; check Microsoft VC++ x64 runtime. Do not remove data or reuse another server.')
         try:
             if initial:
                 with socket.create_connection(('127.0.0.1',config['dbPort']),timeout=1):break
@@ -299,7 +324,7 @@ def start_mysql(job,config,secret,initial=False):
         except (OSError,Exception) as error:
             if isinstance(error,RuntimeError):raise
             time.sleep(.4)
-    else:raise RuntimeError('Owned MySQL readiness timeout; inspect state/mysql.log')
+    else:raise RuntimeError('Owned MySQL readiness timeout; inspect '+str(mysql_home()/'mysql.log'))
     return child
 
 
@@ -348,8 +373,14 @@ def setup():
             if read(STATE/'instance.json').get('initialized'):
                 print('Already configured. Existing data and credentials retained. Use START.bat.');return
             raise RuntimeError('Prior setup was incomplete. Data retained. Inspect state logs; use a new extraction directory to retry safely.')
+        progress=STATE/'setup-progress.json'
+        identity=read(ROOT/'BUILD.json')['thinJarSha256']
         if (STATE/'mysql-location.json').exists():
-            raise RuntimeError('Unrecognized existing data directory; refusing initialization.')
+            location=read(STATE/'mysql-location.json')
+            if (not progress.exists() or read(progress)!=dict(phase='components',applicationJar=identity)
+                or not location.get('owned') or (Path(location['directory'])/'data').exists()):
+                raise RuntimeError('Unrecognized existing data directory; refusing initialization. Data retained.')
+        write(progress,dict(phase='components',applicationJar=identity))
         install_components()
         config=dict(initialized=False,schemas={name:'commute_'+secrets.token_hex(8) for name in ('model','warehouse')},dbUser='app_'+secrets.token_hex(8),
                     dbPort=free_port(),apiPort=free_port(),webPort=free_port(),package=read(ROOT/'BUILD.json')['applicationSource'],
@@ -364,7 +395,7 @@ def setup():
         with (STATE/'initialize.log').open('xb') as log:
             result=subprocess.run([runtime('mysql'),'--defaults-file='+str(mysql_home()/'my.ini'),'--initialize'],
                 env=clean_env(),stdout=log,stderr=subprocess.STDOUT,creationflags=CREATE)
-        if result.returncode:raise RuntimeError('MySQL initialization failed; see private state/mysql.log. No old directory was overwritten.')
+        if result.returncode:raise RuntimeError('MySQL initialization failed; see '+str(mysql_home()/'mysql.log')+' and state/initialize.log; check Microsoft VC++ x64 runtime. No old directory was overwritten.')
         import re
         match=re.search(r'A temporary password is generated for root@localhost: (\S+)',(mysql_home()/'mysql.log').read_text(encoding='utf-8',errors='replace'))
         if not match:raise RuntimeError('Cannot locate initial MySQL credential in private log')
@@ -403,6 +434,7 @@ def setup():
                 config['seedSha256'][scenario]=sha(ROOT/('database/'+scenario+'-seed.json'))
             config['initialized']=True
             write(STATE/'instance.json',config)
+            write(progress,dict(phase='complete',applicationJar=identity))
             write(STATE/'setup-result.json',dict(passed=True,newOwnedDatabase=True,oldDatabasesAccessed=False,
                 seedSha256=config['seedSha256'],tables=counts,accounts='unique random passwords; current-user DPAPI'))
             print('First setup complete. Run CREDENTIALS.bat privately, then START.bat.',flush=True)

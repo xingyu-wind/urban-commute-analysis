@@ -20,7 +20,7 @@ def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def build(output,jar=None,application_source=None):
+def build(output,jar=None,application_source=None,version='0.9.0-t2-candidate'):
     output=Path(output).resolve();output.mkdir(parents=True,exist_ok=False)
     package=output/'UrbanCommute-Demo';package.mkdir()
     def copy(source,target):
@@ -87,7 +87,7 @@ def build(output,jar=None,application_source=None):
         source_files.extend(p.rglob('*') if p.is_dir() else [p])
     application_files={p.relative_to(ROOT).as_posix():digest(p) for p in source_files if p.is_file()}
     packaging_files={p.relative_to(ROOT).as_posix():digest(p) for p in (ROOT/'infra/windows').rglob('*') if p.is_file() and '__pycache__' not in str(p)}
-    build=dict(version='0.9.0-t2-candidate',platform='windows-x64',applicationSource=application_source,
+    build=dict(version=version,platform='windows-x64',applicationSource=application_source,
         packagingGitHead=head,workingTreeDirty=bool(status),applicationFiles=application_files,packagingFiles=packaging_files,
         originalFatJarSha256=digest(jar),thinJarSha256=digest(package/'app/backend/application.jar'),
         thinJarClassHashes=classes,frontendFiles={p.relative_to(ROOT/'frontend/dist').as_posix():digest(p) for p in (ROOT/'frontend/dist').rglob('*') if p.is_file()},
@@ -97,7 +97,7 @@ def build(output,jar=None,application_source=None):
     files=sorted(p for p in package.rglob('*') if p.is_file())
     manifest=''.join(digest(p)+'  '+p.relative_to(package).as_posix()+'\n' for p in files)
     (package/'MANIFEST.sha256').write_text(manifest,encoding='utf-8')
-    archive=output/'UrbanCommute-Demo-0.9.0-t2-candidate-windows-x64.zip'
+    archive=output/('UrbanCommute-Demo-'+version+'-windows-x64.zip')
     with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
         for p in sorted(package.rglob('*')):
             if p.is_file():z.write(p,package.name+'/'+p.relative_to(package).as_posix())
@@ -115,5 +115,6 @@ if __name__=='__main__':
     parser.add_argument('--output',type=Path,required=True)
     parser.add_argument('--jar',type=Path)
     parser.add_argument('--application-source')
+    parser.add_argument('--version',default='0.9.0-t2-candidate')
     args=parser.parse_args()
-    build(args.output,args.jar,args.application_source)
+    build(args.output,args.jar,args.application_source,args.version)

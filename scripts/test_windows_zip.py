@@ -23,6 +23,7 @@ def main():
     parser.add_argument('--root',required=True,type=Path)
     parser.add_argument('--output',required=True,type=Path)
     parser.add_argument('--browser',action='store_true',help='Reuse existing S9 Chromium driver against the installed package URL')
+    parser.add_argument('--demo-browser',action='store_true',help='Also perform real ADMIN upload/review/import and READER browser actions')
     args=parser.parse_args();root=args.root.resolve();output=args.output.resolve();output.mkdir(parents=True,exist_ok=False)
     env=dict(os.environ,URBAN_COMMUTE_NO_PAUSE='1',DB_URL='invalid-inherited-project-database',DB_USER='invalid',DB_PASSWORD='invalid',
              JDK_JAVA_OPTIONS='--invalid-inherited-option',PYTHONPATH='invalid-inherited-python-path')
@@ -50,7 +51,9 @@ def main():
         req=urllib.request.Request(running()['url']+path,data=body,method=method,headers=headers or {})
         try:response=who.open(req,timeout=70)
         except urllib.error.HTTPError as e:response=e
-        raw=response.read();assert response.status==expected,(method,path,response.status)
+        raw=response.read()
+        results.append(dict(check='http',method=method,path=path,status=response.status,expected=expected))
+        assert response.status==expected,(method,path,response.status)
         return json.loads(raw) if raw and response.headers.get_content_type()=='application/json' else raw
     def post(who,path,expected,body,content='application/json'):
         token=request(who,'GET','/api/v1/auth/csrf',200)
@@ -71,7 +74,16 @@ def main():
         predictions=request(anonymous,'GET','/api/v1/predictions?cityId=s7-city&datasetId=s7-synthetic-v1',200)
         assert predictions['data']['release'] and len(predictions['data']['predictions'])==7
         browser('model','s7-city','prediction',predictions['data']['release']['jobId'])
+        if args.demo_browser:
+            repository=Path(__file__).resolve().parents[1]
+            with (output/'browser-management.log').open('wb') as log:
+                result=subprocess.run([shutil.which('node'),str(repository/'frontend/scripts/verify-t3-demo.mjs'),
+                    str(output/'browser-management'),base,str(root)],input=json.dumps({r:secret[r] for r in ('ADMIN','READER')}).encode(),
+                    cwd=repository,stdout=log,stderr=subprocess.STDOUT,timeout=120)
+            assert result.returncode==0,'Browser management rehearsal failed'
+            results.append(dict(check='browser-admin-reader-research-import',passed=True))
         request(anonymous,'GET','/api/v1/traffic/summary?cityId=s7-city&datasetId=s7-synthetic-v1&from=2026-10-15T00:00:00.000Z&to=2026-10-17T00:00:00.000Z',200)
+        request(anonymous,'GET','/api/v1/traffic/series?cityId=s7-city&datasetId=s7-synthetic-v1&from=2026-10-15T00:00:00.000Z&to=2026-10-17T00:00:00.000Z&granularity=day',200)
         request(anonymous,'GET','/api/v1/operations/tasks',401)
         request(anonymous,'POST','/api/v1/operations/uploads',401,b'x',{'Content-Type':'application/octet-stream'})
         for role,who in [('ADMIN',admin),('READER',reader)]:
@@ -138,6 +150,7 @@ def main():
             cleanMachineTest=False,developerExecutablesRemovedFromPath=True,checks=results),ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
         print('T2_PACKAGE_ACCEPTANCE=PASS')
     finally:
+        (output/'checks.json').write_text(json.dumps(results,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
         if (root/'state/instance.json').exists():
             try:batch('STOP')
             except Exception:pass

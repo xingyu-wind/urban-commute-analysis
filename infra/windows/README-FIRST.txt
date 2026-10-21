@@ -28,17 +28,20 @@ Java/Python/页面可位于中文及空格目录。MySQL使用解压目录内或
 可能需由管理员从 https://learn.microsoft.com/cpp/windows/latest-supported-vc-redist 下载官方运行库。
 本包只诊断缺失，不静默提权安装、不改防火墙、PATH、注册表或全局执行策略。
 首次配置需访问 python.org、cdn.azul.com、cdn.mysql.com、files.pythonhosted.org、repo.maven.apache.org。
-下载失败或校验不符会停止；不能关闭证书或哈希检查。可在受控环境预置同名、同哈希的官方归档到 runtime/downloads。
+每个下载最多尝试三次，同时校验固定字节大小与SHA256；失败信息包含文件、来源和原因。
+未通过的缓存和中断文件保留为 .failed-* 诊断副本，不作为合法依赖使用；完整合法文件安全复用。
+下载阶段失败可在原目录重新运行 FIRST-SETUP；不能关闭证书或哈希检查。
+可在受控环境预置同名、同哈希的官方归档到 runtime/downloads，但这种情况不是空缓存下载验收。
 
 故障排查：
 - 文件损坏：MANIFEST 校验失败时重新解压，不要手改受校验文件。
-- 初次数据库失败：保留 state/mysql.log、initialize.log、supervisor.log。不会清空或覆盖；用新的空解压目录重试。
+- 初次数据库失败：保留 state/initialize.log、supervisor.log，以及 mysql-location.json 指向目录中的 mysql.log。不会清空或覆盖；用新的空解压目录重试。
 - 端口冲突：脚本拒绝启动并保留现场，不结束占用者。先确认是否本包已运行，运行 STOP。
 - 重复启动：拒绝第二个实例；不要直接删除锁文件或运行状态。
 - 后端启动失败：检查 state/backend.log；Flyway 不 clean/repair、不跳过校验。
 - 强制关闭或进程崩溃：Windows Job Object 回收本包子进程；下次启动由 MySQL 执行正常崩溃恢复。
   不按旧PID批量杀进程。断电/磁盘损坏仍可能丢失数据；这不是完整灾备承诺。
-- 首次配置中断：保留未完成目录，不尝试覆盖初始化；重新解压到新的空目录。
+- 首次配置中断：组件下载/解压阶段可以原目录重试；已进入数据库初始化则保留未完成目录，重新解压到新的空目录，不覆盖初始化。
 - 修改代码升级、跨Windows用户迁移：不支持覆盖安装。先STOP并私下备份整个state目录；保留原包，另建新目录。
   初始化后的目录不应重新打包分享；DPAPI凭据仅当前Windows用户/机器可用。
 - CHECK/START不会自动开放局域网或公网；浏览器只使用显示的127.0.0.1入口。

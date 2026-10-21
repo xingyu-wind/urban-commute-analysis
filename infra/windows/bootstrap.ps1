@@ -18,6 +18,14 @@ try {
     }
     if ($env:PROCESSOR_ARCHITECTURE -eq 'ARM64' -or $env:PROCESSOR_ARCHITEW6432 -eq 'ARM64') { throw 'Windows ARM is not supported.' }
     if ($root.Length -gt 100) { throw 'Extract to a shorter writable path (under 100 characters). Chinese characters and spaces are supported.' }
+    if ($Action -in @('check','setup')) {
+        $drive=[IO.DriveInfo]::new([IO.Path]::GetPathRoot($root))
+        if ($drive.AvailableFreeSpace -lt 3GB) { throw 'At least 3 GiB free space is required.' }
+        $probe=Join-Path $root ('.write-probe-'+[Guid]::NewGuid().ToString('N'))
+        try { [IO.File]::WriteAllText($probe,'probe') }
+        catch { throw 'Target directory is not writable. Extract to a current-user writable local NTFS directory.' }
+        finally { if ([IO.File]::Exists($probe)) { [IO.File]::Delete($probe) } }
+    }
     foreach ($line in [IO.File]::ReadAllLines((Join-Path $root 'MANIFEST.sha256'))) {
         $parts=$line -split '  ',2
         $actual=File-Sha256 (Join-Path $root $parts[1])
@@ -38,12 +46,29 @@ try {
         $cache=Join-Path $root 'runtime/downloads'
         [IO.Directory]::CreateDirectory($cache) | Out-Null
         $archive=Join-Path $cache $component.filename
+        if ((Test-Path -LiteralPath $archive) -and ((File-Sha256 $archive) -ne $component.sha256 -or (Get-Item -LiteralPath $archive).Length -ne $component.bytes)) {
+            Move-Item -LiteralPath $archive -Destination ($archive+'.failed-'+[Guid]::NewGuid().ToString('N'))
+            Write-Host 'Invalid Python cache retained for diagnosis; acquiring verified official bytes.'
+        }
         if (-not (Test-Path -LiteralPath $archive)) {
             [Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12
             $temp=$archive+'.partial'
-            Invoke-WebRequest -UseBasicParsing -Uri $component.url -OutFile $temp
-            if ((File-Sha256 $temp) -ne $component.sha256) { throw 'Python download checksum mismatch; do not bypass verification.' }
-            Move-Item -LiteralPath $temp -Destination $archive
+            if (Test-Path -LiteralPath $temp) { Move-Item -LiteralPath $temp -Destination ($temp+'.failed-'+[Guid]::NewGuid().ToString('N')) }
+            for ($attempt=1; $attempt -le 3; $attempt++) {
+                try {
+                    Write-Host ('Downloading '+$component.filename+' attempt '+$attempt+'/3 from '+$component.url)
+                    Invoke-WebRequest -UseBasicParsing -Uri $component.url -OutFile $temp -TimeoutSec 120
+                    if ((File-Sha256 $temp) -ne $component.sha256 -or (Get-Item -LiteralPath $temp).Length -ne $component.bytes) { throw 'size/SHA256 mismatch; do not bypass verification.' }
+                    Move-Item -LiteralPath $temp -Destination $archive
+                    break
+                } catch {
+                    if (Test-Path -LiteralPath $temp) { Move-Item -LiteralPath $temp -Destination ($temp+'.failed-'+[Guid]::NewGuid().ToString('N')) }
+                    $reason=$_.Exception.Message
+                    Write-Host ('Download failed: '+$component.filename+'; '+$reason)
+                    if ($attempt -eq 3) { throw ('Download failed after 3 attempts: '+$component.filename+'; source='+$component.url+'; '+$reason+'. Completed verified files retained; run FIRST-SETUP again.') }
+                    Start-Sleep -Seconds $attempt
+                }
+            }
         }
         if ((File-Sha256 $archive) -ne $component.sha256) { throw 'Cached Python checksum mismatch. Retain it for diagnosis and extract a fresh ZIP.' }
         if (-not (Test-Path -LiteralPath $python)) {

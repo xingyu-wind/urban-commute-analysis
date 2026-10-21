@@ -1,6 +1,8 @@
 # 比赛演示脚本（约7分钟）
 
-T2 ZIP候选可用START启动预测场景；数仓场景先STOP再START-WAREHOUSE，入口以本轮runtime状态为准。两个场景各有独立数据库，均读取合成预发布结果；不用现场训练或启动Hadoop。首次准备与限制见[Windows ZIP指南](windows-zip.md)。这不替代后续T3连续演示验收。
+Windows ZIP候选可用START启动预测场景；数仓场景先STOP再START-WAREHOUSE，入口以本轮state/running.json为准。两个场景各有独立数据库，均读取合成预发布结果；不用现场训练或启动Hadoop。首次准备与限制见[Windows ZIP指南](windows-zip.md)，本轮实际验收见[T3报告](../stage-reports/T3.md)。
+
+ZIP七分钟流程按“启动与来源→城市统计/趋势→七日预测与合成误差→ADMIN上传/明确确认/研究导入→退出并READER只读→STOP、START-WAREHOUSE与已发布数仓查询→停止及恢复说明”顺序，避免为了原表格顺序额外切换两次场景。首次联网配置提前完成，不计入七分钟。ZIP已包含经审查的合成种子，不再要求使用者按照部署手册手工建库。原表格的HDFS/Hive Job、逻辑备份和性能是可核查的历史证据，不能表述为本次Windows现场重新执行。末段CI精确绑定97f30db业务基线，不代表未推送的T2/T3打包提交已有远端CI。
 
 演示前用 [部署手册](s9-deployment.md) 在隔离库生成合成样例与合法发布，启动生产构建候选页面。保持本次runtime.json和证据索引可用。不要当场从外网下载未知数据，不展示密码、Cookie、token、上传原件、dump或数据库连接串。所有截图必须取自运行页面；S9 evidence 中production/prediction/warehouse/security截图均由真实Chromium产生，不做成功画面拼接。
 
