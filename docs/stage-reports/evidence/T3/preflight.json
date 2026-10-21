@@ -1,0 +1,47 @@
+{
+  "time": "2026-10-21T19:36:01.9437660+08:00",
+  "branch": "codex/s9-system-release",
+  "head": "a5a417a17d09bb7f02fdc17be940c1bc8fb6c903",
+  "status": [],
+  "commits": [
+    "a5a417a17d09bb7f02fdc17be940c1bc8fb6c903 docs(T2): archive exact ZIP acceptance and delivery boundaries",
+    "79f9162f0d8277a079d1486e24839ac28c6aa07a fix(T2): keep fixture provenance stable across Git line endings",
+    "2270d7f61e0bdac2433d0856d7915da87e867845 feat(T2): deliver isolated Windows ZIP bootstrap and demo lifecycle",
+    "97f30db15a5292c0be9a0103359ccc7e97f5ddfa docs(S9): archive verified Hive and restore artifacts with PR receipt"
+  ],
+  "os": {
+    "Caption": "Microsoft Windows 11 家庭版 中文版",
+    "Version": "10.0.26200",
+    "OSArchitecture": "64 位"
+  },
+  "drives": [
+    {
+      "Name": "C",
+      "Free": 404543881216
+    },
+    {
+      "Name": "D",
+      "Free": 406738980864
+    },
+    {
+      "Name": "Temp",
+      "Free": 404543881216
+    }
+  ],
+  "isolationCommands": [],
+  "vcRuntime": {
+    "Installed": 1,
+    "Version": "v14.50.35719.00"
+  },
+  "previousDemo": {
+    "pid": 48364,
+    "url": "http://127.0.0.1:65320",
+    "children": [
+      3520,
+      56384
+    ],
+    "ready": true,
+    "scenario": "model"
+  },
+  "previousDemoHealth": 200
+}

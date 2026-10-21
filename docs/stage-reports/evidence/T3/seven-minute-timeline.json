@@ -1,0 +1,87 @@
+{
+  "elapsedSeconds": 420.0,
+  "checks": [
+    {
+      "stage": "startup-health-source",
+      "seconds": 0.0
+    },
+    {
+      "method": "GET",
+      "path": "/health",
+      "status": 200,
+      "seconds": 11.25
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/cities",
+      "status": 200,
+      "seconds": 11.28
+    },
+    {
+      "stage": "city-statistics-and-trend",
+      "seconds": 45.0
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/traffic/summary?cityId=s7-city&datasetId=s7-synthetic-v1&from=2026-10-15T00:00:00.000Z&to=2026-10-17T00:00:00.000Z",
+      "status": 200,
+      "seconds": 45.12
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/traffic/series?cityId=s7-city&datasetId=s7-synthetic-v1&from=2026-10-15T00:00:00.000Z&to=2026-10-17T00:00:00.000Z&granularity=day",
+      "status": 200,
+      "seconds": 45.19
+    },
+    {
+      "stage": "seven-day-prediction-and-synthetic-errors",
+      "seconds": 105.0
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/predictions?cityId=s7-city&datasetId=s7-synthetic-v1",
+      "status": 200,
+      "seconds": 105.12
+    },
+    {
+      "stage": "admin-explicit-review-import-reader-logout",
+      "seconds": 170.0
+    },
+    {
+      "stage": "stop-switch-published-warehouse",
+      "seconds": 250.0
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/warehouse/metrics?cityId=s5-city&datasetId=s5-synthetic-v1&grain=WINDOW",
+      "status": 200,
+      "seconds": 264.06
+    },
+    {
+      "stage": "stop-restart-persistent-prediction",
+      "seconds": 320.0
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/predictions?cityId=s7-city&datasetId=s7-synthetic-v1",
+      "status": 200,
+      "seconds": 333.62
+    },
+    {
+      "stage": "review-exact-baseline-ci-and-limitations",
+      "seconds": 370.0
+    },
+    {
+      "sourceType": "synthetic_test",
+      "realData": "BLOCKED",
+      "realAccuracy": "NOT_EVALUABLE",
+      "localHiveExecution": false,
+      "browserTraining": false,
+      "ciScope": "97f30db business baseline only; no T3 remote CI"
+    },
+    {
+      "stage": "complete",
+      "seconds": 420.0
+    }
+  ]
+}

@@ -22,7 +22,10 @@ try {
     await expect(page.getByRole('button',{name:'权限与运行管理',exact:true})).toBeEnabled()
     await expect(page.getByLabel('城市',{exact:true}).locator(`option[value="${process.argv[4]}"]`)).toHaveCount(1)
     await page.getByLabel('城市',{exact:true}).selectOption(process.argv[4])
+    await page.getByRole('button',{name:'合成样本时段',exact:true}).click()
     await page.waitForLoadState('networkidle')
+    await expect(page.getByTestId('traffic-dashboard')).toContainText('synthetic_test')
+    if(process.argv[5]==='prediction') expect(Number((await page.getByTestId('kpi-count').innerText()).replace(/\D/g,''))).toBeGreaterThan(0)
     timings.push({width,height,navigationAndNetworkIdleMs:Math.round(performance.now()-start),
       navigation:await page.evaluate(()=>{const n=performance.getEntriesByType('navigation')[0];return {domContentLoadedMs:n.domContentLoadedEventEnd,loadMs:n.loadEventEnd}})})
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true)

@@ -1,0 +1,4 @@
+Verified cache: python-3.11.9-embed-amd64.zip
+Downloading zulu21.52.203-ca-jre21.0.12.1-win_x64.zip (attempt 1/3) from https://cdn.azul.com/zulu/bin/zulu21.52.203-ca-jre21.0.12.1-win_x64.zip
+Downloading mysql-8.4.11-winx64.zip (attempt 1/3) from https://cdn.mysql.com/archives/mysql-8.4/mysql-8.4.11-winx64.zip
+Downloading numpy-2.2.6-cp311-cp311-win_amd64.whl (attempt 1/3) from https://files.pythonhosted.org/packages/31/0a/f354fb7176b81747d870f7991dc763e157a934c717b67b58456bc63da3df/numpy-2.2.6-cp311-cp311-win_amd64.whl

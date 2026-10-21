@@ -1,0 +1,8 @@
+java-temp-path-failure.log
+ERROR: Startup failed; inspect state/supervisor.log and service logs. No unknown process was stopped.
+mysql-log-sharing-failure.log
+ERROR: Startup failed; inspect state/supervisor.log and service logs. No unknown process was stopped.
+recovery-start.log
+Ready: http://127.0.0.1:51736
+recovery-stop.log
+Stopped. Persistent data retained.

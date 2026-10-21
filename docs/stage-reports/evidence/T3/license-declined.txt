@@ -1,0 +1,5 @@
+Read README-FIRST.txt and licenses/DEPENDENCIES.txt before continuing.
+Setup downloads official portable Java, CPython, MySQL and locked dependencies into this folder.
+No Windows service, PATH, firewall, or global execution policy is changed.
+CANCEL
+ERROR: Setup cancelled; no vendor download or database initialization performed.

@@ -124,6 +124,10 @@ def main():
         batch('START')
         request(admin,'GET','/api/v1/auth/me',401) # Session cannot survive JVM restart.
         request(anonymous,'GET','/api/v1/predictions?cityId=s7-city',200)
+        post(reader,'/api/v1/auth/login',200,urllib.parse.urlencode(secret['READER']).encode(),'application/x-www-form-urlencoded')
+        persisted=request(reader,'GET','/api/v1/operations/tasks',200)
+        assert any(item['status']=='SUCCEEDED' for item in persisted['imports'])
+        results.append(dict(check='research-import-persists-after-restart',passed=True))
         live=running()
         # Kill only the process just created by this test, using its live HANDLE.
         kernel=ctypes.windll.kernel32;kernel.OpenProcess.restype=ctypes.c_void_p
@@ -148,7 +152,7 @@ def main():
         batch('STOP')
         (output/'summary.json').write_text(json.dumps(dict(passed=True,root=str(root),sameWindowsHost=True,
             cleanMachineTest=False,developerExecutablesRemovedFromPath=True,checks=results),ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-        print('T2_PACKAGE_ACCEPTANCE=PASS')
+        print('WINDOWS_PACKAGE_ACCEPTANCE=PASS')
     finally:
         (output/'checks.json').write_text(json.dumps(results,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
         if (root/'state/instance.json').exists():

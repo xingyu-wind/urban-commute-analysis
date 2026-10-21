@@ -1,0 +1,39 @@
+{
+  "checkedLocalDate": "2026-10-21 Asia/Shanghai",
+  "pr": {
+    "url": "https://github.com/xingyu-wind/urban-commute-analysis/pull/10",
+    "state": "open",
+    "merged": false,
+    "head": "codex/s9-system-release",
+    "head_sha": "97f30db15a5292c0be9a0103359ccc7e97f5ddfa",
+    "base_sha": "222f70d0137777c673cba6e1d4e8ac06e6c8eff2"
+  },
+  "ciQueriedCommit": "97f30db15a5292c0be9a0103359ccc7e97f5ddfa",
+  "ci": {
+    "workflow_runs": [
+      {
+        "id": 39524999398,
+        "name": "S6 real HDFS Hive warehouse",
+        "status": "completed",
+        "conclusion": "success",
+        "run_number": 22,
+        "jobs_url": "https://api.github.com/repos/xingyu-wind/urban-commute-analysis/actions/runs/39524999398/jobs",
+        "logs_url": "https://api.github.com/repos/xingyu-wind/urban-commute-analysis/actions/runs/39524999398/logs",
+        "workflow_id": 390189919
+      },
+      {
+        "id": 39524999193,
+        "name": "S7 prediction and S2-S5 regression",
+        "status": "completed",
+        "conclusion": "success",
+        "run_number": 78,
+        "jobs_url": "https://api.github.com/repos/xingyu-wind/urban-commute-analysis/actions/runs/39524999193/jobs",
+        "logs_url": "https://api.github.com/repos/xingyu-wind/urban-commute-analysis/actions/runs/39524999193/logs",
+        "workflow_id": 388541586
+      }
+    ]
+  },
+  "localPackagingRemoteCiVerified": false,
+  "noPush": true,
+  "noWorkflowTriggered": true
+}

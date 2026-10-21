@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "scope": "installed production download function; real loopback HTTP fault injection only",
+  "officialDownloadEvidence": false,
+  "interruptedResponseRetried": true,
+  "wrongHashRetried": true,
+  "validCacheReusedWithoutNetwork": true,
+  "corruptCacheRetainedAndReacquired": true,
+  "stalePartialRetained": true,
+  "exhaustionRejected": true,
+  "requests": {
+    "/recover": 3,
+    "/valid": 2,
+    "/exhaust": 3
+  },
+  "retainedFailures": 7,
+  "error": "Download failed after 3 attempts: exhaust.bin; source=http://127.0.0.1:54746/exhaust; ValueError: size/SHA256 mismatch; verification was not bypassed. Completed verified files retained. Run FIRST-SETUP again."
+}

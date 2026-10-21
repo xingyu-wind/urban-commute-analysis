@@ -1,0 +1,57 @@
+{
+  "status": "T3_PARTIAL",
+  "preservedFailures": [
+    {
+      "package": "T2 original",
+      "fault": "Owned component downloader explicitly interrupted after MySQL extraction; scipy partial retained",
+      "result": "First setup retry refused the preallocated MySQL directory before database initialization",
+      "fixedBy": "59404200921b97f86b3b57288a33b491244c793d",
+      "retest": "Final ZIP resumed component preparation in its own directory; no previous installation caches copied"
+    },
+    {
+      "package": "T3 final",
+      "fault": "Official Azul Java HTTPS produced SSL UNEXPECTED_EOF_WHILE_READING on three attempts",
+      "result": "Exit 1 with file, URL and cause; Python archive retained",
+      "retest": "Same-directory retry acquired verified Java bytes; TLS verification unchanged"
+    }
+  ],
+  "passedFaultChecks": [
+    "Real loopback truncated transport and wrong SHA256 response retry",
+    "Corrupt cache retained and reacquired; valid cache reused without request",
+    "Stale partial retained; retry exhaustion rejected",
+    "Dedicated extracted directory made unwritable then restored",
+    "License declined without runtime/state creation",
+    "Duplicate start and occupied port refused without stopping occupier",
+    "Actual MySQL log sharing startup failure and recovery",
+    "Java temporary directory collision after MySQL start; owned ports released",
+    "Supervisor terminated through live owned handle; Job children reclaimed",
+    "Normal restart, MySQL crash recovery, session invalidation and import persistence"
+  ],
+  "notValidated": [
+    "Clean Windows Sandbox or disposable Windows VM",
+    "Independent physical computer",
+    "Windows 10",
+    "VC++ x64 runtime missing",
+    "Actual insufficient free disk capacity",
+    "A machine with no development tools and inaccessible original source",
+    "Setup process killed during database initialization",
+    "All C drive or enterprise managed directory policies",
+    "Cross-user DPAPI migration, in-place upgrade, full disaster recovery",
+    "T2/T3 packaging commits on remote CI"
+  ],
+  "inheritedLimitsRetained": [
+    "MySQL native Unicode path limitation; use per-installation ASCII storage",
+    "T2 C-drive LocalAppData OS117 probes do not become passing through D-drive tests",
+    "First setup needs official HTTPS connectivity, writable local NTFS and at least 3 GiB",
+    "Current host has VC++ x64 v14.50.35719.00; no silent prerequisite install",
+    "Failed database initialization is retained and requires a new extraction; no overwrite retry"
+  ],
+  "dataTruth": {
+    "sourceType": "synthetic_test",
+    "realDataAdmission": "BLOCKED",
+    "realAccuracyAndCrossCityGeneralization": "NOT_EVALUABLE",
+    "localHiveExecution": false,
+    "browserTraining": false,
+    "researchImportAutomaticallyPublishes": false
+  }
+}

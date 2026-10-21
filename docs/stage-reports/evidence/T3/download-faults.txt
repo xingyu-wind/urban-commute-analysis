@@ -1,0 +1,15 @@
+Downloading transport-fixture.bin (attempt 1/3) from http://127.0.0.1:54746/recover
+Download failed: transport-fixture.bin; ValueError: size/SHA256 mismatch; verification was not bypassed
+Downloading transport-fixture.bin (attempt 2/3) from http://127.0.0.1:54746/recover
+Download failed: transport-fixture.bin; ValueError: size/SHA256 mismatch; verification was not bypassed
+Downloading transport-fixture.bin (attempt 3/3) from http://127.0.0.1:54746/recover
+Verified cache: transport-fixture.bin
+Invalid cache retained for diagnosis: transport-fixture.bin
+Downloading transport-fixture.bin (attempt 1/3) from http://127.0.0.1:54746/valid
+Downloading transport-fixture.bin (attempt 1/3) from http://127.0.0.1:54746/valid
+Downloading exhaust.bin (attempt 1/3) from http://127.0.0.1:54746/exhaust
+Download failed: exhaust.bin; ValueError: size/SHA256 mismatch; verification was not bypassed
+Downloading exhaust.bin (attempt 2/3) from http://127.0.0.1:54746/exhaust
+Download failed: exhaust.bin; ValueError: size/SHA256 mismatch; verification was not bypassed
+Downloading exhaust.bin (attempt 3/3) from http://127.0.0.1:54746/exhaust
+Download failed: exhaust.bin; ValueError: size/SHA256 mismatch; verification was not bypassed

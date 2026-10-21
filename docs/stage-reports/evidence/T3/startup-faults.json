@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "mysql-log-sharing-failure",
+      "exitCode": 1,
+      "expectedSuccess": false
+    },
+    {
+      "check": "java-temp-path-failure",
+      "exitCode": 1,
+      "expectedSuccess": false
+    },
+    {
+      "check": "recovery-start",
+      "exitCode": 0,
+      "expectedSuccess": true
+    },
+    {
+      "check": "recovery-stop",
+      "exitCode": 0,
+      "expectedSuccess": true
+    }
+  ],
+  "realMysqlFailure": true,
+  "javaFailureAfterMysqlStarted": true,
+  "ownedPortsReleased": true,
+  "dataFilesRemoved": false,
+  "systemSettingsChanged": false
+}
