@@ -1,0 +1,201 @@
+{
+  "passed": true,
+  "sourceSchema": "s3test_5b2f62421b424c7c8027031acc0f1c67",
+  "targetSchema": "s3test_4bc946d0c4fc406da743bb6542be7ee5",
+  "targetInitiallyEmpty": true,
+  "allTables": {
+    "app_user": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "city": {
+      "rows": 4,
+      "sha256": "5e1e5e0f07a8ede1ee42472ee7526bca93424ac63d0c683ebbf3301a7ab164f8"
+    },
+    "dataset_registry": {
+      "rows": 3,
+      "sha256": "49c680987c6503c7d3f28e05839e438ff060e953f490b0f5f28812137274db37"
+    },
+    "etl_batch": {
+      "rows": 4,
+      "sha256": "af26b304ababf9859a6fe008e02a304a914dfa646cb6d3d28d7b254b72d02a69"
+    },
+    "etl_batch_observation": {
+      "rows": 40,
+      "sha256": "08b2abdab4b6b7f41dd471a8c5b84de7ca34424ceb7566e48825a3ab3d645a3d"
+    },
+    "etl_rejection": {
+      "rows": 14,
+      "sha256": "638ef5ffc424d31ef654b38ad8c1b5867baca50c9a622f2312a7a88b167cb814"
+    },
+    "etl_source": {
+      "rows": 3,
+      "sha256": "0e136cfc6187f3c4ddfa24acabcb59fd206309272b52b0fced0cfefc7c9f8f2b"
+    },
+    "flyway_schema_history": {
+      "rows": 6,
+      "sha256": "e34b15766d741b4c744542f8d1366e659b966142fc44b0578829de7ef0e91c98"
+    },
+    "managed_import": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "managed_job": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "prediction_current": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "prediction_evaluation": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "prediction_job": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "prediction_model": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "prediction_result": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "region": {
+      "rows": 3,
+      "sha256": "ad520a9abfecf3c9bdaad0c6872c422d389c705dcb9be4d2f7285a4cb09da3fd"
+    },
+    "road_segment": {
+      "rows": 3,
+      "sha256": "4e695ce9a49deb1f25e22dd743a952fb6259cb1875c4d0460def84a2b286f8d4"
+    },
+    "security_audit": {
+      "rows": 22,
+      "sha256": "74ddba918d46f056cf62faee9b885f5969ea987c60596a1806179c86af1b879e"
+    },
+    "traffic_observation": {
+      "rows": 23,
+      "sha256": "5c7eff77ef449f37bd07a704d084b301d40269c3cbcbc641dbaa15068683b81c"
+    },
+    "warehouse_current": {
+      "rows": 1,
+      "sha256": "e76e3c49d1866639842d44e3674a2b550c43f6028600151dde893653240c4d9e"
+    },
+    "warehouse_metric": {
+      "rows": 160,
+      "sha256": "3824decd0f62b91311cc33099944b9747aa317adc12d8aa02461b6ee048735fb"
+    },
+    "warehouse_release": {
+      "rows": 5,
+      "sha256": "33c10d947d724d5a098e82b139103ca8277bed84fc5939343e1a40d1dfee84f1"
+    }
+  },
+  "restoredAllTables": {
+    "app_user": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "city": {
+      "rows": 4,
+      "sha256": "5e1e5e0f07a8ede1ee42472ee7526bca93424ac63d0c683ebbf3301a7ab164f8"
+    },
+    "dataset_registry": {
+      "rows": 3,
+      "sha256": "49c680987c6503c7d3f28e05839e438ff060e953f490b0f5f28812137274db37"
+    },
+    "etl_batch": {
+      "rows": 4,
+      "sha256": "af26b304ababf9859a6fe008e02a304a914dfa646cb6d3d28d7b254b72d02a69"
+    },
+    "etl_batch_observation": {
+      "rows": 40,
+      "sha256": "08b2abdab4b6b7f41dd471a8c5b84de7ca34424ceb7566e48825a3ab3d645a3d"
+    },
+    "etl_rejection": {
+      "rows": 14,
+      "sha256": "638ef5ffc424d31ef654b38ad8c1b5867baca50c9a622f2312a7a88b167cb814"
+    },
+    "etl_source": {
+      "rows": 3,
+      "sha256": "0e136cfc6187f3c4ddfa24acabcb59fd206309272b52b0fced0cfefc7c9f8f2b"
+    },
+    "flyway_schema_history": {
+      "rows": 6,
+      "sha256": "e34b15766d741b4c744542f8d1366e659b966142fc44b0578829de7ef0e91c98"
+    },
+    "managed_import": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "managed_job": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "prediction_current": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "prediction_evaluation": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "prediction_job": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "prediction_model": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "prediction_result": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "region": {
+      "rows": 3,
+      "sha256": "ad520a9abfecf3c9bdaad0c6872c422d389c705dcb9be4d2f7285a4cb09da3fd"
+    },
+    "road_segment": {
+      "rows": 3,
+      "sha256": "4e695ce9a49deb1f25e22dd743a952fb6259cb1875c4d0460def84a2b286f8d4"
+    },
+    "security_audit": {
+      "rows": 22,
+      "sha256": "74ddba918d46f056cf62faee9b885f5969ea987c60596a1806179c86af1b879e"
+    },
+    "traffic_observation": {
+      "rows": 23,
+      "sha256": "5c7eff77ef449f37bd07a704d084b301d40269c3cbcbc641dbaa15068683b81c"
+    },
+    "warehouse_current": {
+      "rows": 1,
+      "sha256": "e76e3c49d1866639842d44e3674a2b550c43f6028600151dde893653240c4d9e"
+    },
+    "warehouse_metric": {
+      "rows": 160,
+      "sha256": "3824decd0f62b91311cc33099944b9747aa317adc12d8aa02461b6ee048735fb"
+    },
+    "warehouse_release": {
+      "rows": 5,
+      "sha256": "33c10d947d724d5a098e82b139103ca8277bed84fc5939343e1a40d1dfee84f1"
+    }
+  },
+  "sourceUnchanged": true,
+  "restoredApiDataEqual": true,
+  "flywayRevalidation": true,
+  "dumpBytes": 91653,
+  "dumpSha256": "64756b201146e2ff21e2cb2d358a35718040fd1bd12ce88849f4565760ec9423",
+  "privateDumpExcluded": true,
+  "pointers": {
+    "warehouse_current": [
+      [
+        1,
+        "s6-failed-switch"
+      ]
+    ],
+    "prediction_current": []
+  }
+}

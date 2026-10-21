@@ -1,4 +1,5 @@
 {
+  "ci-baseline.json": "b7b5b92c686c574c8098d8fa16b5a694841959b8d6da5c741a22cba742edd8e1",
   "core/default-denial-real-http.txt": "8a78ca2cb4e84a152ef998ec1ec15971d182241c7a46515e8a4e568c2a674426",
   "core/summary.json": "1187917bb40815f52790ab5ba37a5d5a5b5158d86ac8656baa7a5a428f925214",
   "model/browser/chart-data.json": "db8f9d3fa0c1f5df067b7959d4e24e12bdbd868740ef2a6559d7215d9da3893e",
@@ -13,7 +14,7 @@
   "model/synthetic-evaluation.json": "e7aa6bb12066b005a90afb895ae0ec513781bde43a9c440851c5854f2bfeaf25",
   "model/synthetic-training-run.json": "3436713cb236b3b266a187f0bb5f785f2756a487a170222c4b50a6ab5381bb5d",
   "preflight.json": "1b86f5bf5b40cd45fe1fea6c0a988ae90f523a5c2f2a8de9ca11645976aa18dd",
-  "README.md": "17891ae45f21c89f9d1103e9c8e1bd32c2b912372996f7f6a4c71cba7b602b6c",
+  "README.md": "6361d5707aecaed05b78c0b5f2bc927463741196f5a4252d1698e2e9941377bf",
   "release/backup-restore.json": "2275622409ea99ecb55e6350ffcfa0310348f11736bdc535c101a109f202488f",
   "release/browser/prediction-panel-1440.png": "a480dabbb58bc967c28a83d68dd7f5eff76471373062a8adb747add241001aa0",
   "release/browser/prediction-panel-390.png": "dba44673a687b65e0d5dd776f2c77161543cf9b45ebae07852e7698ccad73903",
@@ -35,5 +36,15 @@
   "security/http.json": "d96d22f823e31f48737adc12677341a71efa772ec6c7c39da8c853fb52ae7cd7",
   "security/s9-denied-writes.json": "7a63d6a230d6f2b70814d7707a14cb1d11b4be1dd34cc3fd72b1dd20601e7c63",
   "security/summary.json": "23d5e150aa303b1a7e7dd090a87e1017eec32305f339e4a4985114dcc2549440",
-  "sources/sources.json": "bfe71c607055f6690ab4a1938128e06d8fef153b84c8536ec5acb3521132a4de"
+  "sources/sources.json": "bfe71c607055f6690ab4a1938128e06d8fef153b84c8536ec5acb3521132a4de",
+  "warehouse-ci/admission.json": "efa106cca2d08d7f7c6b8a42e664d93cd0a134854d626871e2da9f2f25c91c0c",
+  "warehouse-ci/backup-restore.json": "4d966f1c6db14637ada21f5332f3a945b4596f02c6f9e53526977f032ade36bb",
+  "warehouse-ci/browser-summary.json": "a6eaa47af4d4a722e200dfd1a62df96a6b44674ff3e9af98b2acc559bf30f152",
+  "warehouse-ci/hive-reconciliation.json": "81d7b9319eee7848c30211c0ab6b72e5af01dbcbb0b6460d84d92e8d1bddb08a",
+  "warehouse-ci/mysql-reconciliation.json": "7c3603a22c2b9644eb06e98bf125a96fb3fa31c534589ed5bd251006bf3df7a3",
+  "warehouse-ci/performance.json": "24b181350b8e8d165da824206caf06039b6f012bbdcaf47575c002a69e2e6d9c",
+  "warehouse-ci/release-summary.json": "a0b4fc1eead7c90774b0900eb8185835a0094aec67e8b53d9417ace3ccda8b38",
+  "warehouse-ci/summary.json": "a373f0f9b1786d57e115ecbf8fd335e391e2b6998ec20f0d64308320809d9f48",
+  "warehouse-ci/warehouse-production-1440.png": "6d1d13b2d9ac45922034083d31868e384afd9f53efb0de87e0fffe0c5b671b0a",
+  "warehouse-ci/warehouse-production-390.png": "3a5b4921f6f1d341ab1823555ab8d7f8104e4bdc7f27b62c61e269b60f9c6a5c"
 }

@@ -1,0 +1,13 @@
+{
+  "classification": "implementation-HEAD warehouse baseline; final doc commit requires new final-HEAD CI",
+  "pr": "https://github.com/xingyu-wind/urban-commute-analysis/pull/10",
+  "headSha": "0be0d115b666aaec3bb4b6de55ee05f9ef1ec860",
+  "run": 39524285566,
+  "job": 118975195112,
+  "conclusion": "success",
+  "artifact": 12311594596,
+  "artifactSha256": "bb33eafafae17b17be85b0a1acf5441576c217e7a31a4f656f541c288ebee557",
+  "actualZipDownloadedAndDigestVerified": true,
+  "privateRawAbsent": true,
+  "finalHeadReceipt": "PR #10 body and final delivery; not this historical baseline"
+}
