@@ -1,0 +1,51 @@
+{
+  "status": "USB_CANDIDATE_LOCAL_PASS",
+  "branch": "codex/t3-usb-offline",
+  "startingHead": "31c29dd8a64dfe2cb278d0ae7375d1f25ba6e3de",
+  "startingWorkingTreeClean": true,
+  "applicationSource": "97f30db15a5292c0be9a0103359ccc7e97f5ddfa",
+  "packagingGitHead": "5f846e0964ff2ea8c08fb46eee53313d4290c79d",
+  "workingTreeDirtyAtBuild": false,
+  "zip": "D:\\WindXingyu\\Code\\urban-commute-analysis\\dist\\t3-usb\\UrbanCommute-USB-Demo-0.9.0-offline-candidate-windows-x64.zip",
+  "bytes": 1021842976,
+  "sha256": "e473a2d912b72be98171a55aa55f882139b5dfac0bbc4f99299f78f8b1377e19",
+  "fileCount": 477,
+  "oldZip": {
+    "bytes": 722218,
+    "sha256": "9acbe39f35bf69dcf4bfcb35ac63a38ac0feeffeedea34afc455352f5c450f2f",
+    "unchanged": true
+  },
+  "frozenApplicationEquality": {
+    "applicationSource": true,
+    "originalFatJarSha256": true,
+    "thinJarSha256": true,
+    "thinJarClassHashes": true,
+    "frontendFiles": true,
+    "applicationFiles": true
+  },
+  "originalFatJarSha256": "9ab652e6f98e4625f479710c318f9c57aa58e16460ff4780a725150e4d11f433",
+  "thinJarSha256": "17b8b48e9127cc984b01f2a464c24d34c1505f766f777005e91e6533e3c79608",
+  "frontendFiles": {
+    "index.html": "8e998adf40b98ad94a5be31b3ec79a1f29da0ca077277d31fc3064cc0aaca1ba",
+    "assets/index-CazJG1LA.css": "7d78bcd991bd4d48e74a0eac6617ef5a3695e193cdf48d5e177c163045f63b36",
+    "assets/index-DPO7PH7B.js": "cc7f1455fa4b9a4d1265c0fb6dce03e44c9b2c99d575d84c498e382fa240649a"
+  },
+  "componentLockSha256": "c73a5c625911753dc51d7a4f26a0e064d17ce094e48aba66c69a87258ce6fb8e",
+  "sourceLockSha256": "3b124ea9fea0035da58105ba0f468ad6750b8816d517359c89d6bcd1cb894360",
+  "componentCount": 58,
+  "componentBytes": 497107997,
+  "sourceCount": 88,
+  "sourceBytes": 523466183,
+  "extractedNoticeCount": 277,
+  "mysqlSourceCommit": "fe442869f39a69d69f2cb4384d6c6b5763faa1d0",
+  "correspondingMysqlSourceComplete": true,
+  "sourceFirstTruncatedBytes": 135816593,
+  "sourceFinalBytes": 479170675,
+  "sourceOffersPreserved": true,
+  "thirdPartyRedistributionCertification": false,
+  "vcInstallerBundledInZip": false,
+  "personalControlledNoncommercialDemo": true,
+  "t31HistoricalStatus": "BLOCKED",
+  "timedRehearsalRerun": false,
+  "hiveOrTrainingRerun": false
+}

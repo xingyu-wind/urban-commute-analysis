@@ -1,0 +1,2 @@
+Stopped only verified source download worker 41844; blocked whole-file retry and failed source retained.
+Resumed maintained source transfer with 12 bounded range workers; completed exact-length parts retained.

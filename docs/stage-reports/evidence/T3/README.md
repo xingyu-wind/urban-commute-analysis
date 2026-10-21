@@ -1,5 +1,7 @@
 # T3 实测证据索引
 
+最新USB任务另见[专项证据](../T3-USB/README.md)及[T3-USB报告](../../T3-USB.md)：本机独立离线路径通过，原候选ZIP与以下历史证据保留；T3.1 BLOCKED仍是历史裁定，不再作为USB交付前置。
+
 当前T3.1状态：**BLOCKED**，缺少可直接使用的干净Windows11 x64环境。T3历史状态仍为 **T3_PARTIAL**：最终ZIP本机空缓存配置、功能/故障验证和420.0秒七分钟连续验收通过。无干净Windows、Windows10、缺VC++或实际低磁盘容量环境通过证据。T3.1没有使用宿主机个人演示实例替代客机。
 
 最终包：`dist/t3-final/UrbanCommute-Demo-0.9.0-t3-candidate-windows-x64.zip`，722218字节、46文件，SHA256 `9acbe39f35bf69dcf4bfcb35ac63a38ac0feeffeedea34afc455352f5c450f2f`。业务冻结97f30db，打包源码完整提交 `59404200921b97f86b3b57288a33b491244c793d`；BUILD记录构建时工作区干净。验证脚本和本证据提交不改变该ZIP。
