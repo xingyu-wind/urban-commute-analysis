@@ -180,7 +180,16 @@ try {
   // Actual SVG point click, then keyboard-accessible equivalent to clear the same selection.
   const mapSymbol = page.locator('.map-panel .traffic-chart svg path[fill="#48d9bf"]').first()
   await expect(mapSymbol).toBeVisible()
-  await mapSymbol.click({ force: true })
+  // ResizeObserver completion does not imply the SVG symbol's animated transform
+  // has reached its new position. Require the real symbol inside the resized chart
+  // and retain Playwright's normal stable/visible/hit-target checks for the click.
+  await expect.poll(() => mapSymbol.evaluate(node => {
+    const point = node.getBoundingClientRect()
+    const chart = node.closest('.traffic-chart').getBoundingClientRect()
+    return point.left >= chart.left && point.right <= chart.right
+      && point.top >= chart.top && point.bottom <= chart.bottom
+  })).toBe(true)
+  await mapSymbol.click()
   await expect(page.locator('.filter-caption')).toContainText('演示东区')
   await expect(page.getByTestId('roads-table')).toContainText('演示路段A')
   await expect(page.getByTestId('roads-table')).not.toContainText('演示路段B')

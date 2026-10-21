@@ -1,0 +1,76 @@
+[
+  {
+    "case": "old-migration-expectation",
+    "source": "backend/target/s8-initial-tests.log",
+    "sourceSha256": "6d797d23b886e1e33254d47f325841decc559345c7c5288db7d63343b8952bfa",
+    "actualExcerpt": [
+      "[ERROR] Tests run: 59, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 6.398 s <<< FAILURE! -- in com.urbancommute.ApiIntegrationTest",
+      "[ERROR] com.urbancommute.ApiIntegrationTest.repeatMigrationIsIdempotentAndDataRetained -- Time elapsed: 0.066 s <<< FAILURE!",
+      "[ERROR] Failures: ",
+      "[ERROR]   ApiIntegrationTest.repeatMigrationIsIdempotentAndDataRetained:176 ",
+      "[ERROR] Tests run: 104, Failures: 1, Errors: 0, Skipped: 0",
+      "[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.6:test (default-test) on project urban-commute-backend: There are test failures.",
+      "[ERROR] ",
+      "[ERROR] See D:\\WindXingyu\\Code\\urban-commute-analysis\\backend\\target\\surefire-reports for the individual test results.",
+      "[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.",
+      "[ERROR] -> [Help 1]",
+      "[ERROR] ",
+      "[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.",
+      "[ERROR] Re-run Maven using the -X switch to enable full debug logging.",
+      "[ERROR] ",
+      "[ERROR] For more information about the errors and possible solutions, please read the following articles:",
+      "[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException"
+    ]
+  },
+  {
+    "case": "refresh-button-order",
+    "source": "backend/target/s8-regression/frontend-unit.json",
+    "sourceSha256": "47642cbd8f7a15801e17227623f187f279aba36d863c080ef3295d92813d4f77",
+    "actualExcerpt": [
+      "city dashboard shows loading without prematurely claiming the backend is healthy: AssertionError: expected undefined to be defined",
+      "city dashboard updates the notice when actual responses change from synthetic to mixed, registered and empty: AssertionError: expected 'i数据来源说明本次城市目录登记为 synthetic_test 合成测试数…' to contain '多个数据集'",
+      "city dashboard shows HTTP failure and restores success after retry: AssertionError: expected '城市通勤/数据工作台本地开发环境收起运行管理权限与运行管理管理员可上传并确…' to contain '服务正常'",
+      "city dashboard removes stale health and cities when a later request fails over the network: AssertionError: expected '城市通勤/数据工作台本地开发环境收起运行管理权限与运行管理管理员可上传并确…' not to contain '服务正常'"
+    ]
+  },
+  {
+    "case": "csrf-principal-order",
+    "source": "backend/target/s8-security1.log",
+    "sourceSha256": "99456fd5bf4a3c6937669791573abc847816c9f939b270b2af18452222b252e1",
+    "actualExcerpt": [
+      "AssertionError: missing-csrf-admin: actual=401, expected=403"
+    ]
+  },
+  {
+    "case": "browser-logout-race",
+    "source": "backend/target/s8-security2/browser.log",
+    "sourceSha256": "811a1f03306a8a9b47e81d64fd8a38764894628797b1de70af0b1385213f359b",
+    "actualExcerpt": [
+      "node:internal/modules/run_main:107",
+      "    triggerUncaughtException(",
+      "    ^",
+      "",
+      "ExpectError: expect(received).toBe(expected) // Object.is equality",
+      "",
+      "Expected: 401",
+      "Received: 200",
+      "    at captureRawStack (D:\\WindXingyu\\Code\\urban-commute-analysis\\frontend\\node_modules\\playwright-core\\lib\\coreBundle.js:9282:17)",
+      "    at callMatcherAsStep (D:\\WindXingyu\\Code\\urban-commute-analysis\\frontend\\node_modules\\playwright\\lib\\matchers\\expect.js:13316:57)",
+      "    at Object.toBe (D:\\WindXingyu\\Code\\urban-commute-analysis\\frontend\\node_modules\\playwright\\lib\\matchers\\expect.js:13308:23)",
+      "    at D:\\WindXingyu\\Code\\urban-commute-analysis\\frontend\\scripts\\verify-s8.mjs:71:90 {",
+      "  matcherResult: {",
+      "    actual: 200,",
+      "    expected: 401,",
+      "    message: 'expect(received).toBe(expected) // Object.is equality\\n' +",
+      "      '\\n' +",
+      "      'Expected: 401\\n' +",
+      "      'Received: 200',",
+      "    name: 'toBe',",
+      "    pass: false",
+      "  }",
+      "}",
+      "",
+      "Node.js v24.19.0"
+    ]
+  }
+]

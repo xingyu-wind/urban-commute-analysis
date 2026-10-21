@@ -1,0 +1,222 @@
+{
+  "imports": [
+    {
+      "id": "1e2b89bf-3c8f-4204-b76a-eaa0eadeeeca",
+      "input_sha256": "c0c5eb2718ccb8d794de39b4ba3b36f555059e72f6b7c9c3a1343cbbf78c2ed8",
+      "configuration_sha256": "e53de21c5a03d564d5f4c71993bd4f5c47540a45febf45ff975a05a831028431",
+      "confirmed_by": "s8-admin",
+      "confirmed_at": "2026-10-20 16:44:00.539000"
+    },
+    {
+      "id": "339374ab-c8e0-4f46-9441-45e3af207a12",
+      "input_sha256": "99305c0b29f63edb1b958990f11d23da7fd7d9488b247e345f3b8be2ad072de8",
+      "configuration_sha256": "1369fa561b48f05cd0a093812cd01e1736e56e3b93812c679a5d1c1cc63d68a3",
+      "confirmed_by": "s8-admin",
+      "confirmed_at": "2026-10-20 16:44:07.970000"
+    },
+    {
+      "id": "b29a8b60-29b2-45b9-973f-fc3f8659b3bc",
+      "input_sha256": "82bc2bdc371afc162289f6b5c5a306b6af9d074a0bb702add85196633e13db7c",
+      "configuration_sha256": "aebf69af366176abe4df7194be0e1d81f74207a2d1ba0485bc34c6477ea35519",
+      "confirmed_by": "s8-admin",
+      "confirmed_at": "2026-10-20 16:44:11.153000"
+    },
+    {
+      "id": "bfbeb7e5-4648-40f3-b1a2-954e5747dbae",
+      "input_sha256": "99305c0b29f63edb1b958990f11d23da7fd7d9488b247e345f3b8be2ad072de8",
+      "configuration_sha256": "bc896952a6955a32da5242a7187358b97f05b824820ece19f0bf57d1b4dd5656",
+      "confirmed_by": "s8-admin",
+      "confirmed_at": "2026-10-20 16:44:03.700000"
+    },
+    {
+      "id": "da18be48-b109-4fe3-b57c-26a09459093f",
+      "input_sha256": "99305c0b29f63edb1b958990f11d23da7fd7d9488b247e345f3b8be2ad072de8",
+      "configuration_sha256": "ad951c8636dd3fada0358204280c9885e1ddac30868376d759368c9495b8c9ae",
+      "confirmed_by": "s8-admin",
+      "confirmed_at": "2026-10-20 16:44:19.337000"
+    },
+    {
+      "id": "e909e207-e53f-49f6-a1ce-b6b184e9a91e",
+      "input_sha256": "99305c0b29f63edb1b958990f11d23da7fd7d9488b247e345f3b8be2ad072de8",
+      "configuration_sha256": "38f26d8c6f3279a41b98cefbcf90c8120eda20caa9b86ac4d78206000de4e88a",
+      "confirmed_by": "s8-admin",
+      "confirmed_at": "2026-10-20 16:43:56.140000"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "0049edc9-f0ad-4519-be37-910850e88a84",
+      "import_id": "b29a8b60-29b2-45b9-973f-fc3f8659b3bc",
+      "status": "FAILED",
+      "attempts": 3,
+      "operated_by": "s8-admin",
+      "input_sha256": "82bc2bdc371afc162289f6b5c5a306b6af9d074a0bb702add85196633e13db7c",
+      "mapping_sha256": "aebf69af366176abe4df7194be0e1d81f74207a2d1ba0485bc34c6477ea35519",
+      "output_sha256": null,
+      "error_code": "ADAPTER_REJECTED"
+    },
+    {
+      "id": "32d3a1da-b6f9-41c6-abba-4ca3eef71b5b",
+      "import_id": "bfbeb7e5-4648-40f3-b1a2-954e5747dbae",
+      "status": "SUCCEEDED",
+      "attempts": 2,
+      "operated_by": "s8-admin",
+      "input_sha256": "99305c0b29f63edb1b958990f11d23da7fd7d9488b247e345f3b8be2ad072de8",
+      "mapping_sha256": "bc896952a6955a32da5242a7187358b97f05b824820ece19f0bf57d1b4dd5656",
+      "output_sha256": "29ca55622503de7fe8ae1b23126eac05b21960f99d595c527846d9a9c57360fb",
+      "error_code": null
+    },
+    {
+      "id": "61bc074d-cf34-4dee-aa45-6b414f75e10c",
+      "import_id": "339374ab-c8e0-4f46-9441-45e3af207a12",
+      "status": "FAILED",
+      "attempts": 1,
+      "operated_by": "s8-admin",
+      "input_sha256": "99305c0b29f63edb1b958990f11d23da7fd7d9488b247e345f3b8be2ad072de8",
+      "mapping_sha256": "1369fa561b48f05cd0a093812cd01e1736e56e3b93812c679a5d1c1cc63d68a3",
+      "output_sha256": null,
+      "error_code": "ADAPTER_REJECTED"
+    },
+    {
+      "id": "c84fc167-b026-4bac-95d3-650b3c762cef",
+      "import_id": "da18be48-b109-4fe3-b57c-26a09459093f",
+      "status": "SUCCEEDED",
+      "attempts": 1,
+      "operated_by": "s8-admin",
+      "input_sha256": "99305c0b29f63edb1b958990f11d23da7fd7d9488b247e345f3b8be2ad072de8",
+      "mapping_sha256": "ad951c8636dd3fada0358204280c9885e1ddac30868376d759368c9495b8c9ae",
+      "output_sha256": "29ca55622503de7fe8ae1b23126eac05b21960f99d595c527846d9a9c57360fb",
+      "error_code": null
+    },
+    {
+      "id": "e524f2bd-d56d-4283-b577-e12331404903",
+      "import_id": "e909e207-e53f-49f6-a1ce-b6b184e9a91e",
+      "status": "SUCCEEDED",
+      "attempts": 1,
+      "operated_by": "s8-admin",
+      "input_sha256": "99305c0b29f63edb1b958990f11d23da7fd7d9488b247e345f3b8be2ad072de8",
+      "mapping_sha256": "38f26d8c6f3279a41b98cefbcf90c8120eda20caa9b86ac4d78206000de4e88a",
+      "output_sha256": "29ca55622503de7fe8ae1b23126eac05b21960f99d595c527846d9a9c57360fb",
+      "error_code": null
+    },
+    {
+      "id": "ebaadafa-e515-4d60-bbf0-430cb03a36ce",
+      "import_id": "1e2b89bf-3c8f-4204-b76a-eaa0eadeeeca",
+      "status": "SUCCEEDED",
+      "attempts": 1,
+      "operated_by": "s8-admin",
+      "input_sha256": "c0c5eb2718ccb8d794de39b4ba3b36f555059e72f6b7c9c3a1343cbbf78c2ed8",
+      "mapping_sha256": "e53de21c5a03d564d5f4c71993bd4f5c47540a45febf45ff975a05a831028431",
+      "output_sha256": "29ca55622503de7fe8ae1b23126eac05b21960f99d595c527846d9a9c57360fb",
+      "error_code": null
+    }
+  ],
+  "audit": [
+    {
+      "action": "ACCESS_DENIED",
+      "outcome": "DENIED",
+      "n": 8
+    },
+    {
+      "action": "AUTH_REQUIRED",
+      "outcome": "DENIED",
+      "n": 9
+    },
+    {
+      "action": "CONFIRM",
+      "outcome": "ADAPTER_REJECTED",
+      "n": 1
+    },
+    {
+      "action": "CONFIRM",
+      "outcome": "ALREADY_CONFIRMED",
+      "n": 1
+    },
+    {
+      "action": "CONFIRM",
+      "outcome": "SUCCESS",
+      "n": 6
+    },
+    {
+      "action": "IMPORT",
+      "outcome": "DUPLICATE",
+      "n": 2
+    },
+    {
+      "action": "IMPORT",
+      "outcome": "RUNNING",
+      "n": 6
+    },
+    {
+      "action": "IMPORT",
+      "outcome": "UNCONFIRMED",
+      "n": 1
+    },
+    {
+      "action": "IMPORT_FINISHED",
+      "outcome": "ADAPTER_REJECTED",
+      "n": 5
+    },
+    {
+      "action": "IMPORT_FINISHED",
+      "outcome": "SUCCEEDED",
+      "n": 4
+    },
+    {
+      "action": "LOGIN",
+      "outcome": "SUCCESS",
+      "n": 5
+    },
+    {
+      "action": "LOGIN_FAILED",
+      "outcome": "DENIED",
+      "n": 1
+    },
+    {
+      "action": "LOGOUT",
+      "outcome": "SUCCESS",
+      "n": 1
+    },
+    {
+      "action": "RETRY",
+      "outcome": "NOT_RETRYABLE",
+      "n": 2
+    },
+    {
+      "action": "RETRY",
+      "outcome": "RUNNING",
+      "n": 3
+    },
+    {
+      "action": "UPLOAD",
+      "outcome": "ADAPTER_REJECTED",
+      "n": 6
+    },
+    {
+      "action": "UPLOAD",
+      "outcome": "FILE_SIZE",
+      "n": 1
+    },
+    {
+      "action": "UPLOAD",
+      "outcome": "FILE_TYPE",
+      "n": 1
+    },
+    {
+      "action": "UPLOAD",
+      "outcome": "INVALID_FILENAME",
+      "n": 3
+    },
+    {
+      "action": "UPLOAD",
+      "outcome": "SUCCESS",
+      "n": 6
+    }
+  ],
+  "observationRows": 0,
+  "warehousePointerRows": 0,
+  "predictionPointerRows": 0,
+  "multipartFiles": 0,
+  "passwordHashes": "BCrypt cost 12; no plaintext",
+  "schema": "s3test_732d42b967b246b0a0e0262bbce355e6"
+}

@@ -1,0 +1,19 @@
+{
+  "jarLibraries": [
+    "spring-boot-3.5.16.jar",
+    "spring-security-config-6.5.11.jar",
+    "spring-security-core-6.5.11.jar",
+    "spring-security-crypto-6.5.11.jar",
+    "spring-security-web-6.5.11.jar",
+    "mysql-connector-j-9.7.0.jar",
+    "flyway-core-11.20.3.jar"
+  ],
+  "java": [
+    "NOTE: Picked up JDK_JAVA_OPTIONS: -Djdk.net.unixdomain.tmpdir=D:\\WindXingyu\\Temp\\java-unixdomain",
+    "openjdk version \"21.0.12.1\" 2026-08-18 LTS",
+    "OpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)",
+    "OpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode, sharing)"
+  ],
+  "node": "v24.19.0",
+  "python": "Python 3.11.9"
+}

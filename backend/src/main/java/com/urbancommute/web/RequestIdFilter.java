@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 @Component
+@org.springframework.core.annotation.Order(org.springframework.core.Ordered.HIGHEST_PRECEDENCE)
 public class RequestIdFilter extends OncePerRequestFilter {
     private static final Logger LOG = LoggerFactory.getLogger(RequestIdFilter.class);
     public static final String ATTRIBUTE = RequestIdFilter.class.getName() + ".requestId";

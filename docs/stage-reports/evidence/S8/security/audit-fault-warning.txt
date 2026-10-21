@@ -1,0 +1,2 @@
+2026-10-21T00:44:14.415+08:00  WARN 51732 --- [urban-commute-backend] [.1-61758-exec-4] c.urbancommute.security.SecurityConfig   : Logout audit unavailable; session invalidation continues
+2026-10-21T00:44:21.217+08:00  WARN 51732 --- [urban-commute-backend] [.1-61758-exec-5] c.urbancommute.security.SecurityConfig   : Logout audit unavailable; session invalidation continues

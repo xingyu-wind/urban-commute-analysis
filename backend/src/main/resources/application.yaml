@@ -3,6 +3,12 @@ spring:
     name: urban-commute-backend
   jackson:
     default-property-inclusion: always
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 3MB
+      file-size-threshold: 0
+      location: ${COMMUTE_UPLOAD_TMP:${java.io.tmpdir}}
   datasource:
     url: ${DB_URL:jdbc:mysql://127.0.0.1:3306/urban_commute?connectionTimeZone=UTC}
     username: ${DB_USER:urban_commute}
@@ -17,6 +23,14 @@ spring:
     baseline-on-migrate: false
     validate-on-migrate: true
 server:
+  servlet:
+    session:
+      timeout: 20m
+      tracking-modes: cookie
+      cookie:
+        http-only: true
+        same-site: strict
+        secure: ${COMMUTE_COOKIE_SECURE:false}
   address: 127.0.0.1
   port: 8080
   error:
@@ -24,5 +38,9 @@ server:
     include-stacktrace: never
     include-binding-errors: never
 commute:
+  operations:
+    root: ${COMMUTE_PRIVATE_ROOT:data/private/s8}
+    python: ${COMMUTE_PYTHON:python}
+    bridge: ${COMMUTE_BRIDGE:scripts/s8_adapter_bridge.py}
   cities:
     dataset-filter: ${CITY_DATASET_FILTER:}

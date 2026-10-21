@@ -1,8 +1,8 @@
 openapi: 3.1.0
 jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
 info:
-  title: 城市通勤系统 S7 API 契约
-  version: 1.3.0
+  title: 城市通勤系统 S8 API 契约
+  version: 1.4.0
   description: |
     本文件保留 S2/S3 接口，并增加四个 S4 MySQL 交通统计接口。
     所有 examples 均为固定的契约示例，不是实时响应或真实交通采集结果。
@@ -447,7 +447,745 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/ServiceUnavailable'
+  /api/v1/auth/csrf:
+    get:
+      operationId: s8GetApiV1AuthCsrf
+      summary: S8 csrf
+      security: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Csrf'
+        '400':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '401':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '403':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '404':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '409':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '413':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '415':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '422':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '500':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '503':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+  /api/v1/auth/me:
+    get:
+      operationId: s8GetApiV1AuthMe
+      summary: S8 me
+      security:
+      - SessionCookie: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Identity'
+        '400':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '401':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '403':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '404':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '409':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '413':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '415':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '422':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '500':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '503':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+  /api/v1/auth/login:
+    post:
+      operationId: s8PostApiV1AuthLogin
+      summary: S8 login
+      security: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Session'
+        '400':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '401':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '403':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '404':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '409':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '413':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '415':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '422':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '500':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '503':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+      description: Requires session-bound X-CSRF-TOKEN from GET /api/v1/auth/csrf. Refresh
+        after login/logout. Operations mutations require ADMIN.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              additionalProperties: false
+              required:
+              - username
+              - password
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+                  format: password
+  /api/v1/auth/logout:
+    post:
+      operationId: s8PostApiV1AuthLogout
+      summary: S8 logout
+      security:
+      - SessionCookie: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Session'
+        '400':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '401':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '403':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '404':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '409':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '413':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '415':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '422':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '500':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '503':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+      description: Requires session-bound X-CSRF-TOKEN from GET /api/v1/auth/csrf. Refresh
+        after login/logout. Operations mutations require ADMIN.
+  /api/v1/operations/tasks:
+    get:
+      operationId: s8GetApiV1OperationsTasks
+      summary: S8 tasks
+      security:
+      - SessionCookie: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Tasks'
+        '400':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '401':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '403':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '404':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '409':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '413':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '415':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '422':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '500':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '503':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+  /api/v1/operations/uploads:
+    post:
+      operationId: s8PostApiV1OperationsUploads
+      summary: S8 uploads
+      security:
+      - SessionCookie: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Upload'
+        '400':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '401':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '403':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '404':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '409':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '413':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '415':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '422':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '500':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '503':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+      description: Requires session-bound X-CSRF-TOKEN from GET /api/v1/auth/csrf. Refresh
+        after login/logout. Operations mutations require ADMIN.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              additionalProperties: false
+              required:
+              - file
+              properties:
+                file:
+                  type: string
+                  format: binary
+  /api/v1/operations/imports/{id}/confirm:
+    post:
+      operationId: s8PostApiV1OperationsImportsIdConfirm
+      summary: S8 confirm
+      security:
+      - SessionCookie: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Confirmation'
+        '400':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '401':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '403':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '404':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '409':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '413':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '415':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '422':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '500':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '503':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+      description: Requires session-bound X-CSRF-TOKEN from GET /api/v1/auth/csrf. Refresh
+        after login/logout. Operations mutations require ADMIN.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required:
+              - acknowledgement
+              - review
+              properties:
+                acknowledgement:
+                  type: string
+                  pattern: ^[0-9a-f]{64}$
+                review:
+                  type: object
+  /api/v1/operations/imports/{id}/execute:
+    post:
+      operationId: s8PostApiV1OperationsImportsIdExecute
+      summary: S8 execute
+      security:
+      - SessionCookie: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Imported'
+        '400':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '401':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '403':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '404':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '409':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '413':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '415':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '422':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '500':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '503':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+      description: Requires session-bound X-CSRF-TOKEN from GET /api/v1/auth/csrf. Refresh
+        after login/logout. Operations mutations require ADMIN.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+  /api/v1/operations/imports/{id}/retry:
+    post:
+      operationId: s8PostApiV1OperationsImportsIdRetry
+      summary: S8 retry
+      security:
+      - SessionCookie: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Imported'
+        '400':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '401':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '403':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '404':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '409':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '413':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '415':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '422':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '500':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+        '503':
+          description: Request rejected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S8Error'
+      description: Requires session-bound X-CSRF-TOKEN from GET /api/v1/auth/csrf. Refresh
+        after login/logout. Operations mutations require ADMIN.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
 components:
+  securitySchemes:
+    SessionCookie:
+      type: apiKey
+      in: cookie
+      name: JSESSIONID
   schemas:
     WarehouseMetric:
       type: object
@@ -1331,6 +2069,138 @@ components:
                   $ref: '#/components/schemas/PredictionEvaluation'
                 minItems: 8
                 maxItems: 8
+    S8Csrf:
+      type: object
+      additionalProperties: false
+      required:
+      - token
+      - headerName
+      properties:
+        token:
+          type: string
+        headerName:
+          type: string
+    S8Identity:
+      type: object
+      additionalProperties: false
+      required:
+      - username
+      - role
+      properties:
+        username:
+          type: string
+        role:
+          type: string
+          enum:
+          - ADMIN
+          - READER
+    S8Session:
+      type: object
+      additionalProperties: false
+      required:
+      - authenticated
+      properties:
+        authenticated:
+          type: boolean
+    S8Upload:
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - proposal
+      properties:
+        id:
+          type: string
+          format: uuid
+        proposal:
+          type: object
+          required:
+          - state
+          - executable
+          - proposalSha256
+          - file
+          - columns
+    S8Confirmation:
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - configurationSha256
+      - confirmedBy
+      properties:
+        id:
+          type: string
+          format: uuid
+        configurationSha256:
+          type: string
+          pattern: ^[0-9a-f]{64}$
+        confirmedBy:
+          type: string
+    S8Imported:
+      type: object
+      additionalProperties: false
+      required:
+      - jobId
+      - status
+      - outputSha256
+      - quality
+      properties:
+        jobId:
+          type: string
+          format: uuid
+        status:
+          const: SUCCEEDED
+        outputSha256:
+          type: string
+          pattern: ^[0-9a-f]{64}$
+        quality:
+          type: object
+          required:
+          - status
+    S8Tasks:
+      type: object
+      additionalProperties: false
+      required:
+      - imports
+      - etl
+      - hive
+      - ml
+      properties:
+        imports:
+          type: array
+          items:
+            type: object
+        etl:
+          type: array
+          items:
+            type: object
+        hive:
+          type: array
+          items:
+            type: object
+        ml:
+          type: array
+          items:
+            type: object
+    S8Error:
+      type: object
+      additionalProperties: false
+      required:
+      - code
+      - message
+      - data
+      - meta
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        data:
+          type: 'null'
+        meta:
+          type: object
+          required:
+          - requestId
   responses:
     BadRequest:
       description: HTTP 400，格式或请求参数不合法；code=BAD_REQUEST

@@ -1,0 +1,49 @@
+{
+  "backend": {
+    "tests": 104,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "frontend": {
+    "numTotalTests": 91,
+    "numPassedTests": 91,
+    "numFailedTests": 0
+  },
+  "mysql": "8.4.11",
+  "security": {
+    "passed": true,
+    "httpCases": 108,
+    "concurrentStatuses": [
+      200,
+      409
+    ],
+    "originalData": "synthetic_test",
+    "privateRawExcluded": true,
+    "filesystemChecks": true,
+    "databaseChecks": true,
+    "browserChecks": true
+  },
+  "s5Python": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "40",
+    "time": "11.085",
+    "timestamp": "2026-10-21T00:14:52.060335+08:00",
+    "hostname": "LAPTOP-UVEOSJAM"
+  },
+  "s7Python": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "73",
+    "time": "12.228",
+    "timestamp": "2026-10-21T00:12:46.101685+08:00",
+    "hostname": "LAPTOP-UVEOSJAM"
+  },
+  "initialImplementationSha": "7ef8203bae6e9ff2b8f51f10ecfece3a3dd20801",
+  "finalSecuritySourceSnapshot": "source-sha256.json"
+}

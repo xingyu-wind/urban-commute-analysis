@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 @RestControllerAdvice
 public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
+    @org.springframework.beans.factory.annotation.Autowired private com.urbancommute.security.Audit securityAudit;
     private static final Logger LOG = LoggerFactory.getLogger(ApiExceptionHandler.class);
 
     @Override
@@ -48,8 +49,23 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> unexpected(Exception exception, HttpServletRequest request) {
-        LOG.error("requestId={} unexpected server exception", RequestIdFilter.requestId(request), exception);
+        LOG.error("requestId={} unexpected server exception type={}", RequestIdFilter.requestId(request), exception.getClass().getSimpleName());
         return error(HttpStatus.INTERNAL_SERVER_ERROR, new HttpHeaders(), request);
+    }
+
+    @ExceptionHandler(com.urbancommute.security.OperationFailure.class)
+    public ResponseEntity<Object> operation(com.urbancommute.security.OperationFailure e, HttpServletRequest request) {
+        return ResponseEntity.status(e.status).contentType(MediaType.APPLICATION_JSON).body(
+            new ApiResponse<>(e.code,"Operation rejected",null,ResponseMeta.error(RequestIdFilter.requestId(request))));
+    }
+
+    @Override
+    protected ResponseEntity<Object> handleMaxUploadSizeExceededException(org.springframework.web.multipart.MaxUploadSizeExceededException e,
+            HttpHeaders headers, HttpStatusCode status, WebRequest webRequest) {
+        HttpServletRequest request=((ServletWebRequest)webRequest).getRequest();
+        securityAudit.record(request.getRemoteUser()==null ? "anonymous" : request.getRemoteUser(),"UPLOAD",null,"FILE_SIZE",request);
+        return ResponseEntity.status(413).contentType(MediaType.APPLICATION_JSON).body(
+            new ApiResponse<>("FILE_SIZE","Operation rejected",null,ResponseMeta.error(RequestIdFilter.requestId(request))));
     }
 
     private ResponseEntity<Object> error(HttpStatusCode status, HttpHeaders originalHeaders,

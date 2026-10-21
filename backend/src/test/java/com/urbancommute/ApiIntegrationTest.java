@@ -80,7 +80,7 @@ class ApiIntegrationTest {
         assertThat(datasourceUrl).contains("/" + IsolatedMySql.required("TEST_DB_SCHEMA") + "?");
         assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM city", Integer.class)).isZero();
         assertThat(jdbc.queryForList("SELECT version FROM flyway_schema_history WHERE success=1 ORDER BY installed_rank", String.class))
-                .containsExactly("1", "2", "3", "4", "5");
+                .containsExactly("1", "2", "3", "4", "5", "6");
         jdbc.update("""
                 INSERT INTO dataset_registry(dataset_id,source_name,source_type,license_status,dataset_version,description)
                 VALUES ('s3-synthetic-cities-v1','S3 generated catalog fixture','synthetic_test',
@@ -173,7 +173,7 @@ class ApiIntegrationTest {
         assertThat(flyway.validateWithResult().validationSuccessful).isTrue();
         assertThat(flyway.migrate().migrationsExecuted).isZero();
         assertThat(jdbc.queryForList("SELECT version FROM flyway_schema_history WHERE success=1 ORDER BY installed_rank", String.class))
-                .containsExactly("1", "2", "3", "4", "5");
+                .containsExactly("1", "2", "3", "4", "5", "6");
         assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM city", Integer.class)).isEqualTo(2);
     }
 
