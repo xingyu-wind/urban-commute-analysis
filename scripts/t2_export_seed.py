@@ -105,14 +105,14 @@ def main():
         content=json.dumps(dict(sourceType='synthetic_test',snapshot='prepublished; not a new training/Hive execution',tables=tables),
                            default=serial,ensure_ascii=False,separators=(',',':'))+'\n'
         assert not re.search(r'[A-Za-z]:[\\/]|password_hash|DB_PASSWORD|s3test_[a-f0-9]{32}',content)
-        target.write_text(content,encoding='utf-8')
+        target.write_text(content,encoding='utf-8',newline='\n')
         result[scenario]=dict(sha256=hashlib.sha256(target.read_bytes()).hexdigest(),
             rows={t:len(d['rows']) for t,d in tables.items()},excluded=['app_user','security_audit','managed_job','managed_import','flyway_schema_history'],
             modelFixture4368PointComparison=scenario=='model',warehouseAll40MetricsCompared=scenario=='warehouse',
             finalWarehouseArtifactSha256=hashlib.sha256(args.warehouse_artifact.read_bytes()).hexdigest() if scenario=='warehouse' and args.warehouse_artifact else None,
             originalPublisher='S7 trusted replay / S6 independently reconciled real Hive',
             sourceEvidence='docs/stage-reports/evidence/S9/release' if scenario=='model' else 'backend/target/s6-local-chain')
-    (ROOT/'database/fixtures/t2-seed-provenance.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
+    (ROOT/'database/fixtures/t2-seed-provenance.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(json.dumps(result,indent=2))
 
 

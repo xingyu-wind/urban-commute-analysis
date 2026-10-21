@@ -102,7 +102,7 @@ def main():
         locked = list(pool.map(download, items))
     target = ROOT / 'infra/windows/components.lock.json'
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(json.dumps(dict(platform='windows-x64', components=locked), ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+    target.write_text(json.dumps(dict(platform='windows-x64', components=locked), ensure_ascii=False, indent=2)+'\n', encoding='utf-8',newline='\n')
 
 
 if __name__ == '__main__':
