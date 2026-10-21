@@ -1,0 +1,13 @@
+{
+  "acceptance.json": "1ae32cd3b32a5ee32a229e7fdd6a22b8fcf80bec2048c72c9d6b27971ca6a8a9",
+  "browser-model.json": "26aefbe28df92aaa513911acc2d97038b34360a8e53a46dfa9a4d5cae705b02d",
+  "browser-warehouse.json": "e2a96091a36a9364c3d6169b0e51090f7934b36a1f3a27d840cc425a24a31103",
+  "environment.json": "5d3c4ea9c79a712082c6c13c2270c2a7cdcf37b4a3372fb9b046dfddf7bdd7c4",
+  "prediction-1440.png": "a480dabbb58bc967c28a83d68dd7f5eff76471373062a8adb747add241001aa0",
+  "prediction-390.png": "dba44673a687b65e0d5dd776f2c77161543cf9b45ebae07852e7698ccad73903",
+  "README.md": "3601872722714c2ff93487095f8c9e8416647e706ba8f9e9d6563535740cc923",
+  "resolved-failures-and-limits.json": "038cd64ba403785743a0f69071695c118d0127ee9da99e4275a329dff1e7d2be",
+  "warehouse-1440.png": "2e74926873c73fce8d1fd8698658b4c98c3f87636addaa08de6c6401af6222ad",
+  "warehouse-390.png": "286e403dcecf7f58303e3ad9b712b5d97d27a05404f4a8c6d707255049fb7e57",
+  "zip-inspection.json": "84ac5c71ff61292b26d05195edd13b0f9cf8b8944152557ed3a2a702cf7faa2d"
+}

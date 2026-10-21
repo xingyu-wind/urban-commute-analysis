@@ -47,8 +47,11 @@ def main():
                 assert hashlib.sha256(raw).hexdigest()==expected
                 assert not any(value in raw for value in private),'Private value in JAR; withheld'
         seeds={}
+        provenance=json.loads(archive.read(prefix+'database/seed-provenance.json'))
         for scenario in ('model','warehouse'):
-            seed=json.loads(archive.read(prefix+'database/'+scenario+'-seed.json'))
+            raw=archive.read(prefix+'database/'+scenario+'-seed.json')
+            assert hashlib.sha256(raw).hexdigest()==provenance[scenario]['sha256']
+            seed=json.loads(raw)
             assert seed['sourceType']=='synthetic_test' and len(seed['tables'])==17
             assert not set(seed['tables']) & {'app_user','managed_job','managed_import','security_audit','flyway_schema_history'}
             assert not re.search(r'password_hash|[A-Za-z]:[\\/]',json.dumps(seed))

@@ -1,5 +1,7 @@
 # 比赛演示脚本（约7分钟）
 
+T2 ZIP候选可用START启动预测场景；数仓场景先STOP再START-WAREHOUSE，入口以本轮runtime状态为准。两个场景各有独立数据库，均读取合成预发布结果；不用现场训练或启动Hadoop。首次准备与限制见[Windows ZIP指南](windows-zip.md)。这不替代后续T3连续演示验收。
+
 演示前用 [部署手册](s9-deployment.md) 在隔离库生成合成样例与合法发布，启动生产构建候选页面。保持本次runtime.json和证据索引可用。不要当场从外网下载未知数据，不展示密码、Cookie、token、上传原件、dump或数据库连接串。所有截图必须取自运行页面；S9 evidence 中production/prediction/warehouse/security截图均由真实Chromium产生，不做成功画面拼接。
 
 | 时间 | 实际操作与讲述 |
