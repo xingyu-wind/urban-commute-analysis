@@ -140,6 +140,38 @@ def main():
         assert next(c.value for c in jar if c.name=='JSESSIONID')!=old_session
         request(admin,'POST','/api/v1/operations/uploads',403,b'',{old_csrf['headerName']:old_csrf['token']},csrf=False,label='pre-login-csrf-invalidated')
         request(reader,'GET','/api/v1/operations/tasks',200)
+        # S9: real HTTP against packaged production JAR. Include valid CSRF so
+        # role/method/default-denial checks cannot pass merely due to missing CSRF.
+        before = {t: count(t) for t in ('managed_import','managed_job','traffic_observation','warehouse_current','prediction_current')}
+        for who, role in ((anonymous,'anonymous'),(reader,'reader'),(admin,'admin')):
+            for path in ('/not-a-route','/api/v1/traffic/admin','/api/v1/warehouse/publish',
+                         '/api/v1/operations/admin','/api/v1/operations/uploads/extra',
+                         '/api/v1/auth/register','/api/v1/operations/imports/'+('0'*36)+'/delete'):
+                for method in ('GET','POST','PUT','PATCH','DELETE'):
+                    headers = {}
+                    if method not in ('GET',):
+                        token = request(who,'GET','/api/v1/auth/csrf',200)[1]
+                        headers[token['headerName']] = token['token']
+                    request(who,method,path,404,b'{}' if method!='GET' else None,headers,csrf=False,label='s9-default-deny-'+role)
+            for path in ('/health','/api/v1/cities','/api/v1/traffic/summary','/api/v1/traffic/series',
+                         '/api/v1/traffic/regions','/api/v1/traffic/roads','/api/v1/warehouse/metrics','/api/v1/predictions'):
+                for method in ('POST','PUT','PATCH','DELETE'):
+                    response,_=request(who,method,path,405,b'{}',csrf=False,label='s9-readonly-method-'+role)
+                    assert 'GET' in response.headers['Allow']
+            for method in ('GET','PUT','PATCH','DELETE'):
+                token=request(who,'GET','/api/v1/auth/csrf',200)[1]
+                request(who,method,'/api/v1/operations/uploads',401 if role=='anonymous' else 403,
+                        headers={token['headerName']:token['token']},csrf=False,label='s9-write-method-'+role)
+            for method,path in (('GET','/api/v1/auth/login'),('PUT','/api/v1/auth/login'),
+                                ('POST','/api/v1/auth/me'),('POST','/api/v1/auth/csrf'),
+                                ('GET','/api/v1/auth/logout'),('POST','/api/v1/operations/tasks')):
+                token=request(who,'GET','/api/v1/auth/csrf',200)[1]
+                request(who,method,path,401 if role=='anonymous' else 403,
+                        headers={token['headerName']:token['token']},csrf=False,label='s9-auth-method-'+role)
+        assert before == {t: count(t) for t in before}
+        assert not list(managed.iterdir()) and not list(multipart_tmp.iterdir())
+        (output/'s9-denied-writes.json').write_text(json.dumps(dict(passed=True,before=before,after={t:count(t) for t in before},
+            privateDirectories=0,multipartFiles=0,auditWritesExcluded=True),indent=2)+'\n',encoding='utf-8')
         fixture, review=make_long(private/'fixture',days=14)
         raw=fixture.read_bytes()
         upload(reader,'reader.csv',raw,403)

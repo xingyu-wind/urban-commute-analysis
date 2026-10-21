@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-21",
+  "cwd": "D:\\WindXingyu\\Code\\urban-commute-analysis",
+  "worktreeInitiallyClean": true,
+  "branchInitially": "main",
+  "initialHead": "222f70d0137777c673cba6e1d4e8ac06e6c8eff2",
+  "remoteMainRechecked": "222f70d0137777c673cba6e1d4e8ac06e6c8eff2",
+  "remote": "https://github.com/xingyu-wind/urban-commute-analysis.git",
+  "planningFileSha256": "8b271abb8b41a192ae36ce48f5f21e44fcfd87caaa045e5c4d065c63eb00b725",
+  "java": "21.0.12.1",
+  "node": "24.19.0",
+  "npm": "11.17.0",
+  "python": "3.11.9",
+  "pythonEnvironment": "ml/.venv; pip check passed",
+  "mysql": "8.4.11, existing owned instance, 127.0.0.1:33067",
+  "hadoopHiveDockerLocal": false,
+  "hiveVerification": "existing isolated Linux CI",
+  "noGlobalInstall": true,
+  "noUnknownDataRemoved": true,
+  "priorPRs": [
+    {
+      "number": 8,
+      "merged": true,
+      "mergeSha": "f52f66980988fa293d814928ba296bbbb285e197"
+    },
+    {
+      "number": 9,
+      "merged": true,
+      "mergeSha": "222f70d0137777c673cba6e1d4e8ac06e6c8eff2"
+    }
+  ],
+  "baselineJobs": [
+    {
+      "run": 39519780921,
+      "job": 118960503425,
+      "name": "regression",
+      "conclusion": "success"
+    },
+    {
+      "run": 39519780989,
+      "job": 118960503686,
+      "name": "warehouse",
+      "conclusion": "success"
+    }
+  ]
+}

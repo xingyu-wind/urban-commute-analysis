@@ -1,6 +1,8 @@
 # GitHub 协作规范
 
-## 当前 V2.1 执行口径
+当前治理（V3.2 / S9）：单人执行、SOLO_OWNER_REVIEW、总规划师独立验收；S1-COLLAB-DEBT按范围变更为RETIRED_BY_SCOPE_CHANGE。S7/S8已验收合并，S9不得自行合并、Tag或Release。当前交付流程见[S9报告](../stage-reports/S9.md)。下文保留S1/S2历史流程事实，不作为当前队友分工或待补双人验收要求。
+
+## S1/S2 历史 V2.1 执行口径
 
 采用项目负责人主导开发、队友异步任务交付、单一 main 主线、PR 审查与集成。负责人负责 Java、Vue、机器学习、共享契约和集成；队友其他模块按后续明确任务书分配。本轮 S2 由负责人独立完成，队友尚未参与，不阻塞 S2 技术交付；没有队友 Approved Review，`S1-COLLAB-DEBT = OPEN`。
 

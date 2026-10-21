@@ -6,13 +6,13 @@
 
 ## 技术规划与当前状态
 
-采用 Python 离线清洗、MySQL、HDFS/Hive、机器学习、Spring Boot 和 Vue。正式 V3.2 按单人负责、总规划师独立验收执行；S2–S6 已验收。S7 PR #8 已合并，main 基线 `f52f669` 的两条 CI 均成功；真实外部评估仍为 NOT_EVALUABLE。S8 在用户有记录的有限门禁豁免下实现会话认证、角色授权、安全上传/映射确认和运行管理，等待独立验收。详见 [S8报告](docs/stage-reports/S8.md)、[运行指南](docs/guides/s8-operations.md)、[知识说明](docs/learning/S8-知识关联与项目实现说明.md) 与 [豁免记录](docs/stage-reports/evidence/S8/gate-waiver.md)。
+采用 Python 离线清洗、MySQL、HDFS/Hive、机器学习、Spring Boot 和 Vue。正式 V3.2 按单人负责、总规划师独立验收执行。S7 [PR #8](https://github.com/xingyu-wind/urban-commute-analysis/pull/8)、S8 [PR #9](https://github.com/xingyu-wind/urban-commute-analysis/pull/9) 已验收合并；S9 基线为 `222f70d0137777c673cba6e1d4e8ac06e6c8eff2`。S9 收口默认拒绝授权、单机候选部署、隔离恢复与交付证据，提交独立验收，不自行发布。真实外部训练/泛化仍为 BLOCKED / NOT_EVALUABLE。当前入口：[安装部署](docs/guides/s9-deployment.md)、[S9报告](docs/stage-reports/S9.md)、[架构与数据流](docs/architecture/overview.md)、[演示脚本](docs/guides/s9-demo.md)、[候选发布说明](docs/releases/S9-candidate.md)。历史 S7/S8 报告保留当时事实，最终验收以其 PR 合并记录为准。
 
 实际接口为 `GET /health`、`GET /api/v1/cities`、`/api/v1/traffic/{summary,series,regions,roads}`，以及 S6 `/api/v1/warehouse/metrics`、S7 `/api/v1/predictions`；城市与历史观测统计来自 MySQL，离线接口读取经校验发布到 MySQL 的 Hive ADS。测试北京/上海标为 `synthetic_test`，不是交通实测；空/混合目录有独立标记，dataAsOf=null。报告与实际证据见 [S4 报告](docs/stage-reports/S4.md)，[启动与演示](docs/guides/s4-dashboard.md)，[知识关联说明](docs/learning/S4-知识关联与项目实现说明.md)。
 
 S1 的 PR #1 已 Squash Merge，main 合并 SHA 为 `b47f0af593f4173d4a5e12af607c47a9343f64a5`。原 `S1-COLLAB-DEBT` 在 V3.0 按范围调整终止适用（RETIRED_BY_SCOPE_CHANGE），没有补造双人协作证据，历史阶段报告保留。
 
-当前入口见 [S5 ETL 使用说明](data-pipeline/README.md)、[标准化数据字典](data-pipeline/DATA_DICTIONARY.md)、[S5阶段报告](docs/stage-reports/S5.md) 和 [知识关联说明](docs/learning/S5-知识关联与项目实现说明.md)。S1–S4 报告保留历史事实，[架构规划](docs/architecture/overview.md)不表示后续模块已经实现。
+ETL 入口见 [S5 ETL 使用说明](data-pipeline/README.md)、[标准化数据字典](data-pipeline/DATA_DICTIONARY.md)、[S5阶段报告](docs/stage-reports/S5.md)。当前架构区分已实现工程链路和未通过的真实数据交付门槛。
 
 S6 入口：[数仓使用说明](bigdata/README.md)、[知识关联与项目实现说明](docs/learning/S6-知识关联与项目实现说明.md)。城市工作台点击“打开 Hive 离线分析”，查看已发布版本及同窗口历史统计比较。
 
@@ -59,6 +59,6 @@ npm.cmd run dev
 
 ## 后续阶段与数据边界
 
-S3 的运行命令、测试隔离与验收证据见 [S3 操作说明](docs/guides/s3-mysql.md) 和 [S3 报告](docs/stage-reports/S3.md)。S4–S7 的对应 PR 已合并；S8 提交独立审查，不启动 S9。
+S2–S8 的对应 PR 已合并。S9 采用 SOLO_OWNER_REVIEW，保持 PR 开放等待总规划师裁定；候选标签仅写入说明，不创建正式 Tag 或 Release。当前工程演示是合成数据验证，不能证明真实交通准确率或跨城市泛化。
 
 本项目独立实现，不直接复刻或上传第三方毕业设计。参考资料须先核实授权；原始第三方 ZIP、未授权数据、真实凭据和个人数据不得纳入仓库。环境模板见 `.env.example`，复制后填写的本地 `.env` 不应提交。

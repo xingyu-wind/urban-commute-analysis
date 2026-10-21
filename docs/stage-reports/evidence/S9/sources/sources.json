@@ -1,0 +1,114 @@
+{
+  "checkedAt": "2026-10-21T00:40:36.641442+00:00",
+  "requests": [
+    {
+      "url": "https://zenodo.org/api/records/5724362",
+      "checkedAt": "2026-10-21T00:40:27.741701+00:00",
+      "httpStatus": 200,
+      "bytes": 4433,
+      "sha256": "b0be30c40d36ff4073f2f99406d378f281d0318d538347f896ac70d749c5a4bf",
+      "version": null,
+      "recordId": 5724362,
+      "licenseDeclaration": {
+        "id": "cc-by-4.0"
+      },
+      "files": [
+        {
+          "key": "adj_mx_METR-LA.pkl",
+          "size": 680459,
+          "checksum": "md5:55996dfce3e39cc981e6e42e3f427da8"
+        },
+        {
+          "key": "PEMS-BAY.csv",
+          "size": 85718439,
+          "checksum": "md5:c8dea58987a5882e946217c22fdb8256"
+        },
+        {
+          "key": "METR-LA.csv",
+          "size": 72467662,
+          "checksum": "md5:7c463fcbd28ecc6c9cd93e1ca120aaaa"
+        },
+        {
+          "key": "adj_mx_PEMS-BAY.pkl",
+          "size": 1681480,
+          "checksum": "md5:55d25daceac847312b7748c59ded6f77"
+        }
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liyaguang/DCRNN/master/README.md",
+      "checkedAt": "2026-10-21T00:40:29.441418+00:00",
+      "httpStatus": 200,
+      "bytes": 7877,
+      "sha256": "a6a05f7e8f5fb4613953bebd575f3cdf33705390de58181ed58078b455898e53"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/liyaguang/DCRNN/master/LICENSE",
+      "checkedAt": "2026-10-21T00:40:30.683196+00:00",
+      "httpStatus": 200,
+      "bytes": 1067,
+      "sha256": "29414ec274aafdfde2e0e5f5e55f136fcd3d5e8514ab54f1809298eeb1fd5a43"
+    },
+    {
+      "url": "https://opendata.sz.gov.cn/data/api/toApiDetails/29200_00403590",
+      "checkedAt": "2026-10-21T00:40:31.895013+00:00",
+      "httpStatus": 200,
+      "bytes": 167399,
+      "sha256": "7b04728e9206b3c0ae3baf16eaf585bdbe9c6658a51208a9b5f1218528937119"
+    },
+    {
+      "url": "https://opendata.sz.gov.cn/maintenance/forward/toTermOfService",
+      "checkedAt": "2026-10-21T00:40:32.610864+00:00",
+      "httpStatus": 200,
+      "bytes": 141087,
+      "sha256": "757ed567119295134025dfad7186d641b0f99e7dc00a213504bedc1b6f633a31"
+    },
+    {
+      "url": "https://dot.ca.gov/programs/traffic-operations/mpr/pems-source",
+      "checkedAt": "2026-10-21T00:40:33.310670+00:00",
+      "httpStatus": 200,
+      "bytes": 29463,
+      "sha256": "e0479defe081212b52448d2bd7d3d423c93fa0e2db278fa85ba06f190921a61f"
+    },
+    {
+      "url": "https://pems.dot.ca.gov/",
+      "checkedAt": "2026-10-21T00:40:34.746477+00:00",
+      "httpStatus": 200,
+      "bytes": 22289,
+      "sha256": "a2f14a75670de059906fb96a99a74c6001e35703ceca8cd716521f4494a95438"
+    }
+  ],
+  "localFiles": [
+    {
+      "file": "METR-LA.csv",
+      "bytes": 2930156,
+      "sha256": "71e310d27b32344a1f04f7373b57bed9c6a4ca567ce66520f97c15831112957d",
+      "md5": "4f9d8f3707827851227c97406b8d5c18",
+      "expectedBytes": 72467662,
+      "expectedMd5": "7c463fcbd28ecc6c9cd93e1ca120aaaa",
+      "complete": false,
+      "status": "NOT_EVALUABLE"
+    },
+    {
+      "file": "PEMS-BAY.csv",
+      "bytes": 2604200,
+      "sha256": "1fe1d5893c4922d164e3bf5831ebf6f0e85c51f11a506024e346e87c073c3d97",
+      "md5": "0a8f27498b3dedeefdabd455bac40991",
+      "expectedBytes": 85718439,
+      "expectedMd5": "c8dea58987a5882e946217c22fdb8256",
+      "complete": false,
+      "status": "NOT_EVALUABLE"
+    }
+  ],
+  "trainingExecuted": false,
+  "realMappingConfirmed": false,
+  "rawDataExported": false,
+  "decision": "BLOCKED / NOT_EVALUABLE",
+  "releaseConditions": [
+    "complete distribution checksum",
+    "version-specific unit/timezone/zero semantics",
+    "upstream data rights and permitted use",
+    "explicit human mapping confirmation",
+    "task suitability"
+  ]
+}

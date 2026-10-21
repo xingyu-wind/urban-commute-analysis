@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "backupRestore": true,
+  "productionBrowser": true,
+  "httpLoad": true,
+  "realTraffic": false
+}

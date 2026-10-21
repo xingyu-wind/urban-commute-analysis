@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "evidence": [
+    {
+      "role": "ADMIN",
+      "width": 1440,
+      "height": 1000,
+      "unconfirmedExecuteDisabled": true,
+      "confirmedImport": "SUCCEEDED",
+      "horizontalOverflow": false
+    },
+    {
+      "role": "ADMIN",
+      "width": 390,
+      "height": 844,
+      "unconfirmedExecuteDisabled": true,
+      "confirmedImport": "SUCCEEDED",
+      "horizontalOverflow": false
+    },
+    {
+      "role": "READER",
+      "tasksVisible": true,
+      "uploadControls": 0
+    },
+    {
+      "case": "reader-real-http-upload",
+      "status": 403
+    }
+  ],
+  "pageErrors": []
+}

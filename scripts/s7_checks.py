@@ -16,6 +16,7 @@ from s7_fixture import generate, START, CUTOFF
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--release-checks', action='store_true')
     args = parser.parse_args()
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=False)
@@ -204,6 +205,8 @@ def main():
         write_json(output / 'expected.json', dict(jobId=visible, result=published, evaluation=evaluation))
         write_json(output / 'mysql-publication.json', dict(passed=True, visible=visible, jobs=jobs, points=points, negativeCases=negatives))
         run('browser', ['node', 'frontend/scripts/verify-s7.mjs', str(output / 'browser'), str(output / 'expected.json')])
+        if args.release_checks:
+            run('s9-release', [sys.executable, 'scripts/s9_release_checks.py', '--output', str(output/'s9-release')])
         passed = True
         return 0
     finally:

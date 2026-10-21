@@ -1,0 +1,28 @@
+{
+  "firstCoreAttempt": "backend/target/s9-core",
+  "originalLogSha256": "e29b47c7465f8658cbf5f94b415d461f13bc7d48859278a9148daea43ee1329d",
+  "failureExcerpt": [
+    "java.lang.AssertionError: Status expected:<405> but was:<404>",
+    "java.lang.AssertionError: Status expected:<405> but was:<404>",
+    "java.lang.AssertionError: Status expected:<405> but was:<404>",
+    "[ERROR]   ApiIntegrationTest.wrongMethodPreservesAllowHeader:230 Status expected:<405> but was:<404>",
+    "[ERROR]   PredictionIntegrationTest.rejectsBodiesAndWrites:85 Status expected:<405> but was:<404>",
+    "[ERROR]   TrafficIntegrationTest.methodMediaBodyAndHourlyBoundaries:143 Status expected:<405> but was:<404>",
+    "[ERROR] Tests run: 105, Failures: 3, Errors: 0, Skipped: 0"
+  ],
+  "cause": "MockMvc servletPath empty; wrong-method classification404 instead405",
+  "fix": "context-relative requestURI fallback for rejection status; denyAll unchanged",
+  "verification": "s9-core-fix: Java105/Vue91, original405 assertions unchanged, real HTTP passed",
+  "restoreFailure": {
+    "source": "backend/target/s9-s7/s9-release.log",
+    "originalLogSha256": "edfd210d3370025ae394e8b8031457f343840e8e5c93a8148a1b59d5c99246df",
+    "probeError": "ERROR1044/42000 at line38; LOCK TABLES not granted to scoped restore user",
+    "cause": "skip-lock-tables affects export locks; default add-locks still emits LOCK TABLES",
+    "fix": "skip-add-locks; no privilege expansion",
+    "failurePreserved": true,
+    "originalPrivateDumpSha256": "34b576057c9e4d2338da3ea17ee7b4229327c7173733a11fbb2362e57d1d53bc",
+    "successfulRecheck": "backend/target/s9-release-fixed",
+    "replay": "original synthetic dump into NEW source (only emitted LOCK/UNLOCK omitted), then complete production/browser/load/new dump/new empty restore target and full-table/API equality; no repeated training",
+    "sourceTestsBeforeRelease": "Java105, Vue91, Python73, ETL4368, training/repeat/tamper/publication/crash recovery/HTTP/Chromium passed; aggregate S7 original exit1 due release failure; final CI reruns complete chain"
+  }
+}

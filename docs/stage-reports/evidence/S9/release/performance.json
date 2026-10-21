@@ -1,0 +1,57 @@
+{
+  "measuredAt": "2026-10-21T00:53:43.747563+00:00",
+  "os": "Windows-10-10.0.26200-SP0",
+  "cpu": "AMD64 Family 26 Model 96 Stepping 0, AuthenticAMD",
+  "logicalCpus": 16,
+  "data": "synthetic_test",
+  "observationRows": 4369,
+  "route": "production dist -> Vite loopback preview proxy -> Java -> real MySQL",
+  "warmup": 3,
+  "api": [
+    {
+      "path": "/api/v1/cities",
+      "requests": 40,
+      "concurrency": 4,
+      "errors": 0,
+      "p50Ms": 22.113,
+      "p95Ms": 25.882,
+      "maxMs": 39.341,
+      "elapsedSeconds": 0.24,
+      "requestsPerSecond": 166.387
+    },
+    {
+      "path": "/api/v1/predictions?cityId=s7-city&datasetId=s7-synthetic-v1",
+      "requests": 40,
+      "concurrency": 4,
+      "errors": 0,
+      "p50Ms": 29.177,
+      "p95Ms": 48.646,
+      "maxMs": 61.517,
+      "elapsedSeconds": 0.344,
+      "requestsPerSecond": 116.373
+    },
+    {
+      "path": "/api/v1/warehouse/metrics?cityId=s7-city&datasetId=s7-synthetic-v1",
+      "requests": 40,
+      "concurrency": 4,
+      "errors": 0,
+      "p50Ms": 20.081,
+      "p95Ms": 24.114,
+      "maxMs": 36.353,
+      "elapsedSeconds": 0.222,
+      "requestsPerSecond": 179.973
+    },
+    {
+      "path": "/api/v1/traffic/summary?cityId=s7-city&datasetId=s7-synthetic-v1&from=2026-10-15T00:00:00.000Z&to=2026-10-17T00:00:00.000Z",
+      "requests": 40,
+      "concurrency": 4,
+      "errors": 0,
+      "p50Ms": 26.303,
+      "p95Ms": 49.916,
+      "maxMs": 52.888,
+      "elapsedSeconds": 0.322,
+      "requestsPerSecond": 124.328
+    }
+  ],
+  "limitation": "Small local warm-cache smoke; not public capacity/SLA or large-data throughput"
+}

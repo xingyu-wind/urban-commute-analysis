@@ -20,6 +20,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--probe-isolation', action='store_true')
+    parser.add_argument('--with-restore-target', action='store_true', help='Also create a distinct empty random schema/account for S9 restore drills')
     parser.add_argument('command', nargs=argparse.REMAINDER)
     args = parser.parse_args()
     if args.output.exists():
@@ -63,12 +64,26 @@ def main():
     env.update(TEST_DB_URL=url, TEST_DB_USER=user, TEST_DB_PASSWORD=password,
                TEST_DB_SCHEMA=schema, TEST_DB_SERVER_UUID=server_uuid,
                DB_URL=url, DB_USER=user, DB_PASSWORD=password)
+    restore_schema = None
+    if args.with_restore_target:
+        restore_schema = 's3test_' + uuid.uuid4().hex
+        restore_user = 's3t_' + secrets.token_hex(10)
+        restore_password = secrets.token_hex(24)
+        restore_grant = restore_schema.replace('_', '\\_')
+        sql(f"CREATE DATABASE `{restore_schema}` CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;\n"
+            f"CREATE USER '{restore_user}'@'%' IDENTIFIED BY '{restore_password}';\n"
+            f"GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,ALTER,INDEX,REFERENCES ON `{restore_grant}`.* TO '{restore_user}'@'%';")
+        env.update(S9_RESTORE_SCHEMA=restore_schema,S9_RESTORE_USER=restore_user,S9_RESTORE_PASSWORD=restore_password)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     evidence = {'mysqlVersion': version, 'schema': schema, 'account': user,
                 'serverUuid': server_uuid, 'newSchema': True, 'newScopedAccount': True,
                 'existingDataDeleted': False}
+    if restore_schema:
+        evidence['newEmptyRestoreSchema'] = restore_schema
     # For CI subsequent standalone HTTP and browser processes, not uploaded as an artifact.
     if os.environ.get('GITHUB_ENV'):
+        if restore_schema:
+            print('::add-mask::' + restore_password, flush=True)
         with open(os.environ['GITHUB_ENV'], 'a', encoding='utf-8') as output:
             for key in ('DB_URL', 'DB_USER', 'DB_PASSWORD'):
                 output.write(f'{key}={env[key]}\n')

@@ -1,0 +1,8 @@
+{
+  "modelChainPassed": true,
+  "initialAggregateExitCode": 1,
+  "aggregateFailure": "first added restore attempt; preserved summary.json passed=false",
+  "releaseFixedSeparately": true,
+  "releaseEvidence": "../release/summary.json",
+  "finalHeadFullChain": "required in final PR regression CI; no old-success substitution"
+}

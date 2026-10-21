@@ -102,7 +102,7 @@ jobs:
       - name: S5 new isolated database, pytest, crash recovery and Python to ECharts chain
         run: python scripts/s3_database.py --output backend/target/s5-db.json -- python scripts/s5_checks.py --output backend/target/ci-s5
       - name: S7 fresh database, recursive backtests, atomic prediction publication and real Chromium
-        run: python scripts/s3_database.py --output backend/target/s7-db.json -- python scripts/s7_checks.py --output backend/target/ci-s7
+        run: python scripts/s3_database.py --with-restore-target --output backend/target/s7-db.json -- python scripts/s7_checks.py --release-checks --output backend/target/ci-s7
       - name: S7 V3.2 synthetic CSV and JSON confirmation, domain evaluation and transfer
         run: python scripts/s7_data_checks.py --output backend/target/ci-s7-data
       - name: S8 real MySQL HTTP filesystem and Chromium security boundaries

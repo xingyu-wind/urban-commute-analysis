@@ -1,0 +1,90 @@
+[
+  {
+    "case": "../escape.csv",
+    "status": 400,
+    "retainedUploadDirectories": 0,
+    "multipartTemporaryFiles": 0,
+    "metadataRows": 0,
+    "jobRows": 0
+  },
+  {
+    "case": "..\\escape.csv",
+    "status": 400,
+    "retainedUploadDirectories": 0,
+    "multipartTemporaryFiles": 0,
+    "metadataRows": 0,
+    "jobRows": 0
+  },
+  {
+    "case": "payload.exe",
+    "status": 400,
+    "retainedUploadDirectories": 0,
+    "multipartTemporaryFiles": 0,
+    "metadataRows": 0,
+    "jobRows": 0
+  },
+  {
+    "case": "fake.csv",
+    "status": 422,
+    "retainedUploadDirectories": 0,
+    "multipartTemporaryFiles": 0,
+    "metadataRows": 0,
+    "jobRows": 0
+  },
+  {
+    "case": "fake.json",
+    "status": 422,
+    "retainedUploadDirectories": 0,
+    "multipartTemporaryFiles": 0,
+    "metadataRows": 0,
+    "jobRows": 0
+  },
+  {
+    "case": "wrong.csv",
+    "status": 415,
+    "retainedUploadDirectories": 0,
+    "multipartTemporaryFiles": 0,
+    "metadataRows": 0,
+    "jobRows": 0
+  },
+  {
+    "case": "malformed.csv",
+    "status": 422,
+    "retainedUploadDirectories": 0,
+    "multipartTemporaryFiles": 0,
+    "metadataRows": 0,
+    "jobRows": 0
+  },
+  {
+    "case": "quotes.csv",
+    "status": 422,
+    "retainedUploadDirectories": 0,
+    "multipartTemporaryFiles": 0,
+    "metadataRows": 0,
+    "jobRows": 0
+  },
+  {
+    "case": "nested.json",
+    "status": 422,
+    "retainedUploadDirectories": 0,
+    "multipartTemporaryFiles": 0,
+    "metadataRows": 0,
+    "jobRows": 0
+  },
+  {
+    "case": "duplicate.json",
+    "status": 422,
+    "retainedUploadDirectories": 0,
+    "multipartTemporaryFiles": 0,
+    "metadataRows": 0,
+    "jobRows": 0
+  },
+  {
+    "case": "large.csv",
+    "status": 413,
+    "retainedUploadDirectories": 0,
+    "multipartTemporaryFiles": 0,
+    "metadataRows": 0,
+    "jobRows": 0
+  }
+]

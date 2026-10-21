@@ -1,65 +1,56 @@
-# 初步系统架构
+# 系统架构与数据流（S9）
 
-状态：目标架构与当前实现并列记录。S2/S3 已 ACCEPTED；S4 提交独立审核。当前在线链路为 MySQL 五表 → JDBC 统计 → Spring Boot 六条 GET API → Vue/ECharts 分析与区域点位地图，详见 [S4 报告](../stage-reports/S4.md)。下图中的 ETL、HDFS/Hive 与机器学习仍是后续规划，不代表已经实现。人员及协作历史保留于 [S1 报告](../stage-reports/S1.md)。
+当前已实现 Python ETL、MySQL/Flyway V1–V6、HDFS/Hive、离线 ML、Java API、Vue/ECharts、会话认证与受保护研究导入。S7/S8 已验收合并，S9 提交独立验收；真实数据交付仍受[来源台账](../../ml/DATA_SOURCES.md)门槛约束。没有真实个人 OD 或通勤人数，不从道路代理指标推断个人行程。
 
-## 产品边界与数据准入
-
-系统面向城市道路交通运行分析及通勤高峰代理指标预测。候选输入是道路速度、流量和拥堵相关数据；没有已确认的真实个人 OD（起讫点）或通勤人数数据，不把道路流量解释为通勤人数，也不从代理指标推断个人行程。
-
-数据接入前应记录来源、许可、覆盖区域、时间范围、采样频率、单位及缺失情况。只有授权明确且字段可解释的数据才能进入正式链路；第三方毕业设计不直接复刻，原始 ZIP 和未授权数据不进入仓库。原始数据的实际存储位置和访问策略待数据源评审确定。
-
-## 模块数据流与交接产物
+## 单机候选部署
 
 ```mermaid
 flowchart LR
-    A[合法数据源] --> B[data-pipeline 清洗与质量校验]
-    B --> C[MySQL 标准化结构化数据]
-    B --> D[HDFS 历史分区数据]
-    D --> E[Hive 离线聚合]
-    C --> F[统计与特征构建]
-    E --> F
-    F --> G[ml 训练与批量预测]
-    F --> H[MySQL 统计与预测结果]
-    G --> H
-    H --> I[Spring Boot 查询 API]
-    I --> J[Vue 前端展示]
+    Browser[浏览器] --> Web[回环 Vite preview / Vue dist]
+    Web --> Security[Java21 Spring Security / 会话 CSRF]
+    Security --> API[精确方法与路由 / 默认拒绝]
+    API --> DB[(MySQL8.4 / Flyway V1-V6)]
+    Security --> Worker[固定 Python 适配进程]
+    Worker --> Private[私有上传与研究输入]
+    CLI[受控 Python CLI] --> DB
+    CLI --> HDFS[隔离 CI Hadoop3.4.1 HDFS]
+    HDFS --> Hive[Hive4.1.0 / Tez0.10.5]
+    Hive --> Reconcile[独立 Decimal 对账]
+    Reconcile --> DB
 ```
 
-Hadoop（HDFS）与 Hive 属于原总规划的大数据技术目标，须在对应大数据阶段实施并提交验证证据，不因数据规模较小而自行省略或降为可选组件。MySQL、HDFS 和 Hive 承担不同职责，不表示每份输入都必须复制到所有存储中。部署方式、资源配额、数据保留期和分区粒度可依据数据规模在后续设计中确认；技术范围的调整须另行提交总规划师审批，本文不作缩减。
+Java、Web、MySQL 在本机回环运行；本机没有可用 Hadoop/Hive/Docker，因此真实数仓继续由锁定 digest 的既有隔离 Linux CI 验证。JRE17 在 Hive 容器内，Java21 在宿主运行后端。未增加 Compose、宿主端口、生产集群或公网服务。`scripts/s9_runtime.py` 只持有自己的 Java/Web 子进程；Ctrl+C 停止它们，不停止 MySQL/HDFS。Vite preview 用于候选演示，不是互联网生产服务器。
 
-| 交接环节 | 产出与消费关系 | 边界及待确认事项 |
-|---|---|---|
-| 数据源 → data-pipeline | 清洗模块接收授权输入，产生标准化记录、质量摘要和拒绝记录原因 | 校验时区、道路标识、单位、重复及缺失；异常记录不应静默进入结果 |
-| data-pipeline → database / bigdata | 合格记录进入约定存储；database 维护 MySQL 迁移，bigdata 维护 HDFS 布局和 Hive DDL | 存储字段遵循 contracts；分区、导入幂等键与历史修订策略待设计 |
-| MySQL / Hive → 统计及 ml | 聚合数据用于统计展示或构建预测特征 | 明确时间窗口、区域粒度和聚合口径；训练不得使用预测时点之后的信息 |
-| ml / 统计任务 → MySQL 结果 | 写入可供查询的统计或预测结果及其版本信息 | 预测目标、预测时点、目标时间范围、数据截至时间和模型版本须可区分 |
-| MySQL 结果 → backend | Spring Boot 服务读取已发布结果并按契约组织响应 | 在线接口不直接扫描 HDFS、不执行 Hive 作业或训练；查询权限与性能策略待设计 |
-| backend → frontend | Vue 通过 API 获取统计、趋势和预测结果 | 前端不直连数据库，不接触数据库凭据，不重新定义指标口径 |
+## 实际数据流与两种契约
 
-## 接口与配置边界
+```mermaid
+flowchart TD
+    Source[来源登记 / 许可版本哈希单位时区历史核验] --> Inspect[S7 inspect / 字段分析与映射建议]
+    Inspect --> Confirm[ADMIN 人工确认 / 哈希与操作者]
+    Confirm --> Quality[convert / quality / suitability]
+    Quality --> Research[traffic-series-v1 / 速度或流量研究输入]
+    Research --> Offline[按域滚动回测 / 源域冻结迁移]
+    Offline --> Report[离线研究报告 / 不发布现有 API]
+    Source --> S5[既有拥堵观测契约 / S5 ETL 与逐条血缘]
+    S5 --> MySQL[(MySQL 合格观测)]
+    MySQL --> Snap[S6 一致快照与 HDFS ODS]
+    Snap --> Hive[Hive DWD / DWS / ADS]
+    Hive --> Check[独立对账 / 原子 warehouse_current]
+    MySQL --> Admit[S7 复用 S6 准入 / CITY 每日0至10]
+    Admit --> ML[因果特征 / 时序验证选模 / 独立测试]
+    ML --> Replay[可信重训重算 / 七点校验]
+    Replay --> Publish[事务发布 prediction_current]
+    Check --> API[Java repeatable-read API]
+    Publish --> API
+    API --> Vue[Vue 统计 / Hive 比较 / 七日预测]
+```
 
-- **contracts 是模块交接依据。** 后续在此维护字段字典、API 描述和小型虚构样例，至少明确道路/区域标识、时区、时间窗口、单位、指标定义、空值语义和版本兼容性。本文不提前冻结具体字段名或 URL。
-- **database 管理存储结构，生产者管理任务输出。** 清洗、统计和预测任务按约定写入；backend 按结果契约查询。结构变更需提供迁移与兼容说明，不能由单一模块静默改表。
-- **API 需区分无数据与真实零值。** 后续确认道路/区域、时间范围和指标筛选，分页或点数限制、错误响应，以及结果版本和更新时间的表达。缺失或过期结果不得伪装成当前观测值。
-- **frontend 负责展示与交互。** 应显示数据覆盖范围、更新时间、预测范围及代理指标说明；速度、流量等观测与预测须可辨识。
-- **infra 与 scripts 支撑执行。** 环境配置模板与检查命令使用同一配置约定；真实凭据仅保留在本地或受控部署环境，不能进入 VITE_* 公开变量或仓库。权限、调度工具和部署拓扑尚待选择。
+研究输入与正式观测是不同契约。S8 成功导入不自动调用 S5、不写共享观测、不触发 Hive/训练，也不修改两个 current 指针。没有通过真实许可/适用性门槛的来源，流程应停在阻塞点。S9 不把合成链路或分离的研究/发布契约描述为真实数据闭环；未来数据必须分别满足目标契约，不能将 speed 改名为 congestion_index。
 
-## 离线计算与在线查询
+S5 幂等导入与崩溃恢复、S6 对账与事务切换、S7 防泄漏及可信重放均保留。Hive 聚合不是 S7 每次训练必需重新计算的输入；S7 直接从已准入 CITY 观测构建日序列，不虚构 Hive 特征消费。在线请求只读已发布结果，不扫描 HDFS、不训练。
 
-| 维度 | 离线链路 | 在线链路 |
-|---|---|---|
-| 触发 | 计划中的批次调度或受控手动任务 | 用户通过 Vue 发起查询 |
-| 工作 | 清洗、Hive 聚合、特征、训练、评估、批量预测 | 参数校验、读取已发布结果、组织 API 响应 |
-| 输出 | 质量摘要、版本化统计/预测结果与任务状态 | 既有结果及其覆盖时间、更新时间和状态 |
-| 失败处理 | 保留失败原因；幂等重试和补数策略待实现 | 按契约返回失败、缺失或过期状态，不临时启动训练补救 |
-| 耗时边界 | 可执行历史数据批量处理，资源预算待评估 | 不承担大规模计算；响应目标、缓存与索引待测量确定 |
+## 权限与存储边界
 
-建议离线结果先完成质量校验，再发布可查询的批次，避免前端读到半批数据。应记录任务批次、数据版本、时间范围和发布状态；失败时是否继续提供上一成功批次及其过期提示，须在契约阶段确认，当前没有实现事务发布或自动回退。
+八个公开只读路径（含 health）见[权限清单](../guides/s9-security.md)；auth 入口仅特定方法公开，tasks 为 ADMIN/READER，四种写接口为 ADMIN+CSRF，未知路由默认拒绝。拒绝层保留统一错误封套、requestId、审计及只读路由405/Allow；未列入规则的新 Controller 不可执行。
 
-机器学习评估应按时间划分训练、验证和测试，保留基线比较与误差说明。模型文件与训练产物留在受控存储；在线 API 只查询预测结果，不在用户请求内加载并训练模型。训练频率、目标指标、算法及验收阈值均未确定。
-
-## 当前交付与后续设计入口
-
-当前已有 MySQL 8.4 / Flyway V1、V2、城市目录、四个分层交通统计 API、Vue 工作台、ECharts、WGS84 点位视图、独立 SQL 与浏览器回归。测试演示数据明确标记 synthetic_test。当前接口无鉴权，仅本机监听。
-
-后续尚未实施：授权真实数据接入与 ETL、HDFS/Hive、机器学习、生产部署、容量与负载测试。S4 不开发这些模块，也不关闭 S1-COLLAB-DEBT。各阶段以独立验收为准。
+原始外部文件在忽略的 `data/raw/`；上传与 dump 在忽略的 `data/private/`；原始外部数据不进入 Git/CI/附件。MySQL 迁移、合成 fixture、精选汇总证据可版本化。数据库备份含账号哈希/审计/样例，属于私有材料；Git 仅保留各表行数/内容哈希和恢复结果。详见[部署与恢复](../guides/s9-deployment.md)。

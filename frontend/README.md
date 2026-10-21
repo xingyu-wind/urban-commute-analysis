@@ -1,6 +1,6 @@
 # 前端模块
 
-S4 前端：保留健康状态与城市目录，新增 MySQL API 驱动的 KPI、趋势、区域对比、路段分页、WGS84 区域点位视图与比赛大屏。包含空数据、错误、稀疏数据和请求竞争保护；没有登录、预测或默认 Mock。启动、演示和完整回归见 [S4 指南](../docs/guides/s4-dashboard.md)。
+当前包含健康状态、城市目录、MySQL统计、区域点位地图/比赛大屏、Hive离线比较、七日预测，以及登录/受保护导入/运行管理。包含空状态、错误与请求竞争保护，没有默认Mock。当前[部署](../docs/guides/s9-deployment.md)、[比赛演示](../docs/guides/s9-demo.md)；原统计操作见[S4指南](../docs/guides/s4-dashboard.md)。
 
 ## 依赖与命令
 
@@ -22,14 +22,14 @@ npm.cmd run dev
 | `npm.cmd run build` | 先类型检查，再构建 dist |
 | `npm.cmd test` | Vitest API/组件/代理配置测试 |
 | `npm.cmd run test:watch` | 单元测试监听 |
-| `npm.cmd run preview` | 本地查看静态构建，4173；不包含开发代理 |
+| `npm.cmd run preview` | 回环查看production dist，4173；同源代理使用DEV_BACKEND_URL（默认回环8080） |
 | `npm.cmd run test:e2e` | 启动本项目 Java/Vite，执行真实浏览器验收与契约校验 |
 
 ## 调用关系与文件
 
 ```text
-App.vue -> api/client.ts -> fetch('/health', '/api/v1/cities')
-           -> Vite 开发代理 -> Spring Boot ApiController -> CityService
+App.vue / TrafficDashboard / WarehousePanel / PredictionPanel / OperationsPanel
+  -> 同源 API fetch -> Vite dev或preview代理 -> Java安全层 -> Controller/JDBC或受控适配器
 ```
 
 | 文件 | 职责 |

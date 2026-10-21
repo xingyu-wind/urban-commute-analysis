@@ -1,5 +1,5 @@
 # 基础设施模块
 
-负责可复用的本地开发与部署环境配置。未来存放容器编排、服务配置模板与部署说明，真实密钥、数据卷和运行状态不入库。
+当前采用回环单机候选部署，入口 `python scripts/s9_runtime.py --check`，启动 `python scripts/s9_runtime.py --output <新的忽略日志目录>`。依赖、私有配置、顺序、停止、恢复与故障定位见 [S9安装部署手册](../docs/guides/s9-deployment.md)。
 
-与 backend、frontend、database、bigdata 和 scripts 协作，保持配置项与根目录 `.env.example` 一致。预计在后续环境搭建阶段开始，工具安装与服务启动另行授权；阶段编号待确定。
+配置参考根目录 `.env.example`，不自动加载；真实密钥、卷、dump、运行状态不入库。未引入 Compose 或系统服务；HDFS/Hive 沿用已有锁定镜像隔离 CI，不允许在本机格式化或接管未知集群。
