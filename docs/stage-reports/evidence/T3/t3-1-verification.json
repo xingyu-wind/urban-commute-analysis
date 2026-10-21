@@ -1,0 +1,81 @@
+{
+  "stage": "T3.1",
+  "status": "BLOCKED",
+  "checkedAt": "2026-10-21T20:23:21.2736568+08:00",
+  "blocker": "No directly usable clean Windows 11 x64 guest or independent clean Windows test computer was discovered in the inspected scope",
+  "gitAtStart": {
+    "branch": "codex/s9-system-release",
+    "head": "4ad09c4ade0219cb4ec6e1c94b81fb2c0ba278b7",
+    "workingTreeClean": true,
+    "packagingCommit": "59404200921b97f86b3b57288a33b491244c793d",
+    "evidenceCommit": "4ad09c4ade0219cb4ec6e1c94b81fb2c0ba278b7",
+    "bothCommitsPresentAndAncestors": true
+  },
+  "candidate": {
+    "path": "D:\\WindXingyu\\Code\\urban-commute-analysis\\dist\\t3-final\\UrbanCommute-Demo-0.9.0-t3-candidate-windows-x64.zip",
+    "bytes": 722218,
+    "sha256": "9acbe39f35bf69dcf4bfcb35ac63a38ac0feeffeedea34afc455352f5c450f2f",
+    "fileCount": 46,
+    "crcVerified": true,
+    "manifestVerified": true,
+    "manifestCoversEveryFile": true,
+    "packagingSourceUnchanged": true,
+    "rebuilt": false
+  },
+  "historicalEvidence": {
+    "stageStatus": "T3_PARTIAL",
+    "filesVerifiedBeforeChanges": 37,
+    "allOriginalHashesMatched": true,
+    "existingFailureAndTestFilesRetained": true,
+    "historicalResultsReusedAsFreshCleanWindowsAcceptance": false
+  },
+  "currentCleanWindowsTests": {
+    "executed": false,
+    "emptyCacheVerified": false,
+    "officialDownloads": [],
+    "databaseInitialized": false,
+    "migrationsExecuted": [],
+    "httpRequests": [],
+    "browserActions": [],
+    "missingVCRuntimeTest": "NOT_RUN",
+    "lowDiskCapacityTest": "NOT_RUN",
+    "downloadInterruptionTest": "NOT_RUN",
+    "portConflictDuplicateStartInitializationFailureTests": "NOT_RUN",
+    "stopRestartChildCleanupTests": "NOT_RUN",
+    "windows10": "NOT_RUN"
+  },
+  "minimumUserCooperation": {
+    "required": "An existing disposable Windows 11 x64 VM launch path or an accessible clean Windows 11 x64 test computer",
+    "transfer": "Only the exact verified candidate ZIP; no host runtime, caches, state, MySQL data, credentials or source",
+    "normalTestRequirements": [
+      "Writable local NTFS",
+      "At least 3 GiB free space plus diagnostic headroom",
+      "Modern browser",
+      "Official component HTTPS connectivity"
+    ],
+    "faultTestRequirements": [
+      "Clean snapshot or clone for missing VC++ behavior",
+      "Disposable guest-only test volume or controlled quota for below-3-GiB checks",
+      "Guest permissions for required official prerequisites or test-volume configuration"
+    ]
+  },
+  "boundaries": {
+    "noHostFeatureEnablement": true,
+    "noBiosChanges": true,
+    "noVirtualizationInstallation": true,
+    "noGlobalSecurityChanges": true,
+    "noHostRuntimeRemoval": true,
+    "noDiskFilling": true,
+    "noTlsOrHashBypass": true,
+    "noExistingDemoDatabaseAccess": true,
+    "noExistingDemoStartStop": true,
+    "noVendorDownloads": true,
+    "noPushMergeTagReleaseOrDeployment": true,
+    "noRemoteCiTriggered": true
+  },
+  "dataTruth": {
+    "sourceType": "synthetic_test",
+    "realData": "BLOCKED",
+    "realAccuracyAndGeneralization": "NOT_EVALUABLE"
+  }
+}

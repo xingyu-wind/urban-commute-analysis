@@ -1,6 +1,6 @@
 # T3 实测证据索引
 
-状态：**T3_PARTIAL**。最终ZIP本机空缓存配置、功能/故障验证和420.0秒七分钟连续验收通过。无干净Windows、Windows10、缺VC++或实际低磁盘容量环境通过证据。
+当前T3.1状态：**BLOCKED**，缺少可直接使用的干净Windows11 x64环境。T3历史状态仍为 **T3_PARTIAL**：最终ZIP本机空缓存配置、功能/故障验证和420.0秒七分钟连续验收通过。无干净Windows、Windows10、缺VC++或实际低磁盘容量环境通过证据。T3.1没有使用宿主机个人演示实例替代客机。
 
 最终包：`dist/t3-final/UrbanCommute-Demo-0.9.0-t3-candidate-windows-x64.zip`，722218字节、46文件，SHA256 `9acbe39f35bf69dcf4bfcb35ac63a38ac0feeffeedea34afc455352f5c450f2f`。业务冻结97f30db，打包源码完整提交 `59404200921b97f86b3b57288a33b491244c793d`；BUILD记录构建时工作区干净。验证脚本和本证据提交不改变该ZIP。
 
@@ -23,6 +23,9 @@
 | prediction-public.json | 排练中真实HTTP返回的合成预测、七点及误差；不含凭据，不是Mock或真实预测准确率证明 |
 | environment-final.json、failures-and-limits.json | 实际运行时版本、原T2实例保持健康、测试副本已停止；未验收范围明确列出 |
 | files.json | 其他归档文件的逐字节SHA256，不包含清单自身 |
+| t3-1-verification.json | T3.1启动时Git完整SHA、工作区、37份旧证据复核及BLOCKED裁定；列出未执行项和最小环境配合要求 |
+| t3-1-environment.json | 本轮Windows版本、命令/可执行路径/常见客机路径、产品注册表、服务、客机进程、磁盘及已有VC++探测；明确搜索范围，不冒称穷尽所有机器 |
+| t3-1-zip-inspection.json | 原候选包本轮CRC、清单覆盖及逐文件复验；SHA未变。未解密现有安装秘密，本轮privateCredentialValuesChecked=0，不覆盖T3历史的8值排除结果 |
 
 精选截图由本轮运行的production页面取得：prediction-1440/390、warehouse-1440/390及reader。截图不替代HTTP或功能证据；没有密码、Cookie、CSRF token、DPAPI、数据库dump、SQL临时口令日志或上传原件。
 

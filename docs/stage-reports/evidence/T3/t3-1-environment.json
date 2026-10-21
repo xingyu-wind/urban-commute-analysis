@@ -1,0 +1,87 @@
+{
+  "checkedAt": "2026-10-21T20:23:21.2736568+08:00",
+  "os": {
+    "Caption": "Microsoft Windows 11 家庭版 中文版",
+    "Version": "10.0.26200",
+    "OSArchitecture": "64 位"
+  },
+  "computer": {
+    "HypervisorPresent": true
+  },
+  "administrator": false,
+  "commands": [],
+  "knownPaths": [
+    {
+      "path": "C:/Windows/System32/WindowsSandbox.exe",
+      "exists": false
+    },
+    {
+      "path": "C:/Program Files/Oracle/VirtualBox/VBoxManage.exe",
+      "exists": false
+    },
+    {
+      "path": "C:/Program Files (x86)/VMware/VMware Workstation/vmrun.exe",
+      "exists": false
+    },
+    {
+      "path": "C:/Program Files/VMware/VMware Workstation/vmrun.exe",
+      "exists": false
+    },
+    {
+      "path": "C:/Users/WindXingyu/VirtualBox VMs",
+      "exists": false
+    },
+    {
+      "path": "C:/Users/WindXingyu/Documents/Virtual Machines",
+      "exists": false
+    },
+    {
+      "path": "C:/Users/WindXingyu/OneDrive/Documents/Virtual Machines",
+      "exists": false
+    },
+    {
+      "path": "C:/ProgramData/Microsoft/Windows/Hyper-V/Virtual Machines",
+      "exists": false
+    },
+    {
+      "path": "D:/Virtual Machines",
+      "exists": false
+    },
+    {
+      "path": "D:/VMs",
+      "exists": false
+    },
+    {
+      "path": "D:/VM",
+      "exists": false
+    }
+  ],
+  "virtualizationServices": [
+    {
+      "Name": "vmicvmsession",
+      "Status": 1
+    }
+  ],
+  "installedVirtualizationProducts": [],
+  "runningWindowsGuests": [],
+  "vcRuntime": {
+    "Installed": 1,
+    "Version": "v14.50.35719.00"
+  },
+  "disks": [
+    {
+      "Name": "C",
+      "Free": 404141342720
+    },
+    {
+      "Name": "D",
+      "Free": 402455986176
+    },
+    {
+      "Name": "Temp",
+      "Free": 404141342720
+    }
+  ],
+  "scope": "PATH commands, known executable/default guest paths, installed-product registry, services and running guest processes; not an exhaustive scan of all host files or remote computers",
+  "systemSettingsChanged": false
+}
