@@ -18,6 +18,8 @@ S6 入口：[数仓使用说明](bigdata/README.md)、[知识关联与项目实�
 
 ## 本地运行
 
+普通Windows使用者优先使用[T2 ZIP候选包说明](docs/guides/windows-zip.md)：联网首次配置自动准备便携运行时，不需要IDE、Git、Maven、Node或独立MySQL服务。该路线使用合成预发布快照，不是离线安装程序或正式Release；阶段实测和限制见[T2报告](docs/stage-reports/T2.md)。下列命令保留为开发环境入口。
+
 先按 [S3 运行说明](docs/guides/s3-mysql.md) 准备已经授权的 MySQL 实例、库和私有进程变量。启动会执行迁移，不能指向未经授权的既有库。构建使用 Windows Maven Wrapper；集成测试必须通过隔离准备器，不直接在持久开发库运行 verify。
 
 ```powershell

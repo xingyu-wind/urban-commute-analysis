@@ -1,0 +1,70 @@
+{
+  "model": {
+    "sha256": "5b2221a2621062fd61248e8f77cb4941655132b6c437065e75cb809a48c23e46",
+    "rows": {
+      "dataset_registry": 2,
+      "city": 4,
+      "region": 1,
+      "road_segment": 1,
+      "traffic_observation": 4369,
+      "etl_source": 1,
+      "etl_batch": 1,
+      "etl_rejection": 0,
+      "etl_batch_observation": 4368,
+      "warehouse_release": 0,
+      "warehouse_metric": 0,
+      "warehouse_current": 0,
+      "prediction_model": 1,
+      "prediction_job": 1,
+      "prediction_evaluation": 8,
+      "prediction_result": 7,
+      "prediction_current": 1
+    },
+    "excluded": [
+      "app_user",
+      "security_audit",
+      "managed_job",
+      "managed_import",
+      "flyway_schema_history"
+    ],
+    "modelFixture4368PointComparison": true,
+    "warehouseAll40MetricsCompared": false,
+    "finalWarehouseArtifactSha256": null,
+    "originalPublisher": "S7 trusted replay / S6 independently reconciled real Hive",
+    "sourceEvidence": "docs/stage-reports/evidence/S9/release"
+  },
+  "warehouse": {
+    "sha256": "df9a56dc90c374488a1e946b47ce86d71dc556baf68aef618316d04331d21574",
+    "rows": {
+      "dataset_registry": 3,
+      "city": 4,
+      "region": 3,
+      "road_segment": 3,
+      "traffic_observation": 23,
+      "etl_source": 3,
+      "etl_batch": 4,
+      "etl_rejection": 14,
+      "etl_batch_observation": 40,
+      "warehouse_release": 1,
+      "warehouse_metric": 40,
+      "warehouse_current": 1,
+      "prediction_model": 0,
+      "prediction_job": 0,
+      "prediction_evaluation": 0,
+      "prediction_result": 0,
+      "prediction_current": 0
+    },
+    "excluded": [
+      "app_user",
+      "security_audit",
+      "managed_job",
+      "managed_import",
+      "flyway_schema_history"
+    ],
+    "modelFixture4368PointComparison": false,
+    "warehouseAll40MetricsCompared": true,
+    "finalWarehouseArtifactSha256": "42714f550cd4ed42bdd55f76a09ac0ecc987539252ce71d5691df1cd50850beb",
+    "originalPublisher": "S7 trusted replay / S6 independently reconciled real Hive",
+    "sourceEvidence": "backend/target/s6-local-chain"
+  }
+}

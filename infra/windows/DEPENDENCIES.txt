@@ -1,0 +1,38 @@
+Dependency acquisition and redistribution boundary
+
+This candidate ZIP contains the project's own compiled classes, Flyway migrations,
+unchanged Spring Boot launcher classes, production frontend, and owned synthetic data.
+Spring Boot launcher: Apache-2.0. Vue runtime: MIT. ECharts/zrender: Apache-2.0/BSD-3-Clause.
+Included frontend and launcher license/notice texts are retained in this directory.
+Project source snippets are included for the existing Python bridge; no upstream binary runtime is bundled.
+
+FIRST-SETUP obtains the following unmodified components directly from their publishers
+after the user consents. URLs, versions, sizes and SHA256 are fixed in config/components.lock.json.
+Do not redistribute the initialized runtime directory as if this candidate's notice alone authorized it.
+
+- Azul Zulu OpenJDK JRE 21.0.12.1: GPLv2 with Classpath Exception plus vendor notices.
+  https://www.azul.com/products/core/openjdk-terms-of-use/
+  https://www.azul.com/downloads/?package=jre#zulu
+- CPython 3.11.9 Windows embeddable: PSF license and included third-party notices.
+  https://docs.python.org/3/license.html
+  https://docs.python.org/3.11/using/windows.html#the-embeddable-package
+- MySQL Community Server 8.4.11 ZIP: GPLv2, MySQL notices and third-party components.
+  https://dev.mysql.com/doc/refman/8.4/en/license-info.html
+  https://downloads.mysql.com/archives/community/
+  Native VC++ x64 prerequisites may require a separate official Microsoft installation.
+- MySQL Connector/J 9.7.0: GPLv2 with Universal FOSS Exception; downloaded by recipient
+  from Maven Central, not bundled as a nested library in our application.jar.
+  https://dev.mysql.com/doc/connector-j/en/connector-j-installing-source.html
+  https://github.com/mysql/mysql-connector-j
+- Other Java dependencies are also fetched directly, not bundled. Their JAR LICENSE/NOTICE
+  and Maven POMs retain the publisher's licensing information. No project licensing change is inferred.
+- Python wheels: NumPy/SciPy/scikit-learn (BSD), XGBoost (Apache-2.0), joblib (BSD),
+  threadpoolctl (BSD), tzdata (Apache-2.0 and upstream database notices), packaging (Apache/BSD),
+  PyMySQL (MIT), cryptography (Apache/BSD), cffi (MIT), pycparser (BSD).
+  Exact official PyPI release metadata is linked for each wheel in the component lock.
+  Installed .dist-info/licenses and bundled third-party license files remain intact.
+
+The first-run download model was selected over copying development runtimes or virtualenvs.
+It avoids distributing a MySQL/JRE binary bundle without a corresponding-source delivery plan.
+An offline redistribution variant requires a separate review of complete source/notice obligations;
+it is not delivered here. This is not a Windows installer, commercial license, or legal opinion.
