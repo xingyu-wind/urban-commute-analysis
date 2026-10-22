@@ -2,7 +2,7 @@
   {
     "case": "sandbox-loopback-timeout",
     "rawEvidence": "docs/stage-reports/evidence/UI-Workbench/validation/initial-sandbox-failure.json",
-    "sha256": "55985d63f821878e584752792654ddfdc4eca7ad567cd15d6c1210fcda79460b",
+    "sha256": "27ea37e802c15b5253d40305f55bb23fc4eb229a0bdb6da99750bf53ea8d5196",
     "resolution": "Private initialization log showed MySQL ready but sandbox loopback probe timed out; preserved failed state and passed a fresh escalated installation. No temporary credentials or raw private logs copied."
   },
   {

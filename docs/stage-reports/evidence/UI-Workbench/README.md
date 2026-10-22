@@ -29,3 +29,5 @@
 测试与安装原始目录保留在 backend/target 和 dist；本目录只归档便于评审的摘要、数值和真实截图，delivery.json 的 source 字段指回完整现场。没有密码、Cookie、CSRF值、DPAPI或数据库dump。模型和数仓的种子来源仍由原fixture provenance证明，不把新测试训练结果放进发行包。
 
 最终包验收为同机独立新目录的离线执行路径：没有物理断网、真实U盘、异机/干净Windows或新的Hive集群实算证明。最后所属进程停止，旧T3-USB ZIP大小和SHA重新核对不变。
+
+文本证据先按仓库约定统一为 LF 再计算归档 SHA；delivery.json 中 sha256 校验已归档文件，sourceSha256 保留原始本地证据的字节身份。MANIFEST 可直接校验仓库检出的文件。
