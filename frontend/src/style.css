@@ -1555,3 +1555,8 @@ footer {
     height:240px;
   }
 }
+
+.screen-mode .prediction-panel .chart-empty {
+  min-height:64px;
+  padding:12px;
+}

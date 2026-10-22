@@ -33,30 +33,30 @@ const provenance = computed(() => summary.value?.meta)
 const common = computed(() => ({ animation: false, backgroundColor: 'transparent', textStyle: { color: props.view === 'screen' ? '#acbfd5' : '#52657e', fontFamily: 'Segoe UI, Microsoft YaHei, sans-serif' },
   tooltip: { trigger: 'axis', renderMode: 'richText', confine: true }, aria: { enabled: true },
   grid: { left: 48, right: 48, top: 45, bottom: 65 } }))
-const axis = { axisLine: { lineStyle: { color: '#c3cfde' } }, axisTick: { show: false }, splitLine: { lineStyle: { color: '#c3cfde44', type: 'dashed' } } }
+const axis = computed(() => ({ axisLabel: { color: props.view === 'screen' ? '#9bb1cd' : '#64748b', hideOverlap: true }, nameTextStyle: { color: props.view === 'screen' ? '#9bb1cd' : '#64748b' }, axisLine: { lineStyle: { color: '#c3cfde' } }, axisTick: { show: false }, splitLine: { lineStyle: { color: '#c3cfde44', type: 'dashed' } } }))
 // MySQL coordinates have six decimals. Keep padded bounds at the same precision;
 // binary tails such as 120.03999999999999 can violate ECharts' tick extent checks.
 const coordinateBound = (value: number) => Number(value.toFixed(6))
 const trendOption = computed(() => ({ ...common.value, color: ['#17A398', '#E8A34B'],
   legend: { textStyle: { color: props.view === 'screen' ? '#acbfd5' : '#52657e' }, top: 5, data: ['平均速度 km/h', '拥堵指数 0–10'] },
-  xAxis: { ...axis, type: 'category', data: series.value?.data.items.map(r => r.bucket.slice(5, granularity.value === 'day' ? 10 : 16).replace('T', ' ')) ?? [] },
-  yAxis: [{ ...axis, type: 'value', name: 'km/h', min: 0 }, { ...axis, type: 'value', name: '指数', min: 0, max: 10 }],
+  xAxis: { ...axis.value, type: 'category', data: series.value?.data.items.map(r => r.bucket.slice(5, granularity.value === 'day' ? 10 : 16).replace('T', ' ')) ?? [] },
+  yAxis: [{ ...axis.value, type: 'value', name: 'km/h', min: 0 }, { ...axis.value, type: 'value', name: '指数', min: 0, max: 10 }],
   dataZoom: [{ type: 'inside' }, { type: 'slider', bottom: 8, height: 18, borderColor: '#293e54', textStyle: { color: props.view === 'screen' ? '#acbfd5' : '#52657e' } }],
   series: [{ name: '平均速度 km/h', type: 'line', connectNulls: false, symbolSize: 8, data: series.value?.data.items.map(r => r.metrics.avgSpeedKmh) ?? [], lineStyle: { width: 3 }, areaStyle: { opacity: 0.08 } },
     { name: '拥堵指数 0–10', type: 'line', yAxisIndex: 1, connectNulls: false, symbolSize: 7, data: series.value?.data.items.map(r => r.metrics.congestionIndex) ?? [] }] }))
 const regionOption = computed(() => ({ ...common.value, grid: { left: 100, right: 35, top: 15, bottom: 30 },
   tooltip: { trigger: 'item', renderMode: 'richText', confine: true },
-  xAxis: { ...axis, type: 'value', min: 0, max: 10 },
-  yAxis: { ...axis, type: 'category', inverse: true, data: observedRegions.value.map(r => r.name) },
+  xAxis: { ...axis.value, type: 'value', min: 0, max: 10 },
+  yAxis: { ...axis.value, type: 'category', inverse: true, data: observedRegions.value.map(r => r.name) },
   series: [{ type: 'bar', barMaxWidth: 28, data: observedRegions.value.map(r => ({ id: r.id, value: r.metrics.congestionIndex, itemStyle: { color: r.id === region.value ? '#ffbd72' : '#48cdb8', borderRadius: [0, 5, 5, 0] } })) }] }))
 const mapOption = computed(() => ({ ...common.value, grid: { left: 65, right: 45, top: 35, bottom: 55 },
   tooltip: { trigger: 'item', renderMode: 'richText', confine: true },
-  xAxis: { ...axis, type: 'value', name: '经度 °E', min: points.value.length ? coordinateBound(Math.max(-180, Math.min(...points.value.map(r => r.longitude!)) - 0.06)) : -180,
-    max: points.value.length ? coordinateBound(Math.min(180, Math.max(...points.value.map(r => r.longitude!)) + 0.06)) : 180, axisLabel: { formatter: (v: number) => v.toFixed(3) } },
-  yAxis: { ...axis, type: 'value', name: '纬度 °N', min: points.value.length ? coordinateBound(Math.max(-90, Math.min(...points.value.map(r => r.latitude!)) - 0.04)) : -90,
-    max: points.value.length ? coordinateBound(Math.min(90, Math.max(...points.value.map(r => r.latitude!)) + 0.04)) : 90, axisLabel: { formatter: (v: number) => v.toFixed(3) } },
+  xAxis: { ...axis.value, type: 'value', name: '经度 °E', min: points.value.length ? coordinateBound(Math.max(-180, Math.min(...points.value.map(r => r.longitude!)) - 0.06)) : -180,
+    max: points.value.length ? coordinateBound(Math.min(180, Math.max(...points.value.map(r => r.longitude!)) + 0.06)) : 180, axisLabel: { color: props.view === 'screen' ? '#9bb1cd' : '#64748b', hideOverlap: true, formatter: (v: number) => v.toFixed(3) } },
+  yAxis: { ...axis.value, type: 'value', name: '纬度 °N', min: points.value.length ? coordinateBound(Math.max(-90, Math.min(...points.value.map(r => r.latitude!)) - 0.04)) : -90,
+    max: points.value.length ? coordinateBound(Math.min(90, Math.max(...points.value.map(r => r.latitude!)) + 0.04)) : 90, axisLabel: { color: props.view === 'screen' ? '#9bb1cd' : '#64748b', hideOverlap: true, formatter: (v: number) => v.toFixed(3) } },
   dataZoom: [{ type: 'inside', xAxisIndex: 0, filterMode: 'none' }, { type: 'inside', yAxisIndex: 0, filterMode: 'none' }],
-  series: [{ type: 'scatter', symbolSize: 22, label: { show: true, position: 'top', formatter: '{b}', color: '#d3e5f7', distance: 15 },
+  series: [{ type: 'scatter', symbolSize: 22, label: { show: true, position: 'top', formatter: '{b}', color: props.view === 'screen' ? '#d3e5f7' : '#52657e', distance: 15 },
     data: points.value.map(r => ({ id: r.id, name: r.name, value: [r.longitude, r.latitude, r.metrics.congestionIndex],
       itemStyle: { color: r.id === region.value ? '#ffbd72' : '#48d9bf', borderColor: '#9af1e0', borderWidth: 2, shadowBlur: 18, shadowColor: '#48d9bf66' } })) }] }))
 
