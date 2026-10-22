@@ -1509,3 +1509,49 @@ footer {
 .traffic-chart {
   overflow:auto
 }
+
+/* Keep available spatial and road observations on one desktop screen. */
+@media (min-width:901px) {
+  .screen-mode .analysis-grid:has(.map-panel):has(.roads-panel) {
+    grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));
+  }
+  .screen-mode .analysis-grid:has(.map-panel) .traffic-chart {
+    height:140px;
+  }
+  .screen-mode .region-buttons,.screen-mode .map-controls {
+    margin-top:4px;
+    gap:4px;
+  }
+  .screen-mode .region-buttons button,.screen-mode .map-controls button {
+    padding:3px 6px;
+    min-height:22px;
+    font-size:9px;
+  }
+  .screen-mode .map-controls span {
+    display:none;
+  }
+  .screen-mode .map-panel .chart-caption {
+    font-size:9px;
+    margin:6px 0 0;
+  }
+  .screen-mode .roads-panel table {
+    table-layout:fixed;
+  }
+  .screen-mode .roads-panel th,.screen-mode .roads-panel td {
+    padding:7px 4px;
+    font-size:10px;
+  }
+  .screen-mode .roads-panel th:first-child {
+    width:40%;
+  }
+  .screen-mode .roads-panel td:first-child {
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+}
+@media (min-width:1600px) and (min-height:950px) {
+  .screen-mode .analysis-grid:has(.map-panel) .traffic-chart {
+    height:240px;
+  }
+}

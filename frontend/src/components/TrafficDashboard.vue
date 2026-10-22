@@ -19,7 +19,10 @@ let version = 0
 const number = (v: number | null | undefined) => v == null ? '—' : v.toFixed(2)
 const metrics = computed(() => summary.value?.data.metrics)
 const observedRegions = computed(() => regions.value?.data.items.filter(r => r.metrics.sampleCount > 0) ?? [])
-const observedRoads = computed(() => roads.value?.data.items.filter(r => r.metrics.sampleCount > 0) ?? [])
+const observedRoads = computed(() => {
+  const items = roads.value?.data.items.filter(r => r.metrics.sampleCount > 0) ?? []
+  return props.view === 'screen' ? items.slice(0, 5) : items
+})
 const points = computed(() => observedRegions.value.filter(r => r.coordinateSystem === 'WGS84' && r.latitude !== null && r.longitude !== null) ?? [])
 const missing = computed(() => (regions.value?.data.items.length ?? 0) - points.value.length)
 const selectedRegion = computed(() => regions.value?.data.items.find(r => r.id === region.value))
@@ -128,12 +131,12 @@ onUnmounted(() => { version++ })
           <TrafficChart v-if="points.length" :option="mapOption" label="WGS84 经纬度区域点位地图；可缩放，点击点位联动路段" @select="selectRegion" />
           <div v-else class="traffic-state">当前城市无可用 WGS84 坐标，未绘制地图点位。</div>
           <div class="map-controls"><button v-for="point in points" :key="point.id" :aria-pressed="region === point.id" :data-map-point="point.id" @click="selectRegion(point.id)">⌖ {{ point.name }} <span>{{ point.longitude }}, {{ point.latitude }}</span></button></div>
-          <p class="chart-caption">经纬度点位视图，非道路底图；{{ missing }} 个区域缺少坐标已省略。无道路几何，不绘制道路。{{ provenance?.sourceType === 'synthetic_test' ? '点位为合成绘图测试值。' : '' }}</p>
+          <p v-if="view === 'screen'" class="chart-caption">WGS84 登记点位{{ provenance?.sourceType === 'synthetic_test' ? ' · 合成演示' : '' }}，非道路底图。</p><p v-else class="chart-caption">经纬度点位视图，非道路底图；{{ missing }} 个区域缺少坐标已省略。无道路几何，不绘制道路。{{ provenance?.sourceType === 'synthetic_test' ? '点位为合成绘图测试值。' : '' }}</p>
         </article>
-        <article v-if="view === 'analysis' || (view === 'screen' && observedRoads.length)" class="analysis-panel roads-panel"><div class="analysis-panel-title"><h3><i></i>路段拥堵排名</h3><span>ROAD / 指数降序</span></div>
+        <article v-if="view === 'analysis' || (view === 'screen' && observedRoads.length)" class="analysis-panel roads-panel"><div class="analysis-panel-title"><h3><i></i>路段拥堵排名{{ view === 'screen' ? ' · 前 5' : '' }}</h3><span>ROAD / 指数降序</span></div>
           <div v-if="view === 'analysis'" class="road-filters"><label>区域<select v-model="region" aria-label="路段区域"><option value="">全部区域</option><option v-for="item in observedRegions" :key="item.id" :value="item.id">{{ item.name }}</option></select></label><label>路段名称<input v-model.lazy="search" aria-label="路段关键词" placeholder="输入后回车或移开焦点" maxlength="100"></label><label>每页<select v-model.number="pageSize" aria-label="每页路段数"><option :value="1">1</option><option :value="10">10</option><option :value="20">20</option></select></label></div>
           <p v-if="selectedRegion" class="filter-caption">当前联动：{{ selectedRegion.name }} <button @click="region = ''">清除</button></p>
-          <div class="table-scroll"><table data-testid="roads-table"><thead><tr><th>排名 / 路段</th><th>速度 km/h</th><th>指数</th><th>样本</th></tr></thead><tbody><tr v-for="(road, index) in observedRoads" :key="road.id"><td><span class="rank">{{ (page - 1) * pageSize + index + 1 }}</span>{{ road.name }}<small>{{ road.id }}</small></td><td>{{ number(road.metrics.avgSpeedKmh) }}</td><td><span class="index-pill">{{ number(road.metrics.congestionIndex) }}</span></td><td>{{ road.metrics.sampleCount }}</td></tr></tbody></table></div>
+          <div class="table-scroll"><table data-testid="roads-table"><thead><tr><th>排名 / 路段</th><th>速度 km/h</th><th>指数</th><th>样本</th></tr></thead><tbody><tr v-for="(road, index) in observedRoads" :key="road.id"><td :title="road.name"><span class="rank">{{ (page - 1) * pageSize + index + 1 }}</span>{{ road.name }}<small>{{ road.id }}</small></td><td>{{ number(road.metrics.avgSpeedKmh) }}</td><td><span class="index-pill">{{ number(road.metrics.congestionIndex) }}</span></td><td>{{ road.metrics.sampleCount }}</td></tr></tbody></table></div>
           <p v-if="!observedRoads.length" class="chart-caption" data-testid="roads-empty">当前筛选无 ROAD 观测；未使用城市数据生成道路排名。</p>
           <div v-if="view === 'analysis'" class="pagination"><span>共 {{ roads.data.total }} 条 · 第 {{ page }} / {{ pageCount }} 页</span><button :disabled="page <= 1" aria-label="路段上一页" @click="page--">←</button><button :disabled="page >= pageCount" aria-label="路段下一页" @click="page++">→</button></div>
         </article>
