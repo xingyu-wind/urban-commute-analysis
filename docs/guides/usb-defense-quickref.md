@@ -6,11 +6,11 @@
 
 **最短启动**：解压完整ZIP → 双击 RUN-FROM-USB → 选本地目录 → 阅读声明输入ACCEPT → 等待初始化/健康 → 私下运行本地CREDENTIALS → 浏览器打开显示的127.0.0.1 URL。
 
-**交通/预测**：选 `s7-city` → “合成样本时段” → 统计/趋势/图表 → “打开七日预测”。未来七日从数据截止日计算，不一定从今天计算；误差是合成回测误差。
+**交通/预测**：默认选择有数据城市；也可选 `s7-city` → 自动联动最近观测时段 → “交通分析” / “智能预测” / “全屏大屏”。未来七日从数据截止日计算，不一定从今天计算；误差是合成回测误差。
 
-**权限/研究**：“权限与运行管理” → ADMIN登录 → 选本地 `database/research-demo.csv` → 上传并分析 → 读建议 → 对照 `research-review.json` 核实完整审查JSON并明确确认 → 执行导入SUCCEEDED → 退出 → READER登录展示只读任务、没有上传入口。
+**权限/研究**：“数据管理” → ADMIN登录 → 选本地 `database/research-demo.csv` → 上传并分析 → 读建议 → 对照 `research-review.json` 核实完整审查JSON并明确确认 → 执行导入SUCCEEDED → 退出 → READER登录展示只读任务、没有上传入口。
 
-**数仓**：本地STOP → START-WAREHOUSE → 显示的URL → `s5-city` → “打开Hive离线分析”；解释已发布合成快照来自既有真实HDFS/Hive链路，Windows只在线读取展示。
+**数仓**：本地STOP → START-WAREHOUSE → 显示的URL → `s5-city` → “交通分析” → “查看 Hive 数仓快照与同窗比较”；解释已发布合成快照来自既有真实HDFS/Hive链路，Windows只在线读取展示。
 
 **结束**：本地STOP。需要回到预测：STOP → START，检查发布结果恢复、旧会话失效。不要直接拔运行中的数据库工作盘。
 

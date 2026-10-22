@@ -154,7 +154,7 @@ def main():
                         headers[token['headerName']] = token['token']
                     request(who,method,path,404,b'{}' if method!='GET' else None,headers,csrf=False,label='s9-default-deny-'+role)
             for path in ('/health','/api/v1/cities','/api/v1/traffic/summary','/api/v1/traffic/series',
-                         '/api/v1/traffic/regions','/api/v1/traffic/roads','/api/v1/warehouse/metrics','/api/v1/predictions'):
+                         '/api/v1/traffic/regions','/api/v1/traffic/roads','/api/v1/traffic/availability','/api/v1/warehouse/metrics','/api/v1/predictions'):
                 for method in ('POST','PUT','PATCH','DELETE'):
                     response,_=request(who,method,path,405,b'{}',csrf=False,label='s9-readonly-method-'+role)
                     assert 'GET' in response.headers['Allow']

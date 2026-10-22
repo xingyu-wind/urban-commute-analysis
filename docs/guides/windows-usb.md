@@ -18,3 +18,7 @@ MySQL写入每安装唯一ASCII原生目录，具体位置在 `state/mysql-locat
 本地备份需先STOP，再私下保存state及指向的MySQL目录；DPAPI仅当前Windows用户/机器有效。发行包不包含这些个人运行状态。第三方归档、来源、锁、许可和对应源码/源码提供书都随包保留；详见 `licenses/DEPENDENCIES.txt`，不作商业/公开发行许可保证。
 
 所有预测/数仓均为synthetic_test已发布快照。真实交通授权仍BLOCKED，真实准确率和跨城市泛化NOT_EVALUABLE；研究导入不自动ETL/训练/发布，Windows现场不搭建Hadoop/Hive。
+
+## 工作台候选版
+
+0.9.0-workbench-candidate 沿用本页离线安装和停止重启流程。首页默认选择有数据城市及最近有效 UTC 观测时段，无需手动指定合成样本日期。五入口和数据语义见 [工作台使用说明](workbench.md)。预测保留发布截止日，绝不滚动成今天的预测。

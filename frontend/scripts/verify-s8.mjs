@@ -31,7 +31,7 @@ try {
   const page=await browser.newPage({viewport:{width:1440,height:1000}})
   page.on('pageerror',e=>errors.push(e.name))
   await page.goto(base)
-  await page.getByRole('button',{name:'权限与运行管理',exact:true}).click()
+  await page.getByRole('button',{name:'数据管理',exact:true}).click()
   await page.getByLabel('账号',{exact:true}).fill(process.env.COMMUTE_BOOTSTRAP_ADMIN_USER)
   await page.getByLabel('密码',{exact:true}).fill(process.env.COMMUTE_BOOTSTRAP_ADMIN_PASSWORD)
   await page.getByRole('button',{name:'登录',exact:true}).click()

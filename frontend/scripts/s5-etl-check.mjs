@@ -10,10 +10,9 @@ export async function checkEtl({ page, expect, context, backend, output, root, p
     if (result.status !== 0) throw new Error(`Python ETL ${action} failed: ${result.stderr}`)
     return result.stdout.trim()
   }
-  await page.locator('#city-select').selectOption('s5-city-ui')
-  await page.getByRole('button', { name: '合成样本时段', exact: true }).click()
+  await page.getByLabel('城市选择', { exact: true }).selectOption('s5-city-ui')
   await expect(page.getByTestId('traffic-empty')).toBeVisible()
-  await expect(page.getByTestId('kpi-speed')).toContainText('—')
+  await expect(page.getByTestId('kpi-speed')).toHaveCount(0)
   const q = '?cityId=s5-city-ui&from=2026-10-15T00:00:00Z&to=2026-10-17T00:00:00Z'
   const snapshots = []
   async function assertApi(phase, count, speed, index) {
@@ -38,7 +37,7 @@ export async function checkEtl({ page, expect, context, backend, output, root, p
   await assertApi('before', 0, null, null)
   await page.screenshot({ path: path.join(output, 's5-before.png'), fullPage: true })
   run('csv')
-  await page.getByRole('button', { name: '刷新分析', exact: true }).click()
+  await page.getByRole('button', { name: '刷新数据', exact: true }).click()
   await expect(page.getByTestId('kpi-speed')).toContainText('54.00')
   await expect(page.getByTestId('kpi-count')).toContainText('2')
   await assertApi('csv', 2, 54, 3)
@@ -46,7 +45,7 @@ export async function checkEtl({ page, expect, context, backend, output, root, p
   await page.screenshot({ path: path.join(output, 's5-after-csv.png'), fullPage: true })
   const csvTrend = await page.locator('.trend-panel .traffic-chart svg').innerHTML()
   run('json')
-  await page.getByRole('button', { name: '刷新分析', exact: true }).click()
+  await page.getByRole('button', { name: '刷新数据', exact: true }).click()
   await expect(page.getByTestId('kpi-speed')).toContainText('40.00')
   await expect(page.getByTestId('kpi-count')).toContainText('3')
   await expect(page.getByTestId('kpi-congestion')).toContainText('5.00')
@@ -58,7 +57,7 @@ export async function checkEtl({ page, expect, context, backend, output, root, p
   // Inspect actual rendered ECharts SVG labels and region/road data, not screenshot pixels alone.
   await expect(page.locator('.region-buttons')).toContainText('3.00')
   await expect(page.locator('[data-map-point]')).toHaveCount(1)
-  await page.getByRole('button', { name: '比赛大屏', exact: true }).click()
+  await page.getByRole('button', { name: '全屏大屏', exact: true }).click()
   await expect(page.locator('.traffic-workspace')).toHaveClass(/presentation/)
   await page.screenshot({ path: path.join(output, 's5-after-json-presentation.png'), fullPage: true })
   run('repeat')

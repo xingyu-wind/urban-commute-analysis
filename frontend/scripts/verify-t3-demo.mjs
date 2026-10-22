@@ -17,7 +17,7 @@ try {
   page.on('pageerror',e=>errors.push(e.name))
   page.on('response',r=>{if(r.url().startsWith(base+'/api/')) requests.push({path:new URL(r.url()).pathname,status:r.status()})})
   await page.goto(base)
-  await page.getByRole('button',{name:'权限与运行管理',exact:true}).click()
+  await page.getByRole('button',{name:'数据管理',exact:true}).click()
   async function login(role) {
     await page.getByLabel('账号',{exact:true}).fill(secrets[role].username)
     await page.getByLabel('密码',{exact:true}).fill(secrets[role].password)

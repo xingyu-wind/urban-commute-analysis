@@ -51,6 +51,14 @@ class PredictionIntegrationTest {
         for (int i=1;i<=7;i++) jdbc.update("INSERT INTO prediction_result VALUES (REPEAT('d',32),?,?,?)",i,"2026-10-"+(18+i),4+i*.1);
         jdbc.update("INSERT INTO prediction_current VALUES ('s7-unit-city','s7-unit',REPEAT('d',32))");
     }
+    @Test void unsupportedDirectorySourceCannotAdvertiseAReadablePrediction() throws Exception {
+        release("PUBLISHED");
+        jdbc.update("UPDATE dataset_registry SET source_type='simulation' WHERE dataset_id='s7-unit'");
+        var response=mapper.readTree(mvc.perform(get("/api/v1/traffic/availability").param("cityId","s7-unit-city"))
+            .andExpect(status().isOk()).andReturn().getResponse().getContentAsString());
+        assertThat(response.at("/data/datasets/0/predictionAvailable").asBoolean()).isFalse();
+        assertThat(response.at("/data/datasets/0/predictionCutoff").isNull()).isTrue();
+    }
     @Test void emptyHasSourceAndRequestId() throws Exception {
         var response=read();
         assertThat(response.path("data").path("release").isNull()).isTrue();

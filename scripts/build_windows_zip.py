@@ -90,7 +90,7 @@ def build(output,jar=None,application_source=None,version='0.9.0-t2-candidate',o
         copy('infra/windows/deploy-usb.ps1','launcher/deploy-usb.ps1')
         copy('infra/windows/USB-README.txt','README-FIRST.txt')
         copy('infra/windows/USB-DEPENDENCIES.txt','licenses/DEPENDENCIES.txt')
-        for name in ['windows-usb.md','usb-defense-quickref.md','usb-defense-demo.md']:
+        for name in ['windows-usb.md','usb-defense-quickref.md','usb-defense-demo.md','workbench.md']:
             copy('docs/guides/'+name,'guides/'+name)
         (package/'config/offline.json').write_text(json.dumps(dict(mode='offline',networkDownloadsAllowed=False,minimumDeploymentFreeGiB=5))+'\n',encoding='utf-8')
         (package/'RUN-FROM-USB.bat').write_bytes(('@echo off\r\nsetlocal\r\n"%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -NoLogo -NoProfile -ExecutionPolicy Bypass -File "%~dp0launcher\\deploy-usb.ps1" %*\r\nset "result=%ERRORLEVEL%"\r\nif not defined URBAN_COMMUTE_NO_PAUSE pause\r\nexit /b %result%\r\n').encode('ascii'))

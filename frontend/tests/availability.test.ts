@@ -17,13 +17,22 @@ describe('availability metadata and UTC windows', () => {
     expect(recentWindow(d)).toBeNull(); expect(statusLabel([d])).toContain('仅目录登记')
     d.predictionAvailable = true; expect(statusLabel([d])).toBe('有预测数据')
   })
-  it.each(['city', 'bounds', 'count', 'duplicate', 'prediction'])('rejects malformed %s metadata', bad => {
+  it.each(['city', 'bounds', 'count', 'duplicate', 'prediction', 'invalid-day', 'unrelated-field'])('rejects malformed %s metadata', bad => {
     const f = structuredClone(fixture)
     if (bad === 'city') f.data.cityId = 'other-city'
     if (bad === 'bounds') f.data.datasets[0]!.levels.CITY.firstObservedAt = '2026-10-20T00:00:00Z'
     if (bad === 'count') f.data.datasets[0]!.levels.ROAD.sampleCount = -1
     if (bad === 'duplicate') f.data.datasets.push(f.data.datasets[0]!)
+    if (bad === 'invalid-day') f.data.datasets[0]!.levels.CITY.firstObservedAt = '2026-02-30T00:00:00Z'
+    if (bad === 'unrelated-field') Object.assign(f.data.datasets[0]!.levels.CITY, { estimatedVehicles: 999 })
     if (bad === 'prediction') f.data.datasets[0]!.predictionAvailable = true
     expect(() => validateAvailability(f, 's4-demo-city')).toThrow()
   })
+})
+
+it.each(['simulation', 'mock', 'forecast'])('keeps %s directory metadata truthful without promising unsupported statistical reads', sourceType => {
+  const f = structuredClone(fixture); f.data.datasets[0]!.sourceType = sourceType
+  const d = validateAvailability(f, 's4-demo-city').datasets[0]!
+  expect(statusLabel([d])).toContain('仅目录登记')
+  expect(recentWindow(d)).toBeNull()
 })

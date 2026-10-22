@@ -156,19 +156,22 @@ try {
     return response
   }
   await page.goto(base)
-  await expect(page.locator('#city-select')).toBeVisible()
+  await expect(page.getByLabel('城市选择', { exact: true })).toBeVisible()
+  await page.getByRole('button', { name: '交通分析', exact: true }).click()
   if (process.env.S5_FIXTURE_OUTPUT) {
     await checkEtl({ page, expect, context, backend, output, root, python: contractPython(root), step, directGet })
   } else {
-  await page.locator('#city-select').selectOption('s4-demo-city')
-  await page.getByRole('button', { name: '合成样本时段', exact: true }).click()
+  await page.getByLabel('城市选择', { exact: true }).selectOption('s4-demo-city')
+  await page.getByRole('button', { name: '最近有效时段', exact: true }).click()
   await expect(page.getByTestId('kpi-speed')).toContainText('36.00')
   await expect(page.getByTestId('kpi-count')).toContainText('3')
   await expect(page.getByTestId('kpi-congestion')).toContainText('5.00')
-  await expect(page.locator('.traffic-provenance')).toContainText('synthetic_test')
+  await page.locator('.data-details summary').click()
+  await expect(page.locator('.data-details')).toContainText('synthetic_test')
+  await page.locator('.data-details summary').click()
   await expect(page.locator('[data-map-point]')).toHaveCount(1)
   await expect(page.locator('.map-panel')).toContainText('1 个区域缺少坐标已省略')
-  await expect(page.locator('.traffic-chart svg')).toHaveCount(3)
+  await expect(page.getByTestId('traffic-dashboard').locator('.traffic-chart svg')).toHaveCount(3)
   await page.screenshot({ path: path.join(output, 'dashboard-desktop.png'), fullPage: true })
   step('actual-api-kpi-charts-and-wgs84-map', { citySamples: 3, speed: 36, congestion: 5, noRoadGeometry: true })
 
@@ -239,11 +242,11 @@ try {
     await page.screenshot({ path: path.join(output, `responsive-${width}.png`), fullPage: true })
   }
   await page.setViewportSize({ width: 1500, height: 1080 })
-  await page.getByRole('button', { name: '比赛大屏', exact: true }).click()
+  await page.getByRole('button', { name: '全屏大屏', exact: true }).click()
   await expect(page.locator('.traffic-workspace')).toHaveClass(/presentation/)
   await page.screenshot({ path: path.join(output, 'presentation.png'), fullPage: true })
   await checkResponsiveMatrix(page, expect, output, 'presentation-responsive', '.traffic-workspace.presentation')
-  await page.getByRole('button', { name: '退出大屏', exact: true }).click()
+  await page.getByRole('button', { name: '交通分析', exact: true }).click()
   step('competition-presentation-and-responsive-390-1024')
 
   await page.getByLabel('开始日期 UTC', { exact: true }).fill('2026-10-18')
@@ -252,14 +255,17 @@ try {
   await expect(page.getByTestId('kpi-speed')).toContainText('—')
   await expect(page.getByTestId('kpi-count')).toContainText('0')
   await page.screenshot({ path: path.join(output, 'empty-observations.png'), fullPage: true })
-  await page.getByRole('button', { name: '合成样本时段', exact: true }).click()
+  await page.getByRole('button', { name: '最近有效时段', exact: true }).click()
   await expect(page.getByTestId('kpi-speed')).toContainText('36.00')
   // Different real catalog city has no traffic, then rapidly return to the S4 city.
-  await page.locator('#city-select').selectOption('sample-beijing')
+  await page.getByLabel('城市选择', { exact: true }).selectOption('sample-beijing')
   await expect(page.getByTestId('traffic-empty')).toBeVisible()
-  await expect(page.locator('.map-panel')).toContainText('合成一区')
-  await page.locator('#city-select').selectOption('sample-shanghai')
-  await page.locator('#city-select').selectOption('s4-demo-city')
+  await expect(page.locator('.map-panel')).toHaveCount(0)
+  // S3 owns a ROAD observation in Beijing: it must not become a CITY metric.
+  await expect(page.getByTestId('traffic-empty')).toContainText('当前时段无 CITY 观测')
+  await expect(page.getByTestId('kpi-speed')).toContainText('—')
+  await page.getByLabel('城市选择', { exact: true }).selectOption('sample-shanghai')
+  await page.getByLabel('城市选择', { exact: true }).selectOption('s4-demo-city')
   await expect(page.getByTestId('kpi-speed')).toContainText('36.00')
   step('empty-null-metrics-and-city-selection-without-stale-overwrite')
 
@@ -287,8 +293,8 @@ try {
     expect(response.status()).toBe(503)
     expect((await response.json()).code).toBe('SERVICE_UNAVAILABLE')
   }
-  await page.getByRole('button', { name: '重新请求', exact: true }).click()
-  await expect(page.getByText('城市列表获取失败', { exact: true })).toBeVisible()
+  await page.getByRole('button', { name: '刷新数据', exact: true }).click()
+  await expect(page.getByRole('alert')).toContainText('数据连接暂不可用')
   await expect(page.getByTestId('traffic-dashboard')).toHaveCount(0)
   await page.screenshot({ path: path.join(output, 'database-outage.png'), fullPage: true })
   step('actual-database-unavailable-safe-503-and-stale-dashboard-removed')

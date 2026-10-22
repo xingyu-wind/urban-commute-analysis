@@ -119,7 +119,7 @@ paths:
           pattern: ^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$
       responses:
         '200':
-          description: Registered and associated data availability
+          description: Registered and associated data availability. Observation bounds are actual stored rows, not a grant of statistical access. simulation/mock/forecast are directory-only; public traffic and predictions support the four observation source types.
           content:
             application/json:
               schema:
@@ -1705,7 +1705,7 @@ components:
                 required: [datasetId, sourceType, levels, predictionAvailable, predictionCutoff]
                 properties:
                   datasetId: {type: string, maxLength: 64, pattern: '^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$'}
-                  sourceType: {type: string, minLength: 1}
+                  sourceType: {type: string, enum: [dev_seed, synthetic_test, historical_snapshot, authorized_live, simulation, mock, forecast]}
                   predictionAvailable: {type: boolean}
                   predictionCutoff:
                     anyOf:

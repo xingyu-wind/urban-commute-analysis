@@ -63,6 +63,7 @@ public class AvailabilityRepository {
                 JOIN dataset_registry d ON d.dataset_id=c.dataset_id
                 WHERE c.city_id=:city AND c.dataset_id=:dataset AND j.city_id=c.city_id
                   AND j.dataset_id=c.dataset_id AND j.status='PUBLISHED'
+                  AND d.source_type IN ('dev_seed','synthetic_test','historical_snapshot','authorized_live')
                   AND JSON_UNQUOTE(JSON_EXTRACT(j.document,'$.datasetVersion'))=d.dataset_version
                   AND JSON_UNQUOTE(JSON_EXTRACT(j.document,'$.sourceType'))=d.source_type
                 """, p, (rs, i) -> rs.getString("cutoff"));

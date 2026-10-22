@@ -79,6 +79,14 @@ class TrafficIntegrationTest {
         mvc.perform(post("/api/v1/traffic/availability?cityId=s4-demo-city")).andExpect(status().isMethodNotAllowed());
         mvc.perform(get("/api/v1/traffic/availability?cityId=missing")).andExpect(status().isBadRequest());
     }
+    @Test void directoryOnlySourceKeepsTruthfulRangesWithoutGrantingStatisticalReads() throws Exception {
+        jdbc.update("UPDATE dataset_registry SET source_type='simulation' WHERE dataset_id='s4-synthetic-v1'");
+        var availability = read("availability", "?cityId=s4-demo-city").at("/data/datasets/0");
+        assertThat(availability.path("sourceType").asText()).isEqualTo("simulation");
+        assertThat(availability.at("/levels/CITY/sampleCount").asInt()).isEqualTo(3);
+        assertThat(availability.path("predictionAvailable").asBoolean()).isFalse();
+        mvc.perform(request("/api/v1/traffic/summary" + QUERY)).andExpect(status().isBadRequest());
+    }
     @Test void independentHandCalculationAndSqlAgreeWithoutCrossLevelCounting() throws Exception {
         // Independent oracle: SUM/count on a fixed CITY target, not the production query builder.
         var sql = jdbc.queryForMap("SELECT COUNT(*) n,SUM(avg_speed_kmh)/COUNT(*) speed,SUM(congestion_index)/COUNT(*) congestion "

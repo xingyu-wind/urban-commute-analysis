@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { getCities, getHealth } from './api/client'
-import { getAvailability, statusLabel, type Availability } from './api/availability'
+import { getAvailability, statusLabel, supportsAnalysis, type Availability } from './api/availability'
 import TrafficDashboard from './components/TrafficDashboard.vue'
 import WarehousePanel from './components/WarehousePanel.vue'
 import PredictionPanel from './components/PredictionPanel.vue'
@@ -24,14 +24,15 @@ const service = ref('正在检查服务'), warehouseVisible = ref(false), fullsc
 const city = computed(() => cities.value?.data.find(c => c.id === selectedId.value))
 const catalog = computed(() => availability.value[selectedId.value])
 const dataset = computed(() => catalog.value?.datasets.find(d => d.datasetId === datasetId.value))
-const sourceLabels: Record<string, string> = { synthetic_test: '合成演示数据', dev_seed: '目录示例', historical_snapshot: '历史快照登记', authorized_live: '授权来源登记' }
+const readable = computed(() => dataset.value && supportsAnalysis(dataset.value))
+const sourceLabels: Record<string, string> = { synthetic_test: '合成演示数据', dev_seed: '目录示例', historical_snapshot: '历史快照登记', authorized_live: '授权来源登记', simulation: '模拟来源登记', mock: '模拟接口登记', forecast: '预测来源登记' }
 let generation = 0, disposed = false, interval: ReturnType<typeof setInterval> | undefined
 function selectCity(id: string) {
   selectedId.value = id
   const a = availability.value[id]
   const preferred = a?.datasets.find(d => d.datasetId === a.defaultDatasetId)
-  datasetId.value = (preferred && (Object.values(preferred.levels).some(r => r.sampleCount) || preferred.predictionAvailable)
-    ? preferred : a?.datasets.find(d => Object.values(d.levels).some(r => r.sampleCount) || d.predictionAvailable) ?? preferred)?.datasetId ?? ''
+  datasetId.value = (preferred && (supportsAnalysis(preferred) && (Object.values(preferred.levels).some(r => r.sampleCount) || preferred.predictionAvailable))
+    ? preferred : a?.datasets.find(d => supportsAnalysis(d) && (Object.values(d.levels).some(r => r.sampleCount) || d.predictionAvailable)) ?? preferred)?.datasetId ?? ''
 }
 async function checkHealth() {
   try { await getHealth(); if (!disposed) service.value = '服务正常' }
@@ -54,7 +55,7 @@ async function refresh() {
       else failures[id] = r.reason instanceof Error ? r.reason.message : '数据范围读取失败'
     })
     availability.value = ranges; metadataErrors.value = failures
-    const preferred = response.data.find(c => ranges[c.id]?.datasets.some(d => d.predictionAvailable || Object.values(d.levels).some(r => r.sampleCount)))
+    const preferred = response.data.find(c => ranges[c.id]?.datasets.some(d => supportsAnalysis(d) && (d.predictionAvailable || Object.values(d.levels).some(r => r.sampleCount))))
     const id = response.data.some(c => c.id === selectedId.value) ? selectedId.value : preferred?.id ?? response.data[0]?.id ?? ''
     const previousDataset = datasetId.value
     selectCity(id)
@@ -97,7 +98,8 @@ onUnmounted(() => { disposed = true; generation++; clearInterval(interval); wind
         <div v-if="active !== 'management' && loading" class="state-box" role="status">正在读取城市及有效观测范围…</div>
         <div v-else-if="active !== 'management' && (error || metadataErrors[selectedId])" class="state-box error-state" role="alert"><strong>数据连接暂不可用</strong><p>{{ error || metadataErrors[selectedId] }}</p><button @click="refresh">重试连接</button></div>
         <div v-else-if="active !== 'management' && !dataset" class="state-box" role="status">暂无可分析数据，请刷新城市目录。</div>
-        <template v-if="dataset && city && !loading && !error">
+        <div v-if="active !== 'management' && dataset && !readable && !loading" class="state-box" role="status">该数据集仅作目录登记，暂无允许公开读取的交通统计或预测。</div>
+        <template v-if="dataset && city && readable && !loading && !error">
           <TrafficDashboard v-show="['overview', 'traffic', 'screen'].includes(active)" :key="selectedId + '/' + datasetId" :city-id="selectedId" :city-name="city.name" :availability="dataset" :view="active === 'traffic' ? 'analysis' : active === 'screen' ? 'screen' : 'overview'" />
           <div v-if="active === 'overview'" class="section-link"><span>从历史走向未来</span><button @click="navigate('prediction')">查看完整预测 →</button><button @click="navigate('traffic')">深入交通分析 →</button></div>
           <PredictionPanel v-show="['overview', 'prediction', 'screen'].includes(active)" :key="'prediction/' + selectedId + '/' + datasetId" :city-id="selectedId" :dataset-id="datasetId" :compact="active !== 'prediction'" />

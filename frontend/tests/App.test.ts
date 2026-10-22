@@ -15,7 +15,7 @@ const metadata = (id: string, populated = true) => {
   return v
 }
 function responses() { return vi.fn(async (path: string) => json(path === '/health' ? health : path === '/api/v1/cities' ? cities : metadata(new URL(path, 'http://localhost').searchParams.get('cityId')!, path.includes('shanghai')))) }
-const start = () => { const w = mount(App); wrappers.push(w); return w }
+const start = () => { vi.stubGlobal('scrollTo', vi.fn()); const w = mount(App); wrappers.push(w); return w }
 vi.stubGlobal('scrollTo', vi.fn())
 afterEach(() => { wrappers.splice(0).forEach(w => w.unmount()); vi.unstubAllGlobals(); vi.useRealTimers(); location.hash = '' })
 describe('workbench navigation and real metadata association', () => {
@@ -99,4 +99,14 @@ describe('workbench navigation and real metadata association', () => {
     expect(w.text()).toContain('服务暂不可用')
     expect(w.get('[aria-label="城市选择"]').element).toHaveProperty('value', 'sample-beijing')
   })
+})
+
+it('does not query analysis for directory source types even when raw metadata has rows', async () => {
+  const fetch = responses(); fetch.mockImplementation(async path => {
+    if (path.includes('availability')) { const a = metadata(new URL(path, 'http://localhost').searchParams.get('cityId')!); a.data.datasets[0]!.sourceType = 'forecast'; return json(a) }
+    return json(path === '/health' ? health : cities)
+  }); vi.stubGlobal('fetch', fetch); const w = start(); await flushPromises()
+  expect(w.text()).toContain('仅作目录登记')
+  expect(w.find('[data-testid="traffic-view"]').exists()).toBe(false)
+  expect(w.find('[data-testid="prediction-view"]').exists()).toBe(false)
 })

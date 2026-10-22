@@ -93,13 +93,13 @@ onUnmounted(() => { version++ })
   <section class="traffic-workspace" :class="[view, { presentation: view === 'screen' }]" data-testid="traffic-dashboard" :aria-busy="busy">
     <div class="analysis-header"><div><p class="analysis-kicker">TRAFFIC OBSERVATIONS</p><h2>{{ cityName }}<span>交通态势</span></h2></div><span class="live-pill">{{ availability.sourceType === 'synthetic_test' ? '合成演示数据' : '登记观测数据' }}</span></div>
     <div v-if="!windowAvailable" class="state-box" data-testid="traffic-empty">此城市及数据集暂无交通观测。城市目录登记不代表已有统计数据。</div>
-    <form v-if="windowAvailable" class="traffic-filters" @submit.prevent="load">
+    <details v-if="windowAvailable" class="traffic-filter-disclosure" :open="view !== 'screen'"><summary v-if="view === 'screen'">调整统计时段</summary><form class="traffic-filters" @submit.prevent="load">
       <label>开始日期 · UTC<input v-model="from" aria-label="开始日期 UTC" type="date" min="2000-01-01" max="2099-12-31" required></label>
       <label>结束日期 · 不含当日<input v-model="to" aria-label="结束日期 UTC" type="date" min="2000-01-01" max="2099-12-31" required></label>
       <label>趋势粒度<select v-model="granularity" aria-label="趋势粒度"><option value="day">按天</option><option value="hour">按小时 · 最长 31 天</option></select></label>
       <button type="submit" class="primary-action" :disabled="busy">{{ busy ? '读取中…' : '刷新分析' }}</button>
       <button type="button" class="fixture-action" @click="latestWindow">最近有效时段</button>
-    </form>
+    </form></details>
     <p v-if="windowAvailable" class="window-caption">{{ from }} → {{ to }}（结束当日不含，UTC）· 调整日期自动刷新<span v-if="view === 'analysis'"> · 区域选择仅筛选道路排名</span></p>
     <div v-if="busy" class="traffic-state" role="status">正在读取 MySQL 交通统计…</div>
     <div v-else-if="error" class="traffic-state traffic-error" role="alert"><strong>分析暂不可用</strong><p>{{ error }}</p><button @click="load">重试分析</button></div>
@@ -122,7 +122,7 @@ onUnmounted(() => { version++ })
         <article class="analysis-panel region-panel"><div class="analysis-panel-title"><h3><i></i>区域拥堵对比</h3><span>REGION / 0–10</span></div>
           <TrafficChart v-if="observedRegions.length" :option="regionOption" label="区域拥堵对比；点击区域筛选路段" @select="selectRegion" />
           <div class="region-buttons"><button v-for="item in observedRegions" :key="item.id" :aria-pressed="region === item.id" @click="selectRegion(item.id)">{{ item.name }} · {{ number(item.metrics.congestionIndex) }}</button></div>
-          <div v-if="!observedRegions.length" class="chart-empty">暂无区域观测<p>城市汇总不能替代 REGION 层级数据。</p></div>
+          <div v-if="!observedRegions.length" class="chart-empty">暂无区域观测<p>城市汇总不能替代 REGION 层级数据。</p><p v-if="view === 'screen' && !observedRoads.length">当前时段也无 ROAD 观测，未生成道路排名。</p></div>
         </article>
         <article v-if="view !== 'overview' && points.length" class="analysis-panel map-panel"><div class="analysis-panel-title"><h3><i></i>区域点位地图</h3><span>WGS84 / 无外部底图</span></div>
           <TrafficChart v-if="points.length" :option="mapOption" label="WGS84 经纬度区域点位地图；可缩放，点击点位联动路段" @select="selectRegion" />
@@ -130,7 +130,7 @@ onUnmounted(() => { version++ })
           <div class="map-controls"><button v-for="point in points" :key="point.id" :aria-pressed="region === point.id" :data-map-point="point.id" @click="selectRegion(point.id)">⌖ {{ point.name }} <span>{{ point.longitude }}, {{ point.latitude }}</span></button></div>
           <p class="chart-caption">经纬度点位视图，非道路底图；{{ missing }} 个区域缺少坐标已省略。无道路几何，不绘制道路。{{ provenance?.sourceType === 'synthetic_test' ? '点位为合成绘图测试值。' : '' }}</p>
         </article>
-        <article v-if="view !== 'overview'" class="analysis-panel roads-panel"><div class="analysis-panel-title"><h3><i></i>路段拥堵排名</h3><span>ROAD / 指数降序</span></div>
+        <article v-if="view === 'analysis' || (view === 'screen' && observedRoads.length)" class="analysis-panel roads-panel"><div class="analysis-panel-title"><h3><i></i>路段拥堵排名</h3><span>ROAD / 指数降序</span></div>
           <div v-if="view === 'analysis'" class="road-filters"><label>区域<select v-model="region" aria-label="路段区域"><option value="">全部区域</option><option v-for="item in observedRegions" :key="item.id" :value="item.id">{{ item.name }}</option></select></label><label>路段名称<input v-model.lazy="search" aria-label="路段关键词" placeholder="输入后回车或移开焦点" maxlength="100"></label><label>每页<select v-model.number="pageSize" aria-label="每页路段数"><option :value="1">1</option><option :value="10">10</option><option :value="20">20</option></select></label></div>
           <p v-if="selectedRegion" class="filter-caption">当前联动：{{ selectedRegion.name }} <button @click="region = ''">清除</button></p>
           <div class="table-scroll"><table data-testid="roads-table"><thead><tr><th>排名 / 路段</th><th>速度 km/h</th><th>指数</th><th>样本</th></tr></thead><tbody><tr v-for="(road, index) in observedRoads" :key="road.id"><td><span class="rank">{{ (page - 1) * pageSize + index + 1 }}</span>{{ road.name }}<small>{{ road.id }}</small></td><td>{{ number(road.metrics.avgSpeedKmh) }}</td><td><span class="index-pill">{{ number(road.metrics.congestionIndex) }}</span></td><td>{{ road.metrics.sampleCount }}</td></tr></tbody></table></div>

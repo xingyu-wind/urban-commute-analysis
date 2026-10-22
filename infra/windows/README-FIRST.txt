@@ -10,7 +10,7 @@ SOLO_OWNER_REVIEW；不是正式 Release。所有演示数据均为 synthetic_te
    不要录屏、分享密码或 state 目录。密码由 Windows 当前用户 DPAPI 加密保存。
 4. 双击 START.bat，复制显示的 http://127.0.0.1:随机端口 到浏览器。
    选择“S7 合成预测城市”查看七日预测；数据截止日是2026-10-19，不是未来系统日期。
-5. 查看 Hive 结果：先 STOP.bat，再 START-WAREHOUSE.bat，选择 S5 合成城市打开 Hive 离线分析。
+5. 查看 Hive 结果：先 STOP.bat，再 START-WAREHOUSE.bat，选择 S5 合成城市，进入“交通分析”→“查看 Hive 数仓快照与同窗比较”。
    两种场景使用独立数据库；数仓结果来自已有真实隔离 CI，Windows 不重新运行 Hadoop/Hive。
 6. 退出时执行 STOP.bat；数据保留。再次启动无需联网，也不会重新初始化数据库。
 

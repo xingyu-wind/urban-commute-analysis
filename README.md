@@ -14,7 +14,7 @@ S1 的 PR #1 已 Squash Merge，main 合并 SHA 为 `b47f0af593f4173d4a5e12af607
 
 ETL 入口见 [S5 ETL 使用说明](data-pipeline/README.md)、[标准化数据字典](data-pipeline/DATA_DICTIONARY.md)、[S5阶段报告](docs/stage-reports/S5.md)。当前架构区分已实现工程链路和未通过的真实数据交付门槛。
 
-S6 入口：[数仓使用说明](bigdata/README.md)、[知识关联与项目实现说明](docs/learning/S6-知识关联与项目实现说明.md)。城市工作台点击“打开 Hive 离线分析”，查看已发布版本及同窗口历史统计比较。
+S6 入口：[数仓使用说明](bigdata/README.md)、[知识关联与项目实现说明](docs/learning/S6-知识关联与项目实现说明.md)。“交通分析”页面点击“查看 Hive 数仓快照与同窗比较”，查看已发布版本及同窗口历史统计比较。
 
 ## 本地运行
 
@@ -64,3 +64,5 @@ npm.cmd run dev
 S2–S8 的对应 PR 已合并。S9 采用 SOLO_OWNER_REVIEW，保持 PR 开放等待总规划师裁定；候选标签仅写入说明，不创建正式 Tag 或 Release。当前工程演示是合成数据验证，不能证明真实交通准确率或跨城市泛化。
 
 本项目独立实现，不直接复刻或上传第三方毕业设计。参考资料须先核实授权；原始第三方 ZIP、未授权数据、真实凭据和个人数据不得纳入仓库。环境模板见 `.env.example`，复制后填写的本地 `.env` 不应提交。
+
+前端工作台升级：五入口、有效日期自动联动、深色全屏大屏，操作见 [工作台使用说明](docs/guides/workbench.md)，验收记录见 [UI-Workbench](docs/stage-reports/UI-Workbench.md)。
