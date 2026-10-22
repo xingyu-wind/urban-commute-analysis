@@ -1,0 +1,11 @@
+{
+  "passed": false,
+  "test": "sandbox-initial-offline-setup",
+  "installation": "D:\\WindXingyu\\Code\\urban-commute-analysis\\dist\\ui-preview-01\\UrbanCommute-Demo",
+  "initialized": false,
+  "error": "Owned MySQL readiness timeout",
+  "mysqlReadyLogged": true,
+  "rawPrivateLogsPublished": false,
+  "stateRetained": true,
+  "successfulFreshEscalatedRetest": "backend/target/ui-preview-acceptance-02/summary.json"
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "case": "sandbox-loopback-timeout",
+    "rawEvidence": "docs/stage-reports/evidence/UI-Workbench/validation/initial-sandbox-failure.json",
+    "sha256": "55985d63f821878e584752792654ddfdc4eca7ad567cd15d6c1210fcda79460b",
+    "resolution": "Private initialization log showed MySQL ready but sandbox loopback probe timed out; preserved failed state and passed a fresh escalated installation. No temporary credentials or raw private logs copied."
+  },
+  {
+    "case": "premature-empty-catalog-assertion",
+    "rawEvidence": "backend/target/ui-regression-01/core/core/failure.json",
+    "sha256": "0c276c323ef544ea3b4a9054b8c84e6a15bf06e4a5cc5b3e53ab31d1a90c2d71",
+    "resolution": "Await the actual replacement catalog instead of asserting the previous options while loading."
+  },
+  {
+    "case": "closed-details-and-road-only-assumption",
+    "rawEvidence": "backend/target/ui-regression-02/summary.json",
+    "sha256": "41a36f69d6d7da0d1f1d9f389eb7748a7bc745d0bfce9782e8baedf8ede45a1a",
+    "resolution": "Ignore skipped closed-details controls in visible geometry; preserve ROAD-only semantics; remove nonexistent pytest target. Successful etl/security/warehouse entries in this same aggregate retained."
+  },
+  {
+    "case": "response-capture-before-service-stop",
+    "rawEvidence": "backend/target/ui-regression-03/core/core/browser/manifest.json",
+    "sha256": "71cf30ed4581dd399f947616a086387886b20d8d5f79f5f5779d512b594a348b",
+    "resolution": "Drain real response capture and wait for completed catalog before stopping Java."
+  },
+  {
+    "case": "ended-layout-service",
+    "rawEvidence": "backend/target/ui-layout-03/browser/summary.json",
+    "sha256": "a564499b86443569c778efce8cb8d52a12862ecea3f5bc25e1fafce2b6bba2bc",
+    "resolution": "A standalone command used an already stopped service; lifecycle was moved under one owned driver."
+  },
+  {
+    "case": "candidate-02-no-model-height",
+    "rawEvidence": "backend/target/ui-workbench-acceptance-02/acceptance/browser-warehouse/summary.json",
+    "sha256": "36b86b96f89532c041f87b15c5bb9352ef70e1251ae73e5b6639a9218409ebbd",
+    "resolution": "1920x1080 actual document height1182; compact no-model state fixed, final03 same full-height assertion passed."
+  }
+]
