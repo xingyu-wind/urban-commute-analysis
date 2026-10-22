@@ -1,5 +1,12 @@
 [
   {
+    "name": "traffic-availability",
+    "file": "examples/traffic-availability.json",
+    "path": "/api/v1/traffic/availability",
+    "status": 200,
+    "valid": true
+  },
+  {
     "name": "health-success",
     "file": "examples/health-success.json",
     "path": "/health",

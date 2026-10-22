@@ -4,7 +4,7 @@ import { getWarehouse } from '../api/warehouse'
 import { getTraffic } from '../api/traffic'
 import type { WarehouseResponse } from '../types/warehouse'
 
-const props = defineProps<{ cityId: string }>()
+const props = withDefaults(defineProps<{ cityId: string; datasetId?: string }>(), { datasetId: '' })
 const dataset = ref(''), result = ref<WarehouseResponse | null>(null), error = ref(''), busy = ref(false)
 const comparison = ref<{ sampleCount: number; avgSpeedKmh: number | null; congestionIndex: number | null } | null>(null)
 let generation = 0
@@ -25,7 +25,7 @@ async function load() {
     if (current === generation) error.value = e instanceof Error ? e.message : '离线结果请求失败。'
   } finally { if (current === generation) busy.value = false }
 }
-watch(() => props.cityId, () => { dataset.value = ''; void load() }, { immediate: true })
+watch(() => [props.cityId, props.datasetId], () => { dataset.value = props.datasetId; void load() }, { immediate: true })
 onUnmounted(() => { generation++ })
 const number = (v: number | null | undefined) => v == null ? '—' : v.toFixed(2)
 </script>
@@ -40,13 +40,13 @@ const number = (v: number | null | undefined) => v == null ? '—' : v.toFixed(2
       <p>数据来源：<code>{{ result.meta.sourceType }}</code> · <code>{{ result.meta.datasetId }}</code>。合成测试不代表真实交通采集或通勤人数。</p>
       <p v-if="!result.data.release" role="status">当前城市及数据集尚无已发布的 Hive 离线结果。</p>
       <template v-else>
-        <dl class="warehouse-provenance">
+        <details><summary>快照技术详情</summary><dl class="warehouse-provenance">
           <div><dt>最新发布版本</dt><dd data-testid="warehouse-release">{{ result.data.release.id }} / {{ result.data.release.datasetVersion }}</dd></div>
           <div><dt>快照统计范围 UTC</dt><dd>{{ result.data.release.from }} → {{ result.data.release.to }}（不含结束）</dd></div>
           <div><dt>发布时间 UTC</dt><dd>{{ result.data.release.publishedAt }}</dd></div>
           <div><dt>成功 ETL 批次</dt><dd>{{ result.data.release.batchIds.join('、') }}</dd></div>
           <div><dt>ADS SHA-256</dt><dd><code>{{ result.data.release.adsSha256 }}</code></dd></div>
-        </dl>
+        </dl></details>
         <div class="warehouse-table-scroll"><table class="warehouse-table" data-testid="warehouse-metrics">
           <thead><tr><th>观测层级 / 目标</th><th>样本数</th><th>平均速度 km/h</th><th>拥堵指数 0–10</th><th>观测覆盖 UTC</th></tr></thead>
           <tbody><tr v-for="row in result.data.items" :key="row.targetType + row.targetId"><td>{{ row.targetType }} / {{ row.targetId }}<small v-if="row.roadRegionId">道路目录区域：{{ row.roadRegionId }}</small></td><td>{{ row.sampleCount }}</td><td>{{ number(row.avgSpeedKmh) }}</td><td>{{ number(row.congestionIndex) }}</td><td>{{ row.observedFrom }} → {{ row.observedTo }}</td></tr></tbody>
@@ -58,13 +58,13 @@ const number = (v: number | null | undefined) => v == null ? '—' : v.toFixed(2
 </template>
 
 <style scoped>
-.warehouse-panel { margin-top: 24px; padding: 24px; min-width: 0; background: #0d1c2c; color: #e4edf6; border-color: #293e54; }
+.warehouse-panel { margin-top: 24px; padding: 24px; min-width: 0; background: var(--panel); color: var(--ink); border-color: var(--line); }
 .warehouse-filter { display: flex; align-items: end; gap: 16px; flex-wrap: wrap; margin: 20px 0; }
 .warehouse-filter label { display: grid; gap: 8px; }
-input { background: #132337; color: #e4edf6; border: 1px solid #496079; padding: 10px; border-radius: 6px; }
-p,dt { color: #aabdd0; font-size: 13px; line-height: 1.8; }
+input { background: var(--panel); color: var(--ink); border: 1px solid var(--line); padding: 10px; border-radius: 6px; }
+p,dt { color: var(--muted); font-size: 13px; line-height: 1.8; }
 .warehouse-provenance div { margin: 8px 0; } dd { margin: 0; overflow-wrap: anywhere; }
 .warehouse-table-scroll { overflow-x: auto; } .warehouse-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-th,td { text-align: left; padding: 12px; border-bottom: 1px solid #293e54; } th { white-space: nowrap; } td { min-width: 70px; }
-small { display: block; margin-top: 6px; color: #91a5be; }
+th,td { text-align: left; padding: 12px; border-bottom: 1px solid var(--line); } th { white-space: nowrap; } td { min-width: 70px; }
+small { display: block; margin-top: 6px; color: var(--muted); }
 </style>

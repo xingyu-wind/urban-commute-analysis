@@ -1,121 +1,102 @@
 import { mount, flushPromises } from '@vue/test-utils'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import type { VueWrapper } from '@vue/test-utils'
 import App from '../src/App.vue'
 import health from '../../contracts/examples/health-success.json'
 import cities from '../../contracts/examples/cities-success.json'
-
-const wrappers: VueWrapper[] = []
+import availability from '../../contracts/examples/traffic-availability.json'
+vi.mock('../src/components/TrafficDashboard.vue', () => ({ default: { props: ['cityId', 'availability', 'view'], template: '<div data-testid="traffic-view">{{ cityId }} / {{ availability.datasetId }}</div>' } }))
+vi.mock('../src/components/PredictionPanel.vue', () => ({ default: { props: ['cityId', 'datasetId'], template: '<div data-testid="prediction-view">{{ cityId }} / {{ datasetId }}</div>' } }))
+vi.mock('../src/components/OperationsPanel.vue', () => ({ default: { template: '<div data-testid="management-view">管理登录</div>' } }))
+const wrappers: ReturnType<typeof mount>[] = []
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json' } })
-const start = () => { const wrapper = mount(App); wrappers.push(wrapper); return wrapper }
-function responses(body: unknown = cities) {
-  return vi.fn().mockImplementation((path: string) => Promise.resolve(json(path === '/health' ? health : body)))
+const metadata = (id: string, populated = true) => {
+  const v = structuredClone(availability); v.data.cityId = id
+  if (!populated) Object.values(v.data.datasets[0]!.levels).forEach(r => Object.assign(r, { sampleCount: 0, firstObservedAt: null, lastObservedAt: null }))
+  return v
 }
-afterEach(() => { wrappers.splice(0).forEach(wrapper => wrapper.unmount()); vi.unstubAllGlobals(); vi.useRealTimers() })
-
-describe('city dashboard', () => {
-  it.each([
-    ['dev_seed','开发样例'], ['historical_snapshot','历史快照登记'],
-    ['authorized_live','授权来源登记'], ['simulation','模拟数据'],
-    ['mock','模拟接口'], ['forecast','预测数据'], ['mixed_catalog','混合来源目录'],
-  ])('labels %s without treating it as synthetic or actual traffic', async (sourceType, label) => {
-    vi.stubGlobal('fetch', responses({ ...cities, meta: { ...cities.meta, sourceType, datasetId: sourceType === 'mixed_catalog' ? null : 'source-v1' } }))
-    const wrapper = start(); await flushPromises()
-    expect(wrapper.get('.source-badge').text()).toContain(label)
-    expect(wrapper.get('.source-badge').text()).toContain(sourceType)
-    expect(wrapper.get('.data-notice').text()).toContain(sourceType === 'mixed_catalog' ? '多个数据集' : sourceType)
-    expect(wrapper.get('.data-notice').text()).not.toContain('北京')
-    expect(wrapper.get('.data-notice').text()).not.toContain('上海')
-  })
-  it.each(['historical_snapshot', 'authorized_live'])('qualifies %s as a database registration, not verified external authorization', async sourceType => {
-    vi.stubGlobal('fetch', responses({ ...cities, meta: { ...cities.meta, sourceType } }))
-    const wrapper = start(); await flushPromises()
-    expect(wrapper.get('.data-notice').text()).toContain('仅为数据库登记')
-    expect(wrapper.get('.data-notice').text()).toContain('不表示外部授权真实性已经核实')
-    expect(wrapper.get('.source-badge').text()).not.toContain('已授权')
-    expect(wrapper.get('.subtitle').text()).toContain('外部授权真实性仍需另行核实')
-  })
-  it('shows loading without prematurely claiming the backend is healthy', () => {
-    vi.stubGlobal('fetch', vi.fn(() => new Promise(() => {})))
-    const wrapper = start()
-    expect(wrapper.text()).toContain('正在检查服务')
-    expect(wrapper.text()).toContain('正在加载城市列表')
-    expect(wrapper.text()).not.toContain('服务正常')
-    expect(wrapper.get('button').attributes('disabled')).toBeDefined()
-    expect(wrapper.get('.data-notice').text()).toContain('数据来源尚未确认')
-  })
-  it('renders real-contract synthetic MySQL catalog choices and changes the selected city', async () => {
-    vi.stubGlobal('fetch', responses())
-    const wrapper = start(); await flushPromises()
-    expect(wrapper.text()).toContain('服务正常')
-    expect(wrapper.text()).toContain('synthetic_test')
-    expect(wrapper.get('.data-notice').text()).toContain('synthetic_test 合成测试数据')
-    expect(wrapper.get('.data-notice').text()).not.toContain('北京、上海')
-    expect(wrapper.text()).toContain('不适用（城市目录非交通观测）')
-    expect(wrapper.findAll('option').map(option => option.text())).toEqual(['请选择城市', '北京', '上海'])
-    await wrapper.get('select').setValue('sample-beijing')
-    expect(wrapper.get('[data-testid="selected-city"]').text()).toBe('北京')
-    await wrapper.get('select').setValue('sample-shanghai')
-    expect(wrapper.get('[data-testid="selected-city"]').text()).toBe('上海')
-  })
-  it.each(['database_catalog', 'synthetic_test', 'authorized_live'])('describes an empty %s response without inferring any city provenance', async sourceType => {
-    vi.stubGlobal('fetch', responses({ ...cities, data: [], meta: { ...cities.meta, sourceType, datasetId: sourceType === 'database_catalog' ? null : 'source-v1' } }))
-    const wrapper = start(); await flushPromises()
-    expect(wrapper.text()).toContain('暂无可选城市')
-    expect(wrapper.text()).toContain('服务正常')
-    expect(wrapper.get('.source-badge').text()).toContain(sourceType)
-    expect(wrapper.get('.data-notice').text()).toContain('本次 API 未返回城市条目')
-    expect(wrapper.get('.data-notice').text()).not.toContain('synthetic_test')
-    expect(wrapper.find('select').exists()).toBe(false)
-  })
-  it('updates the notice when actual responses change from synthetic to mixed, registered and empty', async () => {
-    const fetch = responses()
-    vi.stubGlobal('fetch', fetch)
-    const wrapper = start(); await flushPromises()
-    expect(wrapper.get('.data-notice').text()).toContain('synthetic_test 合成测试数据')
-    for (const [sourceType, datasetId, data, expected] of [
-      ['mixed_catalog', null, cities.data, '多个数据集'],
-      ['authorized_live', 'registered-v1', cities.data, '不表示外部授权真实性已经核实'],
-      ['database_catalog', null, [], '本次 API 未返回城市条目'],
-    ] as const) {
-      fetch.mockImplementation(responses({ ...cities, data, meta: { ...cities.meta, sourceType, datasetId } }))
-      await wrapper.get('button').trigger('click'); await flushPromises()
-      expect(wrapper.get('.data-notice').text()).toContain(expected)
-      expect(wrapper.get('.data-notice').text()).not.toContain('synthetic_test')
-    }
-  })
-  it('shows HTTP failure and restores success after retry', async () => {
-    const fetch = vi.fn().mockImplementation(() => Promise.resolve(json({}, 503)))
-    vi.stubGlobal('fetch', fetch)
-    const wrapper = start(); await flushPromises()
-    expect(wrapper.text()).toContain('服务暂不可用')
-    expect(wrapper.text()).toContain('HTTP 503')
-    fetch.mockImplementation(responses())
-    await wrapper.get('button').trigger('click'); await flushPromises()
-    expect(wrapper.text()).toContain('服务正常')
-    expect(wrapper.find('select').exists()).toBe(true)
-  })
-  it('removes stale health and cities when a later request fails over the network', async () => {
+function responses() { return vi.fn(async (path: string) => json(path === '/health' ? health : path === '/api/v1/cities' ? cities : metadata(new URL(path, 'http://localhost').searchParams.get('cityId')!, path.includes('shanghai')))) }
+const start = () => { const w = mount(App); wrappers.push(w); return w }
+vi.stubGlobal('scrollTo', vi.fn())
+afterEach(() => { wrappers.splice(0).forEach(w => w.unmount()); vi.unstubAllGlobals(); vi.useRealTimers(); location.hash = '' })
+describe('workbench navigation and real metadata association', () => {
+  it('has five visible entries and defaults to populated city without requiring login', async () => {
     const fetch = responses(); vi.stubGlobal('fetch', fetch)
-    const wrapper = start(); await flushPromises()
-    await wrapper.get('select').setValue('sample-beijing')
-    fetch.mockRejectedValue(new TypeError('offline'))
-    await wrapper.get('button').trigger('click'); await flushPromises()
-    expect(wrapper.text()).not.toContain('服务正常')
-    expect(wrapper.text()).toContain('无法连接服务')
-    expect(wrapper.text()).toContain('城市列表获取失败')
-    expect(wrapper.find('select').exists()).toBe(false)
-    expect(wrapper.get('.data-notice').text()).toContain('暂无法确认数据来源')
-    expect(wrapper.get('.data-notice').text()).not.toContain('synthetic_test')
+    const w = start(); await flushPromises()
+    expect(w.findAll('nav button')).toHaveLength(5)
+    expect(w.get('h1').text()).toBe('总览首页')
+    expect(w.get('[aria-label="城市选择"]').element).toHaveProperty('value', 'sample-shanghai')
+    expect(w.get('[data-testid="traffic-view"]').text()).toContain('sample-shanghai / s4-synthetic-v1')
+    expect(w.find('[data-testid="management-view"]').exists()).toBe(false)
+    expect(fetch.mock.calls.some(([path]) => path.includes('/auth/'))).toBe(false)
+    expect(w.text()).not.toContain('本地开发环境')
   })
-  it('detects a stopped backend on the 15-second automatic check', async () => {
-    vi.useFakeTimers()
-    const fetch = responses(); vi.stubGlobal('fetch', fetch)
-    const wrapper = start(); await flushPromises()
-    expect(wrapper.text()).toContain('服务正常')
-    fetch.mockRejectedValue(new TypeError('connection refused'))
-    await vi.advanceTimersByTimeAsync(15_000); await flushPromises()
-    expect(wrapper.text()).toContain('服务暂不可用')
-    expect(wrapper.text()).not.toContain('服务正常')
+  it('labels directory-only cities and dataset states, with full provenance in details', async () => {
+    vi.stubGlobal('fetch', responses()); const w = start(); await flushPromises()
+    const labels = w.findAll('[aria-label="城市选择"] option').map(o => o.text())
+    expect(labels[0]).toContain('仅目录登记 · 暂无数据')
+    expect(labels[1]).toContain('有统计数据')
+    expect(w.get('.source-badge').text()).toBe('合成演示数据')
+    expect(w.get('.data-details').text()).toContain('不表示外部授权真实性已经核实')
+    expect(w.get('.data-details').attributes('open')).toBeUndefined()
+  })
+  it('switches city and clears previous dataset association', async () => {
+    vi.stubGlobal('fetch', responses()); const w = start(); await flushPromises()
+    await w.get('[aria-label="城市选择"]').setValue('sample-beijing')
+    expect(w.get('[data-testid="selected-city"]').text()).toBe('北京')
+    expect(w.get('[data-testid="traffic-view"]').text()).toContain('sample-beijing')
+    expect(w.get('[data-testid="traffic-view"]').text()).not.toContain('sample-shanghai')
+  })
+  it('changes datasets centrally for both statistics and predictions', async () => {
+    const fetch = responses(); fetch.mockImplementation(async path => {
+      if (path.includes('availability')) {
+        const v = metadata(new URL(path, 'http://localhost').searchParams.get('cityId')!)
+        v.data.datasets.push({ ...structuredClone(v.data.datasets[0]!), datasetId: 'second-dataset' }); return json(v)
+      }
+      return json(path === '/health' ? health : cities)
+    }); vi.stubGlobal('fetch', fetch); const w = start(); await flushPromises()
+    await w.get('[aria-label="数据集选择"]').setValue('second-dataset')
+    expect(w.get('[data-testid="traffic-view"]').text()).toContain('second-dataset')
+    expect(w.get('[data-testid="prediction-view"]').text()).toContain('second-dataset')
+  })
+  it('uses hash navigation, provides management only on entry, supports deep links', async () => {
+    location.hash = '#prediction'; vi.stubGlobal('fetch', responses()); const w = start(); await flushPromises()
+    expect(w.get('h1').text()).toBe('智能预测')
+    await w.findAll('nav button')[3]!.trigger('click')
+    expect(w.find('[data-testid="management-view"]').exists()).toBe(true)
+    expect(location.hash).toBe('#management')
+  })
+  it('shows loading without claiming a healthy backend', () => {
+    vi.stubGlobal('fetch', vi.fn(() => new Promise(() => {}))); const w = start()
+    expect(w.text()).toContain('正在检查服务'); expect(w.text()).toContain('正在读取城市')
+    expect(w.find('[data-testid="traffic-view"]').exists()).toBe(false)
+  })
+  it('retains a failed metadata city as retryable rather than claiming no data', async () => {
+    const fetch = responses(); fetch.mockImplementation(async path => path.includes('availability') ? json({}, 503) : json(path === '/health' ? health : cities))
+    vi.stubGlobal('fetch', fetch); const w = start(); await flushPromises()
+    expect(w.get('[role="alert"]').text()).toContain('HTTP 503')
+    expect(w.findAll('[aria-label="城市选择"] option')[0]!.text()).toContain('范围读取失败')
+    fetch.mockImplementation(responses()); await w.get('[role="alert"] button').trigger('click'); await flushPromises()
+    expect(w.find('[role="alert"]').exists()).toBe(false)
+    expect(w.find('[data-testid="traffic-view"]').exists()).toBe(true)
+  })
+  it('removes stale analysis on failed catalog refresh and recovers', async () => {
+    const fetch = responses(); vi.stubGlobal('fetch', fetch); const w = start(); await flushPromises()
+    fetch.mockRejectedValue(new TypeError('offline')); await w.get('.topbar button').trigger('click'); await flushPromises()
+    expect(w.get('[role="alert"]').text()).toContain('无法连接服务')
+    expect(w.find('[data-testid="traffic-view"]').exists()).toBe(false)
+    fetch.mockImplementation(responses()); await w.get('[role="alert"] button').trigger('click'); await flushPromises()
+    expect(w.find('[data-testid="traffic-view"]').exists()).toBe(true)
+  })
+  it('does not equate an empty catalog with available observations', async () => {
+    vi.stubGlobal('fetch', vi.fn(async path => json(path === '/health' ? health : { ...cities, data: [] })))
+    const w = start(); await flushPromises(); expect(w.text()).toContain('暂无可选城市')
+    expect(w.find('[data-testid="traffic-view"]').exists()).toBe(false)
+  })
+  it('checks service every fifteen seconds without resetting a manual selection', async () => {
+    vi.useFakeTimers(); const fetch = responses(); vi.stubGlobal('fetch', fetch); const w = start(); await flushPromises()
+    await w.get('[aria-label="城市选择"]').setValue('sample-beijing')
+    fetch.mockRejectedValue(new TypeError('offline')); await vi.advanceTimersByTimeAsync(15000); await flushPromises()
+    expect(w.text()).toContain('服务暂不可用')
+    expect(w.get('[aria-label="城市选择"]').element).toHaveProperty('value', 'sample-beijing')
   })
 })

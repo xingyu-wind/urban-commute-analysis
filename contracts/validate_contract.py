@@ -19,7 +19,7 @@ from referencing.jsonschema import DRAFT202012
 
 ROOT = Path(__file__).resolve().parent
 SPEC_PATH = ROOT / "openapi.yaml"
-PATHS = {"/health", "/api/v1/cities", "/api/v1/warehouse/metrics", "/api/v1/predictions"} | {"/api/v1/traffic/" + endpoint for endpoint in ("summary", "series", "regions", "roads")}
+PATHS = {"/health", "/api/v1/cities", "/api/v1/warehouse/metrics", "/api/v1/predictions"} | {"/api/v1/traffic/" + endpoint for endpoint in ("summary", "series", "regions", "roads", "availability")}
 
 
 def unique_pairs(pairs):

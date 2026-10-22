@@ -13,7 +13,7 @@ info:
     S3 区分 dev_seed、synthetic_test、historical_snapshot、authorized_live 等来源；城市目录不等于道路观测。
     统计值来源由 meta 明示；S6 增加 Hive 已发布离线结果；S7 增加离线七日 CITY 日均拥堵指数预测，只读查询。
     S9 使用精确路径与方法授权、默认拒绝。未知路径由安全层直接返回统一404，不执行Controller；
-    八个公开只读路径的非法写方法由安全层直接405并保留Allow GET/HEAD，不放行至Controller。
+    九个公开只读路径的非法写方法由安全层直接405并保留Allow GET/HEAD，不放行至Controller。
     auth/operations保留会话、CSRF及ADMIN/READER边界；详见docs/guides/s9-security.md。
 servers:
   - url: http://localhost:8080
@@ -85,6 +85,48 @@ paths:
                 empty:
                   summary: 成功但无城市，仍保留完整 meta
                   externalValue: ./examples/cities-empty.json
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '405':
+          $ref: '#/components/responses/MethodNotAllowed'
+        '406':
+          $ref: '#/components/responses/NotAcceptable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  /api/v1/traffic/availability:
+    get:
+      operationId: trafficAvailability
+      summary: Read city-associated datasets and actual observation bounds
+      description: |
+        Read-only repeatable-read metadata. Includes the city's registered default dataset and
+        datasets with this city's observations or published current prediction; never unrelated cities.
+        CITY/REGION/ROAD counts and inclusive UTC min/max timestamps remain independent.
+        Empty levels use zero and null bounds. No dates are synthesized. Prediction cutoff is the
+        exclusive cutoff of the current published model, only when registry source/version agree.
+        meta contains requestId and three nulls because a response may span datasets.
+        Reject missing/unknown/duplicate parameters, malformed/unknown/filtered city and request bodies.
+      parameters:
+      - in: query
+        name: cityId
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          pattern: ^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$
+      responses:
+        '200':
+          description: Registered and associated data availability
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AvailabilityResponse'
+              examples:
+                synthetic:
+                  externalValue: ./examples/traffic-availability.json
         '400':
           $ref: '#/components/responses/BadRequest'
         '404':
@@ -1605,6 +1647,78 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TrafficRoad'
+    AvailabilityRange:
+      type: object
+      additionalProperties: false
+      required: [sampleCount, firstObservedAt, lastObservedAt]
+      properties:
+        sampleCount: {type: integer, minimum: 0}
+        firstObservedAt:
+          anyOf:
+          - {$ref: '#/components/schemas/ZonedTimestamp'}
+          - {type: 'null'}
+        lastObservedAt:
+          anyOf:
+          - {$ref: '#/components/schemas/ZonedTimestamp'}
+          - {type: 'null'}
+      allOf:
+      - if:
+          properties:
+            sampleCount: {const: 0}
+        then:
+          properties:
+            firstObservedAt: {type: 'null'}
+            lastObservedAt: {type: 'null'}
+        else:
+          properties:
+            firstObservedAt: {$ref: '#/components/schemas/ZonedTimestamp'}
+            lastObservedAt: {$ref: '#/components/schemas/ZonedTimestamp'}
+    AvailabilityResponse:
+      type: object
+      additionalProperties: false
+      required: [code, message, data, meta]
+      properties:
+        code: {const: OK}
+        message: {type: string, minLength: 1}
+        meta:
+          type: object
+          additionalProperties: false
+          required: [requestId, dataAsOf, sourceType, datasetId]
+          properties:
+            requestId: {type: string, minLength: 1}
+            dataAsOf: {type: 'null'}
+            sourceType: {type: 'null'}
+            datasetId: {type: 'null'}
+        data:
+          type: object
+          additionalProperties: false
+          required: [cityId, defaultDatasetId, datasets]
+          properties:
+            cityId: {type: string, maxLength: 64, pattern: '^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$'}
+            defaultDatasetId: {type: string, maxLength: 64, pattern: '^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$'}
+            datasets:
+              type: array
+              minItems: 1
+              items:
+                type: object
+                additionalProperties: false
+                required: [datasetId, sourceType, levels, predictionAvailable, predictionCutoff]
+                properties:
+                  datasetId: {type: string, maxLength: 64, pattern: '^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$'}
+                  sourceType: {type: string, minLength: 1}
+                  predictionAvailable: {type: boolean}
+                  predictionCutoff:
+                    anyOf:
+                    - {$ref: '#/components/schemas/ZonedTimestamp'}
+                    - {type: 'null'}
+                  levels:
+                    type: object
+                    additionalProperties: false
+                    required: [CITY, REGION, ROAD]
+                    properties:
+                      CITY: {$ref: '#/components/schemas/AvailabilityRange'}
+                      REGION: {$ref: '#/components/schemas/AvailabilityRange'}
+                      ROAD: {$ref: '#/components/schemas/AvailabilityRange'}
     SummaryResponse:
       type: object
       additionalProperties: false

@@ -25,7 +25,7 @@ public class SecurityConfig {
     // Wrong methods are rejected here, without invoking a Controller (legacy 405).
     private static final String[] PUBLIC_READ = {"/health", "/api/v1/cities",
         "/api/v1/traffic/summary", "/api/v1/traffic/series", "/api/v1/traffic/regions",
-        "/api/v1/traffic/roads", "/api/v1/warehouse/metrics", "/api/v1/predictions"};
+        "/api/v1/traffic/roads", "/api/v1/traffic/availability", "/api/v1/warehouse/metrics", "/api/v1/predictions"};
     private static int rejectedStatus(HttpServletRequest req, boolean signedIn) {
         String path = req.getServletPath().isEmpty()
             ? req.getRequestURI().substring(req.getContextPath().length()) : req.getServletPath();
