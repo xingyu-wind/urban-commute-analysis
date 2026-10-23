@@ -8,6 +8,7 @@ const data = testing && process.env.UC_DESKTOP_TEST_ROOT
   ? path.resolve(process.env.UC_DESKTOP_TEST_ROOT)
   : path.join(process.env.LOCALAPPDATA, 'UrbanCommute', 'DesktopData');
 // Electron supports appData, not localAppData on all versions.
+fs.mkdirSync(path.join(data, 'browser'), {recursive:true});
 app.setPath('userData', path.join(data, 'browser'));
 app.setAppUserModelId('UrbanCommute.Desktop');
 app.commandLine.appendSwitch('disable-background-networking');

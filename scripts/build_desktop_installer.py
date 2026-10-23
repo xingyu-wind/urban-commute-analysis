@@ -47,6 +47,10 @@ def build(output,tools,base=BASE):
         shutil.copyfile(source,destination)
         notice_map.append(dict(original=source.relative_to(base).as_posix(),file=relative.as_posix(),sha256=digest(source)))
     write(payload/'licenses/NOTICE-INDEX.json',dict(files=[n['file'] for n in notice_map],originalPaths=notice_map))
+    # Desktop users enter through UrbanCommute.exe; USB commands remain in the
+    # unchanged historical package and would require a different data layout.
+    for legacy in payload.glob('*.bat'):legacy.unlink()
+    shutil.copyfile(ROOT/'infra/desktop/INSTALL-NOTES.txt',payload/'README-FIRST.txt')
     for name in ('portable.py','bootstrap.ps1'):shutil.copyfile(ROOT/'infra/windows'/name,payload/'launcher'/name)
     write(payload/'config/desktop.json',dict(version=1,dataLayout=1,offline=True))
     write(payload/'BASELINE-BUILD.json',previous)
