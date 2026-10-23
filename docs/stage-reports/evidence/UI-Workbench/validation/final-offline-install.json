@@ -1,0 +1,88 @@
+{
+  "passed": true,
+  "zip": "D:\\WindXingyu\\Code\\urban-commute-analysis\\dist\\ui-workbench-candidate-03\\UrbanCommute-USB-Demo-0.9.0-workbench-candidate-windows-x64.zip",
+  "media": "D:\\WindXingyu\\Code\\urban-commute-analysis\\dist\\ui-workbench-media-03",
+  "local": "D:\\WindXingyu\\Code\\urban-commute-analysis\\dist\\ui-workbench-install-03",
+  "seconds": 162.53,
+  "sameWindowsHost": true,
+  "cleanMachineTest": false,
+  "physicalNetworkDisconnected": false,
+  "offlineMode": true,
+  "existingDemoDatabasesAccessed": false,
+  "checks": [
+    {
+      "check": "fresh-zip-transport-and-local-destination",
+      "passed": true,
+      "transportRuntime": false,
+      "transportState": false,
+      "localExists": false,
+      "oldCachesCopied": false
+    },
+    {
+      "check": "first-offline-deployment",
+      "exitCode": 0,
+      "expectedSuccess": true
+    },
+    {
+      "check": "STOP-2",
+      "exitCode": 0,
+      "expectedSuccess": true
+    },
+    {
+      "check": "fresh-local-offline-setup",
+      "passed": true,
+      "sourceMediaUninitialized": true,
+      "noRuntimeDownloadCache": true,
+      "newDatabase": true
+    },
+    {
+      "check": "new-offline-path-core-http-ui",
+      "passed": true,
+      "results": "acceptance/summary.json",
+      "timedRehearsalRerun": false,
+      "modelTraining": false,
+      "hiveRerun": false
+    },
+    {
+      "check": "repeat-owned-deployment",
+      "exitCode": 0,
+      "expectedSuccess": true
+    },
+    {
+      "check": "STOP-6",
+      "exitCode": 0,
+      "expectedSuccess": true
+    },
+    {
+      "check": "repeat-deployment-retains-private-state",
+      "passed": true
+    },
+    {
+      "check": "offline-missing-component",
+      "exitCode": 1,
+      "expectedSuccess": false
+    },
+    {
+      "check": "offline-wrong-hash",
+      "exitCode": 1,
+      "expectedSuccess": false
+    },
+    {
+      "check": "offline-faults-before-download-or-state",
+      "passed": true,
+      "missingComponentRejected": true,
+      "wrongHashRejected": true
+    },
+    {
+      "check": "offline-python-process-guard",
+      "passed": true,
+      "externalDnsAndIpDenied": true,
+      "wholeWindowsNetworkBlocked": false
+    },
+    {
+      "check": "final-owned-stop",
+      "exitCode": 0,
+      "expectedSuccess": true
+    }
+  ]
+}

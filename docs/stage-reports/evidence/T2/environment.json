@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "crossInstallationPasswordsDiffer": true,
+  "credentialsCommandVerifiedWithoutLoggingValues": true,
+  "generatedCredentialsAbsentFromZip": true,
+  "dpapiCurrentUser": true,
+  "packageRuntimeLogicalBytes": 1015150838,
+  "mysqlStorageLogicalBytes": 1490954566,
+  "originalInstanceStopped": true,
+  "sourceCompileAll58ClassResourcesEqual": true,
+  "existingInstanceOfflineBackupVerified": true,
+  "backupFiles": 1053,
+  "originalAdminCredentialRotatedAndVerified": true,
+  "firstSetupDownloadsTested": [
+    "python-3.11.9-embed-amd64.zip",
+    "spring-boot-autoconfigure-3.5.16.jar"
+  ],
+  "otherOfficialArchivesPrecached": true,
+  "networkDownloadBytes": 497107997,
+  "operatingSystem": "Windows 11 Home Chinese x64 10.0.26200",
+  "archiveSha256": "d8b115918b4a2d4184bcec6e59736c29c339e3b5324f1aa7798d7336f7bdc3de"
+}

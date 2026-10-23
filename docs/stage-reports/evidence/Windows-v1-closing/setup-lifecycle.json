@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "reinstall-after-uninstall",
+      "exitCode": 0
+    },
+    {
+      "check": "reinstall-after-uninstall-desktop-and-startmenu-targets",
+      "passed": true
+    },
+    {
+      "check": "same-version-overwrite",
+      "exitCode": 0
+    },
+    {
+      "check": "same-version-overwrite-desktop-and-startmenu-targets",
+      "passed": true
+    },
+    {
+      "check": "final-uninstall",
+      "exitCode": 0
+    },
+    {
+      "check": "program-and-shortcuts-removed-existing-isolated-database-and-credentials-retained",
+      "passed": true
+    }
+  ],
+  "electronWindowVerified": false,
+  "crossVersionInstallerUpgradeVerified": false,
+  "existingDataScope": "previous task-owned service data; Electron initialization remains blocked",
+  "applicationControlDisabled": false,
+  "installation": "D:\\WindXingyu\\Code\\urban-commute-analysis\\dist\\\u684c\u9762\u6536\u5c3e\u5b89\u88c5\u9a8c\u6536 01"
+}

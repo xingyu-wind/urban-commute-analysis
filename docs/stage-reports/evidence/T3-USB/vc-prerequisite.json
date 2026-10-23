@@ -1,0 +1,12 @@
+{
+  "filename": "VC_redist.x64.exe",
+  "bytes": 18731856,
+  "sha256": "843068991daaa1f73ad9f6239bce4d0f6a07a51f18c37ea2a867e9beca71295c",
+  "version": "14.51.36247.0",
+  "url": "https://aka.ms/vc14/vc_redist.x64.exe",
+  "signatureStatus": "Valid",
+  "signer": "CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",
+  "bundledInCandidateZip": false,
+  "purpose": "Official direct acquisition for owner-controlled offline prerequisite installation; not a redistribution-rights assertion",
+  "resolvedUrl": "https://download.visualstudio.microsoft.com/download/pr/ebdab8e5-1d7b-4d9f-a11b-cbb1720c3b12/843068991DAAA1F73AD9F6239BCE4D0F6A07A51F18C37EA2A867E9BECA71295C/VC_redist.x64.exe"
+}

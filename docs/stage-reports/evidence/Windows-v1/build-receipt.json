@@ -1,0 +1,44 @@
+{
+  "exe": "D:\\WindXingyu\\Code\\urban-commute-analysis\\dist\\windows-v1-candidate-04\\UrbanCommute-Setup-1.0.0.exe",
+  "bytes": 1168412053,
+  "sha256": "f42364651949e57f97c42982359d335c91826a17d092a78bb12c06688005e630",
+  "source": "e0619f92db831bc4196bb866cc2df4283235f5da",
+  "applicationSource": "65c5394adc2d0a74d489027a3a0f83f25191d307",
+  "baselineManifestSha256": "655ca1d70e366522c3d1dd3dccd6abcd322b6e15629e97c387beb100936a8dd3",
+  "payloadManifestSha256": "b8936a8ca4b2d739f7817b45b2f39f34bc128caa555bb78b2a64f1de072f07b1",
+  "tools": {
+    "electron": {
+      "version": "44.9.3",
+      "filename": "electron-v44.9.3-win32-x64.zip",
+      "url": "https://github.com/electron/electron/releases/download/v44.9.3/electron-v44.9.3-win32-x64.zip",
+      "sha256": "41a1ffa0541cb0f2c9b9fe920dd2cef1793ad0ea2ada1a9582958880f4d1b23c"
+    },
+    "innoSetup": {
+      "version": "6.7.3",
+      "filename": "innosetup-6.7.3.exe",
+      "url": "https://github.com/jrsoftware/issrc/releases/download/is-6_7_3/innosetup-6.7.3.exe",
+      "sha256": "9c73c3bae7ed48d44112a0f48e66742c00090bdb5bef71d9d3c056c66e97b732",
+      "authenticode": "Valid; Pyrsys B.V."
+    }
+  },
+  "syntheticData": true,
+  "sourceFiles": {
+    "infra/desktop/INSTALL-NOTES.txt": "2d0bac730353c1eaed11624fc2e1846680db39f627f4a3d99ae133a28f827328",
+    "infra/desktop/installer.iss": "7c740f0469a5a3fc90fa779f0c102ed388d39b3c7e2d2a26f9114852accd154d",
+    "infra/desktop/main.cjs": "683f9134f282a149e846ea56212d19cd6f55d13b94ee5dccb9ab945308dd0e7f",
+    "infra/desktop/package.json": "8a4addd0b2e55296a9da6fc0c8b50328538f773f90a3f24fb801423fb4b01cc7",
+    "infra/desktop/splash.html": "85081325738cd26ec2ca1d0c84548a945a05a99d1f7d7c99f9e0472c981a41ab",
+    "infra/desktop/TERMS.txt": "e13ab5b3b2e449e13f3cf7d6b68f2a688f2b1e307ec0fe733be7be715fb64d8e",
+    "infra/desktop/tools.lock.json": "5ca2891f59e7c0ccd863f2e662a15d86f6b10344345b13f883567dee206ef338",
+    "infra/windows/bootstrap.ps1": "468d9793682c066a981780bb48b3c5f8c38f3bf95ce4e8afd1bcaaf6ec50d125",
+    "infra/windows/bridge_entry.py": "9667249344efaa6973a59dd809362f6a45e14b5e2eb3a8a1b41981f6314558c8",
+    "infra/windows/components.lock.json": "c73a5c625911753dc51d7a4f26a0e064d17ce094e48aba66c69a87258ce6fb8e",
+    "infra/windows/DEPENDENCIES.txt": "281ed0abdfdc57fde19d1f97320cb1ab894449423f3281d51d569429d1aab900",
+    "infra/windows/deploy-usb.ps1": "01fd7aaba38c61cf72e5dffa64cb3a1bfd0ac317a4aded4d8f5ba7594707a1be",
+    "infra/windows/portable.py": "74e1800fefc18520bad901b694e720e9005470b01573395f77f0d3298c993877",
+    "infra/windows/README-FIRST.txt": "d0aaf9710d87d210760babd5825eb8226949322040a7a963c1cc85c59e2fdee4",
+    "infra/windows/USB-DEPENDENCIES.txt": "19775044ea29b8ec4fa7bb84ec21ab463b2ef37374c347e5b36f9d994d374eaf",
+    "infra/windows/USB-README.txt": "cff3a37168121d89c0c3bb023aefb51fc497d2fd5f54bf7c2800f7ea72ca83ed",
+    "infra/windows/usb-sources.lock.json": "3b124ea9fea0035da58105ba0f468ad6750b8816d517359c89d6bcd1cb894360"
+  }
+}

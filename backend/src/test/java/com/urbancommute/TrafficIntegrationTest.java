@@ -51,6 +51,42 @@ class TrafficIntegrationTest {
         assertThat(node.path("avgSpeedKmh").asDouble()).isEqualTo(speed);
         assertThat(node.path("congestionIndex").asDouble()).isEqualTo(congestion);
     }
+    @Test void availabilityUsesRealIndependentBoundsAndCityDatasetAssociation() throws Exception {
+        var original = read("availability", "?cityId=s4-demo-city");
+        assertThat(original.at("/data/defaultDatasetId").asText()).isEqualTo("s4-synthetic-v1");
+        for (String level : new String[]{"CITY", "REGION", "ROAD"}) {
+            var oracle = jdbc.queryForMap("SELECT COUNT(*) n,DATE_FORMAT(MAX(observed_at),'%Y-%m-%dT%H:%i:%sZ') last_at "
+                + "FROM traffic_observation WHERE city_id='s4-demo-city' AND dataset_id='s4-synthetic-v1' AND target_type=?", level);
+            var range = original.at("/data/datasets/0/levels/" + level);
+            assertThat(range.path("sampleCount").asLong()).isEqualTo(((Number) oracle.get("n")).longValue());
+            assertThat(range.path("lastObservedAt").asText()).isEqualTo(oracle.get("last_at"));
+        }
+        jdbc.update("INSERT INTO dataset_registry(dataset_id,source_name,source_type,license_status,dataset_version,description) "
+            + "VALUES ('availability-unused','other city only','synthetic_test','not_applicable','v1','unrelated')");
+        jdbc.update("INSERT INTO city(id,name,dataset_id) VALUES ('availability-other-city','other','availability-unused')");
+        jdbc.update("INSERT INTO traffic_observation(dataset_id,city_id,target_type,target_id,observed_at,collected_at,avg_speed_kmh,congestion_index) "
+            + "VALUES ('availability-unused','availability-other-city','CITY','availability-other-city','2026-10-21','2026-10-21',40,5)");
+        assertThat(read("availability", "?cityId=s4-demo-city").at("/data/datasets").size()).isEqualTo(1);
+        jdbc.update("INSERT INTO traffic_observation(dataset_id,city_id,target_type,target_id,observed_at,collected_at,avg_speed_kmh,congestion_index) "
+            + "VALUES ('availability-unused','s4-demo-city','CITY','s4-demo-city','2026-10-20','2026-10-20',40,5)");
+        var associated = read("availability", "?cityId=s4-demo-city").at("/data/datasets/1");
+        assertThat(associated.path("datasetId").asText()).isEqualTo("availability-unused");
+        assertThat(associated.at("/levels/CITY/lastObservedAt").asText()).isEqualTo("2026-10-20T00:00:00Z");
+        assertThat(associated.at("/levels/REGION/sampleCount").asInt()).isZero();
+        assertThat(associated.at("/levels/ROAD/lastObservedAt").isNull()).isTrue();
+        assertThat(associated.path("predictionAvailable").asBoolean()).isFalse();
+        mvc.perform(head("/api/v1/traffic/availability?cityId=s4-demo-city")).andExpect(status().isOk());
+        mvc.perform(post("/api/v1/traffic/availability?cityId=s4-demo-city")).andExpect(status().isMethodNotAllowed());
+        mvc.perform(get("/api/v1/traffic/availability?cityId=missing")).andExpect(status().isBadRequest());
+    }
+    @Test void directoryOnlySourceKeepsTruthfulRangesWithoutGrantingStatisticalReads() throws Exception {
+        jdbc.update("UPDATE dataset_registry SET source_type='simulation' WHERE dataset_id='s4-synthetic-v1'");
+        var availability = read("availability", "?cityId=s4-demo-city").at("/data/datasets/0");
+        assertThat(availability.path("sourceType").asText()).isEqualTo("simulation");
+        assertThat(availability.at("/levels/CITY/sampleCount").asInt()).isEqualTo(3);
+        assertThat(availability.path("predictionAvailable").asBoolean()).isFalse();
+        mvc.perform(request("/api/v1/traffic/summary" + QUERY)).andExpect(status().isBadRequest());
+    }
     @Test void independentHandCalculationAndSqlAgreeWithoutCrossLevelCounting() throws Exception {
         // Independent oracle: SUM/count on a fixed CITY target, not the production query builder.
         var sql = jdbc.queryForMap("SELECT COUNT(*) n,SUM(avg_speed_kmh)/COUNT(*) speed,SUM(congestion_index)/COUNT(*) congestion "

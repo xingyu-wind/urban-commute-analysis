@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "scope": "Dedicated extracted copy; current-user root create-file deny then restored",
+  "deniedExit": 1,
+  "restoredExit": 0,
+  "globalAclChanged": false,
+  "runtimeCreated": false
+}

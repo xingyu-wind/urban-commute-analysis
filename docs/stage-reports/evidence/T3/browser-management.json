@@ -1,0 +1,91 @@
+{
+  "passed": true,
+  "seconds": 13,
+  "actualProductionUI": true,
+  "noInterception": true,
+  "adminLogin": true,
+  "explicitReview": true,
+  "import": "SUCCEEDED",
+  "readerUploadHidden": true,
+  "readerTasksVisible": true,
+  "logout": true,
+  "pageErrors": [],
+  "requests": [
+    {
+      "path": "/api/v1/cities",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "path": "/api/v1/auth/csrf",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/login",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/operations/tasks",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/csrf",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/operations/uploads",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/csrf",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/operations/imports/94ecf6c8-ecad-4613-8529-99755a6aa20b/confirm",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/csrf",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/operations/imports/94ecf6c8-ecad-4613-8529-99755a6aa20b/execute",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/operations/tasks",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/csrf",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/logout",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/csrf",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/login",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/operations/tasks",
+      "status": 200
+    }
+  ]
+}

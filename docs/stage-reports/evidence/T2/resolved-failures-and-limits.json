@@ -1,0 +1,17 @@
+{
+  "finalRequiredAcceptancePassed": true,
+  "preservedFailureDirectories": "backend/target/t2-package-test-01 and -03; earlier independent extraction directories retained",
+  "resolved": [
+    "PowerShell Get-FileHash function lookup: use .NET SHA256",
+    "MySQL native Unicode path: unique ASCII native storage; original data never overwritten",
+    "Portable first-process import cache: explicit package search path and cache invalidation",
+    "JRE Unix-domain temporary path: per-process owned ASCII native temporary directory",
+    "Seed column identifier validation: allow digits in sha256 column names",
+    "CPython -I ignores UTF8 environment: packaging-only UTF8 stdin wrapper",
+    "Acceptance browser harness release key: use actual API release.id"
+  ],
+  "remaining": [
+    "C-drive LocalAppData probes returned MySQL OS117 during initialization on this host; no system changes applied; final D-drive native storage passed",
+    "No clean computer, Windows10, ARM, missing-VC-runtime, offline redistribution or commercial licensing certification"
+  ]
+}

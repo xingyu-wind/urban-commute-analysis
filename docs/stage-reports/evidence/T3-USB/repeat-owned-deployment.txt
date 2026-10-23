@@ -1,0 +1,16 @@
+Checking complete USB package...
+Copying verified files to local disk; existing initialized state is never copied from USB.
+{
+  "platform": 26200,
+  "architecture": "x64",
+  "freeGiB": 368.03,
+  "pathLength": 17,
+  "configured": true,
+  "globalInstallsRequired": false,
+  "firstSetupNetwork": false
+}
+Already configured. Existing data and credentials retained. Use START.bat.
+Ready: http://127.0.0.1:53505
+Local installation: D:\UC-USB-1021-01
+Open http://127.0.0.1:53505 ; privately run CREDENTIALS.bat in the local installation to view this computer's random passwords.
+STOP.bat in that local installation stops the system. Do not share initialized state or this computer's MySQL data.

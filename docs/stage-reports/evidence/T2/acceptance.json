@@ -1,0 +1,130 @@
+{
+  "passed": true,
+  "root": "D:\\WindXingyu\\Apps\\城市通勤 T2 演示\\UrbanCommute-Demo",
+  "sameWindowsHost": true,
+  "cleanMachineTest": false,
+  "developerExecutablesRemovedFromPath": true,
+  "checks": [
+    {
+      "check": "CHECK-ENV",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 0.41
+    },
+    {
+      "check": "FIRST-SETUP",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 64.67
+    },
+    {
+      "check": "START",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 6.59
+    },
+    {
+      "check": "production-chromium-model",
+      "passed": true,
+      "widths": [
+        1440,
+        390
+      ],
+      "requestInterception": false
+    },
+    {
+      "check": "actual-http",
+      "passed": true,
+      "cities": 4,
+      "predictionPoints": 7,
+      "adminLogin": true,
+      "readerLogin": true,
+      "anonymousDenied": true,
+      "readerUploadDenied": true,
+      "csrfDenied": true,
+      "pythonBridgeInspect": true,
+      "researchImport": "SUCCEEDED"
+    },
+    {
+      "check": "START",
+      "expectedSuccess": false,
+      "exitCode": 1,
+      "seconds": 0.58
+    },
+    {
+      "check": "real-owned-database",
+      "version": "8.4.11",
+      "ownedDatadir": true,
+      "observationRows": 4369,
+      "flyway": "V1-V6"
+    },
+    {
+      "check": "STOP",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 0.86
+    },
+    {
+      "check": "STOP",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 0.55
+    },
+    {
+      "check": "START",
+      "expectedSuccess": false,
+      "exitCode": 1,
+      "seconds": 1.05
+    },
+    {
+      "check": "START",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 6.58
+    },
+    {
+      "check": "abrupt-supervisor-exit",
+      "passed": true,
+      "allOwnedPortsReleased": true
+    },
+    {
+      "check": "START",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 6.59
+    },
+    {
+      "check": "STOP",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 1.14
+    },
+    {
+      "check": "START-WAREHOUSE",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 6.08
+    },
+    {
+      "check": "production-chromium-warehouse",
+      "passed": true,
+      "widths": [
+        1440,
+        390
+      ],
+      "requestInterception": false
+    },
+    {
+      "check": "prepublished-hive-query",
+      "passed": true,
+      "items": 3,
+      "localHiveExecution": false
+    },
+    {
+      "check": "STOP",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 1.47
+    }
+  ]
+}

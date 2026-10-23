@@ -94,11 +94,13 @@ try {
   const page = await browser.newPage({ viewport: { width: 1440, height: 1080 } })
   page.on('pageerror', e => errors.push(e.message))
   await page.goto(`http://127.0.0.1:${webPort}`)
-  await page.getByLabel('城市', { exact: true }).selectOption('s7-empty')
-  await page.getByRole('button', { name: '打开七日预测', exact: true }).click()
+  await page.getByLabel('城市选择', { exact: true }).selectOption('s7-empty')
+  await page.getByRole('button', { name: '智能预测', exact: true }).click()
   await expect(page.getByTestId('prediction-panel')).toContainText('暂无已发布模型')
-  await page.getByLabel('城市', { exact: true }).selectOption('s7-city')
-  await expect(page.getByTestId('prediction-model')).toContainText(expected.result.modelVersion)
+  await page.getByLabel('城市选择', { exact: true }).selectOption('s7-city')
+  await expect(page.getByTestId('prediction-model')).toContainText(expected.result.modelName)
+  await page.locator('.model-details summary').click()
+  await expect(page.locator('.model-details')).toContainText(expected.result.modelVersion)
   await expect(page.getByTestId('prediction-limitation')).toContainText('合成演示')
   const rows = page.getByTestId('prediction-points').locator('tbody tr')
   await expect(rows).toHaveCount(7)
@@ -146,14 +148,23 @@ try {
   }
   writeFileSync(path.join(output, 'mobile-geometry.json'), JSON.stringify(mobileGeometry, null, 2))
   await panel.screenshot({ path: path.join(output, 'prediction-mobile.png') })
-  // Real bad dataset -> real 400 -> UI error, followed by recovery to published version.
-  await page.getByLabel('预测数据集', { exact: false }).fill('missing')
-  await page.getByRole('button', { name: '查询预测', exact: true }).click()
-  await expect(panel.getByRole('alert')).toContainText('HTTP 400')
+  // Invalid datasets are deliberately absent from the selection. Verify real HTTP 400
+  // independently, then actual browser transport failure and recovery in the UI.
+  const badDataset = await page.evaluate(async () => {
+    const response = await fetch('/api/v1/predictions?cityId=s7-city&datasetId=missing')
+    return { status: response.status, body: await response.json() }
+  })
+  expect(badDataset.status).toBe(400)
+  expect(badDataset.body.code).toBe('BAD_REQUEST')
+  await page.context().setOffline(true)
+  await page.getByRole('button', { name: '刷新预测', exact: true }).click()
+  await expect(panel.getByRole('alert')).toBeVisible()
   await expect(panel.locator('svg')).toHaveCount(0)
-  await page.getByLabel('预测数据集', { exact: false }).fill('')
-  await page.getByRole('button', { name: '查询预测', exact: true }).click()
-  await expect(page.getByTestId('prediction-model')).toContainText(expected.result.modelVersion)
+  await page.context().setOffline(false)
+  await page.getByRole('button', { name: '刷新预测', exact: true }).click()
+  await expect(page.getByTestId('prediction-model')).toContainText(expected.result.modelName)
+  await page.locator('.model-details summary').click()
+  await expect(page.locator('.model-details')).toContainText(expected.result.modelVersion)
   expect(errors).toEqual([])
   passed = true
   console.log('S7_REAL_TRAIN_MYSQL_HTTP_CHROMIUM_PASS')

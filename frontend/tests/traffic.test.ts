@@ -6,6 +6,8 @@ import summary from '../../contracts/examples/traffic-summary.json'
 import series from '../../contracts/examples/traffic-series.json'
 import regions from '../../contracts/examples/traffic-regions.json'
 import roads from '../../contracts/examples/traffic-roads.json'
+import availability from '../../contracts/examples/traffic-availability.json'
+import type { DatasetAvailability } from '../src/api/availability'
 
 vi.mock('../src/components/TrafficChart.vue', () => ({ default: { props: ['option', 'label'], template: '<div class="test-chart" :aria-label="label"></div>' } }))
 const fixtures = { summary, series, regions, roads }
@@ -43,13 +45,13 @@ function api() {
     return json(value)
   })
 }
-function start() { const w = mount(TrafficDashboard, { props: { cityId: 's4-demo-city', cityName: '合成演示城市' } }); wrappers.push(w); return w }
+function start() { const w = mount(TrafficDashboard, { props: { cityId: 's4-demo-city', cityName: '合成演示城市', availability: availability.data.datasets[0] as DatasetAvailability, view: 'analysis' } }); wrappers.push(w); return w }
 describe('S4 dashboard lifecycle', () => {
   it('renders API metrics, explicit synthetic provenance and map coordinate omissions', async () => {
     vi.stubGlobal('fetch', api()); const w = start(); await flushPromises()
     expect(w.get('[data-testid=kpi-speed]').text()).toContain('36.00')
     expect(w.get('[data-testid=kpi-count]').text()).toContain('3')
-    expect(w.text()).toContain('synthetic_test 合成测试')
+    expect(w.text()).toContain('合成演示数据')
     expect(w.findAll('[data-map-point]')).toHaveLength(1)
     expect(w.text()).toContain('1 个区域缺少坐标已省略')
     await w.get('[data-map-point]').trigger('click'); await flushPromises()
@@ -74,7 +76,7 @@ describe('S4 dashboard lifecycle', () => {
     expect(w.get('[data-testid=kpi-speed]').text()).toContain('77.00')
     for (const resolve of pending) resolve()
     await flushPromises()
-    expect(w.text()).toContain('窗口')
+    expect(w.get('[aria-label="开始日期 UTC"]').element).toHaveProperty('value', '2026-10-15')
     expect(w.text()).toContain('新城市')
     expect(w.get('[data-testid=kpi-speed]').text()).toContain('77.00')
     expect(w.find('[role=alert]').exists()).toBe(false)

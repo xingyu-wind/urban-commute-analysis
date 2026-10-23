@@ -51,6 +51,14 @@ class PredictionIntegrationTest {
         for (int i=1;i<=7;i++) jdbc.update("INSERT INTO prediction_result VALUES (REPEAT('d',32),?,?,?)",i,"2026-10-"+(18+i),4+i*.1);
         jdbc.update("INSERT INTO prediction_current VALUES ('s7-unit-city','s7-unit',REPEAT('d',32))");
     }
+    @Test void unsupportedDirectorySourceCannotAdvertiseAReadablePrediction() throws Exception {
+        release("PUBLISHED");
+        jdbc.update("UPDATE dataset_registry SET source_type='simulation' WHERE dataset_id='s7-unit'");
+        var response=mapper.readTree(mvc.perform(get("/api/v1/traffic/availability").param("cityId","s7-unit-city"))
+            .andExpect(status().isOk()).andReturn().getResponse().getContentAsString());
+        assertThat(response.at("/data/datasets/0/predictionAvailable").asBoolean()).isFalse();
+        assertThat(response.at("/data/datasets/0/predictionCutoff").isNull()).isTrue();
+    }
     @Test void emptyHasSourceAndRequestId() throws Exception {
         var response=read();
         assertThat(response.path("data").path("release").isNull()).isTrue();
@@ -62,6 +70,20 @@ class PredictionIntegrationTest {
     @ParameterizedTest @ValueSource(strings={"FAILED","STAGING"})
     void hidesUnpublished(String state) throws Exception {
         release(state); assertThat(read().path("data").path("release").isNull()).isTrue();
+    }
+    @Test void availabilityReportsOnlyCurrentCompatiblePublishedPrediction() throws Exception {
+        release("PUBLISHED");
+        var response = mapper.readTree(mvc.perform(get("/api/v1/traffic/availability").param("cityId", "s7-unit-city"))
+            .andExpect(status().isOk()).andReturn().getResponse().getContentAsString());
+        var dataset = response.at("/data/datasets/0");
+        assertThat(dataset.path("predictionAvailable").asBoolean()).isTrue();
+        assertThat(dataset.path("predictionCutoff").asText()).isEqualTo(read().at("/data/release/dataCutoff").asText());
+        assertThat(dataset.at("/levels/CITY/sampleCount").asInt()).isZero();
+        jdbc.update("UPDATE dataset_registry SET dataset_version='2' WHERE dataset_id='s7-unit'");
+        var incompatible = mapper.readTree(mvc.perform(get("/api/v1/traffic/availability").param("cityId", "s7-unit-city"))
+            .andExpect(status().isOk()).andReturn().getResponse().getContentAsString());
+        assertThat(incompatible.at("/data/datasets/0/predictionAvailable").asBoolean()).isFalse();
+        assertThat(incompatible.at("/data/datasets/0/predictionCutoff").isNull()).isTrue();
     }
     @Test void readsPublishedVersionAndOrderedSevenPoints() throws Exception {
         release("PUBLISHED"); var response=read();

@@ -1,0 +1,44 @@
+[
+  {
+    "file": "d3dcompiler_47.dll",
+    "status": "Valid",
+    "sha256": "a05f99734f7c4822fefc12b367af21fd0976ed6608752fb1e1e80b6ece7ecbbb",
+    "signer": "CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US"
+  },
+  {
+    "file": "dxcompiler.dll",
+    "status": "NotSigned",
+    "sha256": "44ee6e9c25c86cac9b5d776464749f5cb72cc5a0bb14f4ab4d699240ddbab003",
+    "signer": null
+  },
+  {
+    "file": "dxil.dll",
+    "status": "Valid",
+    "sha256": "77e039c905030a641e53658a008b74e90635a5ea9b6b79eabd0f2003bdfca59a",
+    "signer": "CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US"
+  },
+  {
+    "file": "ffmpeg.dll",
+    "status": "NotSigned",
+    "sha256": "1f8549b6788a643ec122cffb3016cce4bf194e07ff81ec327fc8aef6231809d6",
+    "signer": null
+  },
+  {
+    "file": "UrbanCommute.exe",
+    "status": "NotSigned",
+    "sha256": "61f45e6f522c666c6156222680712870b38f3a4acbd2e847b987f53ddb613544",
+    "signer": null
+  },
+  {
+    "file": "vk_swiftshader.dll",
+    "status": "NotSigned",
+    "sha256": "cf39bc6f84bef7d721fd9ce934d5e991a5ca4c3cad8c7fcfdf20d3b76c84197d",
+    "signer": null
+  },
+  {
+    "file": "vulkan-1.dll",
+    "status": "NotSigned",
+    "sha256": "065f458a2e5e7ebcbf31a85788622f59c7b4481bc66af55519a85654d77ba21d",
+    "signer": null
+  }
+]

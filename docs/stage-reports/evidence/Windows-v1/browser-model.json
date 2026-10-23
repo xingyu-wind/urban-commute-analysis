@@ -1,0 +1,600 @@
+{
+  "passed": true,
+  "bundle": "production dist",
+  "browser": "156.0.8078.47",
+  "noInterception": true,
+  "checks": [
+    {
+      "check": "metadata-dataset-latest-window-and-summary",
+      "passed": true,
+      "cityId": "s7-city",
+      "datasetId": "s7-synthetic-v1",
+      "from": "2026-10-12",
+      "to": "2026-10-19",
+      "sampleCount": 28
+    },
+    {
+      "check": "published-seven-points-cutoff-model-and-chart",
+      "passed": true,
+      "points": 7
+    },
+    {
+      "check": "four-viewports-four-pages-controls-and-echarts-resize",
+      "passed": true
+    },
+    {
+      "check": "browser-fullscreen-exit-and-expand-screen-filters",
+      "passed": true
+    },
+    {
+      "check": "directory-only-empty-and-no-stale-city",
+      "passed": true,
+      "emptyCity": "s7-empty"
+    },
+    {
+      "check": "manual-empty-window-and-latest-window-recovery",
+      "passed": true
+    },
+    {
+      "check": "real-browser-offline-clear-and-retry",
+      "passed": true
+    },
+    {
+      "check": "anonymous-public-read-protected-management",
+      "passed": true
+    }
+  ],
+  "layouts": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "page": "overview",
+      "viewport": 1920,
+      "scrollWidth": 1920,
+      "outside": [],
+      "clippedKpis": [],
+      "obstructed": [],
+      "charts": [
+        {
+          "containerWidth": 969,
+          "containerHeight": 310,
+          "scrollWidth": 969,
+          "overflowX": "auto",
+          "rendererWidth": 969,
+          "svgWidth": 969
+        }
+      ],
+      "tables": [],
+      "documentHeight": 1708,
+      "viewportHeight": 1080
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "page": "traffic",
+      "viewport": 1920,
+      "scrollWidth": 1920,
+      "outside": [],
+      "clippedKpis": [],
+      "obstructed": [],
+      "charts": [
+        {
+          "containerWidth": 969,
+          "containerHeight": 310,
+          "scrollWidth": 969,
+          "overflowX": "auto",
+          "rendererWidth": 969,
+          "svgWidth": 969
+        }
+      ],
+      "tables": [
+        {
+          "clientWidth": 969,
+          "scrollWidth": 969,
+          "lastColumnReachable": true
+        }
+      ],
+      "documentHeight": 1713,
+      "viewportHeight": 1080
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "page": "prediction",
+      "viewport": 1920,
+      "scrollWidth": 1920,
+      "outside": [],
+      "clippedKpis": [],
+      "obstructed": [],
+      "charts": [
+        {
+          "containerWidth": 1312,
+          "containerHeight": 310,
+          "scrollWidth": 1312,
+          "overflowX": "auto",
+          "rendererWidth": 1312,
+          "svgWidth": 1312
+        }
+      ],
+      "tables": [],
+      "documentHeight": 1114,
+      "viewportHeight": 1080
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "page": "screen",
+      "viewport": 1920,
+      "scrollWidth": 1920,
+      "outside": [],
+      "clippedKpis": [],
+      "obstructed": [],
+      "charts": [
+        {
+          "containerWidth": 1257,
+          "containerHeight": 270,
+          "scrollWidth": 1257,
+          "overflowX": "auto",
+          "rendererWidth": 1257,
+          "svgWidth": 1257
+        }
+      ],
+      "tables": [],
+      "documentHeight": 1080,
+      "viewportHeight": 1080
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "page": "overview",
+      "viewport": 1366,
+      "scrollWidth": 1366,
+      "outside": [],
+      "clippedKpis": [],
+      "obstructed": [],
+      "charts": [
+        {
+          "containerWidth": 633,
+          "containerHeight": 280,
+          "scrollWidth": 633,
+          "overflowX": "auto",
+          "rendererWidth": 633,
+          "svgWidth": 633
+        }
+      ],
+      "tables": [],
+      "documentHeight": 1654,
+      "viewportHeight": 768
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "page": "traffic",
+      "viewport": 1366,
+      "scrollWidth": 1366,
+      "outside": [],
+      "clippedKpis": [],
+      "obstructed": [],
+      "charts": [
+        {
+          "containerWidth": 633,
+          "containerHeight": 280,
+          "scrollWidth": 633,
+          "overflowX": "auto",
+          "rendererWidth": 633,
+          "svgWidth": 633
+        }
+      ],
+      "tables": [
+        {
+          "clientWidth": 633,
+          "scrollWidth": 633,
+          "lastColumnReachable": true
+        }
+      ],
+      "documentHeight": 1659,
+      "viewportHeight": 768
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "page": "prediction",
+      "viewport": 1366,
+      "scrollWidth": 1366,
+      "outside": [],
+      "clippedKpis": [],
+      "obstructed": [],
+      "charts": [
+        {
+          "containerWidth": 778,
+          "containerHeight": 280,
+          "scrollWidth": 778,
+          "overflowX": "auto",
+          "rendererWidth": 778,
+          "svgWidth": 778
+        }
+      ],
+      "tables": [],
+      "documentHeight": 1090,
+      "viewportHeight": 768
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "page": "screen",
+      "viewport": 1366,
+      "scrollWidth": 1366,
+      "outside": [],
+      "clippedKpis": [],
+      "obstructed": [],
+      "charts": [
+        {
+          "containerWidth": 894,
+          "containerHeight": 170,
+          "scrollWidth": 894,
+          "overflowX": "auto",
+          "rendererWidth": 894,
+          "svgWidth": 894
+        }
+      ],
+      "tables": [],
+      "documentHeight": 768,
+      "viewportHeight": 768
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "page": "overview",
+      "viewport": 768,
+      "scrollWidth": 768,
+      "outside": [],
+      "clippedKpis": [],
+      "obstructed": [],
+      "charts": [
+        {
+          "containerWidth": 686,
+          "containerHeight": 280,
+          "scrollWidth": 686,
+          "overflowX": "auto",
+          "rendererWidth": 686,
+          "svgWidth": 686
+        }
+      ],
+      "tables": [],
+      "documentHeight": 2014,
+      "viewportHeight": 1024
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "page": "traffic",
+      "viewport": 768,
+      "scrollWidth": 768,
+      "outside": [],
+      "clippedKpis": [],
+      "obstructed": [],
+      "charts": [
+        {
+          "containerWidth": 686,
+          "containerHeight": 280,
+          "scrollWidth": 686,
+          "overflowX": "auto",
+          "rendererWidth": 686,
+          "svgWidth": 686
+        }
+      ],
+      "tables": [
+        {
+          "clientWidth": 315,
+          "scrollWidth": 315,
+          "lastColumnReachable": true
+        }
+      ],
+      "documentHeight": 1698,
+      "viewportHeight": 1024
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "page": "prediction",
+      "viewport": 768,
+      "scrollWidth": 768,
+      "outside": [],
+      "clippedKpis": [],
+      "obstructed": [],
+      "charts": [
+        {
+          "containerWidth": 678,
+          "containerHeight": 280,
+          "scrollWidth": 678,
+          "overflowX": "auto",
+          "rendererWidth": 678,
+          "svgWidth": 678
+        }
+      ],
+      "tables": [],
+      "documentHeight": 1439,
+      "viewportHeight": 1024
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "page": "screen",
+      "viewport": 768,
+      "scrollWidth": 768,
+      "outside": [],
+      "clippedKpis": [],
+      "obstructed": [],
+      "charts": [
+        {
+          "containerWidth": 680,
+          "containerHeight": 250,
+          "scrollWidth": 680,
+          "overflowX": "auto",
+          "rendererWidth": 680,
+          "svgWidth": 680
+        }
+      ],
+      "tables": [],
+      "documentHeight": 1550,
+      "viewportHeight": 1024
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "page": "overview",
+      "viewport": 390,
+      "scrollWidth": 390,
+      "outside": [],
+      "clippedKpis": [],
+      "obstructed": [],
+      "charts": [
+        {
+          "containerWidth": 340,
+          "containerHeight": 245,
+          "scrollWidth": 340,
+          "overflowX": "auto",
+          "rendererWidth": 340,
+          "svgWidth": 340
+        }
+      ],
+      "tables": [],
+      "documentHeight": 2424,
+      "viewportHeight": 844
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "page": "traffic",
+      "viewport": 390,
+      "scrollWidth": 390,
+      "outside": [],
+      "clippedKpis": [],
+      "obstructed": [],
+      "charts": [
+        {
+          "containerWidth": 340,
+          "containerHeight": 245,
+          "scrollWidth": 340,
+          "overflowX": "auto",
+          "rendererWidth": 340,
+          "svgWidth": 340
+        }
+      ],
+      "tables": [
+        {
+          "clientWidth": 340,
+          "scrollWidth": 340,
+          "lastColumnReachable": true
+        }
+      ],
+      "documentHeight": 2111,
+      "viewportHeight": 844
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "page": "prediction",
+      "viewport": 390,
+      "scrollWidth": 390,
+      "outside": [],
+      "clippedKpis": [],
+      "obstructed": [],
+      "charts": [
+        {
+          "containerWidth": 336,
+          "containerHeight": 245,
+          "scrollWidth": 336,
+          "overflowX": "auto",
+          "rendererWidth": 336,
+          "svgWidth": 336
+        }
+      ],
+      "tables": [],
+      "documentHeight": 1513,
+      "viewportHeight": 844
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "page": "screen",
+      "viewport": 390,
+      "scrollWidth": 390,
+      "outside": [],
+      "clippedKpis": [],
+      "obstructed": [],
+      "charts": [
+        {
+          "containerWidth": 330,
+          "containerHeight": 245,
+          "scrollWidth": 330,
+          "overflowX": "auto",
+          "rendererWidth": 330,
+          "svgWidth": 330
+        }
+      ],
+      "tables": [],
+      "documentHeight": 1963,
+      "viewportHeight": 844
+    }
+  ],
+  "pageErrors": [],
+  "requests": [
+    {
+      "path": "/api/v1/cities",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/availability",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/availability",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/availability",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/availability",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/predictions",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/predictions",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/predictions",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 400
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 400
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 400
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 400
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/cities",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/availability",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/availability",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/availability",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/availability",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/predictions",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/me",
+      "status": 401
+    }
+  ]
+}

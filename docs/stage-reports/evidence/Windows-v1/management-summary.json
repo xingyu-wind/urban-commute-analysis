@@ -1,0 +1,127 @@
+{
+  "passed": true,
+  "seconds": 13,
+  "actualProductionUI": true,
+  "noInterception": true,
+  "adminLogin": true,
+  "explicitReview": true,
+  "import": "SUCCEEDED",
+  "readerUploadHidden": true,
+  "readerTasksVisible": true,
+  "logout": true,
+  "pageErrors": [],
+  "requests": [
+    {
+      "path": "/api/v1/cities",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/availability",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/availability",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/availability",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/availability",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/series",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/summary",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/regions",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/traffic/roads",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/me",
+      "status": 401
+    },
+    {
+      "path": "/api/v1/predictions",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/csrf",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/login",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/operations/tasks",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/csrf",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/operations/uploads",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/csrf",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/operations/imports/3b1bf27c-f9a4-4e40-907a-3ff06ad4d386/confirm",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/csrf",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/operations/imports/3b1bf27c-f9a4-4e40-907a-3ff06ad4d386/execute",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/operations/tasks",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/csrf",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/logout",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/csrf",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/login",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/operations/tasks",
+      "status": 200
+    }
+  ]
+}

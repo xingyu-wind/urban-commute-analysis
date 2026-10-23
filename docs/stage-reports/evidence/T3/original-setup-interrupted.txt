@@ -1,0 +1,4 @@
+Downloading zulu21.52.203-ca-jre21.0.12.1-win_x64.zip
+Downloading mysql-8.4.11-winx64.zip
+Downloading numpy-2.2.6-cp311-cp311-win_amd64.whl
+Downloading scipy-1.15.3-cp311-cp311-win_amd64.whl

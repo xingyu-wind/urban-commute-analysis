@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "taskOwnedDatabase": true,
+  "newScopedSchemas": true,
+  "noExistingCredentials": true,
+  "checks": [
+    {
+      "check": "start",
+      "exitCode": 0
+    },
+    {
+      "check": "metadata",
+      "exitCode": 0
+    },
+    {
+      "check": "stop",
+      "exitCode": 0
+    }
+  ],
+  "failures": []
+}

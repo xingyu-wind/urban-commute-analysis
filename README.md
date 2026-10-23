@@ -1,5 +1,9 @@
 # 城市通勤数据分析及智能预测系统
 
+当前桌面交付目标为 **Windows 1.0.0 单机演示候选版（待独立验收，未正式发布）**。安装程序 `UrbanCommute-Setup-1.0.0.exe` 提供桌面快捷方式和独立应用窗口，内置 Java/Python/MySQL/Chromium 与合成演示数据，首次运行自动初始化。安装、数据保留与验收状态见 [Windows 桌面版说明](docs/guides/windows-desktop.md) 和 [交付报告](docs/releases/windows-1.0.0-delivery.md)。
+
+版本关系：`main(S8)` → `S9` → `T2/T3` → `T3-USB` → `Workbench` → `codex/windows-v1-desktop`。新分支从完整本地 Workbench `13f823b` 延续；旧提交、ZIP、数据库和失败证据保留。`VERSION` 是桌面产品版本；后端原 Maven `0.1.0-SNAPSHOT` 是历史内部组件身份，不冒充重新编译的桌面版本。
+
 本项目面向城市道路交通运行分析及通勤高峰代理指标预测，计划展示道路运行状态、时段统计和高峰趋势，为交通分析提供可解释的参考。
 
 交通速度、流量、拥堵程度等仅作为候选代理指标，具体以合法数据源与字段定义为准。目前没有真实个人 OD（起讫点）或真实通勤人数数据，不将道路流量直接解释为通勤人数，不推断个人行程。
@@ -14,9 +18,11 @@ S1 的 PR #1 已 Squash Merge，main 合并 SHA 为 `b47f0af593f4173d4a5e12af607
 
 ETL 入口见 [S5 ETL 使用说明](data-pipeline/README.md)、[标准化数据字典](data-pipeline/DATA_DICTIONARY.md)、[S5阶段报告](docs/stage-reports/S5.md)。当前架构区分已实现工程链路和未通过的真实数据交付门槛。
 
-S6 入口：[数仓使用说明](bigdata/README.md)、[知识关联与项目实现说明](docs/learning/S6-知识关联与项目实现说明.md)。城市工作台点击“打开 Hive 离线分析”，查看已发布版本及同窗口历史统计比较。
+S6 入口：[数仓使用说明](bigdata/README.md)、[知识关联与项目实现说明](docs/learning/S6-知识关联与项目实现说明.md)。“交通分析”页面点击“查看 Hive 数仓快照与同窗比较”，查看已发布版本及同窗口历史统计比较。
 
 ## 本地运行
+
+普通Windows使用者优先使用[T2 ZIP候选包说明](docs/guides/windows-zip.md)：联网首次配置自动准备便携运行时，不需要IDE、Git、Maven、Node或独立MySQL服务。该路线使用合成预发布快照，不是离线安装程序或正式Release；阶段实测和限制见[T2报告](docs/stage-reports/T2.md)。下列命令保留为开发环境入口。
 
 先按 [S3 运行说明](docs/guides/s3-mysql.md) 准备已经授权的 MySQL 实例、库和私有进程变量。启动会执行迁移，不能指向未经授权的既有库。构建使用 Windows Maven Wrapper；集成测试必须通过隔离准备器，不直接在持久开发库运行 verify。
 
@@ -62,3 +68,5 @@ npm.cmd run dev
 S2–S8 的对应 PR 已合并。S9 采用 SOLO_OWNER_REVIEW，保持 PR 开放等待总规划师裁定；候选标签仅写入说明，不创建正式 Tag 或 Release。当前工程演示是合成数据验证，不能证明真实交通准确率或跨城市泛化。
 
 本项目独立实现，不直接复刻或上传第三方毕业设计。参考资料须先核实授权；原始第三方 ZIP、未授权数据、真实凭据和个人数据不得纳入仓库。环境模板见 `.env.example`，复制后填写的本地 `.env` 不应提交。
+
+前端工作台升级：五入口、有效日期自动联动、深色全屏大屏，操作见 [工作台使用说明](docs/guides/workbench.md)，验收记录见 [UI-Workbench](docs/stage-reports/UI-Workbench.md)。

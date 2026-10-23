@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "D:\WindXingyu\Apps\Python311\Lib\tarfile.py", line 1995, in getmembers
+    self._load()        # all members, we first have to
+    ^^^^^^^^^^^^
+  File "D:\WindXingyu\Apps\Python311\Lib\tarfile.py", line 2693, in _load
+    tarinfo = self.next()
+              ^^^^^^^^^^^
+  File "D:\WindXingyu\Apps\Python311\Lib\tarfile.py", line 2598, in next
+    self.fileobj.seek(self.offset - 1)
+  File "D:\WindXingyu\Apps\Python311\Lib\gzip.py", line 393, in seek
+    return self._buffer.seek(offset, whence)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\WindXingyu\Apps\Python311\Lib\_compression.py", line 153, in seek
+    data = self.read(min(io.DEFAULT_BUFFER_SIZE, offset))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\WindXingyu\Apps\Python311\Lib\gzip.py", line 518, in read
+    raise EOFError("Compressed file ended before the "
+EOFError: Compressed file ended before the end-of-stream marker was reached

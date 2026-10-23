@@ -1,0 +1,13 @@
+城市通勤 Windows 单机演示版 1.0.0 — 待独立验收
+
+本交付用于用户本人受控、非商业演示。未创建正式 Release。
+全部内置观测、预测和评估为 synthetic_test 合成测试数据，不代表真实交通预测效果。
+
+安装后双击桌面“城市通勤演示版”。首次启动自动校验、解压运行时、初始化独立数据库，可能需要数分钟。
+您同意在本机执行随附离线运行组件。组件的原有许可证、声明及源码资料位于 resources/payload/licenses、vendor/sources；Electron 的声明位于程序目录 LICENSE、LICENSES.chromium.html。
+第三方各自许可证所授予的权利不受本说明限制。向第三方/商业再分发组合产品需另核许可；本项目未更改许可证。
+
+Microsoft Visual C++ 运行库如缺失，可使用本人从微软直接取得的随行安装器（可能需要管理员权限及接受微软条款）；不会自动联网下载。
+
+用户数据保存在 %LOCALAPPDATA%\UrbanCommute\DesktopData；数据库为该目录内独立 MySQL 数据目录（Unicode 路径必要时使用同用户 ASCII 存储路径，位置记录于 state/mysql-location.json）。
+正常关闭窗口会等待服务退出。升级、卸载、重装默认保留用户数据和随机账号，不重灌演示种子。卸载软件不等于删除数据；请妥善保管含凭据的个人数据目录。

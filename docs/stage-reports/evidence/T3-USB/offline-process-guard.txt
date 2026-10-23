@@ -1,0 +1,10 @@
+{
+  "platform": 26200,
+  "architecture": "x64",
+  "freeGiB": 368.03,
+  "pathLength": 17,
+  "configured": true,
+  "globalInstallsRequired": false,
+  "firstSetupNetwork": false
+}
+OFFLINE_PROCESS_NETWORK_GUARD=PASS

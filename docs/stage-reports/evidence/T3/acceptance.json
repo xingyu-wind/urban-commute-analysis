@@ -1,0 +1,362 @@
+{
+  "passed": true,
+  "root": "D:\\WindXingyu\\Apps\\城市通勤 T3 最终 01\\UrbanCommute-Demo",
+  "sameWindowsHost": true,
+  "cleanMachineTest": false,
+  "developerExecutablesRemovedFromPath": true,
+  "checks": [
+    {
+      "check": "CHECK-ENV",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 1.14
+    },
+    {
+      "check": "FIRST-SETUP",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 1.34
+    },
+    {
+      "check": "START",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 12.28
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/health",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/cities",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/predictions?cityId=s7-city&datasetId=s7-synthetic-v1",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "production-chromium-model",
+      "passed": true,
+      "widths": [
+        1440,
+        390
+      ],
+      "requestInterception": false
+    },
+    {
+      "check": "browser-admin-reader-research-import",
+      "passed": true
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/traffic/summary?cityId=s7-city&datasetId=s7-synthetic-v1&from=2026-10-15T00:00:00.000Z&to=2026-10-17T00:00:00.000Z",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/traffic/series?cityId=s7-city&datasetId=s7-synthetic-v1&from=2026-10-15T00:00:00.000Z&to=2026-10-17T00:00:00.000Z&granularity=day",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/operations/tasks",
+      "status": 401,
+      "expected": 401
+    },
+    {
+      "check": "http",
+      "method": "POST",
+      "path": "/api/v1/operations/uploads",
+      "status": 401,
+      "expected": 401
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/auth/csrf",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/operations/tasks",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/auth/csrf",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/operations/tasks",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "POST",
+      "path": "/api/v1/operations/uploads",
+      "status": 403,
+      "expected": 403
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/auth/csrf",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "POST",
+      "path": "/api/v1/operations/uploads",
+      "status": 403,
+      "expected": 403
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/auth/csrf",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "POST",
+      "path": "/api/v1/operations/uploads",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/auth/csrf",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "POST",
+      "path": "/api/v1/operations/imports/56142a8a-14a8-4742-984b-9947b6ae43a1/confirm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/auth/csrf",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "POST",
+      "path": "/api/v1/operations/imports/56142a8a-14a8-4742-984b-9947b6ae43a1/execute",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "actual-http",
+      "passed": true,
+      "cities": 4,
+      "predictionPoints": 7,
+      "adminLogin": true,
+      "readerLogin": true,
+      "anonymousDenied": true,
+      "readerUploadDenied": true,
+      "csrfDenied": true,
+      "pythonBridgeInspect": true,
+      "researchImport": "SUCCEEDED"
+    },
+    {
+      "check": "START",
+      "expectedSuccess": false,
+      "exitCode": 1,
+      "seconds": 1.23
+    },
+    {
+      "check": "real-owned-database",
+      "version": "8.4.11",
+      "ownedDatadir": true,
+      "observationRows": 4369,
+      "flyway": "V1-V6"
+    },
+    {
+      "check": "STOP",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 1.94
+    },
+    {
+      "check": "STOP",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 1.17
+    },
+    {
+      "check": "START",
+      "expectedSuccess": false,
+      "exitCode": 1,
+      "seconds": 1.67
+    },
+    {
+      "check": "START",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 12.25
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 401,
+      "expected": 401
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/predictions?cityId=s7-city",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/auth/csrf",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/operations/tasks",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "research-import-persists-after-restart",
+      "passed": true
+    },
+    {
+      "check": "abrupt-supervisor-exit",
+      "passed": true,
+      "allOwnedPortsReleased": true
+    },
+    {
+      "check": "START",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 12.56
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/predictions?cityId=s7-city",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "STOP",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 1.94
+    },
+    {
+      "check": "START-WAREHOUSE",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 11.75
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/warehouse/metrics?cityId=s5-city&datasetId=s5-synthetic-v1&grain=WINDOW",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "production-chromium-warehouse",
+      "passed": true,
+      "widths": [
+        1440,
+        390
+      ],
+      "requestInterception": false
+    },
+    {
+      "check": "prepublished-hive-query",
+      "passed": true,
+      "items": 3,
+      "localHiveExecution": false
+    },
+    {
+      "check": "STOP",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 2.31
+    }
+  ]
+}

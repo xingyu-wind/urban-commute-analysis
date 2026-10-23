@@ -1,0 +1,12 @@
+[
+  {
+    "path": "C:\\Users\\WindXingyu\\Desktop\\城市通勤演示版.lnk",
+    "exists": true,
+    "target": "D:\\WindXingyu\\Code\\urban-commute-analysis\\dist\\桌面收尾安装验收 01\\UrbanCommute.exe"
+  },
+  {
+    "path": "C:\\Users\\WindXingyu\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\城市通勤演示版\\城市通勤演示版.lnk",
+    "exists": true,
+    "target": "D:\\WindXingyu\\Code\\urban-commute-analysis\\dist\\桌面收尾安装验收 01\\UrbanCommute.exe"
+  }
+]

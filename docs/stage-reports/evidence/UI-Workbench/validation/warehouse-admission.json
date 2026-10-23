@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "scope": "mysql-admission-only",
+  "hiveEvidenceReused": null,
+  "steps": [
+    "backend",
+    "etl-csv",
+    "etl-json",
+    "etl-repeat",
+    "etl-edge"
+  ]
+}

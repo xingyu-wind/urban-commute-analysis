@@ -10,8 +10,14 @@ export async function measureLayout(page, root = 'body') {
       const rect = element.getBoundingClientRect()
       return { left: rect.left, right: rect.right, width: rect.width, height: rect.height }
     }
+    // Chromium may retain geometry for a skipped closed-details subtree. It is not an exposed control.
+    const visible = element => {
+      const closed = element.closest('details:not([open])')
+      return element.getClientRects().length && getComputedStyle(element).visibility !== 'hidden'
+        && (!closed || closed.querySelector(':scope > summary')?.contains(element))
+    }
     const critical = [...scope.querySelectorAll('input,select,button,h1,h2,h3,[role="alert"],.kpi-card strong,.traffic-filters,.road-filters,.pagination,.panel,.analysis-panel,.data-notice')]
-      .filter(element => element.getClientRects().length && getComputedStyle(element).visibility !== 'hidden')
+      .filter(visible)
     const outside = critical.filter(element => {
       const rect = box(element)
       return rect.left < 0 || rect.right > innerWidth || rect.width <= 0 || rect.height <= 0
@@ -22,13 +28,13 @@ export async function measureLayout(page, root = 'body') {
       const card = element.closest('.kpi-card').getBoundingClientRect()
       return [...range.getClientRects()].some(rect => rect.left < card.left || rect.right > card.right)
     }).map(element => element.textContent)
-    const charts = [...scope.querySelectorAll('.traffic-chart')].map(element => ({
+    const charts = [...scope.querySelectorAll('.traffic-chart')].filter(visible).map(element => ({
       containerWidth: element.clientWidth, containerHeight: element.clientHeight,
       scrollWidth: element.scrollWidth, overflowX: getComputedStyle(element).overflowX,
       rendererWidth: element.firstElementChild?.getBoundingClientRect().width,
       svgWidth: element.querySelector('svg')?.getBoundingClientRect().width,
     }))
-    const tables = [...scope.querySelectorAll('.table-scroll')].filter(element => element.getClientRects().length).map(element => {
+    const tables = [...scope.querySelectorAll('.table-scroll')].filter(visible).map(element => {
       const maximum = Math.max(0, element.scrollWidth - element.clientWidth)
       element.scrollLeft = maximum
       const lastColumnReachable = Math.abs(element.scrollLeft - maximum) <= 1
@@ -37,7 +43,7 @@ export async function measureLayout(page, root = 'body') {
     })
     // Inspect enabled and disabled controls: neither may be hidden behind another surface.
     const obstructed = [...scope.querySelectorAll('input,select,button')].filter(element => {
-      if (!element.getClientRects().length || getComputedStyle(element).visibility === 'hidden') return false
+      if (!visible(element)) return false
       element.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'instant' })
       const rect = element.getBoundingClientRect()
       const hit = document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2)
@@ -53,7 +59,7 @@ export async function checkResponsiveMatrix(page, expect, output, name, root = '
     await page.setViewportSize({ width, height: 900 })
     // The page boundary must hold immediately, even before chart resize delivery.
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
-    await expect.poll(() => page.locator(`${root} .traffic-chart`).evaluateAll(elements => elements.every(element =>
+    await expect.poll(() => page.locator(`${root} .traffic-chart:visible`).evaluateAll(elements => elements.every(element =>
       element.clientWidth > 0 && element.firstElementChild?.getBoundingClientRect().width <= element.clientWidth
         && element.querySelector('svg')?.getBoundingClientRect().width <= element.clientWidth))).toBe(true)
     const measurement = await measureLayout(page, root)
@@ -90,7 +96,7 @@ export async function installResizeProbe(context) {
 
 export async function checkDeferredChartResize(page, expect, output) {
   await page.setViewportSize({ width: 1024, height: 768 })
-  await expect.poll(() => page.locator('.traffic-chart').evaluateAll(elements => elements.every(element =>
+  await expect.poll(() => page.locator('.traffic-chart:visible').evaluateAll(elements => elements.every(element =>
     element.firstElementChild.clientWidth === element.clientWidth))).toBe(true)
   await page.evaluate(() => { window.__deferChartResize = true })
   try {
@@ -99,7 +105,7 @@ export async function checkDeferredChartResize(page, expect, output) {
     const held = await measureLayout(page)
     expect(held.charts.some(chart => chart.rendererWidth > chart.containerWidth)).toBe(true)
     expect(held.charts.every(chart => chart.overflowX === 'auto')).toBe(true)
-    const reachable = await page.locator('.traffic-chart').evaluateAll(elements => elements.every(element => {
+    const reachable = await page.locator('.traffic-chart:visible').evaluateAll(elements => elements.every(element => {
       element.scrollLeft = element.scrollWidth
       const reached = element.scrollWidth <= element.clientWidth || element.scrollLeft > 0
       element.scrollLeft = 0
@@ -114,6 +120,6 @@ export async function checkDeferredChartResize(page, expect, output) {
     })
   }
   // Check the real observer completes the resize; containment must not hide a broken lifecycle.
-  await expect.poll(() => page.locator('.traffic-chart').evaluateAll(elements => elements.every(element =>
+  await expect.poll(() => page.locator('.traffic-chart:visible').evaluateAll(elements => elements.every(element =>
     element.firstElementChild.clientWidth === element.clientWidth && element.scrollWidth === element.clientWidth))).toBe(true)
 }

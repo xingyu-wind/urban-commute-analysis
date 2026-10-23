@@ -1,0 +1,33 @@
+{
+  "time": "2026-10-21T19:59:38.7584367+08:00",
+  "os": {
+    "Caption": "Microsoft Windows 11 家庭版 中文版",
+    "Version": "10.0.26200",
+    "OSArchitecture": "64 位"
+  },
+  "administrator": false,
+  "python": "Python 3.11.9",
+  "java": "openjdk version \"21.0.12.1\" 2026-08-18 LTS\r\nOpenJDK Runtime Environment Zulu21.52+203-CA (build 21.0.12.1+1-LTS)\r\nOpenJDK 64-Bit Server VM Zulu21.52+203-CA (build 21.0.12.1+1-LTS, mixed mode, sharing)",
+  "mysql": "D:\\WindXingyu\\Apps\\UrbanCommute-LocalData-5843ba0308dbf901e6a1f54d\\runtime\\mysql-8.4.11-winx64\\bin\\mysqld.exe  Ver 8.4.11 for Win64 on x86_64 (MySQL Community Server - GPL)",
+  "mysqlNativeDirectory": "D:\\WindXingyu\\Apps\\UrbanCommute-LocalData-5843ba0308dbf901e6a1f54d",
+  "testRunningStateExists": false,
+  "testOwnedListeners": [],
+  "originalT2Health": 200,
+  "originalT2RunningState": {
+    "pid": 48364,
+    "url": "http://127.0.0.1:65320",
+    "children": [
+      3520,
+      56384
+    ],
+    "ready": true,
+    "scenario": "model"
+  },
+  "noPush": true,
+  "cleanWindowsTest": false,
+  "windows10Test": false,
+  "missingVCRuntimeTest": false,
+  "actualLowDiskTest": false,
+  "versionProbeUsesLauncherCleanEnvironment": true,
+  "crossInstallationPasswordsDiffer": true
+}

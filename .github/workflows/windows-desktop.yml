@@ -1,0 +1,39 @@
+name: Windows desktop source checks
+on:
+  push:
+    branches: ['codex/windows-v1-desktop']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  desktop-source:
+    runs-on: windows-2022
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.11'
+      - name: Check desktop syntax and version identity
+        shell: pwsh
+        run: |
+          node --check infra/desktop/main.cjs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          node --check frontend/scripts/verify-desktop.mjs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m py_compile infra/windows/portable.py scripts/build_desktop_installer.py
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $productVersion=(Get-Content VERSION -Raw).Trim()
+          if ((Get-Content infra/desktop/package.json -Raw | ConvertFrom-Json).version -ne $productVersion) { throw 'Version mismatch' }
+          $errors=$null
+          [System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path infra/windows/bootstrap.ps1),[ref]$null,[ref]$errors) | Out-Null
+          if ($errors.Count) { throw ($errors | Out-String) }
+      # The full signed/unsigned installer is built and installed locally from the
+      # hash-verified offline payload. This job does not claim installer acceptance.

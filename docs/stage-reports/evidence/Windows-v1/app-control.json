@@ -1,0 +1,16 @@
+{
+  "status": "BLOCKED_BY_WINDOWS_APP_CONTROL",
+  "installerError": "WinError 4551",
+  "codeIntegrityEventId": 3077,
+  "policyId": "{0283ac0f-fff1-49ae-ada1-8a933130cad6}",
+  "VerifiedAndReputablePolicyState": 1,
+  "installerEventLocalTime": "2026-10-23T09:31:01.2788575+08:00",
+  "electronEventsLocalTime": ["2026-10-23T09:32:26.1907148+08:00", "2026-10-23T09:32:57.8287082+08:00"],
+  "blockedInstaller": "dist/windows-v1-candidate-02/UrbanCommute-Setup-1.0.0.exe",
+  "blockedApplication": "dist/windows-v1-candidate-02/application/UrbanCommute.exe",
+  "authenticode": {"installer": "NotSigned", "electronApplication": "NotSigned", "innoBuildTool": "Valid; Pyrsys B.V."},
+  "codeSigningCertificatesFoundInCurrentUserMy": 0,
+  "policyChanged": false,
+  "userDecision": "No trusted signing certificate available; retain candidate EXE and explicitly record blocker.",
+  "source": "Observed tool outputs from Get-WinEvent, Get-AuthenticodeSignature and CI policy registry; this is a curated diagnostic summary, not a full Windows event-log export."
+}

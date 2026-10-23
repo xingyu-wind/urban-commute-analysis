@@ -1,0 +1,3 @@
+SOURCE_BYTES 523466183
+[('mysql-8.4.11/Docs/INFO_SRC', 'commit: fe442869f39a69d69f2cb4384d6c6b5763faa1d0\ndate: 2026-06-30 18:04:10 +0200\nbuild-date: 2026-06-30 16:14:14 +0000\nshort: fe442869f39a\nbranch: mysql-8.4.11-release\n\nMySQL source 8.4.11\nMySQL release maturity LTS\n')]
+MYSQL_SOURCE_MATCH=PASS

@@ -1,0 +1,3 @@
+ERROR: A configured loopback port is occupied. No process was stopped. Check state/instance.json and CHECK-ENV.bat.
+ERROR: Owned MySQL failed; inspect D:\WindXingyu\Apps\UrbanCommute-LocalData-5843ba0308dbf901e6a1f54d\mysql.log and state/mysql-console.log; check Microsoft VC++ x64 runtime. Do not remove data or reuse another server.
+ERROR: FileExistsError. See private state logs; data retained.

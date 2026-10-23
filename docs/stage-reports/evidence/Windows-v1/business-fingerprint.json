@@ -1,0 +1,150 @@
+{
+  "serverUuid": "0c0eaeee-ce82-11f1-a2e9-00ffd09b65ea",
+  "schemas": {
+    "model": "commute_5b7a9cc17a1d1fbc",
+    "warehouse": "commute_7c3b49d093b0ed0a"
+  },
+  "secretsSha256": "d3fb60a4fcf8bda277c4f6bffa33ce83c8fd205932951d1136db05ea877cb07a",
+  "tables": {
+    "model": {
+      "dataset_registry": {
+        "rows": 2,
+        "sha256": "7bb2899cadda4f1e2f213211f0f0653e38241f20cb8a162fbb74a6c5fe489dfb"
+      },
+      "city": {
+        "rows": 4,
+        "sha256": "2b7e34e13f494019f0503a20f5dba9a9d4d763d6172b8070663e93f8f1fdf881"
+      },
+      "region": {
+        "rows": 1,
+        "sha256": "74b1ff5b7098f7fc5895eebcd079bcf7e63c4b33a3582588deedd7a83d02e293"
+      },
+      "road_segment": {
+        "rows": 1,
+        "sha256": "54eb36dc40ed7adfc2a485169dd6a36a6bff517146c9a3e8d7c69d93d4a8264a"
+      },
+      "traffic_observation": {
+        "rows": 4369,
+        "sha256": "70e6598297833385d61b9eabdcdb4553440ada870d20e36a0e63db2f6d697e37"
+      },
+      "etl_source": {
+        "rows": 1,
+        "sha256": "f2d73ac806364e2ba4f6a1a4e92a36b172be069934608b6f938e4c0d6a7ca8c5"
+      },
+      "etl_batch": {
+        "rows": 1,
+        "sha256": "35dc3984cb6cd599fa57c3b40f2c75e932a6fdc291ca1b13cd957fae7bf32364"
+      },
+      "etl_rejection": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "etl_batch_observation": {
+        "rows": 4368,
+        "sha256": "aaa40b884a75736a5570c227b9fa95468789a48abc45b61dcb3b3210ae0b9609"
+      },
+      "warehouse_release": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "warehouse_metric": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "warehouse_current": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "prediction_model": {
+        "rows": 1,
+        "sha256": "f371ab5288dba9a94550cd8d56ab52906d9333aaa09b54a5defd9ca942b8f15f"
+      },
+      "prediction_job": {
+        "rows": 1,
+        "sha256": "342b98dfe071069819a1b1933b4085bb2215b8dafc9ccd11cbd836b7b5fe610f"
+      },
+      "prediction_evaluation": {
+        "rows": 8,
+        "sha256": "0c422b84317e27ce24a2671e962e6ba2ec836c2c1c4d201c9d2b631700aa8a3f"
+      },
+      "prediction_result": {
+        "rows": 7,
+        "sha256": "457a76153a8243d7681591e30d447fe6e8fcb5f8be94b4ce36ac8b4cda31f6f3"
+      },
+      "prediction_current": {
+        "rows": 1,
+        "sha256": "f4932e226fca7417b99dd8b93b760059df210649f5859060c7a7681337f2792a"
+      }
+    },
+    "warehouse": {
+      "dataset_registry": {
+        "rows": 3,
+        "sha256": "25da734b53c4678707f8548fc98d4083dddd5bb89c48aa51f4f79afc8bf8265b"
+      },
+      "city": {
+        "rows": 4,
+        "sha256": "bf219c3ac8a7c9541c9e18b3e332547eba059d9ce75c2e387aa2924d9471283a"
+      },
+      "region": {
+        "rows": 3,
+        "sha256": "2d338575b0967a0f1e84de4657e0253e083f362f46b7011c5b779ddb12b77054"
+      },
+      "road_segment": {
+        "rows": 3,
+        "sha256": "ce4f2118b125acaa0ea2cd6e70a99ea6c3c33736f8ff7bac1ac32ee8afbe84d4"
+      },
+      "traffic_observation": {
+        "rows": 23,
+        "sha256": "a8b671fb222c3846a922e453b0e1934a747373b1e7ac7937436e2f2cc5542e50"
+      },
+      "etl_source": {
+        "rows": 3,
+        "sha256": "4c188cbc9f44b63f5c663adc26609d43a86491810704ef067457a4b83c247456"
+      },
+      "etl_batch": {
+        "rows": 4,
+        "sha256": "9b5869605badfa08b2c18885ddacf440852305bb9534a43d8d885ebebd256bb3"
+      },
+      "etl_rejection": {
+        "rows": 14,
+        "sha256": "27559ecedfbe99cd311cf8731df65c22cff9c735daf3129899a0a23ddc4425dc"
+      },
+      "etl_batch_observation": {
+        "rows": 40,
+        "sha256": "0eebdf2b535592512800766d8cc07dc69996901d9282b4ea24e626226c1164db"
+      },
+      "warehouse_release": {
+        "rows": 1,
+        "sha256": "af4965041cab957b8b538a8927c058ebbc549793fc4406282f74961e9f8802c5"
+      },
+      "warehouse_metric": {
+        "rows": 40,
+        "sha256": "9a2e3002d847f16c6afa9c9c2768ced7d8e7e74ceff6b13722ac254ec3149cd4"
+      },
+      "warehouse_current": {
+        "rows": 1,
+        "sha256": "8cd69ee1920c6277b5fe83294dc38f369afe74026c9b677814e1eeb653811631"
+      },
+      "prediction_model": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "prediction_job": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "prediction_evaluation": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "prediction_result": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "prediction_current": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  }
+}

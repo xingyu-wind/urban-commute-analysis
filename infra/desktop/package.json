@@ -1,0 +1,7 @@
+{
+  "name": "urban-commute-desktop",
+  "version": "1.0.0",
+  "description": "城市通勤数据分析及智能预测系统 — 合成数据单机演示版",
+  "main": "main.cjs",
+  "private": true
+}

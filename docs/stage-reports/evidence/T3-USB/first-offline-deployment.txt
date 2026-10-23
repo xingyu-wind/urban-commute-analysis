@@ -1,0 +1,67 @@
+Checking complete USB package...
+Copying verified files to local disk; existing initialized state is never copied from USB.
+OFFLINE platform/path/disk/VC++ and complete package integrity passed. Run FIRST-SETUP.bat; all runtimes are included.
+Verified offline component: python-3.11.9-embed-amd64.zip
+Verified offline component: zulu21.52.203-ca-jre21.0.12.1-win_x64.zip
+Verified offline component: mysql-8.4.11-winx64.zip
+Verified offline component: numpy-2.2.6-cp311-cp311-win_amd64.whl
+Verified offline component: scipy-1.15.3-cp311-cp311-win_amd64.whl
+Verified offline component: scikit_learn-1.7.2-cp311-cp311-win_amd64.whl
+Verified offline component: xgboost-3.0.5-py3-none-win_amd64.whl
+Verified offline component: joblib-1.5.2-py3-none-any.whl
+Verified offline component: threadpoolctl-3.6.0-py3-none-any.whl
+Verified offline component: tzdata-2025.2-py2.py3-none-any.whl
+Verified offline component: packaging-26.3-py3-none-any.whl
+Verified offline component: pymysql-1.1.2-py3-none-any.whl
+Verified offline component: cryptography-50.0.2-cp311-abi3-win_amd64.whl
+Verified offline component: cffi-2.1.1-cp311-cp311-win_amd64.whl
+Verified offline component: pycparser-3.11-py3-none-any.whl
+Verified offline component: spring-boot-3.5.16.jar
+Verified offline component: spring-boot-autoconfigure-3.5.16.jar
+Verified offline component: logback-classic-1.5.34.jar
+Verified offline component: logback-core-1.5.34.jar
+Verified offline component: log4j-to-slf4j-2.24.3.jar
+Verified offline component: log4j-api-2.24.3.jar
+Verified offline component: jul-to-slf4j-2.0.18.jar
+Verified offline component: jakarta.annotation-api-2.1.1.jar
+Verified offline component: snakeyaml-2.4.jar
+Verified offline component: spring-aop-6.2.19.jar
+Verified offline component: spring-beans-6.2.19.jar
+Verified offline component: spring-security-config-6.5.11.jar
+Verified offline component: spring-security-core-6.5.11.jar
+Verified offline component: spring-security-crypto-6.5.11.jar
+Verified offline component: spring-context-6.2.19.jar
+Verified offline component: spring-security-web-6.5.11.jar
+Verified offline component: spring-expression-6.2.19.jar
+Verified offline component: jackson-datatype-jdk8-2.21.4.jar
+Verified offline component: jackson-datatype-jsr310-2.21.4.jar
+Verified offline component: jackson-module-parameter-names-2.21.4.jar
+Verified offline component: tomcat-embed-core-10.1.55.jar
+Verified offline component: tomcat-embed-websocket-10.1.55.jar
+Verified offline component: spring-web-6.2.19.jar
+Verified offline component: micrometer-observation-1.15.12.jar
+Verified offline component: micrometer-commons-1.15.12.jar
+Verified offline component: spring-webmvc-6.2.19.jar
+Verified offline component: tomcat-embed-el-10.1.55.jar
+Verified offline component: hibernate-validator-8.0.3.Final.jar
+Verified offline component: jakarta.validation-api-3.0.2.jar
+Verified offline component: jboss-logging-3.6.3.Final.jar
+Verified offline component: classmate-1.7.3.jar
+Verified offline component: HikariCP-6.3.3.jar
+Verified offline component: slf4j-api-2.0.18.jar
+Verified offline component: spring-jdbc-6.2.19.jar
+Verified offline component: spring-tx-6.2.19.jar
+Verified offline component: mysql-connector-j-9.7.0.jar
+Verified offline component: flyway-core-11.20.3.jar
+Verified offline component: jackson-databind-2.21.4.jar
+Verified offline component: jackson-annotations-2.21.jar
+Verified offline component: jackson-core-2.21.4.jar
+Verified offline component: flyway-mysql-11.20.3.jar
+Verified offline component: spring-core-6.2.19.jar
+Verified offline component: spring-jcl-6.2.19.jar
+Portable runtime imports verified.
+First setup complete. Run CREDENTIALS.bat privately, then START.bat.
+Ready: http://127.0.0.1:53505
+Local installation: D:\UC-USB-1021-01
+Open http://127.0.0.1:53505 ; privately run CREDENTIALS.bat in the local installation to view this computer's random passwords.
+STOP.bat in that local installation stops the system. Do not share initialized state or this computer's MySQL data.

@@ -1,0 +1,28 @@
+{
+  "time": "2026-10-21T21:19:30.5383005+08:00",
+  "os": {
+    "Caption": "Microsoft Windows 11 家庭版 中文版",
+    "Version": "10.0.26200",
+    "OSArchitecture": "64 位"
+  },
+  "administrator": false,
+  "vcRuntime": {
+    "Installed": 1,
+    "Version": "v14.50.35719.00"
+  },
+  "testLocal": "D:/UC-USB-1021-01",
+  "testRunningStateExists": false,
+  "testOwnedListeners": [],
+  "runtimeDownloadsExists": false,
+  "sourceMediaRuntimeExists": false,
+  "sourceMediaStateExists": false,
+  "physicalNetworkDisconnected": false,
+  "realUsbDeviceTest": false,
+  "cleanWindowsTest": false,
+  "windows10Test": false,
+  "missingVCRuntimeTest": false,
+  "actualLowDiskTest": false,
+  "existingDemoDatabasesAccessed": false,
+  "installerExecuted": false,
+  "globalSettingsChanged": false
+}

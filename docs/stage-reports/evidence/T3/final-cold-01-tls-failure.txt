@@ -1,0 +1,9 @@
+Downloading python-3.11.9-embed-amd64.zip attempt 1/3 from https://www.python.org/ftp/python/3.11.9/python-3.11.9-embed-amd64.zip
+Verified cache: python-3.11.9-embed-amd64.zip
+Downloading zulu21.52.203-ca-jre21.0.12.1-win_x64.zip (attempt 1/3) from https://cdn.azul.com/zulu/bin/zulu21.52.203-ca-jre21.0.12.1-win_x64.zip
+Download failed: zulu21.52.203-ca-jre21.0.12.1-win_x64.zip; URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1006)>
+Downloading zulu21.52.203-ca-jre21.0.12.1-win_x64.zip (attempt 2/3) from https://cdn.azul.com/zulu/bin/zulu21.52.203-ca-jre21.0.12.1-win_x64.zip
+Download failed: zulu21.52.203-ca-jre21.0.12.1-win_x64.zip; URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1006)>
+Downloading zulu21.52.203-ca-jre21.0.12.1-win_x64.zip (attempt 3/3) from https://cdn.azul.com/zulu/bin/zulu21.52.203-ca-jre21.0.12.1-win_x64.zip
+Download failed: zulu21.52.203-ca-jre21.0.12.1-win_x64.zip; URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1006)>
+ERROR: Download failed after 3 attempts: zulu21.52.203-ca-jre21.0.12.1-win_x64.zip; source=https://cdn.azul.com/zulu/bin/zulu21.52.203-ca-jre21.0.12.1-win_x64.zip; URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1006)>. Completed verified files retained. Run FIRST-SETUP again.

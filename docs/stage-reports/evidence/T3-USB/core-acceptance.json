@@ -1,0 +1,355 @@
+{
+  "passed": true,
+  "root": "D:\\UC-USB-1021-01",
+  "sameWindowsHost": true,
+  "cleanMachineTest": false,
+  "developerExecutablesRemovedFromPath": true,
+  "checks": [
+    {
+      "check": "offline-package-mode",
+      "passed": true,
+      "vendorFilesIncluded": true,
+      "runtimeDownloadCachePresent": false,
+      "physicalNetworkDisconnected": false
+    },
+    {
+      "check": "CHECK-ENV",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 4.09
+    },
+    {
+      "check": "FIRST-SETUP",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 4.52
+    },
+    {
+      "check": "START",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 18.3
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/health",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/cities",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/predictions?cityId=s7-city&datasetId=s7-synthetic-v1",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "production-chromium-model",
+      "passed": true,
+      "widths": [
+        1440,
+        390
+      ],
+      "requestInterception": false
+    },
+    {
+      "check": "browser-admin-reader-research-import",
+      "passed": true
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/traffic/summary?cityId=s7-city&datasetId=s7-synthetic-v1&from=2026-10-15T00:00:00.000Z&to=2026-10-17T00:00:00.000Z",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/traffic/series?cityId=s7-city&datasetId=s7-synthetic-v1&from=2026-10-15T00:00:00.000Z&to=2026-10-17T00:00:00.000Z&granularity=day",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/operations/tasks",
+      "status": 401,
+      "expected": 401
+    },
+    {
+      "check": "http",
+      "method": "POST",
+      "path": "/api/v1/operations/uploads",
+      "status": 401,
+      "expected": 401
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/auth/csrf",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/operations/tasks",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/auth/csrf",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/operations/tasks",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "POST",
+      "path": "/api/v1/operations/uploads",
+      "status": 403,
+      "expected": 403
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/auth/csrf",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "POST",
+      "path": "/api/v1/operations/uploads",
+      "status": 403,
+      "expected": 403
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/auth/csrf",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "POST",
+      "path": "/api/v1/operations/uploads",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/auth/csrf",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "POST",
+      "path": "/api/v1/operations/imports/027dea3f-aad8-49be-8fd2-06edb75d7b8e/confirm",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/auth/csrf",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "POST",
+      "path": "/api/v1/operations/imports/027dea3f-aad8-49be-8fd2-06edb75d7b8e/execute",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "actual-http",
+      "passed": true,
+      "cities": 4,
+      "predictionPoints": 7,
+      "adminLogin": true,
+      "readerLogin": true,
+      "anonymousDenied": true,
+      "readerUploadDenied": true,
+      "csrfDenied": true,
+      "pythonBridgeInspect": true,
+      "researchImport": "SUCCEEDED"
+    },
+    {
+      "check": "START",
+      "expectedSuccess": false,
+      "exitCode": 1,
+      "seconds": 5.11
+    },
+    {
+      "check": "real-owned-database",
+      "version": "8.4.11",
+      "ownedDatadir": true,
+      "observationRows": 4369,
+      "flyway": "V1-V6"
+    },
+    {
+      "check": "STOP",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 4.84
+    },
+    {
+      "check": "STOP",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 3.52
+    },
+    {
+      "check": "START",
+      "expectedSuccess": false,
+      "exitCode": 1,
+      "seconds": 6.72
+    },
+    {
+      "check": "START",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 19.41
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 401,
+      "expected": 401
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/predictions?cityId=s7-city",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/auth/csrf",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/operations/tasks",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "research-import-persists-after-restart",
+      "passed": true
+    },
+    {
+      "check": "STOP",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 4.53
+    },
+    {
+      "check": "START-WAREHOUSE",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 19.3
+    },
+    {
+      "check": "http",
+      "method": "GET",
+      "path": "/api/v1/warehouse/metrics?cityId=s5-city&datasetId=s5-synthetic-v1&grain=WINDOW",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "check": "production-chromium-warehouse",
+      "passed": true,
+      "widths": [
+        1440,
+        390
+      ],
+      "requestInterception": false
+    },
+    {
+      "check": "prepublished-hive-query",
+      "passed": true,
+      "items": 3,
+      "localHiveExecution": false
+    },
+    {
+      "check": "STOP",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "seconds": 5.02
+    },
+    {
+      "check": "offline-no-download-cache-created",
+      "passed": true
+    }
+  ]
+}

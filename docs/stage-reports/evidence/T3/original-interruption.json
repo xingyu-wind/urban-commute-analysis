@@ -1,0 +1,29 @@
+{
+  "fault": "Explicitly terminated verified owned component downloader after MySQL extraction; scipy partial 2097152 bytes retained; no database initialized",
+  "retryExit": 1,
+  "log": "original-after-interruption.log",
+  "partialFiles": [
+    {
+      "Name": "mysql-8.4.11-winx64.zip",
+      "Length": 281191914
+    },
+    {
+      "Name": "numpy-2.2.6-cp311-cp311-win_amd64.whl",
+      "Length": 12907455
+    },
+    {
+      "Name": "python-3.11.9-embed-amd64.zip",
+      "Length": 11249023
+    },
+    {
+      "Name": "scipy-1.15.3-cp311-cp311-win_amd64.whl.partial",
+      "Length": 2097152
+    },
+    {
+      "Name": "zulu21.52.203-ca-jre21.0.12.1-win_x64.zip",
+      "Length": 49264410
+    }
+  ],
+  "mysqlLocationAllocated": true,
+  "instanceCreated": false
+}

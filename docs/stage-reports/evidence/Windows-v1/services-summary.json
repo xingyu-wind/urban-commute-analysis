@@ -1,0 +1,95 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "first-offline-setup",
+      "exitCode": 0,
+      "expectedSuccess": true
+    },
+    {
+      "check": "start-model",
+      "exitCode": 0,
+      "expectedSuccess": true
+    },
+    {
+      "check": "duplicate-start-model",
+      "exitCode": 1,
+      "expectedSuccess": false
+    },
+    {
+      "check": "browser-model",
+      "exitCode": 0,
+      "expectedSuccess": true
+    },
+    {
+      "check": "stop-model",
+      "exitCode": 0,
+      "expectedSuccess": true
+    },
+    {
+      "check": "start-warehouse",
+      "exitCode": 0,
+      "expectedSuccess": true
+    },
+    {
+      "check": "duplicate-start-warehouse",
+      "exitCode": 1,
+      "expectedSuccess": false
+    },
+    {
+      "check": "browser-warehouse",
+      "exitCode": 0,
+      "expectedSuccess": true
+    },
+    {
+      "check": "stop-warehouse",
+      "exitCode": 0,
+      "expectedSuccess": true
+    },
+    {
+      "check": "recover-after-parent-exit",
+      "exitCode": 0,
+      "expectedSuccess": true
+    },
+    {
+      "check": "stop-after-parent-exit",
+      "exitCode": 0,
+      "expectedSuccess": true
+    },
+    {
+      "check": "desktop-parent-loss-owned-job-cleanup-and-recovery",
+      "passed": true
+    },
+    {
+      "check": "backup-and-migrate-changed-jar",
+      "exitCode": 0,
+      "expectedSuccess": true
+    },
+    {
+      "check": "restart-after-upgrade",
+      "exitCode": 0,
+      "expectedSuccess": true
+    },
+    {
+      "check": "stop-after-upgrade",
+      "exitCode": 0,
+      "expectedSuccess": true
+    },
+    {
+      "check": "changed-jar-backup-flyway-restart-retained-both-databases",
+      "passed": true
+    },
+    {
+      "check": "final-stop",
+      "exitCode": 0,
+      "expectedSuccess": true
+    }
+  ],
+  "installerVerified": false,
+  "electronWindowVerified": false,
+  "cleanWindows": false,
+  "physicalNetworkDisconnected": false,
+  "unreachableProxy": true,
+  "developerPathRemoved": true,
+  "originalPayloadUnchanged": true
+}
