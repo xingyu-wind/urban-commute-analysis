@@ -4,6 +4,13 @@ $ErrorActionPreference='Stop'
 $ProgressPreference='SilentlyContinue'
 $root = Split-Path -Parent $PSScriptRoot
 $offline=Test-Path -LiteralPath (Join-Path $root 'config/offline.json')
+$desktop=Test-Path -LiteralPath (Join-Path $root 'config/desktop.json')
+$dataRoot=$root
+if ($desktop) {
+    if (-not $env:UC_DATA_HOME -or -not [IO.Path]::IsPathRooted($env:UC_DATA_HOME)) { throw 'Desktop data directory must be absolute.' }
+    $dataRoot=$env:UC_DATA_HOME
+    [IO.Directory]::CreateDirectory($dataRoot) | Out-Null
+}
 function File-Sha256([string]$Path) {
     $stream=[IO.File]::OpenRead($Path)
     $hasher=[Security.Cryptography.SHA256]::Create()
@@ -18,7 +25,7 @@ try {
         throw 'Windows 10/11 x64 is required.'
     }
     if ($env:PROCESSOR_ARCHITECTURE -eq 'ARM64' -or $env:PROCESSOR_ARCHITEW6432 -eq 'ARM64') { throw 'Windows ARM is not supported.' }
-    if ($root.Length -gt 100) { throw 'Extract to a shorter writable path (under 100 characters). Chinese characters and spaces are supported.' }
+    if (-not $desktop -and $root.Length -gt 100) { throw 'Extract to a shorter writable path (under 100 characters). Chinese characters and spaces are supported.' }
     if ($offline -and $Action -in @('check','setup','start')) {
         foreach ($dll in @('vcruntime140.dll','vcruntime140_1.dll','msvcp140.dll')) {
             if (-not [IO.File]::Exists((Join-Path $env:SystemRoot ('System32/'+$dll)))) {
@@ -27,10 +34,10 @@ try {
         }
     }
     if ($Action -in @('check','setup')) {
-        $drive=[IO.DriveInfo]::new([IO.Path]::GetPathRoot($root))
+        $drive=[IO.DriveInfo]::new([IO.Path]::GetPathRoot($dataRoot))
         if ($offline -and ($drive.DriveType -ne 'Fixed' -or $drive.DriveFormat -ne 'NTFS')) { throw 'Use RUN-FROM-USB.bat to deploy to a writable local fixed NTFS drive first.' }
         if ($drive.AvailableFreeSpace -lt 3GB) { throw 'At least 3 GiB free space is required.' }
-        $probe=Join-Path $root ('.write-probe-'+[Guid]::NewGuid().ToString('N'))
+        $probe=Join-Path $dataRoot ('.write-probe-'+[Guid]::NewGuid().ToString('N'))
         try { [IO.File]::WriteAllText($probe,'probe') }
         catch { throw 'Target directory is not writable. Extract to a current-user writable local NTFS directory.' }
         finally { if ([IO.File]::Exists($probe)) { [IO.File]::Delete($probe) } }
@@ -41,7 +48,7 @@ try {
         $actual=File-Sha256 (Join-Path $root $parts[1])
         if ($actual -ne $parts[0]) { throw "Package integrity failed: $($parts[1]). Extract a fresh ZIP." }
     }
-    $python=Join-Path $root 'runtime/python/python.exe'
+    $python=Join-Path $dataRoot 'runtime/python/python.exe'
     if ($Action -eq 'setup') {
         if (-not $AcceptLicenses) {
             Write-Host 'Read README-FIRST.txt and licenses/DEPENDENCIES.txt before continuing.'
@@ -50,11 +57,11 @@ try {
             Write-Host 'No Windows service, PATH, firewall, or global execution policy is changed.'
             if ((Read-Host 'Type ACCEPT to continue') -cne 'ACCEPT') { throw 'Setup cancelled; no vendor download or database initialization performed.' }
         }
-        $drive=[IO.DriveInfo]::new([IO.Path]::GetPathRoot($root))
+        $drive=[IO.DriveInfo]::new([IO.Path]::GetPathRoot($dataRoot))
         if ($drive.AvailableFreeSpace -lt 3GB) { throw 'At least 3 GiB free space is required.' }
         $lock=Get-Content -LiteralPath (Join-Path $root 'config/components.lock.json') -Raw -Encoding UTF8 | ConvertFrom-Json
         $component=$lock.components | Where-Object kind -eq 'python'
-        $cache=Join-Path $root 'runtime/downloads'
+        $cache=Join-Path $dataRoot 'runtime/downloads'
         if ($offline) { $cache=Join-Path $root 'vendor/components' }
         else { [IO.Directory]::CreateDirectory($cache) | Out-Null }
         $archive=Join-Path $cache $component.filename
@@ -87,7 +94,7 @@ try {
         }
         if ((File-Sha256 $archive) -ne $component.sha256) { throw 'Cached Python checksum mismatch. Retain it for diagnosis and extract a fresh ZIP.' }
         if (-not (Test-Path -LiteralPath $python)) {
-            $destination=Join-Path $root 'runtime/python'
+            $destination=Join-Path $dataRoot 'runtime/python'
             Expand-Archive -LiteralPath $archive -DestinationPath $destination
             [IO.File]::WriteAllText((Join-Path $destination ('.'+$component.filename+'.verified')), $component.sha256)
             [IO.File]::WriteAllText((Join-Path $destination 'python311._pth'), "python311.zip`n.`nLib/site-packages`nimport site`n",[Text.Encoding]::ASCII)

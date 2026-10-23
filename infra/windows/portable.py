@@ -26,7 +26,10 @@ import urllib.error
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-STATE = ROOT / 'state'
+DESKTOP = (ROOT/'config/desktop.json').is_file()
+DATA = Path(os.environ['UC_DATA_HOME']).resolve() if DESKTOP else ROOT
+STATE = DATA / 'state'
+RUNTIME = DATA / 'runtime'
 OFFLINE = (ROOT/'config/offline.json').is_file()
 CREATE = subprocess.CREATE_NO_WINDOW
 TABLES = ('dataset_registry','city','region','road_segment','traffic_observation',
@@ -82,7 +85,7 @@ def mysql_home():
     buffer=ctypes.create_unicode_buffer(32768)
     if ctypes.windll.shell32.SHGetFolderPathW(None,0x001c,None,0,buffer):
         raise RuntimeError('Cannot locate current-user LocalAppData')
-    candidates=[p for p in (ROOT,*ROOT.parents) if str(p).isascii() and p.parent!=p]
+    candidates=[p for p in ((DATA,) if DESKTOP else (ROOT,*ROOT.parents)) if str(p).isascii() and p.parent!=p]
     local=Path(buffer.value)
     if not str(local).isascii():
         short=ctypes.create_unicode_buffer(32768)
@@ -167,7 +170,7 @@ def ports_available(config):
 
 
 def runtime(kind):
-    folder = mysql_home()/'runtime' if kind=='mysql' else ROOT/'runtime'/kind
+    folder = mysql_home()/'runtime' if kind=='mysql' else RUNTIME/kind
     filename = {'java':'java.exe','mysql':'mysqld.exe','python':'python.exe'}[kind]
     matches = list(folder.rglob(filename))
     if len(matches) != 1:
@@ -219,16 +222,16 @@ def download_component(item, cache):
 
 def install_components():
     lock = read(ROOT/'config/components.lock.json')
-    cache = ROOT/'runtime/downloads'
+    cache = RUNTIME/'downloads'
     if not OFFLINE:cache.mkdir(parents=True,exist_ok=True)
     for item in lock['components']:
         file = download_component(item,cache)
         if item['kind']=='jar':
-            destination=ROOT/'runtime/backend-libs'/item['filename']
+            destination=RUNTIME/'backend-libs'/item['filename']
             destination.parent.mkdir(parents=True,exist_ok=True)
             shutil.copyfile(file,destination)
             continue
-        destination=mysql_home()/'runtime' if item['kind']=='mysql' else ROOT/'runtime'/('python/Lib/site-packages' if item['kind']=='wheel' else item['kind'])
+        destination=mysql_home()/'runtime' if item['kind']=='mysql' else RUNTIME/('python/Lib/site-packages' if item['kind']=='wheel' else item['kind'])
         destination.mkdir(parents=True,exist_ok=True)
         marker=destination/('.'+item['filename']+'.verified')
         if not marker.exists() or marker.read_text(encoding='ascii') != item['sha256']:
@@ -239,9 +242,9 @@ def install_components():
                 archive.extractall(destination)
             marker.write_text(item['sha256'],encoding='ascii')
     # CPython embed uses its own explicit search path, not a nonportable venv.
-    (ROOT/'runtime/python/python311._pth').write_text('python311.zip\n.\nLib/site-packages\nimport site\n',encoding='ascii')
+    (RUNTIME/'python/python311._pth').write_text('python311.zip\n.\nLib/site-packages\nimport site\n',encoding='ascii')
     import importlib
-    sys.path.insert(0,str(ROOT/'runtime/python/Lib/site-packages'))
+    sys.path.insert(0,str(RUNTIME/'python/Lib/site-packages'))
     importlib.invalidate_caches()
     result = subprocess.run([str(runtime('python')),'-I','-c',
         'import numpy,scipy,sklearn,xgboost,pymysql,cryptography,zoneinfo; zoneinfo.ZoneInfo("Asia/Shanghai"); print("PORTABLE_PYTHON_IMPORTS=PASS")'],
@@ -350,7 +353,7 @@ def start_java(job,config,secret,bootstrap=False):
         for role in ('ADMIN','READER'):
             env['COMMUTE_BOOTSTRAP_'+role+'_USER']=secret[role]['username']
             env['COMMUTE_BOOTSTRAP_'+role+'_PASSWORD']=secret[role]['password']
-    child=job.launch([runtime('java'),'-Djdk.net.unixdomain.tmpdir='+str(native_tmp),'-Dloader.path='+str(ROOT/'runtime/backend-libs'),'-cp',ROOT/'app/backend/application.jar',
+    child=job.launch([runtime('java'),'-Djdk.net.unixdomain.tmpdir='+str(native_tmp),'-Dloader.path='+str(RUNTIME/'backend-libs'),'-cp',ROOT/'app/backend/application.jar',
         'org.springframework.boot.loader.launch.PropertiesLauncher','--server.address=127.0.0.1','--server.port='+str(config['apiPort'])],
         'backend',env=env,cwd=ROOT/'app')
     for _ in range(180):
@@ -522,6 +525,46 @@ def supervise(scenario='model'):
                 (STATE/'running.json').unlink(missing_ok=True)
 
 
+def upgrade():
+    """Back up both owned schemas before running new Flyway migrations; never reseed."""
+    verify()
+    with exclusive():
+        config=read(STATE/'instance.json');secret=credentials()
+        if not config.get('initialized'):raise RuntimeError('Incomplete initialization; data retained.')
+        identity=read(ROOT/'BUILD.json')['thinJarSha256']
+        if config['applicationJar']==identity:return
+        if (STATE/'upgrade-pending.json').exists():
+            raise RuntimeError('An earlier migration was interrupted. Restore the private backup before retrying; no automatic overwrite.')
+        ports_available(config)
+        backup=STATE/'backups'/('before-upgrade-'+str(time.time_ns()))
+        backup.mkdir(parents=True);private_directory(backup)
+        write(backup/'instance.json',config)
+        job=Job()
+        try:
+            start_mysql(job,config,secret)
+            env=clean_env();env['MYSQL_PWD']=secret['rootPassword'];env['MYSQL_TEST_LOGIN_FILE']=str(STATE/'absent-login.cnf')
+            dump=backup/'databases.sql'
+            with dump.open('wb') as stream:
+                result=subprocess.run([str(runtime('mysql').parent/'mysqldump.exe'),'--no-defaults','--protocol=TCP',
+                    '-h127.0.0.1','-P'+str(config['dbPort']),'-uroot','--single-transaction','--routines','--events','--triggers',
+                    '--set-gtid-purged=OFF','--databases',*config['schemas'].values()],env=env,stdout=stream,
+                    stderr=subprocess.PIPE,creationflags=CREATE,timeout=180)
+            if result.returncode or not dump.stat().st_size:raise RuntimeError('Upgrade backup failed; migrations not started.')
+            write(backup/'receipt.json',dict(sha256=sha(dump),bytes=dump.stat().st_size,previousJar=config['applicationJar'],nextJar=identity))
+            write(STATE/'upgrade-pending.json',dict(backup=str(backup),nextJar=identity))
+            for schema in config['schemas'].values():
+                config['schema']=schema
+                backend=start_java(job,config,secret)
+                backend.terminate();backend.wait(timeout=20)
+            config['applicationJar']=identity;config['package']=read(ROOT/'BUILD.json')['applicationSource']
+            write(STATE/'instance.json',config)
+            (STATE/'upgrade-pending.json').unlink()
+            write(STATE/'upgrade-result.json',dict(passed=True,backup=str(backup),reseeded=False,applicationJar=identity))
+        finally:
+            try:shutdown_mysql(config,secret)
+            finally:job.close()
+
+
 def start(scenario='model'):
     verify()
     if not (STATE/'instance.json').exists():raise RuntimeError('Run FIRST-SETUP.bat first.')
@@ -566,10 +609,22 @@ def check():
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action',choices=['setup','start','stop','supervise','check','credentials'])
+    parser.add_argument('action',choices=['setup','start','stop','supervise','check','credentials','upgrade'])
     parser.add_argument('--scenario',choices=['model','warehouse'],default='model')
     args=parser.parse_args()
     try:
+        if DESKTOP and os.environ.get('UC_PARENT_PID'):
+            # Kernel handles identify the original parent even if Windows reuses its PID.
+            kernel=ctypes.WinDLL('kernel32',use_last_error=True)
+            kernel.OpenProcess.restype=wintypes.HANDLE
+            kernel.OpenProcess.argtypes=[wintypes.DWORD,wintypes.BOOL,wintypes.DWORD]
+            kernel.WaitForSingleObject.argtypes=[wintypes.HANDLE,wintypes.DWORD]
+            parent=kernel.OpenProcess(0x00100000,False,int(os.environ['UC_PARENT_PID']))
+            if not parent:raise RuntimeError('Desktop parent no longer exists; services not started.')
+            def parent_watch():
+                kernel.WaitForSingleObject(parent,0xFFFFFFFF)
+                os._exit(71)  # Closing our Job handles contains all owned service children.
+            threading.Thread(target=parent_watch,daemon=True).start()
         if OFFLINE:
             # Process-local guard: offline package code cannot open a remote
             # connection even if a future component path accidentally requests it.

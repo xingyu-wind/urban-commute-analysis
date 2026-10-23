@@ -1,5 +1,9 @@
 # 城市通勤数据分析及智能预测系统
 
+当前桌面交付目标为 **Windows 1.0.0 单机演示候选版（待独立验收，未正式发布）**。安装程序 `UrbanCommute-Setup-1.0.0.exe` 提供桌面快捷方式和独立应用窗口，内置 Java/Python/MySQL/Chromium 与合成演示数据，首次运行自动初始化。安装、数据保留与验收状态见 [Windows 桌面版说明](docs/guides/windows-desktop.md) 和 [交付报告](docs/releases/windows-1.0.0-delivery.md)。
+
+版本关系：`main(S8)` → `S9` → `T2/T3` → `T3-USB` → `Workbench` → `codex/windows-v1-desktop`。新分支从完整本地 Workbench `13f823b` 延续；旧提交、ZIP、数据库和失败证据保留。`VERSION` 是桌面产品版本；后端原 Maven `0.1.0-SNAPSHOT` 是历史内部组件身份，不冒充重新编译的桌面版本。
+
 本项目面向城市道路交通运行分析及通勤高峰代理指标预测，计划展示道路运行状态、时段统计和高峰趋势，为交通分析提供可解释的参考。
 
 交通速度、流量、拥堵程度等仅作为候选代理指标，具体以合法数据源与字段定义为准。目前没有真实个人 OD（起讫点）或真实通勤人数数据，不将道路流量直接解释为通勤人数，不推断个人行程。
