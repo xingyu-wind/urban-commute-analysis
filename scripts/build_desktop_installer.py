@@ -36,7 +36,17 @@ def build(output,tools,base=BASE):
     (stage/'electron.exe').rename(stage/'UrbanCommute.exe')
     shutil.copytree(ROOT/'infra/desktop',stage/'resources/app',ignore=shutil.ignore_patterns('installer.iss','tools.lock.json','TERMS.txt','INSTALL-NOTES.txt'))
     payload=stage/'resources/payload'
-    shutil.copytree(base,payload)
+    # Keep original archives intact, but flatten the duplicate human-readable
+    # notices so normal Windows install paths do not exceed MAX_PATH.
+    shutil.copytree(base,payload,ignore=lambda folder,names: ['vendor'] if Path(folder)==base/'licenses' else [])
+    notice_map=[]
+    for index,source in enumerate(sorted((base/'licenses/vendor').rglob('*'))):
+        if not source.is_file():continue
+        relative=Path('licenses/vendor')/(str(index)+'-'+source.name[:60])
+        destination=payload/relative;destination.parent.mkdir(parents=True,exist_ok=True)
+        shutil.copyfile(source,destination)
+        notice_map.append(dict(original=source.relative_to(base).as_posix(),file=relative.as_posix(),sha256=digest(source)))
+    write(payload/'licenses/NOTICE-INDEX.json',dict(files=[n['file'] for n in notice_map],originalPaths=notice_map))
     for name in ('portable.py','bootstrap.ps1'):shutil.copyfile(ROOT/'infra/windows'/name,payload/'launcher'/name)
     write(payload/'config/desktop.json',dict(version=1,dataLayout=1,offline=True))
     write(payload/'BASELINE-BUILD.json',previous)
