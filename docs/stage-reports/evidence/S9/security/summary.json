@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "httpCases": 453,
+  "concurrentStatuses": [
+    200,
+    409
+  ],
+  "originalData": "synthetic_test",
+  "privateRawExcluded": true,
+  "filesystemChecks": true,
+  "databaseChecks": true,
+  "browserChecks": true
+}

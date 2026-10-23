@@ -10,5 +10,8 @@
 | `s6_checks.py` | 成功批次准入、HDFS/Hive 真算、对账、ADS 发布/恢复、HTTP/Chrome；[数仓指南](../bigdata/README.md) |
 | `s6_edge_fixture.py` | 自主生成 synthetic_test 边界输入，不替代 S5 ETL |
 | `check_ci.py` | CI 静态策略检查，不代表云端测试或 Hive 实算 |
+| `s9_runtime.py` | 回环候选部署预检、Java/production dist启动与所持子进程停止；[部署手册](../docs/guides/s9-deployment.md) |
+| `s9_release_checks.py` | S7/S6真实发布后的独立空库逻辑备份恢复、逐表哈希/指针/API比较、production Chromium与适度性能实测 |
+| `s9_sources.py` | 无账号公开来源重查与本地片段哈希；不下载观测、不训练、不自动确认真实许可 |
 
 每次提供新的 `--output` 目录，避免覆盖旧证据。S6 默认重型模式只允许本轮获授权的临时 GitHub Actions 空目录 HDFS format；Windows 可使用 `--admission-only`，其输出明确不代表 Hive 实算。`--hive-evidence` 可复核真实 CI 导出到本机 MySQL/API/Chrome 的链路，并记录复用来源。所有模式都不下载真实未授权交通数据。

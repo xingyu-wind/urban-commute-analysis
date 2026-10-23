@@ -1,0 +1,128 @@
+{
+  "passed": true,
+  "visible": "477dff512edf75200057508d6f5b2284",
+  "jobs": [
+    {
+      "job_id": "8b809b92f87a23d9610ac70d521c166e",
+      "status": "PUBLISHED",
+      "attempts": 1,
+      "model_version": "2710e7d636bf7b89dec4a4d48e65de01881434f39e254edd3f1ed1438ada5f55",
+      "data_cutoff": "2026-10-19 00:00:00",
+      "generated_at": "2026-10-21 00:48:12.339000",
+      "published_at": "2026-10-21 00:48:40.017000"
+    },
+    {
+      "job_id": "81dcc735d9f4fd4d2878767d1adf6ebd",
+      "status": "PUBLISHED",
+      "attempts": 2,
+      "model_version": "2710e7d636bf7b89dec4a4d48e65de01881434f39e254edd3f1ed1438ada5f55",
+      "data_cutoff": "2026-10-19 00:00:00",
+      "generated_at": "2026-10-21 00:49:13.323000",
+      "published_at": "2026-10-21 00:49:35.078000"
+    },
+    {
+      "job_id": "a8a2b38222236097153902b6d99205a9",
+      "status": "PUBLISHED",
+      "attempts": 2,
+      "model_version": "2710e7d636bf7b89dec4a4d48e65de01881434f39e254edd3f1ed1438ada5f55",
+      "data_cutoff": "2026-10-19 00:00:00",
+      "generated_at": "2026-10-21 00:49:35.095000",
+      "published_at": "2026-10-21 00:49:56.889000"
+    },
+    {
+      "job_id": "045c6caad53e9cc12ecd3f734200c294",
+      "status": "PUBLISHED",
+      "attempts": 2,
+      "model_version": "2710e7d636bf7b89dec4a4d48e65de01881434f39e254edd3f1ed1438ada5f55",
+      "data_cutoff": "2026-10-19 00:00:00",
+      "generated_at": "2026-10-21 00:49:56.901000",
+      "published_at": "2026-10-21 00:50:17.379000"
+    },
+    {
+      "job_id": "6d110f6c2dc36ce86dce9d56aebf3ced",
+      "status": "PUBLISHED",
+      "attempts": 2,
+      "model_version": "2710e7d636bf7b89dec4a4d48e65de01881434f39e254edd3f1ed1438ada5f55",
+      "data_cutoff": "2026-10-19 00:00:00",
+      "generated_at": "2026-10-21 00:50:17.396000",
+      "published_at": "2026-10-21 00:50:36.121000"
+    },
+    {
+      "job_id": "477dff512edf75200057508d6f5b2284",
+      "status": "PUBLISHED",
+      "attempts": 1,
+      "model_version": "2710e7d636bf7b89dec4a4d48e65de01881434f39e254edd3f1ed1438ada5f55",
+      "data_cutoff": "2026-10-19 00:00:00",
+      "generated_at": "2026-10-21 00:50:36.126000",
+      "published_at": "2026-10-21 00:50:43.078000"
+    },
+    {
+      "job_id": "424ed04b381a2b111f059ce4592e0f2f",
+      "status": "FAILED",
+      "attempts": 1,
+      "model_version": "2710e7d636bf7b89dec4a4d48e65de01881434f39e254edd3f1ed1438ada5f55",
+      "data_cutoff": "2026-10-19 00:00:00",
+      "generated_at": "2026-10-21 00:50:57.245000",
+      "published_at": null
+    }
+  ],
+  "points": [
+    {
+      "job_id": "477dff512edf75200057508d6f5b2284",
+      "step": 1,
+      "forecast_date": "2026-10-19",
+      "value": "5.054962"
+    },
+    {
+      "job_id": "477dff512edf75200057508d6f5b2284",
+      "step": 2,
+      "forecast_date": "2026-10-20",
+      "value": "5.126502"
+    },
+    {
+      "job_id": "477dff512edf75200057508d6f5b2284",
+      "step": 3,
+      "forecast_date": "2026-10-21",
+      "value": "5.143543"
+    },
+    {
+      "job_id": "477dff512edf75200057508d6f5b2284",
+      "step": 4,
+      "forecast_date": "2026-10-22",
+      "value": "5.166635"
+    },
+    {
+      "job_id": "477dff512edf75200057508d6f5b2284",
+      "step": 5,
+      "forecast_date": "2026-10-23",
+      "value": "5.258167"
+    },
+    {
+      "job_id": "477dff512edf75200057508d6f5b2284",
+      "step": 6,
+      "forecast_date": "2026-10-24",
+      "value": "3.355459"
+    },
+    {
+      "job_id": "477dff512edf75200057508d6f5b2284",
+      "step": 7,
+      "forecast_date": "2026-10-25",
+      "value": "3.313862"
+    }
+  ],
+  "negativeCases": [
+    "legal-value-tampering-independent-replay",
+    "insert-rollback-retry",
+    "commit-rollback-retry",
+    "switch-rollback-retry",
+    "hard-crash-rollback-safe-recovery",
+    "stale-generation",
+    "same-generation-cannot-overwrite",
+    "noncontinuous-prediction",
+    "artifact-checksum",
+    "duplicate-batch-input",
+    "changed-committed-input",
+    "failed-batch-input",
+    "changed-dataset-version"
+  ]
+}

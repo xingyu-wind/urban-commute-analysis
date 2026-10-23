@@ -1,0 +1,57 @@
+{
+  "measuredAt": "2026-10-21T01:01:03.130838+00:00",
+  "os": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+  "cpu": "x86_64",
+  "logicalCpus": 2,
+  "data": "synthetic_test",
+  "observationRows": 23,
+  "route": "production dist -> Vite loopback preview proxy -> Java -> real MySQL",
+  "warmup": 3,
+  "api": [
+    {
+      "path": "/api/v1/cities",
+      "requests": 40,
+      "concurrency": 4,
+      "errors": 0,
+      "p50Ms": 18.941,
+      "p95Ms": 25.608,
+      "maxMs": 33.212,
+      "elapsedSeconds": 0.199,
+      "requestsPerSecond": 200.841
+    },
+    {
+      "path": "/api/v1/predictions?cityId=s5-city&datasetId=s5-synthetic-v1",
+      "requests": 40,
+      "concurrency": 4,
+      "errors": 0,
+      "p50Ms": 19.374,
+      "p95Ms": 29.965,
+      "maxMs": 39.658,
+      "elapsedSeconds": 0.211,
+      "requestsPerSecond": 189.927
+    },
+    {
+      "path": "/api/v1/warehouse/metrics?cityId=s5-city&datasetId=s5-synthetic-v1",
+      "requests": 40,
+      "concurrency": 4,
+      "errors": 0,
+      "p50Ms": 24.916,
+      "p95Ms": 34.315,
+      "maxMs": 45.364,
+      "elapsedSeconds": 0.263,
+      "requestsPerSecond": 152.13
+    },
+    {
+      "path": "/api/v1/traffic/summary?cityId=s5-city&datasetId=s5-synthetic-v1&from=2026-10-15T00:00:00.000Z&to=2026-10-17T00:00:00.000Z",
+      "requests": 40,
+      "concurrency": 4,
+      "errors": 0,
+      "p50Ms": 19.138,
+      "p95Ms": 24.633,
+      "maxMs": 28.031,
+      "elapsedSeconds": 0.206,
+      "requestsPerSecond": 194.296
+    }
+  ],
+  "limitation": "Small local warm-cache smoke; not public capacity/SLA or large-data throughput"
+}

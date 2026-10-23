@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "bundle": "production dist",
+  "timings": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "navigationAndNetworkIdleMs": 855,
+      "navigation": {
+        "domContentLoadedMs": 185.70000000001164,
+        "loadMs": 191.40000000002328
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "panel": "prediction-panel",
+      "openAndNetworkIdleMs": 33
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "panel": "warehouse-panel",
+      "openAndNetworkIdleMs": 111
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "navigationAndNetworkIdleMs": 624,
+      "navigation": {
+        "domContentLoadedMs": 20.600000000034925,
+        "loadMs": 21.300000000046566
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "panel": "prediction-panel",
+      "openAndNetworkIdleMs": 23
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "panel": "warehouse-panel",
+      "openAndNetworkIdleMs": 116
+    }
+  ],
+  "pageErrors": [],
+  "noInterception": true
+}

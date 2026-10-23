@@ -43,6 +43,11 @@ for action in ('actions/setup-java', 'actions/setup-node', 'actions/setup-python
 commands = '\n'.join(step.get('run', '') for step in steps)
 require('s3_database.py --probe-isolation' in commands, 'Missing pre-migration isolation rejection evidence')
 require('s3-repeat.json' in commands, 'Missing repeated suite with a fresh schema')
+require('--with-restore-target' in commands and '--release-checks' in commands, 'Missing S9 real isolated restore and deployment checks')
+warehouse = yaml.load((ROOT / '.github/workflows/s6-warehouse.yml').read_text(encoding='utf-8'), Loader=yaml.BaseLoader)
+warehouse_commands = '\n'.join(step.get('run','') for step in warehouse['jobs']['warehouse']['steps'])
+require('scripts/s6_checks.py --release-checks' in warehouse_commands and '--with-restore-target' in warehouse_commands,
+        'Missing S9 restore of actual Hive publication')
 for command in ('bash backend/mvnw', 'npm ci', 'npm run type-check', 'npm test', 'npm run build',
                 'contracts/validate_contract.py', 'backend/scripts/verify_http.py', 'test:e2e', 'check-regression-failures.py', 'scripts/s4_checks.py',
                 'data-pipeline/requirements.lock.txt', 'scripts/s5_checks.py', 'ml/requirements.lock.txt', 'scripts/s7_checks.py', 'scripts/s7_data_checks.py', 'scripts/s8_checks.py'):

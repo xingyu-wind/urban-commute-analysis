@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "before": {
+    "managed_import": 0,
+    "managed_job": 0,
+    "traffic_observation": 0,
+    "warehouse_current": 0,
+    "prediction_current": 0
+  },
+  "after": {
+    "managed_import": 0,
+    "managed_job": 0,
+    "traffic_observation": 0,
+    "warehouse_current": 0,
+    "prediction_current": 0
+  },
+  "privateDirectories": 0,
+  "multipartFiles": 0,
+  "auditWritesExcluded": true
+}

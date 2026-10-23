@@ -1,5 +1,7 @@
 # 数据库模式｜MySQL 8.4 / Flyway
 
+当前迁移为V1–V6：V4仓库发布/明细/current，V5模型/预测任务/评估/结果/current，V6用户/审计/研究导入/任务。S9不改历史迁移；新增独立空库逻辑恢复及逐表哈希/发布指针/API验证，见[部署与恢复](../docs/guides/s9-deployment.md)。下文保留核心观测与ETL字段说明，预测结果始终独立于traffic_observation。
+
 S3 采用全新 **MySQL 8.4** 业务模式，不复用原 ZIP 的任何建表或插入脚本。结构源：`migrations/V1__commute_core.sql`（历史不变）和 `migrations/V2__strengthen_core_constraints.sql`（编译时纳入后端 classpath:/db/migration）。迁移仅建表/调整约束与索引，不插入样例、不删表、不清库。V2 的 DROP CHECK / DROP INDEX 仅替换约束或索引，不删除业务行。
 
 S5新增 `migrations/V3__etl_audit.sql`，由现有Java启动/Flyway统一执行。etl_source保存解析版本和完整来源配置快照；etl_batch保存文件哈希、质量数量、落库数量、状态、时间和冲突明细；etl_rejection保存清洗拒绝；etl_batch_observation逐条关联WRITTEN/EXISTING观测。Python导入器仅操作已迁移的S3新隔离库，V1/V2校验和不变。[ETL事务及操作说明](../data-pipeline/README.md)与[标准化字典](../data-pipeline/DATA_DICTIONARY.md)。

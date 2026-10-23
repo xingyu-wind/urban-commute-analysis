@@ -57,7 +57,7 @@ jobs:
         working-directory: frontend
         run: npx --no-install playwright install chromium
       - name: Real ETL HDFS Hive reconciliation publication HTTP and browser
-        run: python scripts/s3_database.py --output backend/target/s6-db.json -- python scripts/s6_checks.py --output backend/target/s6-ci
+        run: python scripts/s3_database.py --with-restore-target --output backend/target/s6-db.json -- python scripts/s6_checks.py --release-checks --output backend/target/s6-ci
       - name: Preserve original diagnostics even on failure
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "ods": 39,
+  "unique": 21,
+  "negativeCases": [
+    "altered-candidate",
+    "failed-batch",
+    "duplicate-batch-directory"
+  ]
+}

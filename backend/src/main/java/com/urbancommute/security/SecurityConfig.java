@@ -21,6 +21,22 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
+    // Keep this finite list in step with Controllers and contracts/openapi.yaml.
+    // Wrong methods are rejected here, without invoking a Controller (legacy 405).
+    private static final String[] PUBLIC_READ = {"/health", "/api/v1/cities",
+        "/api/v1/traffic/summary", "/api/v1/traffic/series", "/api/v1/traffic/regions",
+        "/api/v1/traffic/roads", "/api/v1/warehouse/metrics", "/api/v1/predictions"};
+    private static int rejectedStatus(HttpServletRequest req, boolean signedIn) {
+        String path = req.getServletPath().isEmpty()
+            ? req.getRequestURI().substring(req.getContextPath().length()) : req.getServletPath();
+        if (java.util.Set.of(PUBLIC_READ).contains(path)) return 405;
+        boolean protectedRoute = java.util.Set.of("/api/v1/auth/me", "/api/v1/auth/logout",
+            "/api/v1/auth/login", "/api/v1/auth/csrf", "/api/v1/operations/tasks",
+            "/api/v1/operations/uploads").contains(path)
+            || path.matches("/api/v1/operations/imports/[^/]+/(confirm|execute|retry)");
+        // Denial, not a forward to MVC: an unlisted future Controller cannot execute.
+        return protectedRoute ? (signedIn ? 403 : 401) : 404;
+    }
     @Bean PasswordEncoder passwordEncoder() { return new BCryptPasswordEncoder(12); }
     @Bean UserDetailsService users(JdbcTemplate jdbc) {
         return name -> jdbc.query("SELECT username,password_hash,role,enabled FROM app_user WHERE username=?", (rs, row) ->
@@ -30,9 +46,12 @@ public class SecurityConfig {
     }
     public static void error(ObjectMapper mapper, HttpServletRequest req, HttpServletResponse res, int status) throws IOException {
         res.setStatus(status); res.setContentType("application/json");
-        String code = switch(status) { case 401 -> "UNAUTHORIZED"; case 503 -> "SERVICE_UNAVAILABLE"; default -> "FORBIDDEN"; };
+        if (status == 405) res.setHeader("Allow", "GET, HEAD");
+        String code = switch(status) { case 401 -> "UNAUTHORIZED"; case 404 -> "NOT_FOUND";
+            case 405 -> "METHOD_NOT_ALLOWED"; case 503 -> "SERVICE_UNAVAILABLE"; default -> "FORBIDDEN"; };
         mapper.writeValue(res.getOutputStream(), new ApiResponse<>(code,
-                status == 401 ? "Authentication required" : status == 503 ? "Service unavailable" : "Access denied", null,
+                switch(status) { case 401 -> "Authentication required"; case 404 -> "Route not found";
+                    case 405 -> "Method not allowed"; case 503 -> "Service unavailable"; default -> "Access denied"; }, null,
                 ResponseMeta.error(RequestIdFilter.requestId(req))));
     }
     @Bean SecurityFilterChain security(HttpSecurity http, ObjectMapper mapper, Audit audit) throws Exception {
@@ -40,19 +59,23 @@ public class SecurityConfig {
             var auth = org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication();
             boolean signedIn = auth != null && auth.isAuthenticated() && !(auth instanceof org.springframework.security.authentication.AnonymousAuthenticationToken);
             audit.rejection(signedIn ? auth.getName() : "anonymous", "ACCESS_DENIED", req);
-            error(mapper, req, res, signedIn ? 403 : 401);
+            // A CSRF denial on an existing protected route remains 401/403.
+            error(mapper, req, res, rejectedStatus(req, signedIn));
         };
         http.authorizeHttpRequests(auth -> auth
-                .requestMatchers(HttpMethod.GET, "/health", "/api/v1/cities", "/api/v1/traffic/**",
-                        "/api/v1/warehouse/**", "/api/v1/predictions", "/api/v1/auth/csrf").permitAll()
-                .requestMatchers("/api/v1/auth/login").permitAll()
+                .requestMatchers(HttpMethod.GET, PUBLIC_READ).permitAll()
+                .requestMatchers(HttpMethod.HEAD, PUBLIC_READ).permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/v1/auth/csrf").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/v1/auth/login").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/v1/operations/tasks").hasAnyRole("ADMIN", "READER")
-                .requestMatchers("/api/v1/operations/**").hasRole("ADMIN")
-                .requestMatchers("/api/v1/auth/**").authenticated()
-                // Preserve legacy controller's own 404/405 contracts for non-management routes.
-                .anyRequest().permitAll())
+                .requestMatchers(HttpMethod.POST, "/api/v1/operations/uploads",
+                    "/api/v1/operations/imports/{id}/confirm", "/api/v1/operations/imports/{id}/execute",
+                    "/api/v1/operations/imports/{id}/retry").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/api/v1/auth/me").authenticated()
+                .requestMatchers(HttpMethod.POST, "/api/v1/auth/logout").authenticated()
+                .anyRequest().denyAll())
             .requestCache(cache -> cache.disable())
-            .exceptionHandling(e -> e.authenticationEntryPoint((req, res, ex) -> { audit.rejection("anonymous","AUTH_REQUIRED",req); error(mapper, req, res, 401); })
+            .exceptionHandling(e -> e.authenticationEntryPoint((req, res, ex) -> { audit.rejection("anonymous","AUTH_REQUIRED",req); error(mapper, req, res, rejectedStatus(req,false)); })
                     .accessDeniedHandler(denied))
             .csrf(csrf -> csrf.requireCsrfProtectionMatcher(req ->
                 (req.getServletPath().startsWith("/api/v1/auth/") || req.getServletPath().startsWith("/api/v1/operations/"))

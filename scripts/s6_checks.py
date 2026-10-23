@@ -19,6 +19,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--admission-only', action='store_true', help='Local MySQL/Decimal checks only; explicitly does NOT claim Hive execution')
+    parser.add_argument('--release-checks', action='store_true')
     parser.add_argument('--hive-evidence', type=Path, help='Reuse downloaded real Hive evidence; still independently reconcile every exported value')
     args = parser.parse_args()
     output = args.output.resolve()
@@ -151,6 +152,8 @@ def main():
         connection.close()
         write_json(output / 'mysql-reconciliation.json', {'releases': status_rows, 'totals': totals, 'visible': visible, 'passed': True})
         run('browser', ['node', 'frontend/scripts/verify-s6.mjs', str(output / 'browser')])
+        if args.release_checks:
+            run('s9-release', [sys.executable, 'scripts/s9_release_checks.py', '--output', str(output/'s9-release')])
         completed = True
         return 0
     finally:

@@ -1,7 +1,7 @@
 openapi: 3.1.0
 jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
 info:
-  title: 城市通勤系统 S8 API 契约
+  title: 城市通勤系统 S9 API 契约
   version: 1.4.0
   description: |
     本文件保留 S2/S3 接口，并增加四个 S4 MySQL 交通统计接口。
@@ -12,6 +12,9 @@ info:
     所有 required 字段必须出现，null 不等于缺失；未声明字段不允许出现。
     S3 区分 dev_seed、synthetic_test、historical_snapshot、authorized_live 等来源；城市目录不等于道路观测。
     统计值来源由 meta 明示；S6 增加 Hive 已发布离线结果；S7 增加离线七日 CITY 日均拥堵指数预测，只读查询。
+    S9 使用精确路径与方法授权、默认拒绝。未知路径由安全层直接返回统一404，不执行Controller；
+    八个公开只读路径的非法写方法由安全层直接405并保留Allow GET/HEAD，不放行至Controller。
+    auth/operations保留会话、CSRF及ADMIN/READER边界；详见docs/guides/s9-security.md。
 servers:
   - url: http://localhost:8080
     description: 本机开发服务约定地址
