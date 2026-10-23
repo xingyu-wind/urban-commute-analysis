@@ -9,6 +9,7 @@
 - 两张 PNG：真实浏览器截图，已目视检查。
 - `management-summary.json` / `management-reader.png`：升级后原随机账号登录、真实上传/包内 Python 分析、人工确认、研究导入 SUCCEEDED、READER 只读和退出；凭据只通过匿名管道传递，没有入日志。
 - `build-receipt.json`：最终候选完整路径、大小、SHA256、构建源码和工具/文件锁。
+- `ci-snapshot.json`：2026-10-23 收尾查询时的 GitHub 官方 API 状态；未完成的回归不认定通过。后续状态以 PR 对应提交为准。
 - `app-control.json`：实测拦截的整理回执；系统策略未修改，用户选择保留候选。
 
 本地原始输出：`backend/target/desktop-acceptance-01`（安装拦截）、`desktop-window-02/03`（独立窗口拦截）、`desktop-services-01`（首次初始化成功后验收脚本 GBK 读 UTF-8 失败）、`desktop-services-02`（修正驱动并复用本轮新隔离库后全部通过）。失败现场保留，不用成功覆盖失败。

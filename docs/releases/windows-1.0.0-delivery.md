@@ -48,4 +48,6 @@
 
 云端构建提交 `e0619f9`：Windows 桌面源码 [Run 39886377526](https://github.com/xingyu-wind/urban-commute-analysis/actions/runs/39886377526) **success**；真实 HDFS/Hive 数仓 [Run 39886377410](https://github.com/xingyu-wind/urban-commute-analysis/actions/runs/39886377410) **success**；核心回归 [Run 39886377637](https://github.com/xingyu-wind/urban-commute-analysis/actions/runs/39886377637) 最后查询仍 **in_progress**，不提前认定通过。先前 `0816506` 三类 CI 全部通过，属于历史提交，不能替代当前结果。
 
-后续测试/报告提交会触发独立 CI；以 PR 上对应 SHA 的实际状态为准。云端 CI 不能证明本机被拦截的 EXE 已通过验收。后续取得可信签名后，待验收项仍是：最终签名包安装、独立窗口、快捷方式、关闭重启、升级/卸载/重装、干净缺运行库 Windows 和物理断网。
+已同步最终测试/报告提交 **`4d0732713131c09714b04e633fe82696da7b02c1`**。2026-10-23 10:02 左右查询：同 SHA 的 Windows 源码 [Run 39887260627](https://github.com/xingyu-wind/urban-commute-analysis/actions/runs/39887260627) **success**；PR 触发的 [核心回归 39887264604](https://github.com/xingyu-wind/urban-commute-analysis/actions/runs/39887264604) **pending**、[数仓 39887264493](https://github.com/xingyu-wind/urban-commute-analysis/actions/runs/39887264493) **in_progress**，不宣称最新提交全部 CI 通过。双触发导致的旧 run cancelled 保留，不当作测试失败或成功。原始状态见 [ci-snapshot.json](../stage-reports/evidence/Windows-v1/ci-snapshot.json)，后续状态以 PR 对应 SHA 为准。
+
+最后一个纯文档/状态回执提交使用 `[skip ci]`，避免再重复触发重型回归；它不改变应用、打包脚本或测试驱动。云端 CI 不能证明本机被拦截的 EXE 已通过验收。后续取得可信签名后，待验收项仍是：最终签名包安装、独立窗口、快捷方式、关闭重启、升级/卸载/重装、干净缺运行库 Windows 和物理断网。
