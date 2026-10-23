@@ -1,0 +1,15 @@
+{
+  "Time": "2026-10-16T08:13:58.1186125+08:00",
+  "Fields": {
+    "PolicyNameBuffer": "VerifiedAndReputableDesktop",
+    "PolicyGUID": "{0283ac0f-fff1-49ae-ada1-8a933130cad6}",
+    "PolicyHashSize": "32",
+    "OptionsV2": "0x0",
+    "PolicyHash": "2668895A5B233A80432D00D67251D7B7F52686A3FB13780F4B242C5A1F937A01",
+    "PolicyIdBuffer": "27555.1000.240208",
+    "Status": "0x0",
+    "PolicyIdLength": "17",
+    "PolicyNameLength": "27",
+    "Options": "0xb18c2714"
+  }
+}
