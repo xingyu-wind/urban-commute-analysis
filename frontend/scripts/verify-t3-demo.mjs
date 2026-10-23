@@ -28,12 +28,14 @@ try {
   await login('ADMIN')
   await page.getByLabel('数据文件',{exact:true}).setInputFiles(path.join(root,'database/research-demo.csv'))
   await page.getByRole('button',{name:'上传并分析',exact:true}).click()
-  await expect(page.getByTestId('operations-message')).toContainText('分析完成')
+  // The bundled scientific Python runtime may cold-start while Windows scans
+  // newly extracted native libraries; wait for the real completed response.
+  await expect(page.getByTestId('operations-message')).toContainText('分析完成',{timeout:60000})
   await expect(page.getByRole('button',{name:'执行导入校验',exact:true})).toBeDisabled()
   // Maintainer explicitly reviewed this original synthetic fixture against its review file.
   await page.getByLabel('完整映射审查 JSON',{exact:true}).fill(readFileSync(path.join(root,'database/research-review.json'),'utf8'))
   await page.getByRole('button',{name:'确认映射与使用权',exact:true}).click()
-  await expect(page.getByTestId('operations-message')).toContainText('已确认')
+  await expect(page.getByTestId('operations-message')).toContainText('已确认',{timeout:60000})
   await page.getByRole('button',{name:'执行导入校验',exact:true}).click()
   await expect(page.getByTestId('operations-message')).toContainText('SUCCEEDED',{timeout:60000})
   await page.getByRole('button',{name:'退出',exact:true}).click()

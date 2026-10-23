@@ -6,6 +6,15 @@
 
 复用最新 Workbench 生产前端、原 Java 应用与合成发布种子、58 项离线组件锁、88 项对应源码/元数据、原 Python Job Object 进程监管。新增 Electron 独立窗口、Inno Setup 当前用户安装/卸载、数据分离、备份后迁移及关闭协调。
 
+## 最终候选文件
+
+- 完整路径：`D:\WindXingyu\Code\urban-commute-analysis\dist\windows-v1-candidate-04\UrbanCommute-Setup-1.0.0.exe`
+- 大小：**1,168,412,053 字节**（约 1.09 GiB）。文件版本 `1.0.0.0`、产品版本 `1.0.0`。
+- SHA256：**`f42364651949e57f97c42982359d335c91826a17d092a78bb12c06688005e630`**。
+- 构建源码：**`e0619f92db831bc4196bb866cc2df4283235f5da`**；应用基线 `65c5394adc2d0a74d489027a3a0f83f25191d307`。构建开始时工作区干净；后续测试驱动等待时间与报告提交不改变包内应用。
+- 构建回执：[build-receipt.json](../stage-reports/evidence/Windows-v1/build-receipt.json)。最终 payload 472 项清单全部复核通过；Python/PowerShell 监管器、JAR 与种子和实际验收 payload 完全一致，首次浏览器目录及错误处理属于未能执行验证的桌面壳部分。
+- 原 Workbench ZIP SHA256 仍为 `6405050a506717ae50ce1d764990490ee39c1fd41768d1f2435d1d6dfda17cfb`；T3-USB 仍为 `e473a2d912b72be98171a55aa55f882139b5dfac0bbc4f99299f78f8b1377e19`。中间构建保留，**只推荐本节候选用于后续签名/独立验收**。
+
 全部演示数据是合成测试数据，不能宣称真实交通预测效果。没有合并 main、创建 Tag 或正式 Release。
 
 ## 安装和使用
@@ -21,6 +30,7 @@
 | 安装程序编译 | Inno Setup 实际生成单文件 EXE，完整内置运行时、原始源码/许可及本人取得的 VC++ 前提安装器 |
 | 包内离线初始化 | 通过；新的隔离数据目录、两套独立 schema；未借用旧 runtime、凭据或数据库 |
 | 主要页面与预测 | 通过；真实浏览器、生产资源和包内 Java/MySQL；两场景共 32 组页面/视口，七个预测日期和数值逐点对应 API；合成标识可见 |
+| 升级后数据管理 | 通过；原随机 ADMIN/READER 均可登录，真实 CSV → 包内 Python 分析 → 人工映射确认 → SUCCEEDED；READER 可读任务且无上传控件，退出正常 |
 | 服务生命周期 | 通过；重复启动拒绝，正常停止释放全部端口；模拟桌面父进程退出触发 Job 回收，随后启动恢复；最终全部停止 |
 | 数据分离和升级 | 通过服务层测试；程序目录无 state/runtime；测试 JAR 身份变化触发双库 mysqldump、Flyway 校验和重启；两库 17 张业务表及凭据指纹不变，未重新灌种子 |
 | 离线运行 | 包内离线路径、不可用代理、清除开发工具 PATH 通过；浏览器断网清状态/恢复通过。未整机物理断网 |
@@ -36,4 +46,6 @@
 
 分支 `codex/windows-v1-desktop`，草稿 [PR #11](https://github.com/xingyu-wind/urban-commute-analysis/pull/11) 指向 main。已推送原先本地未同步的祖先历史；本地旧分支与全历史 bundle 均保留。`main` 保持 `222f70d`，无强推、合并、Tag 或正式 Release。
 
-EXE 构建源码提交与最终文件 SHA256 将随最终构建回执补齐；后续证据/报告提交与应用构建提交分开追溯。云端 CI 不能证明本机被拦截的 EXE 已通过验收。
+云端构建提交 `e0619f9`：Windows 桌面源码 [Run 39886377526](https://github.com/xingyu-wind/urban-commute-analysis/actions/runs/39886377526) **success**；真实 HDFS/Hive 数仓 [Run 39886377410](https://github.com/xingyu-wind/urban-commute-analysis/actions/runs/39886377410) **success**；核心回归 [Run 39886377637](https://github.com/xingyu-wind/urban-commute-analysis/actions/runs/39886377637) 最后查询仍 **in_progress**，不提前认定通过。先前 `0816506` 三类 CI 全部通过，属于历史提交，不能替代当前结果。
+
+后续测试/报告提交会触发独立 CI；以 PR 上对应 SHA 的实际状态为准。云端 CI 不能证明本机被拦截的 EXE 已通过验收。后续取得可信签名后，待验收项仍是：最终签名包安装、独立窗口、快捷方式、关闭重启、升级/卸载/重装、干净缺运行库 Windows 和物理断网。

@@ -7,9 +7,13 @@
 - `business-fingerprint.json`：两 schema 的 17 张业务表逐表行数和规范内容 SHA256、MySQL UUID、DPAPI 文件 SHA256；没有密码、密文原件、完整数据库或上传文件。
 - `upgrade-receipt.json`：测试专用 JAR 身份变化，未改变业务字节码/迁移 SQL，触发真实 mysqldump、双库 Flyway 校验、重启；业务和账号指纹不变。不是破坏性新迁移或失败恢复验证。
 - 两张 PNG：真实浏览器截图，已目视检查。
+- `management-summary.json` / `management-reader.png`：升级后原随机账号登录、真实上传/包内 Python 分析、人工确认、研究导入 SUCCEEDED、READER 只读和退出；凭据只通过匿名管道传递，没有入日志。
+- `build-receipt.json`：最终候选完整路径、大小、SHA256、构建源码和工具/文件锁。
 - `app-control.json`：实测拦截的整理回执；系统策略未修改，用户选择保留候选。
 
 本地原始输出：`backend/target/desktop-acceptance-01`（安装拦截）、`desktop-window-02/03`（独立窗口拦截）、`desktop-services-01`（首次初始化成功后验收脚本 GBK 读 UTF-8 失败）、`desktop-services-02`（修正驱动并复用本轮新隔离库后全部通过）。失败现场保留，不用成功覆盖失败。
+
+管理链路额外补验：`desktop-management-01/02` 因旧浏览器驱动对包内 Python 的上传分析/映射确认仅等待 5 秒而提前退出；实际界面仍为处理中。改为等待真实操作完成（最多 60 秒，仍要求相同成功响应和内容断言）后，`desktop-management-03` 全链路 13 秒通过。前两次失败保留；不将它们归因成新的产品故障，也不隐去驱动修正。
 
 `desktop-services-02/upgrade-fixture` 只为身份变化测试，不能分发；真实候选程序与所有原 ZIP 保留。私有备份位于本轮数据目录，未入 Git。
 
