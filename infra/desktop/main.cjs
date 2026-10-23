@@ -84,7 +84,7 @@ function begin() {
 async function changeScenario(next) {
   if(working || quitting || scenario===next) return;
   scenario=next; origin=null;
-  working=stop().finally(()=>{working=null;begin()});
+  working=stop().then(()=>{working=null;begin()},e=>{working=null;dialog.showErrorBox('切换场景未完成',e.message)});
 }
 if(!app.requestSingleInstanceLock()) { app.quit() }
 else {

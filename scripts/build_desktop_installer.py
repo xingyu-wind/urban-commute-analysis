@@ -57,6 +57,7 @@ def build(output,tools,base=BASE):
     head=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
     version=json.loads((ROOT/'infra/desktop/package.json').read_text(encoding='utf-8'))['version']
     previous.update(version=version,desktopGitHead=head,packagingGitHead=head,workingTreeDirty=False,
+                    packagingFiles={p.relative_to(ROOT).as_posix():digest(p) for p in (ROOT/'infra/windows').rglob('*') if p.is_file() and '__pycache__' not in str(p)},
                     desktopRuntime=lock['electron'],dataLayout=1,review='WINDOWS_DESKTOP_CANDIDATE; pending independent acceptance')
     write(payload/'BUILD.json',previous)
     manifest=''.join(digest(p)+'  '+p.relative_to(payload).as_posix()+'\n' for p in sorted(payload.rglob('*')) if p.is_file() and p.name!='MANIFEST.sha256')
