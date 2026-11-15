@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "teacher-hive-bundle-v1",
+  "parentNormalizedSha256": "492a74a23d66763cc3717eb1f02711b391e042f0e061de7ba6e530274eef7832",
+  "sourceTsvSha256": "d3b64915cd0ec84a942ca2fdbd429d2560538c10eb611d22cc1e911c9c49fa9a",
+  "inputRows": 6678,
+  "byDataset": {
+    "CHICAGO_DAILY": 2552,
+    "CHICAGO_HOURLY": 2016,
+    "CHICAGO_ROADS_7D": 2110
+  },
+  "datasets": [
+    {
+      "id": "CHICAGO_DAILY",
+      "cityId": "CHICAGO",
+      "cityName": "芝加哥",
+      "name": "芝加哥区域日趋势",
+      "sourceType": "official_public_historical",
+      "timezone": "America/Chicago",
+      "metric": "speedKmh",
+      "unit": "km/h",
+      "metricDefinition": "CTA GPS probe based congestion speed estimate; mph × 1.609344",
+      "severeSpeedKmh": 16.09344,
+      "congestedSpeedKmh": 32.18688,
+      "coordinateSystem": "WGS84"
+    },
+    {
+      "id": "CHICAGO_HOURLY",
+      "cityId": "CHICAGO",
+      "cityName": "芝加哥",
+      "name": "芝加哥区域小时规律",
+      "sourceType": "official_public_historical",
+      "timezone": "America/Chicago",
+      "metric": "speedKmh",
+      "unit": "km/h",
+      "metricDefinition": "CTA GPS probe based congestion speed estimate; mph × 1.609344",
+      "severeSpeedKmh": 16.09344,
+      "congestedSpeedKmh": 32.18688,
+      "coordinateSystem": "WGS84"
+    },
+    {
+      "id": "CHICAGO_ROADS_7D",
+      "cityId": "CHICAGO",
+      "cityName": "芝加哥",
+      "name": "芝加哥道路七日",
+      "sourceType": "official_public_historical",
+      "timezone": "America/Chicago",
+      "metric": "speedKmh",
+      "unit": "km/h",
+      "metricDefinition": "Complete selected-segment window; mph × 1.609344; length share below 20mph; severe below 10mph",
+      "severeSpeedKmh": 16.09344,
+      "congestedSpeedKmh": 32.18688,
+      "coordinateSystem": "WGS84",
+      "coverage": "2025-02-01 inclusive to 2025-02-08 exclusive; segments 127,129,133; missing -1 estimates excluded"
+    }
+  ],
+  "scope": "Official public Chicago observations only; no teacher-reference, account or personal records",
+  "sourceFiles": [
+    {
+      "path": "data/private/source-completion-20261115/chicago-region-sample.json",
+      "sha256": "3767579e0a88a570c5eb56c664f59e94a5aa165822bc762b9600388ee0ea5d58",
+      "bytes": 2002313
+    },
+    {
+      "path": "data/private/source-completion-20261115/chicago-region-daily-90d/page-0000.json",
+      "sha256": "ff32c3d075e76556c0e66b2d8913053983d068ea0c4ccd6a94ff79777592aa07",
+      "bytes": 568255
+    },
+    {
+      "path": "data/private/source-completion-20261115/chicago-region-hourly-28d-v2/page-0000.json",
+      "sha256": "b049ed14f0fbf87894d8587c92bf7a2c544b7779c9ff09e10c70e6a9ca50398f",
+      "bytes": 464595
+    },
+    {
+      "path": "data/private/source-completion-20261115/chicago-segment-sample.json",
+      "sha256": "fe7c6e8918fe8910b3653a1e588236d6ab2577707cf4422aab254bd26795d6e4",
+      "bytes": 2915623
+    },
+    {
+      "path": "data/private/source-completion-20261115/chicago-segments-7d/page-0000.json",
+      "sha256": "ed909c4042226c239dad83f08ccfe682c0b18a8c37e25926f53d17e31492f54f",
+      "bytes": 1753175
+    }
+  ]
+}

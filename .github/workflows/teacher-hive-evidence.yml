@@ -1,0 +1,40 @@
+name: Teacher real public-source HDFS Hive evidence
+on:
+  push:
+    branches: ['codex/teacher-hive-evidence-*']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  real-hive:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          persist-credentials: false
+      - name: Verify the frozen public input
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,pathlib
+          p=pathlib.Path('bigdata/evidence-input')
+          d=json.loads((p/'manifest.json').read_text())
+          assert hashlib.sha256((p/'source.tsv').read_bytes()).hexdigest()==d['sourceTsvSha256']
+          assert set(d['byDataset'])=={'CHICAGO_DAILY','CHICAGO_HOURLY','CHICAGO_ROADS_7D'}
+          assert d['inputRows']==6678
+          PY
+      - name: Execute actual isolated HDFS and Hive
+        run: |
+          mkdir -p evidence/hive
+          docker pull 'apache/hive:4.1.0@sha256:b957bb0e698e560d24e162b7549d79f191d58703e92899a886618c317f6e8f30'
+          docker image inspect 'apache/hive:4.1.0@sha256:b957bb0e698e560d24e162b7549d79f191d58703e92899a886618c317f6e8f30' > evidence/hive/image-inspect.json
+          docker run --rm --user 0:0 --entrypoint bash -e TEACHER_RUN_MODE=ci-container -v "$PWD:/source:ro" -v "$PWD/bigdata/evidence-input:/bundle:ro" -v "$PWD/evidence/hive:/evidence" 'apache/hive:4.1.0@sha256:b957bb0e698e560d24e162b7549d79f191d58703e92899a886618c317f6e8f30' /source/bigdata/runner/teacher-hive.sh
+      - name: Independent source-row reconciliation
+        run: python3 bigdata/teacher_warehouse.py reconcile --bundle bigdata/evidence-input --evidence evidence/hive
+      - name: Preserve raw execution evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: teacher-hive-${{ github.run_id }}
+          path: evidence/hive/
+          retention-days: 14
