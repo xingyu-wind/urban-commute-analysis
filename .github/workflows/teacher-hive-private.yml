@@ -1,0 +1,74 @@
+name: Teacher private-input real HDFS Hive evidence
+on:
+  push:
+    branches: ['codex/teacher-hive-private-*']
+permissions:
+  contents: read
+jobs:
+  real-private-hive:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          persist-credentials: false
+      - name: Receive private numeric traffic input without logging rows
+        env:
+          CHUNK_0: ${{ secrets.TEACHER_HIVE_20261116150329_0 }}
+          CHUNK_1: ${{ secrets.TEACHER_HIVE_20261116150329_1 }}
+          CHUNK_2: ${{ secrets.TEACHER_HIVE_20261116150329_2 }}
+          CHUNK_3: ${{ secrets.TEACHER_HIVE_20261116150329_3 }}
+          CHUNK_4: ${{ secrets.TEACHER_HIVE_20261116150329_4 }}
+          CHUNK_5: ${{ secrets.TEACHER_HIVE_20261116150329_5 }}
+          CHUNK_6: ${{ secrets.TEACHER_HIVE_20261116150329_6 }}
+          CHUNK_7: ${{ secrets.TEACHER_HIVE_20261116150329_7 }}
+          CHUNK_8: ${{ secrets.TEACHER_HIVE_20261116150329_8 }}
+          CHUNK_9: ${{ secrets.TEACHER_HIVE_20261116150329_9 }}
+          CHUNK_10: ${{ secrets.TEACHER_HIVE_20261116150329_10 }}
+          CHUNK_11: ${{ secrets.TEACHER_HIVE_20261116150329_11 }}
+        run: |
+          python3 - <<'PY'
+          import base64,gzip,hashlib,json,os,pathlib
+          p=pathlib.Path('bigdata/evidence-input')
+          content=gzip.decompress(base64.b64decode(''.join(os.environ['CHUNK_'+str(i)] for i in range(12))))
+          d=json.loads((p/'manifest.json').read_text())
+          assert hashlib.sha256(content).hexdigest()==d['sourceTsvSha256']
+          assert content.count(b'\n')==16031
+          (p/'source.tsv').write_bytes(content)
+          print('Private numeric input SHA and row count verified; source rows withheld')
+          PY
+      - name: Execute actual isolated HDFS and Hive
+        run: |
+          mkdir -p evidence/hive
+          docker pull 'apache/hive:4.1.0@sha256:b957bb0e698e560d24e162b7549d79f191d58703e92899a886618c317f6e8f30'
+          docker image inspect 'apache/hive:4.1.0@sha256:b957bb0e698e560d24e162b7549d79f191d58703e92899a886618c317f6e8f30' > evidence/hive/image-inspect.json
+          docker run --rm --user 0:0 --entrypoint bash -e TEACHER_RUN_MODE=ci-container -v "$PWD:/source:ro" -v "$PWD/bigdata/evidence-input:/bundle:ro" -v "$PWD/evidence/hive:/evidence" 'apache/hive:4.1.0@sha256:b957bb0e698e560d24e162b7549d79f191d58703e92899a886618c317f6e8f30' /source/bigdata/runner/teacher-hive.sh
+      - name: Independent source-row reconciliation
+        run: python3 bigdata/teacher_warehouse.py reconcile --bundle bigdata/evidence-input --evidence evidence/hive
+      - name: Persist only roundtrip SHA and remove private row files
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,pathlib
+          p=pathlib.Path('evidence/hive/download.tsv')
+          if p.exists():
+              proof={'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'rows':p.read_bytes().count(b'\n'),'scope':'actual HDFS get; source rows excluded from artifact'}
+              pathlib.Path('evidence/hive/hdfs-roundtrip.json').write_text(json.dumps(proof,indent=2))
+              p.unlink()
+          pathlib.Path('bigdata/evidence-input/source.tsv').unlink(missing_ok=True)
+          PY
+      - name: Preserve aggregate execution evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: teacher-private-hive-${{ github.run_id }}
+          path: |
+            evidence/hive/runtime.log
+            evidence/hive/image-inspect.json
+            evidence/hive/reconciliation.json
+            evidence/hive/hdfs-roundtrip.json
+            evidence/hive/daily.tsv
+            evidence/hive/weekday.tsv
+            evidence/hive/hour.tsv
+            evidence/hive/road_length.tsv
+          retention-days: 14
